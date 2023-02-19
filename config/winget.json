@@ -1,0 +1,46 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2023-05-18T17:51:20.605-00:00",
+  "Sources": [
+    {
+      "Packages": [
+        { "PackageIdentifier": "AgileBits.1Password" },
+        { "PackageIdentifier": "Axosoft.GitKraken" },
+        { "PackageIdentifier": "Canonical.Ubuntu.2204" },
+        { "PackageIdentifier": "Discord.Discord" },
+        { "PackageIdentifier": "ElectronicArts.EADesktop" },
+        { "PackageIdentifier": "Elgato.CameraHub" },
+        { "PackageIdentifier": "Elgato.StreamDeck" },
+        { "PackageIdentifier": "ExpressVPN.ExpressVPN" },
+        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "GlassWire.GlassWire" },
+        { "PackageIdentifier": "GnuPG.GnuPG" },
+        { "PackageIdentifier": "GnuPG.Gpg4win" },
+        { "PackageIdentifier": "Google.Chrome" },
+        { "PackageIdentifier": "Google.Drive" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "Logitech.GHUB" },
+        { "PackageIdentifier": "Microsoft.Edge" },
+        { "PackageIdentifier": "Microsoft.EdgeWebView2Runtime" },
+        { "PackageIdentifier": "Microsoft.OneDrive" },
+        { "PackageIdentifier": "Microsoft.PowerShell" },
+        { "PackageIdentifier": "Microsoft.PowerToys" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "Microsoft.WindowsTerminal" },
+        { "PackageIdentifier": "OBSProject.OBSStudio" },
+        { "PackageIdentifier": "Olivia.VIA" },
+        { "PackageIdentifier": "ShareX.ShareX" },
+        { "PackageIdentifier": "Spotify.Spotify" },
+        { "PackageIdentifier": "Valve.Steam" },
+        { "PackageIdentifier": "VideoLAN.VLC" },
+        { "PackageIdentifier": "WinDirStat.WinDirStat" }
+      ],
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    }
+  ]
+}

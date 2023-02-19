@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+{{/* Include external functions */}}
+{{ template "update-homebrew" . }}
+
+#######################################
+# Update Ubuntu packages via apt
+# Globals:
+#   APT
+# Arguments:
+#   None
+#######################################
+function update_apt_packages() {
+  echo "Updating apt packages..."
+  sudo apt update && sudo apt upgrade -y
+  sudo apt autoclean
+  sudo apt autoremove
+}
+
+
+#################### Main Program ####################
+
+# Stop script on error
+set -eo pipefail
+
+# Update apt packages
+update_apt_packages
+
+{{ if not .env.ephemeral -}}
+
+# Update Homebrew
+update_homebrew
+
+{{- end }}

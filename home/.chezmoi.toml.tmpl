@@ -1,0 +1,55 @@
+
+{{- /* Initialize general info */ -}}
+{{- $personal := "michaelolson84@gmail.com" -}}
+{{- $spindance := "michael.olson@spindance.com" -}}
+
+{{- /* Check if running in WSL */ -}}
+{{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+
+{{- /* Detect GitHub codespaces, VSCode remote containers and Docker containers */ -}}
+{{- $codespaces := env "CODESPACES" | not | not -}}
+{{- $devcontainer := env "REMOTE_CONTAINERS" | not | not -}}
+
+{{- /* User information */ -}}
+{{- $name :=  default "Michael Olson" (env "USER_NAME") -}}
+{{- $email := default $spindance (env "USER_EMAIL") -}}
+{{- if hasKey . "name" -}} {{- $name = .name -}} {{- end -}}
+{{- if hasKey . "email" -}} {{- $email = .email -}} {{- end -}}
+
+{{- if stdinIsATTY -}}
+{{-   $name = promptStringOnce . "name" "Name for GitHub user" $name -}}
+{{-   $email = promptStringOnce . "email" "E-mail for GitHub user" $email -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+{{- end -}}
+
+sourceDir = {{ .chezmoi.sourceDir | quote }}
+encryption = "gpg"
+
+[data]
+name = {{ $name | quote }}
+email = {{ $email | quote }}
+personal = {{ $personal | quote }}
+spindance = {{ $spindance | quote }}
+work = {{ eq $email $spindance }}
+
+[data.env]
+os = {{ .chezmoi.os | quote }}
+wsl = {{ $wsl }}
+codespaces = {{ $codespaces }}
+devcontainer = {{ $devcontainer }}
+ephemeral = {{ or $codespaces $devcontainer }}
+
+[data.onepassword]
+address = "my.1password.com"
+account = "QBDDA7S63NEQHDH4VKB6E3SC6I"
+email = {{ $personal | quote }}
+
+[edit]
+command = "code"
+minDuration = 0
+
+[gpg]
+symmetric = true
+
+[onepassword]
+prompt = {{ not (or $codespaces $devcontainer) }}

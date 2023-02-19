@@ -1,0 +1,161 @@
+
+{{- $credentials := "" -}}
+{{- if eq .env.os "darwin" -}}
+{{- $credentials = "/usr/local/share/gcm-core/git-credential-manager" -}}
+{{- end -}}
+{{- if eq .env.os "linux" -}}
+{{- $credentials = "/usr/share/gcm-core/git-credential-manager" -}}
+{{- end -}}
+{{- if .env.wsl -}}
+{{- $credentials = "/mnt/c/Program\\\\ Files/Git/mingw64/bin/git-credential-manager.exe" -}}
+{{- end -}}
+
+
+#          _ _                   __ _       
+#         (_) |                 / _(_)      
+#     __ _ _| |_ ___ ___  _ __ | |_ _  __ _ 
+#    / _` | | __/ __/ _ \| '_ \|  _| |/ _` |
+#   | (_| | | || (_| (_) | | | | | | | (_| |
+#  (_)__, |_|\__\___\___/|_| |_|_| |_|\__, |
+#     __/ |                            __/ |
+#    |___/                            |___/ 
+
+
+# ========================================
+# General
+# ========================================
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+
+[init]
+defaultBranch = main
+
+
+# ========================================
+# User
+# ========================================
+
+[user]
+name = {{ .name }}
+email = {{ .email }}
+
+
+# ========================================
+# Operations
+# ========================================
+
+[checkout]
+defaultRemote = origin
+
+[fetch]
+prune = true
+pruneTags = true
+
+[merge]
+autostash = true
+ff = false
+
+[pull]
+ff = only
+rebase = true
+
+[push]
+default = current
+followTags = true
+
+[rebase]
+autostash = true
+
+[tag]
+forceSignAnnotated = true
+
+{{- if not .env.ephemeral }}
+
+
+# ========================================
+# Security
+# ========================================
+
+[credential]
+helper = 
+helper = {{ $credentials }}
+
+[credential "https://dev.azure.com"]
+useHttpPath = true
+
+
+{{ end -}}
+
+# ========================================
+# Tools
+# ========================================
+
+[core]
+editor = code --wait
+
+[diff]
+tool = vscode
+
+[difftool "vscode"]
+cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+tool = vscode
+
+[mergetool "vscode"]
+cmd = code --wait $MERGED
+
+
+# ========================================
+# Format
+# ========================================
+
+[color]
+ui = auto
+
+[color "branch"]
+current = yellow reverse
+local = yellow
+remote = green
+
+[color "diff"]
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+
+[color "status"]
+added = yellow
+changed = green
+untracked = red
+
+[pretty]
+changelog = "%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+
+
+# ========================================
+# Commands
+# ========================================
+
+[alias]
+amend = commit --amend --verbose
+branches = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+cleanup = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+del = branch -D
+graph = log --graph --pretty=changelog
+last = log -1 HEAD --stat
+new = checkout -b
+save = !git add -A && git commit -am 'chore: savepoint'
+undo = reset HEAD~1 --mixed
+
+
+# ========================================
+# Integrations
+# ========================================
+
+[alias]
+kraken = !open "gitkraken://repo$(cd "${1:-.}" && git rev-parse --show-toplevel); :"

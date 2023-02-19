@@ -1,0 +1,49 @@
+
+{{- define "archive" -}}
+type = "archive"
+stripComponents = 1
+refreshPeriod = "168h"
+{{- end -}}
+
+{{- define "archive-exact" -}}
+{{ template "archive" }}
+exact = true
+{{- end -}}
+
+{{- define "git" -}}
+type = "git-repo"
+refreshPeriod = "168h"
+{{- end -}}
+
+[".config/nvim"]
+{{ template "archive" }}
+url = "https://github.com/AstroNvim/AstroNvim/archive/v3.30.7.tar.gz"
+include = ["*/init.lua", "*/lua/**"]
+
+[".oh-my-zsh"]
+{{ template "archive-exact" }}
+url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+
+[".oh-my-zsh/custom/plugins/fast-syntax-highlighting"]
+{{ template "archive-exact" }}
+url = "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/master.tar.gz"
+
+[".oh-my-zsh/custom/plugins/zsh-autocomplete"]
+{{ template "archive-exact" }}
+url = "https://github.com/marlonrichert/zsh-autocomplete/archive/23.05.24.tar.gz"
+
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+{{ template "archive-exact" }}
+url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+
+[".oh-my-zsh/custom/plugins/zsh-completions"]
+{{ template "archive-exact" }}
+url = "https://github.com/zsh-users/zsh-completions/archive/master.tar.gz"
+
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+{{ template "archive-exact" }}
+url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+{{ template "archive-exact" }}
+url = "https://github.com/romkatv/powerlevel10k/archive/v1.19.0.tar.gz"

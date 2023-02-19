@@ -1,0 +1,33 @@
+#      __      __
+#     / _|    / _|
+#    | |_ ___| |_
+#    |  _|_  /  _|
+#   _| |  / /| |
+#  (_)_| /___|_|
+#
+#
+
+
+# Path to FZF installation
+FZF_PATH=
+{{- if eq .env.os "darwin" -}}
+"$(brew --prefix)/opt/fzf/shell"
+{{- else -}}
+/usr/share/doc/fzf/examples
+{{- end }}
+
+# Setup fzf
+# ---------
+{{ if eq .env.os "darwin" -}}
+if [[ ! "$PATH" == *"${FZF_PREFIX}"/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}${FZF_PREFIX}/fzf/bin"
+fi
+{{- end }}
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "${FZF_PATH}/completion.bash" 2>/dev/null
+
+# Key bindings
+# ------------
+source "${FZF_PATH}/key-bindings.bash"

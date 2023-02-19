@@ -1,0 +1,45 @@
+
+{{- /* Oh-My-ZSH config */ -}}
+{{- $plugins := list "fast-syntax-highlighting" "zsh-autocomplete" "zsh-autosuggestions" "zsh-completions" -}}
+
+{{- /* Additional tools */ -}}
+{{- $plugins = concat $plugins ( list "aliases" "git" ) -}}
+
+{{- /* Environment specific */ -}}
+{{- if eq .env.os "darwin" -}} {{- $plugins = concat $plugins ( list "macos" ) -}} {{- end -}}
+{{- if eq .env.os "linux" -}} {{- $plugins = concat $plugins ( list "ubuntu" ) -}} {{- end -}}
+{{- if not .env.ephemeral -}} {{- $plugins = concat $plugins ( list "brew" "tmux" "vscode" ) -}} {{- end -}}
+
+
+#  ______ _             _           
+#  | ___ \ |           (_)          
+#  | |_/ / |_   _  __ _ _ _ __  ___ 
+#  |  __/| | | | |/ _` | | '_ \/ __|
+#  | |   | | |_| | (_| | | | | \__ \
+#  \_|   |_|\__,_|\__, |_|_| |_|___/
+#                  __/ |            
+#                 |___/             
+
+# Set default plugins
+plugins=(
+  {{ $plugins | sortAlpha | uniq | join "\n  " }}
+)
+
+# AWS CLI
+command -v aws > /dev/null && plugins+=(aws)
+
+# Docker
+command -v docker > /dev/null && plugins+=(docker)
+
+# Kubernetes
+command -v kubectl > /dev/null && plugins+=(kubectl)
+
+# Node.js
+command -v yarn > /dev/null && plugins+=(yarn)
+
+# Python
+command -v python > /dev/null && plugins+=(python)
+command -v poetry > /dev/null && plugins+=(poetry)
+
+# Terraform
+command -v terraform > /dev/null && plugins+=(terraform)

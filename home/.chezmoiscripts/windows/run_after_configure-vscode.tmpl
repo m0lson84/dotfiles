@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+{{/* Include external functions */}}
+{{ template "vscode-settings" . }}
+
+#################### Main Program ####################
+
+# Apply VSCode settings
+apply_settings {{ .chezmoi.homeDir }}/AppData/Roaming/Code/User/

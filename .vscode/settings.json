@@ -1,0 +1,52 @@
+{
+  // General
+  "files.associations": {
+    "*.toml.tmpl": "toml",
+    "*.yaml.tmpl": "yaml",
+    "install-brewfile": "go-template",
+    "install-homebrew": "go-template",
+    "install-nodejs": "go-template",
+    "install-python": "go-template",
+    "setup-1passowrd": "go-template",
+    "update-homebrew": "go-template",
+    "vscode-extensions": "go-template",
+    "vscode-settings": "go-template"
+  },
+
+  // Go
+  "go-template.patterns": ["**/*.tmpl"],
+  "[go-template]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.rulers": [120]
+  },
+
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [120]
+  },
+
+  // Shell
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.rulers": [120]
+  },
+
+  // YAML
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.rulers": [120]
+  },
+
+  // Code Spell Checker
+  "cSpell.words": ["chezmoi", "codespaces", "devcontainer", "devcontainers"],
+
+  // Prettier
+  "prettier.bracketSpacing": true,
+  "prettier.printWidth": 120,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.useTabs": false
+}

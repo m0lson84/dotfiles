@@ -1,0 +1,21 @@
+#    __                  _   _                 
+#   / _|                | | (_)                
+#  | |_ _   _ _ __   ___| |_ _  ___  _ __  ___ 
+#  |  _| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+#  | | | |_| | | | | (__| |_| | (_) | | | \__ \
+#  |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+#                                              
+#                                              
+
+
+{{ if eq .env.os "darwin" -}}
+
+# Fix for OBS virtual camera in Slack
+fix_obs_virtual_cam_in_slack() {
+  sudo codesign --remove-signature "/Applications/Slack.app/"
+  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app"
+  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app"
+  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Plugin).app"
+}
+
+{{- end }}

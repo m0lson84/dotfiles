@@ -1,0 +1,27 @@
+# -*-mode:gitignore-*- vim:ft=gitignore
+
+# ~/.gitignore_global
+# =============================================================================
+# Used by Git to determine the files and directories to ignore globally.
+#
+# This list defines global exclusions to all local repositories.
+# See https://git-scm.com/docs/gitignore
+# =============================================================================
+
+{{ if eq .env.os "darwin" -}}
+# Mac specific
+.DS_Store
+Thumbs.db
+{{- end }}
+
+# Environments
+.venv
+
+# Byte-compiled / optimized / DLL files
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE Configuration files
+/.idea/

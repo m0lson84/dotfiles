@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+{{/* Include external functions */}}
+{{ template "install-brewfile" . }}
+{{ template "install-nodejs" . }}
+{{ template "install-python" . }}
+{{ template "vscode-extensions" . }}
+
+#################### Main Program ####################
+
+# Stop script on error
+set -eo pipefail
+
+{{ if not .env.ephemeral -}}
+
+# Setup environment
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Install dependencies
+install_brewfile
+
+# Install / update Node.js
+install_nodejs
+
+# Install / update Python
+install_python
+
+{{- end }}
+
+{{ if not (or .env.wsl .env.ephemeral) -}}
+
+# Install VSCode extensions
+install_extensions
+
+{{- end }}

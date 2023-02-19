@@ -1,0 +1,146 @@
+
+{{- /* Tap repositories */ -}}
+{{- $taps := list "homebrew/bundle" "sigstore/tap" -}}
+{{ if eq .env.os "darwin" -}}
+{{- $taps = concat $taps ( list
+  "homebrew/cask-fonts"
+  "microsoft/git"
+  "mongodb/brew"
+  "teamookla/speedtest"
+  ) -}}
+{{ end -}}
+
+{{- /* Formula to install */ -}}
+{{- $formula := list 
+  "bash" 
+  "bash-completion@2"
+  "btop"
+  "chezmoi"
+  "delve"
+  "gh"
+  "git"
+  "go"
+  "golangci-lint"
+  "gopls"
+  "helm"
+  "jq"
+  "kubernetes-cli"
+  "neovim"
+  "nodenv"
+  "openssl"
+  "openssl@1.1"
+  "pandoc"
+  "rust"
+  "rustfmt"
+  "shfmt"
+  "tmux"
+  "tree"
+ -}}
+{{- if eq .env.os "darwin" -}}
+{{- $formula = concat $formula ( list
+  "act"
+  "awscli"
+  "aws-cdk"
+  "aws-sam-cli"
+  "bash"
+  "blueutil"
+  "cloc"
+  "colima"
+  "curl"
+  "eksctl"
+  "fzf"
+  "gnupg"
+  "mas"
+  "mongodb/brew/mongodb-community-shell"
+  "mosquitto"
+  "pyenv"
+  "readline"
+  "redis"
+  "sqlite3"
+  "switchaudio-osx"
+  "tcl-tk"
+  "teamookla/speedtest/speedtest"
+  "terraform"
+  "wget"
+  "xz"
+  "zlib"
+  "zsh"
+  ) -}}
+{{- end -}}
+{{- if eq .env.os "linux" -}}
+{{- $formula = concat $formula ( list "gcc" "kubernetes-cli" ) -}}
+{{- end -}}
+
+{{- /* Casks to install */ -}}
+{{- $casks := list -}}
+{{- if eq .env.os "darwin" -}}
+{{- $casks = concat $casks ( list
+  "1password"
+  "1password-cli"
+  "alfred"
+  "cleanmymac"
+  "datagrip"
+  "duet"
+  "elgato-camera-hub"
+  "font-fira-code-nerd-font"
+  "font-jetbrains-mono-nerd-font"
+  "font-meslo-lg-nerd-font"
+  "git-credential-manager-core"
+  "gitkraken"
+  "google-chrome"
+  "google-drive"
+  "iterm2"
+  "kitty"
+  "microsoft-excel"
+  "microsoft-outlook"
+  "microsoft-teams"
+  "microsoft-word"
+  "obs"
+  "orbstack"
+  "pycharm"
+  "rectangle-pro"
+  "redisinsight"
+  "session-manager-plugin"
+  "shottr"
+  "slack"
+  "spotify"
+  "tg-pro"
+  "via"
+  "visual-studio-code"
+  "vlc"
+  "webstorm"
+  "zoom"
+  ) -}}
+{{- end -}}
+
+
+#    ______                    __ _ _      
+#    | ___ \                  / _(_) |     
+#    | |_/ /_ __ _____      _| |_ _| | ___ 
+#    | ___ \ '__/ _ \ \ /\ / /  _| | |/ _ \
+#   _| |_/ / | |  __/\ V  V /| | | | |  __/
+#  (_)____/|_|  \___| \_/\_/ |_| |_|_|\___|
+#                                          
+#                                          
+
+{{- /* Taps */ -}}
+{{- range ( $taps | sortAlpha | uniq ) }}
+tap "{{ . }}"
+{{- end }}
+
+{{- /* Formula */ -}}
+{{- range ( $formula | sortAlpha | uniq ) }}
+brew "{{ . }}"
+{{- end }}
+
+{{- /* Casks */ -}}
+{{- range ( $casks | sortAlpha | uniq ) }}
+cask "{{ . }}"
+{{- end }}
+
+{{- /* MacOS App Store */ -}}
+{{ if eq .env.os "darwin" }}
+mas "Essentials", id: 1588151344
+mas "Harvest", id: 506189836
+mas "1Password for Safari", id: 1569813296
+{{ end -}}

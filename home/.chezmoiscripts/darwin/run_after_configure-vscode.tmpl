@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+{{/* Include external functions */}}
+{{ template "vscode-settings" . }}
+
+#################### Main Program ####################
+
+# Stop script on error
+set -eo pipefail
+
+# Apply VSCode settings
+apply_settings {{ .chezmoi.homeDir }}/Library/Application\ Support/Code/User/

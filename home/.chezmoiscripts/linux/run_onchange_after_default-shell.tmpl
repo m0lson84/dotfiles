@@ -1,0 +1,21 @@
+
+{{- $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/usr/bin/env bash
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+{{ if not .env.ephemeral -}}
+
+# Update default shell
+if [[ ! $SHELL =~ "zsh" ]]; then
+  {{ $sudo }}chsh -s $(which zsh) {{ .chezmoi.username }}
+fi
+
+{{- end }}

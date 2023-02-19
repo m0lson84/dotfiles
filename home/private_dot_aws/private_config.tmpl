@@ -1,0 +1,39 @@
+#                           __              __ _       
+#                          / /             / _(_)      
+#     __ ___      _____   / /__ ___  _ __ | |_ _  __ _ 
+#    / _` \ \ /\ / / __| / / __/ _ \| '_ \|  _| |/ _` |
+#   | (_| |\ V  V /\__ \/ / (_| (_) | | | | | | | (_| |
+#  (_)__,_| \_/\_/ |___/_/ \___\___/|_| |_|_| |_|\__, |
+#                                                 __/ |
+#                                                |___/ 
+
+
+{{ onepasswordRead "op://AWS/Default/configuration" .onepassword.account }}
+
+
+# ========================================
+# GLOS
+# ========================================
+
+{{ onepasswordRead "op://AWS/GLOS/configuration" .onepassword.account }}
+
+
+# ========================================
+# Hamilton Beach Brands
+# ========================================
+
+{{ onepasswordRead "op://AWS/HBB/configuration" .onepassword.account }}
+
+
+# ========================================
+# ODL
+# ========================================
+
+{{ onepasswordRead "op://AWS/ODL/configuration" .onepassword.account }}
+
+
+# ========================================
+# SpinDance
+# ========================================
+
+{{ onepasswordRead "op://AWS/SpinDance/configuration" .onepassword.account }}

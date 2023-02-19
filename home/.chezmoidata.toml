@@ -1,0 +1,13 @@
+
+name = 'Michael Olson'
+email = 'michaelolson84@gmail.com'
+
+[nodejs]
+version = '18.16.0'
+installer = 'npm install -g'
+globals = ['aws-cdk', '@githubnext/github-copilot-cli', '@nestjs/cli', 'turbo', 'typeorm', 'yarn']
+
+[python]
+version = '3.11.3'
+installer = 'pip install -U'
+globals = ['black', 'flake8', 'isort', 'pylint']

@@ -1,0 +1,44 @@
+{{- /* Required dependencies */ -}}
+{{- $formula := list "curl" "git" "jq" "mas" "wget" -}}
+{{- $casks := list "1password-cli" -}}
+
+#!/usr/bin/env bash
+
+#######################################
+# Post installation steps for Homebrew
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function homebrew_postinstall() {
+  echo "Running Homebrew post installation steps..."
+
+  # Setup Homebrew in shell environment
+  echo "Setup current environment..."
+  eval "$($(brew --prefix)/bin/brew shellenv)"
+
+  # Install required dependencies
+  echo "Installing required dependencies..."
+  brew install {{ $formula | sortAlpha | uniq | join " " }}
+  brew install --cask {{ $casks | sortAlpha | uniq | join " " }}
+  
+}
+
+{{ template "install-homebrew" . }}
+
+{{ template "setup-1password" . }}
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Install Homebrew
+install_homebrew
+
+# Run post installation steps
+homebrew_postinstall
+
+# Setup 1Password
+setup_1password

@@ -1,0 +1,45 @@
+#     _               _              
+#    | |             | |             
+#    | |__   __ _ ___| |__  _ __ ___ 
+#    | '_ \ / _` / __| '_ \| '__/ __|
+#   _| |_) | (_| \__ \ | | | | | (__ 
+#  (_)_.__/ \__,_|___/_| |_|_|  \___|
+#                                    
+#                                    
+
+# XDG Base Directory Specification
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+
+# Default Apps
+export BROWSER="firefox"
+export EDITOR="nvim"
+export TERMINAL="iterm2"
+export VISUAL="nvim"
+export VSCODE="code"
+
+# Load additional configurations
+source "$XDG_CONFIG_HOME"/bash/.fzf.bash
+source "$XDG_CONFIG_HOME"/bash/aliases.bash"
+
+{{ if not .env.ephemeral -}}
+
+# 1Password CLI configuration
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+source <(op completion bash)
+
+# Copilot CLI configuration
+eval "$(github-copilot-cli alias -- "$0")"
+
+# Node.js configuration
+eval "$(nodenv init -)"
+
+# Python environment configuration
+export PATH="${HOME}/.local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+{{- end }}

@@ -1,0 +1,23 @@
+{{- /* Default packages */ -}}
+{{ $packages := list "curl" "fzf" "gnupg" "unzip" "wget" "zsh" -}}
+
+{{- /* Additional packages */ -}}
+{{ if not .env.ephemeral -}}
+{{   $packages = concat $packages ( list "htop" "tmux" ) -}}
+{{ end -}}
+
+{{- $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/usr/bin/env bash
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Install packages
+{{ $sudo }}apt-get update
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}

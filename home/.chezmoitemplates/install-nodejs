@@ -1,0 +1,34 @@
+#######################################
+# Install Node.js and global dependencies
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_nodejs() {
+  local current
+  local desired
+
+  # Check if nodenv is installed
+  command -v nodenv >/dev/null || return 0
+  eval "$(nodenv init -)"
+
+  current=$(nodenv global)
+  desired={{ .nodejs.version }}
+
+  echo "Checking Node.js version..."
+  echo "Current: $current, Desired: $desired"
+
+  if [[ "$current" == "$desired" ]]; then
+    return 0
+  fi
+
+  echo "Installing Node.js $desired..."
+  nodenv install "$desired"
+  nodenv global "$desired"
+
+  echo "Installing global dependencies..."
+  nodenv shell "$desired"
+  {{ .nodejs.installer }} {{ .nodejs.globals | join " " }}
+
+}

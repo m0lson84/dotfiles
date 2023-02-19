@@ -1,0 +1,19 @@
+#######################################
+# Install Homebrew
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_homebrew() {
+  echo "Installing Homebrew..."
+
+  {{- if  eq .env.os "darwin" }}
+  # Install dependencies
+  command xcode-select -v >/dev/null || xcode-select --install
+  {{- end }}
+
+  SOURCE_REPO="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+  {{ if ne .env.os "darwin" }}NONINTERACTIVE=1 {{ end }}/bin/bash -c "$(curl -fsSL "${SOURCE_REPO}")"
+  
+}
