@@ -1,0 +1,247 @@
+# Get editor completions based on the config schema
+"$schema" = "https://starship.rs/config-schema.json"
+
+
+# ========================================
+# General
+# ========================================
+
+add_newline = false
+continuation_prompt = '▶▶ '
+format = """
+$os\
+$shell\
+$username\
+$directory\
+${custom.git_icon}\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$character
+"""
+# TODO: Update to use $all once this issue is fixed: 
+# https://github.com/starship/starship/issues/4953
+right_format = """
+$localip\
+$container\
+$docker_context\
+$kubernetes\
+$package\
+$c\
+$cmake\
+$dart\
+$dotnet\
+$golang\
+$helm\
+$lua\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$aws\
+$azure\
+$gcloud\
+$terraform\
+$cmd_duration
+"""
+
+[cmd_duration]
+disabled = true
+format = "[took $duration]($style)"
+style = "101"
+
+[directory]
+read_only = " 󰌾"
+truncate_to_repo = true
+
+[package]
+disabled = true
+symbol = "󰏗 "
+
+
+# ========================================
+# System
+# ========================================
+
+[battery]
+disabled = true
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
+full_symbol = '🔋 '
+
+[hostname]
+disabled = false
+ssh_only = true
+ssh_symbol = " "
+
+[memory_usage]
+disabled = true
+symbol = "󰍛 "
+
+[os]
+disabled = false
+format = "[$symbol]($style)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
+
+# ========================================
+# Languages
+# ========================================
+
+[c]
+disabled = false
+symbol = " "
+
+[dart]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[nodejs]
+format = "[$symbol$version]($style) "
+symbol = " "
+
+[python]
+format = "[$symbol$version]($style) "
+pyenv_version_name = true
+symbol = " "
+
+[ruby]
+format = "[$symbol$version]($style) "
+symbol = " "
+
+[rust]
+format = "[$symbol$version]($style) "
+symbol = " "
+
+
+# ========================================
+# Services
+# ========================================
+
+[aws]
+disabled = false
+expiration_symbol = " "
+format = "[$symbol$profile]($style) "
+profile_aliases = { sd-dev = "sp dev", work = "company" }
+region_aliases = { us-east-1 = "VA", us-east-2 = "OH" }
+symbol = " "
+
+[azure]
+disabled = false
+format = "[$symbol($username)]($style) "
+symbol = "󰠅 "
+
+[gcloud]
+disabled = false
+symbol = "󱇶 "
+
+[terraform]
+disabled = false
+format = "[$symbol$workspace]($style) "
+symbol = "󱁢"
+
+
+# ========================================
+# Source control
+# ========================================
+
+[custom.git_icon]
+disabled = true
+description = "Display symbol for git repository."
+command = """
+  symbol="󰊢 "
+  remote=$(command git ls-remote --get-url 2> /dev/null)
+  if [[ "$remote" =~ "azure" ]]; then symbol=" "; fi
+  if [[ "$remote" =~ "bitbucket" ]]; then symbol=" "; fi
+  if [[ "$remote" =~ "github" ]]; then symbol=" "; fi
+  if [[ "$remote" =~ "gitlab" ]]; then symbol=" "; fi
+  echo "$symbol"
+"""
+format = "[$output]($style)  "
+style = "bold white"
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+shell = ["bash", "--noprofile", "--norc"]
+
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+disabled = false
+format = "[$symbol$branch]($style) "
+symbol = " "
+
+[git_metrics]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_status]
+disabled = true
+
+[hg_branch]
+symbol = " "
+
+[pijul_channel]
+symbol = "🪺 "
+
+
+# ========================================
+# Additional modules
+# ========================================
+
+[docker_context]
+symbol = " "
+
+[helm]
+symbol = "󰠳 "
+
+[kubernetes]
+symbol = "󱃾 "

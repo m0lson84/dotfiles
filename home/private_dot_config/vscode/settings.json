@@ -23,7 +23,8 @@
   "editor.acceptSuggestionOnEnter": "on",
   "editor.codeActionsOnSave": { "addMissingImports": true, "source.fixAll": true, "source.sortImports": true },
   "editor.detectIndentation": false,
-  "editor.fontFamily": "JetBrains Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 12,
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -49,7 +50,7 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enablePersistentSessions": false,
-  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.profiles.linux": {
     "bash": { "path": "/bin/bash", "icon": "terminal-bash" },
@@ -311,7 +312,9 @@
     "streetsidesoftware.code-spell-checker",
     "visualstudioexptteam.vscodeintellicode"
   ],
-  "dev.containers.defaultFeatures": {},
+  "dev.containers.defaultFeatures": {
+    "ghcr.io/devcontainers-contrib/features/starship:1": {}
+  },
   "dev.containers.gitCredentialHelperConfigLocation": "none",
   "dotfiles.repository": "https://github.com/m0lson84/dotfiles.git",
 

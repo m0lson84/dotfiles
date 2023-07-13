@@ -21,7 +21,7 @@ export VSCODE="code"
 
 # Load additional configurations
 source "$XDG_CONFIG_HOME"/bash/.fzf.bash
-source "$XDG_CONFIG_HOME"/bash/aliases.bash"
+source "$XDG_CONFIG_HOME"/bash/aliases.bash
 
 {{ if not .env.ephemeral -}}
 
@@ -43,3 +43,8 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 {{- end }}
+
+# Starship initialization
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
+eval "$(starship init bash)"
+eval "$(starship completions bash)"
