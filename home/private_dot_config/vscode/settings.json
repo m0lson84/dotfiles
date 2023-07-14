@@ -43,35 +43,36 @@
   "editor.wordWrap": "on",
 
   // Terminal
-  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.osxExec": "kitty.app",
   "terminal.external.windowsExec": "C:\\Users\\micha\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
   "terminal.integrated.cwd": "${workspaceRoot}",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.profiles.linux": {
     "bash": { "path": "/bin/bash", "icon": "terminal-bash" },
     "zsh": { "path": "/usr/bin/zsh", "icon": "terminal" },
-    "JavaScript Debug Terminal": null
+    "JavaScript Debug Terminal": null,
+    "tmux": null
   },
   "terminal.integrated.profiles.osx": {
     "bash": { "path": "bash", "icon": "terminal-bash" },
     "zsh": { "path": "zsh", "icon": "terminal" },
-    "JavaScript Debug Terminal": null
+    "JavaScript Debug Terminal": null,
+    "tmux": null
   },
   "terminal.integrated.profiles.windows": {
-    "Command Prompt": {
-      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
-      "args": [],
-      "icon": "terminal-cmd"
-    },
-    "Git Bash": { "source": "Git Bash", "icon": "terminal-bash" },
-    "PowerShell": { "source": "PowerShell", "icon": "terminal-powershell" },
+    "pwsh": { "source": "PowerShell", "icon": "terminal-powershell", "overrideName": true },
+    "cmd": { "path": "${env:windir}\\System32\\cmd.exe", "icon": "terminal-cmd", "overrideName": true },
+    "Git Bash": null,
+    "Command Prompt": null,
     "JavaScript Debug Terminal": null,
-    "R Terminal": null
+    "PowerShell": null,
+    "R Terminal": null,
+    "Ubuntu (WSL)": null
   },
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.tabs.enabled": true,

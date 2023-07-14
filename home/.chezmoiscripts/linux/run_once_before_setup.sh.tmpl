@@ -108,7 +108,7 @@ function install_gitkraken() {
 
 }
 
-{{ template "install-homebrew" . }}
+{{ template "install-homebrew.tmpl" . }}
 
 #######################################
 # Install Python
@@ -154,7 +154,7 @@ function install_speedtest() {
   
 }
 
-{{ template "setup-1password" . }}
+{{ template "setup-1password.tmpl" . }}
 
 #######################################
 # Update Ubuntu packages

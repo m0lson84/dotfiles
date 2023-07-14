@@ -2,15 +2,20 @@
   // General
   "files.associations": {
     "*.toml.tmpl": "toml",
+    "*.yaml.tmpl": "yaml"
+  },
+
+  // Themes
+  "material-icon-theme.files.associations": {
+    "*.tmpl": "../../icons/go-template",
+    "*.sh.tmpl": "console",
+    "*.toml.tmpl": "settings",
     "*.yaml.tmpl": "yaml",
-    "install-brewfile": "go-template",
-    "install-homebrew": "go-template",
-    "install-nodejs": "go-template",
-    "install-python": "go-template",
-    "setup-1passowrd": "go-template",
-    "update-homebrew": "go-template",
-    "vscode-extensions": "go-template",
-    "vscode-settings": "go-template"
+    ".chezmoiroot": "../../icons/chezmoi",
+    ".chezmoiversion": "../../icons/chezmoi",
+    "config.tmpl": "git",
+    "dot_Brewfile.tmpl": "ruby",
+    "ignore.tmpl": "git"
   },
 
   // Go
@@ -39,7 +44,7 @@
   },
 
   // Code Spell Checker
-  "cSpell.words": ["chezmoi", "codespaces", "devcontainer", "devcontainers"],
+  "cSpell.words": ["chezmoi", "codespaces", "commandline", "devcontainer", "devcontainers"],
 
   // Prettier
   "prettier.bracketSpacing": true,

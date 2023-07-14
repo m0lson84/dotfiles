@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
 {{/* Include external functions */}}
-{{ template "vscode-settings" . }}
+{{ template "vscode-settings.tmpl" . }}
 
 #################### Main Program ####################
 
 # Stop script on error
 set -eo pipefail
 
-{{ if not (or .env.wsl .env.ephemeral) -}}
-
 # Apply VSCode settings
-apply_settings {{ .chezmoi.homeDir }}/.config/Code/User/
-
-{{- end }}
+apply_settings {{ .chezmoi.homeDir }}/Library/Application\ Support/Code/User/

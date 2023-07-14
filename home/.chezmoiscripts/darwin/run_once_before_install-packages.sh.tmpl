@@ -25,9 +25,9 @@ function homebrew_postinstall() {
   
 }
 
-{{ template "install-homebrew" . }}
+{{ template "install-homebrew.tmpl" . }}
 
-{{ template "setup-1password" . }}
+{{ template "setup-1password.tmpl" . }}
 
 #################### Main Program ####################
 

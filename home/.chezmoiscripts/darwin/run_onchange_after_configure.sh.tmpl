@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 {{/* Include external functions */}}
-{{ template "install-brewfile" . }}
-{{ template "install-nodejs" . }}
-{{ template "install-python" . }}
-{{ template "vscode-extensions" . }}
+{{ template "install-brewfile.tmpl" . }}
+{{ template "install-nodejs.tmpl" . }}
+{{ template "install-python.tmpl" . }}
+{{ template "vscode-extensions.tmpl" . }}
 
 #################### Main Program ####################
 
