@@ -8,7 +8,6 @@
 {{ if ne .env.os "darwin" }}
 .chezmoiscripts/darwin/**
 .1password
-.colima
 {{ end }}
 
 {{ if ne .env.os "linux" }}
@@ -21,15 +20,11 @@
 AppData
 Documents
 {{ else }}
+.aws
 .bash_aliases
 .config/git/cookies
-.gnupg
-.gnupg/**
 .oh-my-zsh
 .oh-my-zsh/**
-.p10k.zsh
-.ssh/id_rsa
-.ssh/id_rsa.pub
 .zprofile
 .zshrc
 {{ end }}
