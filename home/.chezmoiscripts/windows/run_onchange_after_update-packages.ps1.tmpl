@@ -1,0 +1,32 @@
+
+#######################################
+# Install / update applications via Windows Package Manager (winget)
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function Import-WinGetPackages() {
+  Write-Host "Updating applications via WinGet..."
+
+  # Check if 'winget' is available in the system
+  $wingetPath = Get-Command winget -ErrorAction SilentlyContinue
+  if (!$wingetPath) {
+    Write-Host "winget not found. Please install Windows Package Manager."
+      return
+  }
+
+  # Install/update packages
+  try {
+    winget import -i {{ .chezmoi.homeDir }}\.config\winget\packages.json
+  } catch {
+    Write-Host "An error occurred while running 'winget import': $_"
+  }
+
+}
+
+
+#################### Main Program ####################
+
+# Update packages
+Import-WinGetPackages

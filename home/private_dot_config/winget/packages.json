@@ -1,18 +1,18 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2023-05-18T17:51:20.605-00:00",
+  "CreationDate": "2023-07-21T19:46:45.684-00:00",
   "Sources": [
     {
       "Packages": [
         { "PackageIdentifier": "AgileBits.1Password" },
-        { "PackageIdentifier": "Axosoft.GitKraken" },
         { "PackageIdentifier": "Canonical.Ubuntu.2204" },
         { "PackageIdentifier": "Discord.Discord" },
         { "PackageIdentifier": "ElectronicArts.EADesktop" },
-        { "PackageIdentifier": "Elgato.CameraHub" },
         { "PackageIdentifier": "Elgato.StreamDeck" },
         { "PackageIdentifier": "ExpressVPN.ExpressVPN" },
+        { "PackageIdentifier": "FocusriteAudioEngineeringLtd.FocusriteControl" },
         { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "GlassWire.GlassWire" },
         { "PackageIdentifier": "GnuPG.GnuPG" },
         { "PackageIdentifier": "GnuPG.Gpg4win" },
@@ -22,15 +22,22 @@
         { "PackageIdentifier": "Logitech.GHUB" },
         { "PackageIdentifier": "Microsoft.Edge" },
         { "PackageIdentifier": "Microsoft.EdgeWebView2Runtime" },
+        { "PackageIdentifier": "Microsoft.GitCredentialManagerCore" },
+        { "PackageIdentifier": "Microsoft.NuGet" },
         { "PackageIdentifier": "Microsoft.OneDrive" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "Microsoft.VisualStudio.2022.Community" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
+        { "PackageIdentifier": "Nvidia.GeForceExperience" },
+        { "PackageIdentifier": "Nvidia.PhysX" },
         { "PackageIdentifier": "OBSProject.OBSStudio" },
         { "PackageIdentifier": "Olivia.VIA" },
         { "PackageIdentifier": "ShareX.ShareX" },
         { "PackageIdentifier": "Spotify.Spotify" },
+        { "PackageIdentifier": "twpayne.chezmoi" },
+        { "PackageIdentifier": "Ubisoft.Connect" },
         { "PackageIdentifier": "Valve.Steam" },
         { "PackageIdentifier": "VideoLAN.VLC" },
         { "PackageIdentifier": "WinDirStat.WinDirStat" }
@@ -42,5 +49,6 @@
         "Type": "Microsoft.PreIndexed.Package"
       }
     }
-  ]
+  ],
+  "WinGetVersion": "1.6.1573-preview"
 }

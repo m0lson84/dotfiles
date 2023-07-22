@@ -91,23 +91,6 @@ function install_docker() {
 
 }
 
-#######################################
-# Install GitKraken
-# https://help.gitkraken.com/gitkraken-client/windows-subsystem-for-linux
-# Globals:
-#   None
-# Arguments:
-#   None
-#######################################
-function install_gitkraken() {
-  echo "Installing GitKraken..."
-
-  wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
-  sudo apt install -y ./gitkraken-amd64.deb
-  rm -f ./gitkraken-amd64.deb
-
-}
-
 {{ template "install-homebrew.tmpl" . }}
 
 #######################################
@@ -184,9 +167,6 @@ setup_1password
 
 # Install Docker Engine
 install_docker
-
-# Install GitKraken
-install_gitkraken
 
 # Install Homebrew
 install_homebrew

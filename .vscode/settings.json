@@ -1,6 +1,7 @@
 {
   // General
   "files.associations": {
+    "*.ps1.tmpl": "powershell",
     "*.toml.tmpl": "toml",
     "*.yaml.tmpl": "yaml"
   },
@@ -8,6 +9,7 @@
   // Themes
   "material-icon-theme.files.associations": {
     "*.tmpl": "../../icons/go-template",
+    "*.ps1.tmpl": "powershell",
     "*.sh.tmpl": "console",
     "*.toml.tmpl": "settings",
     "*.yaml.tmpl": "yaml",

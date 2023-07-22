@@ -210,6 +210,12 @@
     "editor.rulers": [120]
   },
 
+  // Rust
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.rulers": [120]
+  },
+
   // Terraform
   "terraform.languageServer.enable": true,
   "[terraform]": {

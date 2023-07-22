@@ -1,0 +1,16 @@
+
+{{/* Include external functions */}}
+{{ template "vscode-extensions.tmpl" . }}
+
+#################### Main Program ####################
+
+# Stop script on error
+$ErrorActionPreference = 'Stop'
+
+# Install VSCode extensions
+try {
+  install_extensions
+} catch {
+  Write-Host "Error installing VSCode extensions: $_"
+}
+
