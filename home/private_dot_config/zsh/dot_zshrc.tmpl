@@ -68,9 +68,9 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Default Apps
 export BROWSER={{ $browser | quote }}
-export EDITOR={{- if .env.ephemeral -}} "nvim" {{- else -}} "code -w" {{- end }}
+export EDITOR="nvim"
 export TERMINAL={{ $terminal | quote }}
-export VISUAL={{- if .env.ephemeral -}} "nvim" {{- else -}} "code -w" {{- end }}
+export VISUAL="nvim"
 
 # Load additional configurations
 source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh

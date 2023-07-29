@@ -1,0 +1,13 @@
+#
+#
+#   _ __ ___   ___  _   _ ___  ___
+#  | '_ ` _ \ / _ \| | | / __|/ _ \
+#  | | | | | | (_) | |_| \__ \  __/
+#  |_| |_| |_|\___/ \__,_|___/\___|
+#
+#
+
+mouse_bindings:
+  - { mouse: Right, action: ExpandSelection }
+  - { mouse: Right, mods: Control, action: ExpandSelection }
+  - { mouse: Middle, mode: ~Vi, action: PasteSelection }

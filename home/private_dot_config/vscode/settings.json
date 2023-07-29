@@ -173,6 +173,11 @@
     "editor.rulers": [120]
   },
 
+  // KDL
+  "[kdl]": {
+    "editor.rulers": [120]
+  },
+
   // LaTeX
   "latex-workshop.view.pdf.viewer": "tab",
   "[latex]": {

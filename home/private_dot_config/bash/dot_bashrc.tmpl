@@ -33,7 +33,7 @@ source <(op completion bash)
 eval "$(github-copilot-cli alias -- "$0")"
 
 # Node.js configuration
-eval "$(nodenv init -)"
+command -v nodenv >/dev/null && eval "$(nodenv init -)"
 
 # Python environment configuration
 export PATH="${HOME}/.local/bin:$PATH"

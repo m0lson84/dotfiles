@@ -3,7 +3,8 @@
   "files.associations": {
     "*.ps1.tmpl": "powershell",
     "*.toml.tmpl": "toml",
-    "*.yaml.tmpl": "yaml"
+    "*.yaml.tmpl": "yaml",
+    "*.yml.tmpl": "yaml"
   },
 
   // Themes
@@ -13,6 +14,7 @@
     "*.sh.tmpl": "console",
     "*.toml.tmpl": "settings",
     "*.yaml.tmpl": "yaml",
+    "*.yml.tmpl": "yaml",
     ".chezmoiroot": "../../icons/chezmoi",
     ".chezmoiversion": "../../icons/chezmoi",
     "config.tmpl": "git",
@@ -33,6 +35,13 @@
     "editor.rulers": [120]
   },
 
+  // Lua
+  "Lua.diagnostics.globals": ["vim"],
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua",
+    "editor.rulers": [120]
+  },
+
   // Shell
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
@@ -46,7 +55,7 @@
   },
 
   // Code Spell Checker
-  "cSpell.words": ["chezmoi", "codespaces", "commandline", "devcontainer", "devcontainers"],
+  "cSpell.words": ["alacritty", "chezmoi", "codespaces", "commandline", "devcontainer", "devcontainers", "keymaps"],
 
   // Prettier
   "prettier.bracketSpacing": true,

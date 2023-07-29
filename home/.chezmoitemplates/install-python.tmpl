@@ -11,7 +11,6 @@ function install_python() {
 
   # Check if pyenv is installed
   command -v pyenv >/dev/null || return 0
-  eval "$(pyenv init -)"
 
   current=$(pyenv global)
   desired={{ .python.version }}
