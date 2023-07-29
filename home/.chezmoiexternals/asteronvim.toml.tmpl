@@ -1,0 +1,12 @@
+
+{{- define "archive" -}}
+type = "archive"
+stripComponents = 1
+refreshPeriod = "168h"
+{{- end -}}
+
+
+[".config/nvim"]
+{{ template "archive" }}
+url = "https://github.com/AstroNvim/AstroNvim/archive/v3.30.7.tar.gz"
+include = ["*/init.lua", "*/lua/**"]
