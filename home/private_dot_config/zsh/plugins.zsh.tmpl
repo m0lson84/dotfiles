@@ -8,7 +8,7 @@
 {{- /* Environment specific */ -}}
 {{- if eq .env.os "darwin" -}} {{- $plugins = concat $plugins ( list "macos" ) -}} {{- end -}}
 {{- if eq .env.os "linux" -}} {{- $plugins = concat $plugins ( list "ubuntu" ) -}} {{- end -}}
-{{- if not .env.ephemeral -}} {{- $plugins = concat $plugins ( list "brew" "tmux" "vscode" ) -}} {{- end -}}
+{{- if not .env.ephemeral -}} {{- $plugins = concat $plugins ( list "brew" "vscode" ) -}} {{- end -}}
 
 
 #  ______ _             _           
