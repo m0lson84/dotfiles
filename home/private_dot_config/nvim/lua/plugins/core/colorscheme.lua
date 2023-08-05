@@ -35,9 +35,21 @@ return {
   {
     'tomasiser/vim-code-dark',
     priority = 1000,
+    config = function()
+      vim.g.codedark_modern = 1
+      vim.g.codedark_italics = 1
+    end,
   },
   {
     'LazyVim/LazyVim',
     opts = { colorscheme = 'codedark' },
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup({
+        options = { theme = 'codedark' },
+      })
+    end,
   },
 }

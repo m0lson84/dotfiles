@@ -6,6 +6,7 @@ return {
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
+          never_show = { '.DS_Store', 'thumbs.db' },
         },
       },
     },
@@ -50,6 +51,17 @@ return {
   },
   {
     'akinsho/toggleterm.nvim',
+    opts = {
+      shell = 'zsh',
+      direction = 'horizontal',
+      size = 16,
+    },
+    keys = {
+      { '<leader>>', '<cmd>ToggleTerm<cr>', desc = 'Toggle terminal' },
+    },
+  },
+  {
+    'lukas-reineke/virt-column.nvim',
     opts = {},
   },
 }

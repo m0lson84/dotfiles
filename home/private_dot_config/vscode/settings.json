@@ -91,6 +91,7 @@
   },
   "material-icon-theme.folders.associations": {
     ".azuredevops": "azure-pipelines",
+    ".vim": "vm",
     "analytics": "benchmark",
     "cdk": "aws",
     "devops": "ci",

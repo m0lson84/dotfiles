@@ -27,6 +27,7 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # Aliases
+Set-Alias clr "clear"
 Set-Alias cz "chezmoi"
 Set-Alias msbuild "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
 Set-Alias sonar-scanner "C:\Program Files\sonar-scanner\SonarScanner.MSBuild.exe"
