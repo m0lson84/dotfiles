@@ -6,7 +6,11 @@ return {
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
-          never_show = { '.DS_Store', 'thumbs.db' },
+          never_show = {
+            '__pycache__',
+            '.DS_Store',
+            'thumbs.db',
+          },
         },
       },
     },
@@ -55,6 +59,8 @@ return {
       shell = 'zsh',
       direction = 'horizontal',
       size = 16,
+      persist_mode = false,
+      persist_size = false,
     },
     keys = {
       { '<leader>>', '<cmd>ToggleTerm<cr>', desc = 'Toggle terminal' },

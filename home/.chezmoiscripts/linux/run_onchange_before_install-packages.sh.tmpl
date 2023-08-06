@@ -2,9 +2,12 @@
 {{ $packages := list "curl" "fzf" "gnupg" "unzip" "wget" "zsh" -}}
 
 {{- /* Additional packages */ -}}
-{{ if not .env.ephemeral -}}
-{{   $packages = concat $packages ( list "htop" "tmux" ) -}}
-{{ end -}}
+{{- if .env.wsl -}}
+{{-   $packages = concat $packages ( list "wl-clipboard" ) -}}
+{{- end -}}
+{{- if not .env.ephemeral -}}
+{{-   $packages = concat $packages ( list "htop" ) -}}
+{{- end -}}
 
 {{- $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}

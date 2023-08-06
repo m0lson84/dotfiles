@@ -5,6 +5,14 @@ return {
     opts = { style = 'night' },
   },
   {
+    'catppuccin/nvim',
+    priority = 1000,
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+  },
+  {
     'marko-cerovac/material.nvim',
     priority = 1000,
     config = function()
@@ -25,6 +33,11 @@ return {
     priority = 1000,
   },
   {
+    'rafamadriz/neon',
+    priority = 1000,
+    config = function() vim.g.neon_style = 'dark' end,
+  },
+  {
     'sainnhe/edge',
     priority = 1000,
   },
@@ -42,13 +55,13 @@ return {
   },
   {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'codedark' },
+    opts = { colorscheme = 'vscode' },
   },
   {
     'nvim-lualine/lualine.nvim',
     config = function()
       require('lualine').setup({
-        options = { theme = 'codedark' },
+        options = { theme = 'vscode' },
       })
     end,
   },
