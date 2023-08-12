@@ -3,7 +3,10 @@ return {
 
     -- Add go specific modules to treesitter
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed, { 'go', 'gomod', 'gosum', 'gowork' }) end,
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, { 'go', 'gomod', 'gosum', 'gowork' })
+    end,
   },
 
   -- Configure language server

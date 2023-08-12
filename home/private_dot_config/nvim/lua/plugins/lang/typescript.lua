@@ -12,12 +12,45 @@ return {
 
   -- Configure language server
   {
-    'pmizio/typescript-tools.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'neovim/nvim-lspconfig',
+    'neovim/nvim-lspconfig',
+    dependencies = { 'jose-elias-alvarez/typescript.nvim' },
+    opts = {
+      servers = {
+        tsserver = {
+          keys = {
+            { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
+            { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
+          },
+          settings = function()
+            local language = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+            }
+            return {
+              completions = { completeFunctionCalls = true },
+              javascript = language,
+              typescript = language,
+            }
+          end,
+        },
+      },
+      setup = {
+        tsserver = function(_, opts)
+          require('typescript').setup({ server = opts })
+          return true
+        end,
+      },
     },
-    opts = {},
+  },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, require('typescript.extensions.null-ls.code-actions'))
+    end,
   },
 
   -- Configure test runner
@@ -28,9 +61,8 @@ return {
     opts = {
       adapters = {
         ['neotest-jest'] = {
-          -- TODO: Fill in the adapter settings
-          -- Here you can specify the settings for the adapter, i.e.
-          -- See: https://github.com/nvim-neotest/neotest-jest#usage
+          jestCommand = 'yarn test -- --detectOpenHandles --forceExit --silent=false',
+          cwd = function() return vim.fn.getcwd() end,
         },
       },
     },

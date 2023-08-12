@@ -1,6 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   opts = {
-    format_notify = true,
+    format_notify = false,
+    inlay_hints = { enabled = true },
   },
 }
