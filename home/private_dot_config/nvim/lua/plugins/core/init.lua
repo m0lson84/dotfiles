@@ -1,3 +1,4 @@
+local coding = require('plugins.core.coding')
 local colorscheme = require('plugins.core.colorscheme')
 local editor = require('plugins.core.editor')
 local lsp = require('plugins.core.lsp')
@@ -8,6 +9,7 @@ local M = {}
 
 return {
   M,
+  coding,
   colorscheme,
   editor,
   lsp,

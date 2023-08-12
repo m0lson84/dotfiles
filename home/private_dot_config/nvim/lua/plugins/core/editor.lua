@@ -54,19 +54,6 @@ return {
     end,
   },
   {
-    'akinsho/toggleterm.nvim',
-    opts = {
-      shell = 'zsh',
-      direction = 'horizontal',
-      size = 16,
-      persist_mode = false,
-      persist_size = false,
-    },
-    keys = {
-      { '<leader>>', '<cmd>ToggleTerm<cr>', desc = 'Toggle terminal' },
-    },
-  },
-  {
     'lukas-reineke/virt-column.nvim',
     opts = {},
   },

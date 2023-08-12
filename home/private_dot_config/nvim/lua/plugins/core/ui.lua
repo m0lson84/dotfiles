@@ -1,8 +1,10 @@
 return {
-  { 'MaximilianLloyd/ascii.nvim', dependencies = { 'MunifTanjim/nui.nvim' } },
   {
     'goolord/alpha-nvim',
-    dependencies = { 'MaximilianLloyd/ascii.nvim' },
+    dependencies = {
+      'MaximilianLloyd/ascii.nvim',
+      dependencies = { 'MunifTanjim/nui.nvim' },
+    },
     opts = {
       section = {
         header = {

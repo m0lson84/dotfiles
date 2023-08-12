@@ -8,6 +8,7 @@
 
 add_newline = false
 continuation_prompt = '▶▶ '
+right_format = "$all"
 format = """
 $os\
 $shell\
@@ -20,31 +21,6 @@ $git_state\
 $git_metrics\
 $git_status\
 $character
-"""
-# TODO: Update to use $all once this issue is fixed: 
-# https://github.com/starship/starship/issues/4953
-right_format = """
-$localip\
-$container\
-$docker_context\
-$kubernetes\
-$package\
-$c\
-$cmake\
-$dart\
-$dotnet\
-$golang\
-$helm\
-$lua\
-$nodejs\
-$python\
-$ruby\
-$rust\
-$aws\
-$azure\
-$gcloud\
-$terraform\
-$cmd_duration
 """
 
 [cmd_duration]
