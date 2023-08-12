@@ -1,29 +1,10 @@
-local docker = require('plugins.lang.docker')
-local go = require('plugins.lang.go')
-local json = require('plugins.lang.json')
-local markdown = require('plugins.lang.markdown')
-local python = require('plugins.lang.python')
-local rust = require('plugins.lang.rust')
-local typescript = require('plugins.lang.typescript')
-local yaml = require('plugins.lang.yaml')
-
-local M = {
-  {
-    'folke/neoconf.nvim',
-    config = {
-      local_settings = '.vim/neoconf.json',
-    },
-  },
-}
-
 return {
-  M,
-  docker,
-  go,
-  json,
-  markdown,
-  python,
-  rust,
-  typescript,
-  yaml,
+  require('plugins.lang.docker'),
+  require('plugins.lang.go'),
+  require('plugins.lang.json'),
+  require('plugins.lang.markdown'),
+  require('plugins.lang.python'),
+  require('plugins.lang.rust'),
+  require('plugins.lang.typescript'),
+  require('plugins.lang.yaml'),
 }

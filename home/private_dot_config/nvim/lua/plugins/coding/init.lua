@@ -1,8 +1,4 @@
-local copilot = require('plugins.coding.copilot')
-
-local M = {}
-
 return {
-  M,
-  copilot,
+  { import = 'lazyvim.plugins.extras.coding.yanky' },
+  require('plugins.coding.copilot'),
 }

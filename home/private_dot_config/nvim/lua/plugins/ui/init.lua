@@ -1,8 +1,4 @@
-local edgy = require('plugins.ui.edgy')
-
-local M = {}
-
 return {
-  M,
-  edgy,
+  { import = 'lazyvim.plugins.extras.ui.edgy' },
+  require('plugins.ui.edgy'),
 }

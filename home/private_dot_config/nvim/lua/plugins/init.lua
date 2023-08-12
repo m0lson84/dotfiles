@@ -1,17 +1,12 @@
-local coding = require('plugins.coding')
-local core = require('plugins.core')
-local dap = require('plugins.dap')
-local format = require('plugins.format')
-local lang = require('plugins.lang')
-local lint = require('plugins.lint')
-local ui = require('plugins.ui')
-
 return {
-  core,
-  coding,
-  dap,
-  format,
-  lang,
-  lint,
-  ui,
+  require('plugins.core'),
+  require('plugins.coding'),
+  require('plugins.dap'),
+  require('plugins.editor'),
+  require('plugins.format'),
+  require('plugins.lang'),
+  require('plugins.lint'),
+  require('plugins.test'),
+  require('plugins.ui'),
+  require('plugins.util'),
 }

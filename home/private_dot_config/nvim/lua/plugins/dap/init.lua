@@ -1,10 +1,5 @@
-local codelldb = require('plugins.dap.codelldb')
-local js_debug = require('plugins.dap.js_debug')
-
-local M = {}
-
 return {
-  M,
-  codelldb,
-  js_debug,
+  { import = 'lazyvim.plugins.extras.dap.core' },
+  require('plugins.dap.codelldb'),
+  require('plugins.dap.js_debug'),
 }
