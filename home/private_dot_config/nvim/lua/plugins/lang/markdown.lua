@@ -7,9 +7,4 @@ return {
       if type(opts.ensure_installed) == 'table' then vim.list_extend(opts.ensure_installed, { 'markdown' }) end
     end,
   },
-
-  {
-    'iamcco/markdown-preview.nvim',
-    run = function() vim.fn['mkdp#util#install']() end,
-  },
 }
