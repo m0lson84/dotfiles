@@ -4,4 +4,6 @@ return {
     optional = true,
     opts = function(_, opts) table.insert(opts.ensure_installed, 'codelldb') end,
   },
+
+  -- TODO: Integrate codelldb with nvim-dap
 }
