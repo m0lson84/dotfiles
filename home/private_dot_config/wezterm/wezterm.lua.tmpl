@@ -1,0 +1,26 @@
+--[[
+ _    _        _____                   
+| |  | |      |_   _|                  
+| |  | | ___ ___| | ___ _ __ _ __ ___  
+| |/\| |/ _ \_  / |/ _ \ '__| '_ ` _ \ 
+\  /\  /  __// /| |  __/ |  | | | | | |
+ \/  \/ \___/___\_/\___|_|  |_| |_| |_|
+                                       
+                                       
+--]]
+
+
+local terminal = require('wezterm')
+
+local config = {}
+if terminal.config_builder then
+  config = terminal.config_builder()
+end
+
+local os = {{ .env.os | quote }}
+
+require('general').apply(config, os)
+require('appearance').apply(config)
+require('font').apply(config, os)
+
+return config

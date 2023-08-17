@@ -1,14 +1,18 @@
 
 {{- /* Tap repositories */ -}}
-{{- $taps := list "homebrew/bundle" "sigstore/tap" -}}
-{{ if eq .env.os "darwin" -}}
-{{- $taps = concat $taps ( list
+{{- $taps := list 
+  "homebrew/bundle" 
+  "homebrew/cask-versions" 
+  "sigstore/tap" 
+-}}
+{{- if eq .env.os "darwin" -}}
+{{- $taps = concat $taps ( list 
   "homebrew/cask-fonts"
-  "microsoft/git"
-  "mongodb/brew"
+  "microsoft/git" 
+  "mongodb/brew" 
   "teamookla/speedtest"
-  ) -}}
-{{ end -}}
+) -}}
+{{- end -}}
 
 {{- /* Formula to install */ -}}
 {{- $formula := list 
@@ -79,7 +83,6 @@
   "1password"
   "1password-cli"
   "alfred"
-  "alacritty"
   "cleanmymac"
   "datagrip"
   "duet"
@@ -90,7 +93,6 @@
   "git-credential-manager-core"
   "google-chrome"
   "google-drive"
-  "kitty"
   "microsoft-excel"
   "microsoft-outlook"
   "microsoft-teams"
@@ -107,6 +109,7 @@
   "via"
   "visual-studio-code"
   "vlc"
+  "wezterm"
   "zoom"
   ) -}}
 {{- end -}}
