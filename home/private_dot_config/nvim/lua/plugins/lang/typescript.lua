@@ -61,7 +61,6 @@ return {
     opts = {
       adapters = {
         ['neotest-jest'] = {
-          jestCommand = 'yarn test -- --detectOpenHandles --forceExit --silent=false',
           cwd = function() return vim.fn.getcwd() end,
         },
       },
