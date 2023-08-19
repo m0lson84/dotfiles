@@ -1,3 +1,7 @@
+--[[
+Core LSP configuration
+--]]
+
 return {
   {
     'folke/neoconf.nvim',

@@ -1,15 +1,20 @@
-#  ______           __ _ _      
-#  | ___ \         / _(_) |     
-#  | |_/ / __ ___ | |_ _| | ___ 
+#  ______           __ _ _
+#  | ___ \         / _(_) |
+#  | |_/ / __ ___ | |_ _| | ___
 #  |  __/ '__/ _ \|  _| | |/ _ \
 #  | |  | | | (_) | | | | |  __/
 #  \_|  |_|  \___/|_| |_|_|\___|
-#                               
-#                               
+#
+#
+
+
+# XDG Base Directory Specification
+$env:XDG_CACHE:Windows_HOME = "$HOME/.cache"
+$env:XDG_CONFIG_HOME = "$HOME/.config"
+$env:XDG_DATA_HOME = "$HOME/.local/share"
 
 # Import modules
 Import-Module PSReadLine
-Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
 # Theme

@@ -1,3 +1,7 @@
+--[[
+Neovim plugin configuration
+--]]
+
 return {
   require('plugins.core'),
   require('plugins.coding'),

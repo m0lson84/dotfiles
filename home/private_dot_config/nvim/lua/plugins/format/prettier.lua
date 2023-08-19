@@ -1,3 +1,16 @@
+--[[
+Prettier (https://prettier.io/)
+--]]
+
+local config = {
+  disabled_filetypes = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+  },
+}
+
 return {
   {
     'williamboman/mason.nvim',
@@ -7,17 +20,7 @@ return {
     'jose-elias-alvarez/null-ls.nvim',
     opts = function(_, opts)
       local nls = require('null-ls')
-      table.insert(
-        opts.sources,
-        nls.builtins.formatting.prettierd.with({
-          disabled_filetypes = {
-            'javascript',
-            'javascriptreact',
-            'typescript',
-            'typescriptreact',
-          },
-        })
-      )
+      table.insert(opts.sources, nls.builtins.formatting.prettierd.with(config))
     end,
   },
 }

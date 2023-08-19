@@ -7,8 +7,8 @@ Global utility functions.
 local is_windows = vim.loop.os_uname().version:match('Windows')
 
 --- Get the name of the directory for a given path.
--- @param path The path to get the directory name for.
--- @return The directory name.
+---@param path string: The path to get the directory name for.
+---@return string | nil: The directory name.
 local function directory_name(path)
   if not path or #path == 0 then return end
   local result = path:gsub('/$', ''):gsub('/([^/]+)$', '')
@@ -18,18 +18,18 @@ local function directory_name(path)
 end
 
 --- Whether a file exists at the given path.
--- @param path The path to check.
+---@param path string: The path to check.
 local function file_exists(path)
   local stat = vim.loop.fs_stat(path)
   return stat and stat.type or false
 end
 
 --- Whether a string is empty.
--- @param text The string to check.
+---@param text string: The string to check.
 local function is_empty(text) return text == nil or text == '' end
 
 --- Join a list of paths.
--- @param ... The paths to join.
+---@param ... string: The paths to join.
 local function path_join(...) return table.concat(vim.tbl_flatten({ ... }), '/') end
 
 local M = {}
@@ -42,7 +42,7 @@ M.has_words_before = function()
 end
 
 --- Merge two or more tables.
--- @param ... The tables to merge.
+---@param ... table: The tables to merge.
 M.table_merge = function(...)
   local result = {}
   for _, t in ipairs({ ... }) do

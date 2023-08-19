@@ -1,3 +1,7 @@
+--[[
+Overrides for core LazyVim configuration
+--]]
+
 return {
   require('plugins.core.coding'),
   require('plugins.core.colorscheme'),

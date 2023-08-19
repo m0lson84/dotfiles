@@ -1,3 +1,7 @@
+--[[
+edgy.nvim (https://github.com/folke/edgy.nvim)
+--]]
+
 return {
   {
     'folke/edgy.nvim',
@@ -36,7 +40,7 @@ return {
             filter = function(buf) return vim.b[buf].neo_tree_source == 'filesystem' end,
             open = function() vim.api.nvim_input('<esc><space>e') end,
             pinned = true,
-            size = { height = 0.5 },
+            size = { height = 0.5, width = 0.2 },
           },
           {
             title = 'Git',

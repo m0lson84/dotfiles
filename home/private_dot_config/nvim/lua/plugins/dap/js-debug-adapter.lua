@@ -1,3 +1,7 @@
+--[[
+js-debug-adapter (https://github.com/mxsdev/nvim-dap-vscode-js)
+--]]
+
 return {
   {
     'mfussenegger/nvim-dap',
@@ -5,13 +9,16 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
-        opts = function(_, opts) table.insert(opts.ensure_installed, 'js-debug-adapter') end,
+        opts = function(_, opts)
+          opts.ensure_installed = opts.ensure_installed or {}
+          table.insert(opts.ensure_installed, 'js-debug-adapter')
+        end,
       },
     },
-    opts = function(_, opts)
+    opts = function()
       local dap = require('dap')
-      if not dap.adapters['pwa-node'] then
-        dap.adapters['pwa-node'] = {
+      if not dap.adapters.node then
+        require('dap').adapters.node = {
           type = 'server',
           host = 'localhost',
           port = '${port}',
@@ -25,18 +32,20 @@ return {
           },
         }
       end
-      for _, language in ipairs({ 'javascript', 'typescript' }) do
+      local languages = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
+      require('dap.ext.vscode').load_launchjs(nil, { node = languages })
+      for _, language in ipairs(languages) do
         if not dap.configurations[language] then
           dap.configurations[language] = {
             {
-              type = 'pwa-node',
+              type = 'node',
               request = 'launch',
               name = 'Launch file',
               program = '${file}',
               cwd = '${workspaceFolder}',
             },
             {
-              type = 'pwa-node',
+              type = 'node',
               request = 'attach',
               name = 'Attach',
               processId = require('dap.utils').pick_process,

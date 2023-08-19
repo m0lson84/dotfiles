@@ -1,3 +1,7 @@
+--[[
+codelldb (https://github.com/vadimcn/codelldb)
+--]]
+
 return {
   {
     'williamboman/mason.nvim',

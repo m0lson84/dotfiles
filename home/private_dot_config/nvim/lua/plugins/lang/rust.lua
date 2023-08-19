@@ -1,3 +1,7 @@
+--[[
+Rust language support
+--]]
+
 return {
 
   -- Extend auto completion

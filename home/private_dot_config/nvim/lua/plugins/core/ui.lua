@@ -1,3 +1,7 @@
+--[[
+Core UI configuration
+--]]
+
 return {
   {
     'goolord/alpha-nvim',

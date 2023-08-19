@@ -1,3 +1,11 @@
+--[[
+markdownlint (https://github.com/DavidAnson/markdownlint)
+--]]
+
+local config = {
+  extra_args = { '--config', '~/.config/nvim/markdownlint.json' },
+}
+
 return {
   {
     'williamboman/mason.nvim',
@@ -7,12 +15,7 @@ return {
     'jose-elias-alvarez/null-ls.nvim',
     opts = function(_, opts)
       local nls = require('null-ls')
-      table.insert(
-        opts.sources,
-        nls.builtins.diagnostics.markdownlint.with({
-          extra_args = { '--config', '~/.config/nvim/markdownlint.json' },
-        })
-      )
+      table.insert(opts.sources, nls.builtins.diagnostics.markdownlint.with(config))
     end,
   },
 }

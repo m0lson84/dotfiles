@@ -1,3 +1,7 @@
+--[[
+ESLint (https://eslint.org/)
+--]]
+
 return {
   {
     'neovim/nvim-lspconfig',

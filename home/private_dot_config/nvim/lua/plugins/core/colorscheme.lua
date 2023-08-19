@@ -1,3 +1,7 @@
+--[[
+Core colorscheme configuration
+--]]
+
 return {
   {
     'EdenEast/nightfox.nvim',
@@ -46,7 +50,7 @@ return {
         color_overrides = {
           vscBack = '#1E1E1E',
           vscTabCurrent = '#1E1E1E',
-          vscLigtDark = '#1E1E1E',
+          vscLightDark = '#1E1E1E',
           vscPopupBack = '#1E1E1E',
           vscFoldBackground = '#1E1E1E',
         },

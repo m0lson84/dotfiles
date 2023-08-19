@@ -1,3 +1,7 @@
+--[[
+Markdown language support
+--]]
+
 return {
 
   -- Add markdown to treesitter

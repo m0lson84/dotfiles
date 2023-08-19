@@ -1,3 +1,11 @@
+--[[
+Ruff (https://beta.ruff.rs/docs/)
+--]]
+
+local config = {
+  args = { '--select', 'ALL' },
+}
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -5,9 +13,7 @@ return {
       servers = {
         ruff_lsp = {
           init_options = {
-            settings = {
-              args = { '--select', 'ALL' },
-            },
+            settings = { args = config.args },
           },
         },
       },
@@ -32,20 +38,7 @@ return {
     },
     opts = function(_, opts)
       local nls = require('null-ls')
-      table.insert(
-        opts.sources,
-        nls.builtins.formatting.ruff.with({
-          args = {
-            '--fix',
-            '--select',
-            'ALL',
-            '--exit-zero',
-            '--no-cache',
-            '--stdin-filename',
-            '$FILENAME',
-          },
-        })
-      )
+      table.insert(opts.sources, nls.builtins.formatting.ruff.with({ extra_args = config.args }))
     end,
   },
 }

@@ -1,3 +1,7 @@
+--[[
+Core editor configuration
+--]]
+
 return {
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -52,9 +56,5 @@ return {
         end, { 'i', 's' }),
       })
     end,
-  },
-  {
-    'lukas-reineke/virt-column.nvim',
-    opts = {},
   },
 }

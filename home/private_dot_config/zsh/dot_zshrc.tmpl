@@ -12,20 +12,20 @@
 {{- if eq .env.os "windows" -}} {{- $terminal = "wt" -}} {{- end -}}
 
 
-#             _              
-#            | |             
-#     _______| |__  _ __ ___ 
+#             _
+#            | |
+#     _______| |__  _ __ ___
 #    |_  / __| '_ \| '__/ __|
-#   _ / /\__ \ | | | | | (__ 
+#   _ / /\__ \ | | | | | (__
 #  (_)___|___/_| |_|_|  \___|
-#                            
-#                            
+#
+#
 
 
 # XDG Base Directory Specification
-export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
 {{ if not .env.ephemeral -}}
 # Enable Homebrew auto completion

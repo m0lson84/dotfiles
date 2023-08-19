@@ -1,22 +1,22 @@
 
 {{- /* Tap repositories */ -}}
-{{- $taps := list 
-  "homebrew/bundle" 
-  "homebrew/cask-versions" 
-  "sigstore/tap" 
+{{- $taps := list
+  "homebrew/bundle"
+  "homebrew/cask-versions"
+  "sigstore/tap"
 -}}
 {{- if eq .env.os "darwin" -}}
-{{- $taps = concat $taps ( list 
+{{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
-  "microsoft/git" 
-  "mongodb/brew" 
+  "microsoft/git"
+  "mongodb/brew"
   "teamookla/speedtest"
 ) -}}
 {{- end -}}
 
 {{- /* Formula to install */ -}}
-{{- $formula := list 
-  "bash" 
+{{- $formula := list
+  "bash"
   "bash-completion@2"
   "btop"
   "chezmoi"
@@ -88,8 +88,10 @@
   "duet"
   "elgato-camera-hub"
   "font-fira-code-nerd-font"
+  "font-jetbrains-mono"
   "font-jetbrains-mono-nerd-font"
   "font-meslo-lg-nerd-font"
+  "font-symbols-only-nerd-font"
   "git-credential-manager-core"
   "google-chrome"
   "google-drive"
@@ -115,14 +117,14 @@
 {{- end -}}
 
 
-#    ______                    __ _ _      
-#    | ___ \                  / _(_) |     
-#    | |_/ /_ __ _____      _| |_ _| | ___ 
+#    ______                    __ _ _
+#    | ___ \                  / _(_) |
+#    | |_/ /_ __ _____      _| |_ _| | ___
 #    | ___ \ '__/ _ \ \ /\ / /  _| | |/ _ \
 #   _| |_/ / | |  __/\ V  V /| | | | |  __/
 #  (_)____/|_|  \___| \_/\_/ |_| |_|_|\___|
-#                                          
-#                                          
+#
+#
 
 {{- /* Taps */ -}}
 {{- range ( $taps | sortAlpha | uniq ) }}

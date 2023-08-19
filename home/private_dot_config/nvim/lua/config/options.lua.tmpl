@@ -1,14 +1,26 @@
+--[[
+Core LazyVim options
+--]]
+
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+
+--[[
+  Vim global variables
+]]--
+
+-- Set leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 {{ if .env.wsl -}}
 -- Share Windows clipboard with WSL
 vim.g.clipboard = {
   name = 'WSL Clipboard',
-  copy = { 
-    ['+'] = 'wl-copy --foreground --type text/plain', 
-    ['*'] = 'wl-copy --foreground --primary -- type text/plain' 
+  copy = {
+    ['+'] = 'wl-copy --foreground --type text/plain',
+    ['*'] = 'wl-copy --foreground --primary -- type text/plain'
   },
   paste = {
     ['+'] = (function() return vim.fn.systemlist('wl-paste --no-newline | sed -e "s/\r$//"', {''}, 1) end),
@@ -17,4 +29,16 @@ vim.g.clipboard = {
   cache_enabled = true,
 }
 {{- end }}
+
+--[[
+  Vim local options
+]]--
+
+local opt = vim.opt
+
+-- Code folding options
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+
 

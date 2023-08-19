@@ -1,3 +1,31 @@
 {
-  "ignoreWords": ["lazyvim", "lspconfig", "neovim", "nvim"]
+  "words": [
+    "autocmds",
+    "autocmd",
+    "augroup",
+    "codelldb",
+    "builtins",
+    "chezmoi",
+    "colorcolumn",
+    "lazyvim",
+    "lspconfig",
+    "neovim",
+    "neotest",
+    "nvim",
+    "textwidth",
+    "treesitter",
+    "venv",
+    "mapleader",
+    "maplocalleader",
+    "systemlist",
+    "foldlevel",
+    "foldlevelstart",
+    "foldenable",
+    "stdpath",
+    "lazypath",
+    "tohtml",
+    "keymaps",
+    "folke",
+    "lualine"
+  ]
 }

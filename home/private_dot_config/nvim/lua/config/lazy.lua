@@ -1,3 +1,7 @@
+--[[
+Core LazyVim config
+--]]
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
@@ -16,12 +20,10 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require('lazy').setup({
   spec = {
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
+    { import = 'lazyvim.plugins.extras.vscode' },
     { import = 'plugins' },
   },
-  defaults = {
-    lazy = false,
-    version = false,
-  },
+  defaults = { lazy = false, version = false },
   install = { colorscheme = { 'tokyonight', 'habamax' } },
   checker = { enabled = true },
   performance = {

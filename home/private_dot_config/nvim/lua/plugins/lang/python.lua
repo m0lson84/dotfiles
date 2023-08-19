@@ -1,3 +1,7 @@
+--[[
+Python language support
+--]]
+
 return {
 
   -- Add Python & related to treesitter
@@ -56,6 +60,7 @@ return {
   },
 
   -- Virtual environment (venv) management
+  -- TODO: Circle back to see if this is needed
   {
     'linux-cultist/venv-selector.nvim',
     cmd = 'VenvSelect',

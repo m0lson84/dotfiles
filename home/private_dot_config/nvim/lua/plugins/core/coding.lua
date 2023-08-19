@@ -1,1 +1,5 @@
+--[[
+Core coding configuration
+--]]
+
 return {}
