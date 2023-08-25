@@ -6,14 +6,7 @@ return {
   {
     'EdenEast/nightfox.nvim',
     priority = 1000,
-    -- styles:
-    -- nightfox (default)
-    -- dayfox
-    -- dawnfox
-    -- duskfox
-    -- nordfox
-    -- terafox
-    -- carbonfox
+    -- styles: nightfox (default), dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
   },
   {
     'folke/tokyonight.nvim',
@@ -80,7 +73,7 @@ return {
     'rafamadriz/neon',
     priority = 1000,
     config = function()
-      -- Styles: default, doom, dark, light
+      -- styles: default, doom, dark, light
       vim.g.neon_style = 'dark'
     end,
   },

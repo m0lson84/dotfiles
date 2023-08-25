@@ -29,9 +29,6 @@ source "$XDG_CONFIG_HOME"/bash/aliases.bash
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 source <(op completion bash)
 
-# Copilot CLI configuration
-eval "$(github-copilot-cli alias -- "$0")"
-
 # Node.js configuration
 command -v nodenv >/dev/null && eval "$(nodenv init -)"
 
