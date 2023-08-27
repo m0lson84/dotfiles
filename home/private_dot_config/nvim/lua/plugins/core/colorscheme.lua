@@ -4,9 +4,15 @@ Core colorscheme configuration
 
 return {
   {
-    'EdenEast/nightfox.nvim',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
-    -- styles: nightfox (default), dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
+    opts = {
+      -- flavors: latte, frappe, macchiato, mocha
+      flavor = 'frappe',
+      transparent_background = true,
+      term_colors = true,
+    },
   },
   {
     'folke/tokyonight.nvim',
@@ -14,76 +20,49 @@ return {
     opts = {
       -- styles: storm (default), night, moon, day
       style = 'night',
+      styles = {
+        sidebars = 'dark',
+        floats = 'dark',
+      },
     },
   },
   {
     'marko-cerovac/material.nvim',
     priority = 1000,
-    config = function()
-      require('material').setup({
-        lualine_style = 'stealth',
-        high_visibility = { darker = true },
-        custom_colors = function(colors)
-          colors.editor.bg = '#0C0C0C'
-          colors.editor.bg_alt = '#1E1E1E'
-          colors.backgrounds.sidebars = colors.editor.bg
-          colors.backgrounds.floating_windows = colors.editor.bg
-          colors.backgrounds.non_current_windows = colors.editor.bg
-        end,
-      })
+    opts = function()
       -- styles: oceanic (default), deep_ocean, palenight, lighter, darker
       vim.g.material_style = 'darker'
+      return {
+        high_visibility = { darker = true },
+        lualine_style = 'stealth',
+        disable = { colored_cursor = true },
+      }
     end,
   },
   {
     'Mofiqul/vscode.nvim',
     priority = 1000,
     config = function()
+      local background = '#1A1A1A'
       require('vscode').setup({
         color_overrides = {
-          vscBack = '#1E1E1E',
-          vscTabCurrent = '#1E1E1E',
-          vscLightDark = '#1E1E1E',
-          vscPopupBack = '#1E1E1E',
-          vscFoldBackground = '#1E1E1E',
+          vscBack = background,
+          vscLightDark = background,
+          vscPopupBack = background,
+          vscFoldBackground = background,
         },
       })
     end,
   },
   {
-    'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
-    config = function()
-      require('onedark').setup({
-        style = 'warmer',
-      })
-    end,
-  },
-  {
-    'projekt0n/github-nvim-theme',
-    priority = 1000,
-    -- styles:
-    -- default: github_dark
-    -- colorblind: github_dark_colorblind
-    -- dimmed: github_dark_dimmed
-    -- high contrast: github_dark_high_contrast
-    -- triptanopia: github_dark_triptanopia
-  },
-  {
-    'rafamadriz/neon',
-    priority = 1000,
-    config = function()
-      -- styles: default, doom, dark, light
-      vim.g.neon_style = 'dark'
-    end,
-  },
-  {
-    'sainnhe/edge',
-    priority = 1000,
+    opts = {},
   },
   {
     'sainnhe/sonokai',
     priority = 1000,
+    opts = {},
   },
   {
     'LazyVim/LazyVim',
