@@ -7,9 +7,10 @@
   },
   "neoconf": {
     "plugins": {
-      "lua_ls": {
-        "enabled": true
-      }
+      "bashls": { "enabled": true },
+      "jsonls": { "enabled": true },
+      "lua_ls": { "enabled": true },
+      "yamlls": { "enabled": true }
     }
   }
 }

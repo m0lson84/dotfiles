@@ -19,11 +19,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        pyright = {
-          python = {
-            pythonPath = '${workspaceFolder}/.venv/bin/python',
-          },
-        },
+        pyright = {},
       },
     },
   },

@@ -1,3 +1,14 @@
 {
-  "lspconfig": {}
+  "lspconfig": {
+    "bashls": {},
+    "eslint": {},
+    "jsonls": {},
+    "lua_ls": {},
+    "pyright": {
+      "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
+    },
+    "rust_analyzer": {},
+    "tsserver": {},
+    "yamlls": {}
+  }
 }
