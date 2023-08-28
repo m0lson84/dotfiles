@@ -11,14 +11,14 @@
 {{- end -}}
 
 
-#          _ _                   __ _       
-#         (_) |                 / _(_)      
-#     __ _ _| |_ ___ ___  _ __ | |_ _  __ _ 
+#          _ _                   __ _
+#         (_) |                 / _(_)
+#     __ _ _| |_ ___ ___  _ __ | |_ _  __ _
 #    / _` | | __/ __/ _ \| '_ \|  _| |/ _` |
 #   | (_| | | || (_| (_) | | | | | | | (_| |
 #  (_)__, |_|\__\___\___/|_| |_|_| |_|\__, |
 #     __/ |                            __/ |
-#    |___/                            |___/ 
+#    |___/                            |___/
 
 
 # ========================================
@@ -83,7 +83,7 @@ forceSignAnnotated = true
 [credential]
 provider = auto
 guiPrompt = false
-helper = 
+helper =
 helper = {{ $credentials }}
 
 [credential "https://dev.azure.com"]
@@ -151,5 +151,6 @@ del = branch -D
 graph = log --graph --pretty=changelog
 last = log -1 HEAD --stat
 new = checkout -b
-save = !git add -A && git commit -am 'chore: savepoint'
+save = !git add -A && git commit -a -m "chore: savepoint"
 undo = reset HEAD~1 --mixed
+update = pull --autostash --rebase

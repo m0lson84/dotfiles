@@ -44,16 +44,25 @@ return {
         italic_comments = true,
         disable_nvimtree_bg = true,
         color_overrides = {
-          vscBack = '#1A1A1A',
-          vscLightDark = '#1A1A1A',
-          vscPopupBack = '#1A1A1A',
-          vscFoldBackground = '#1A1A1A',
+          vscBack = '#1E1E1E',
+          vscLightDark = '#1E1E1E',
+          vscPopupBack = '#1E1E1E',
+          vscFoldBackground = '#1E1E1E',
         },
       })
     end,
   },
   {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    opts = {
+      -- styles: dark (default), darker, cool, deep, warm, warmer
+      style = 'warmer',
+      term_colors = false,
+    },
+  },
+  {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'tokyonight' },
+    opts = { colorscheme = 'vscode' },
   },
 }
