@@ -4,26 +4,23 @@ Core colorscheme configuration
 
 return {
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    opts = {
-      -- flavors: latte, frappe, macchiato, mocha
-      flavor = 'frappe',
-      transparent_background = true,
-      term_colors = true,
-    },
-  },
-  {
     'folke/tokyonight.nvim',
     priority = 1000,
     opts = {
       -- styles: storm (default), night, moon, day
       style = 'night',
-      styles = {
-        sidebars = 'dark',
-        floats = 'dark',
-      },
+      terminal_colors = false,
+      styles = { sidebars = 'dark', floats = 'dark' },
+      sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
+      hide_inactive_statusline = true,
+      lualine_bold = true,
+      on_highlights = function(highlights, colors)
+        highlights.DiagnosticVirtualTextError = { fg = colors.error, bg = colors.none }
+        highlights.DiagnosticVirtualTextWarn = { fg = colors.warning, bg = colors.none }
+        highlights.DiagnosticVirtualTextInfo = { fg = colors.info, bg = colors.none }
+        highlights.DiagnosticVirtualTextHint = { fg = colors.hint, bg = colors.none }
+        highlights.LspInlayHint = { fg = colors.dark3, bg = colors.none }
+      end,
     },
   },
   {
@@ -43,29 +40,20 @@ return {
     'Mofiqul/vscode.nvim',
     priority = 1000,
     config = function()
-      local background = '#1A1A1A'
       require('vscode').setup({
+        italic_comments = true,
+        disable_nvimtree_bg = true,
         color_overrides = {
-          vscBack = background,
-          vscLightDark = background,
-          vscPopupBack = background,
-          vscFoldBackground = background,
+          vscBack = '#1A1A1A',
+          vscLightDark = '#1A1A1A',
+          vscPopupBack = '#1A1A1A',
+          vscFoldBackground = '#1A1A1A',
         },
       })
     end,
   },
   {
-    'olimorris/onedarkpro.nvim',
-    priority = 1000,
-    opts = {},
-  },
-  {
-    'sainnhe/sonokai',
-    priority = 1000,
-    opts = {},
-  },
-  {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'vscode' },
+    opts = { colorscheme = 'tokyonight' },
   },
 }

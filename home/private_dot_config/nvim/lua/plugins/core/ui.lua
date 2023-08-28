@@ -10,9 +10,9 @@ return {
       local bufferline = require('bufferline')
       return {
         options = {
-          style_preset = bufferline.style_preset.no_italic,
           groups = { items = { bufferline.groups.builtin.pinned:with({ icon = '' }) } },
           hover = { enabled = true, delay = 100, reveal = { 'close' } },
+          always_show_bufferline = false,
           sort_by = 'relative_directory',
           buffer_close_icon = '󰖭',
         },
