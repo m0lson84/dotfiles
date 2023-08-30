@@ -3,13 +3,11 @@
 {{- $taps := list
   "homebrew/bundle"
   "homebrew/cask-versions"
-  "sigstore/tap"
 -}}
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
   "microsoft/git"
-  "mongodb/brew"
   "teamookla/speedtest"
 ) -}}
 {{- end -}}
@@ -20,6 +18,7 @@
   "bash-completion@2"
   "btop"
   "chezmoi"
+  "commitizen"
   "delve"
   "gh"
   "git"
@@ -40,6 +39,7 @@
   "shfmt"
   "starship"
   "tree"
+  "zellij"
  -}}
 {{- if eq .env.os "darwin" -}}
 {{- $formula = concat $formula ( list
@@ -49,14 +49,11 @@
   "aws-sam-cli"
   "bash"
   "blueutil"
-  "cloc"
-  "colima"
   "curl"
   "eksctl"
   "fzf"
   "gnupg"
   "mas"
-  "mongodb/brew/mongodb-community-shell"
   "mosquitto"
   "pyenv"
   "readline"

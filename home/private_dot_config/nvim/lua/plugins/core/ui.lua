@@ -6,17 +6,17 @@ return {
   {
     'akinsho/bufferline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = function()
+    opts = function(_, opts)
       local bufferline = require('bufferline')
-      return {
-        options = {
-          groups = { items = { bufferline.groups.builtin.pinned:with({ icon = '' }) } },
-          hover = { enabled = true, delay = 100, reveal = { 'close' } },
-          always_show_bufferline = false,
-          sort_by = 'relative_directory',
-          buffer_close_icon = '󰖭',
-        },
-      }
+      local util = require('util')
+      opts.options = util.table_merge(opts.options, {
+        groups = { items = { bufferline.groups.builtin.pinned:with({ icon = '' }) } },
+        hover = { enabled = true, delay = 100, reveal = { 'close' } },
+        always_show_bufferline = false,
+        sort_by = 'relative_directory',
+        buffer_close_icon = '󰖭',
+      })
+      return opts
     end,
   },
   {
@@ -50,7 +50,9 @@ return {
         options = {
           theme = 'auto',
           globalstatus = true,
-          disabled_filetypes = { statusline = { 'dashboard', 'alpha' } },
+          disabled_filetypes = {
+            statusline = { 'dashboard', 'alpha' },
+          },
         },
         sections = {
           lualine_a = { 'mode' },

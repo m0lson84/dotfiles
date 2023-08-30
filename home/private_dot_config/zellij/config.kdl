@@ -1,0 +1,40 @@
+
+// General
+default_shell "zsh"
+pane_frames false
+
+// Layouts
+default_layout "neovim"
+
+// Themes
+theme "tokyonight"
+
+// Keybindings
+keybinds {
+  normal {
+    bind "Ctrl g" { SwitchToMode "locked"; }
+    bind "Ctrl p" { SwitchToMode "pane"; }
+    bind "Alt n" { NewPane; }
+    bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+  }
+  pane {
+    bind "h" "Left" { MoveFocus "Left"; }
+    bind "l" "Right" { MoveFocus "Right"; }
+    bind "j" "Down" { MoveFocus "Down"; }
+    bind "k" "Up" { MoveFocus "Up"; }
+    bind "p" { SwitchFocus; }
+  }
+  locked {
+    bind "Ctrl g" { SwitchToMode "normal"; }
+  }
+}
+
+// Plugins
+plugins {
+  tab-bar { path "tab-bar"; }
+  status-bar { path "status-bar"; }
+  strider { path "strider"; }
+  compact-bar { path "compact-bar"; }
+  session-manager { path "session-manager"; }
+}
+

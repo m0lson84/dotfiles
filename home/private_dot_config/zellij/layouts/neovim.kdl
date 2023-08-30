@@ -1,0 +1,20 @@
+
+// Default layout
+layout {
+  pane {
+    name "editor"
+    command "nvim"
+    size "80%"
+    focus true
+  }
+  pane {
+    name "terminal"
+    split_direction "vertical"
+    size "20%"
+  }
+  pane split_direction="vertical" {
+    plugin location="zellij:compact-bar"
+    borderless true
+    size 1
+  }
+}

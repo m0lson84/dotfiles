@@ -1,0 +1,57 @@
+themes {
+  tokyonight {
+    fg "#A9B1D6"
+    bg "#1A1B26"
+    black "#383E5A"
+    red "#F93357"
+    green "#9ECE6E"
+    yellow "#E0AF68"
+    blue "#7AA2F7"
+    magenta "#BB9AF7"
+    cyan "#2AC3DE"
+    white "#C0CAF5"
+    orange "#FF9E64"
+  }
+
+  tokyonight-dark {
+    fg "#A9B1D6"
+    bg "#1A1B26"
+    black "#383E5A"
+    red "#F93357"
+    green "#9ECE6E"
+    yellow "#E0AF68"
+    blue "#7AA2F7"
+    magenta "#BB9AF7"
+    cyan "#2AC3DE"
+    white "#C0CAF5"
+    orange "#FF9E64"
+  }
+
+  tokyonight-light {
+    fg "#343B58"
+    bg "#D5D6DB"
+    black "#0F0F14"
+    red "#BA4B60"
+    green "#485E30"
+    yellow "#8F5E15"
+    blue "#34548A"
+    magenta "#5A4A78"
+    cyan "#0F4B6E"
+    white "#8289AC"
+    orange "#965027"
+  }
+
+  tokyonight-storm {
+    fg "#A9B1D6"
+    bg "#1A1B26"
+    black "#383E5A"
+    red "#F93357"
+    green "#9ECE6E"
+    yellow "#E0AF68"
+    blue "#7AA2F7"
+    magenta "#BB9AF7"
+    cyan "#2AC3DE"
+    white "#C0CAF5"
+    orange "#FF9E64"
+  }
+}

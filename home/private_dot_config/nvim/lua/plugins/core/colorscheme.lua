@@ -9,11 +9,6 @@ return {
     opts = {
       -- styles: storm (default), night, moon, day
       style = 'night',
-      terminal_colors = false,
-      styles = { sidebars = 'dark', floats = 'dark' },
-      sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
-      hide_inactive_statusline = true,
-      lualine_bold = true,
       on_highlights = function(highlights, colors)
         highlights.DiagnosticVirtualTextError = { fg = colors.error, bg = colors.none }
         highlights.DiagnosticVirtualTextWarn = { fg = colors.warning, bg = colors.none }
@@ -63,6 +58,6 @@ return {
   },
   {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'vscode' },
+    opts = { colorscheme = 'tokyonight' },
   },
 }
