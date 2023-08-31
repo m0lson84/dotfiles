@@ -1,5 +1,5 @@
 --[[
-Helper functions for configuring the font used in wezterm.
+Configure the font used in WezTerm.
 --]]
 
 local terminal = require('wezterm')

@@ -1,0 +1,14 @@
+#######################################
+# Install WezTerm TERM definition
+# # Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_term_definition() {
+  echo "Installing WezTerm TERM definition..."
+  tempfile=$(mktemp)
+  curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo
+  tic -x -o ~/.terminfo $tempfile
+  rm $tempfile
+}

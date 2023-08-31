@@ -1,5 +1,5 @@
 --[[
-Helper functions for configuring the appearance of wezterm.
+Configure the appearance of WezTerm.
 --]]
 
 local M = {}
@@ -7,7 +7,7 @@ local M = {}
 --- Configure the terminal appearance.
 -- @param config The configuration table to modify.
 M.apply = function(config)
-  config.color_scheme = 'Tokyo Night'
+  config.color_scheme = 'Dark+'
   config.initial_rows = 40
   config.initial_cols = 120
   config.window_padding = {

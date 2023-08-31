@@ -23,7 +23,7 @@
 {{- end -}}
 
 {{- /* Editor */ -}}
-{{ $editor := "nvim" }}
+{{ $editor := "zellij --layout neovim" }}
 {{ if eq .chezmoi.os "windows" -}} {{- $editor = "code" -}} {{- end -}}
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}

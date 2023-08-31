@@ -34,18 +34,7 @@ return {
   {
     'Mofiqul/vscode.nvim',
     priority = 1000,
-    config = function()
-      require('vscode').setup({
-        italic_comments = true,
-        disable_nvimtree_bg = true,
-        color_overrides = {
-          vscBack = '#1E1E1E',
-          vscLightDark = '#1E1E1E',
-          vscPopupBack = '#1E1E1E',
-          vscFoldBackground = '#1E1E1E',
-        },
-      })
-    end,
+    config = function() require('vscode').setup({ italic_comments = true }) end,
   },
   {
     'navarasu/onedark.nvim',
@@ -58,6 +47,6 @@ return {
   },
   {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'tokyonight' },
+    opts = { colorscheme = 'vscode' },
   },
 }

@@ -103,7 +103,7 @@ function install_docker() {
 #######################################
 function install_python() {
   echo "Installing Python..."
-  
+
   # Install dependencies
   sudo apt update
   sudo apt install -y make build-essential libssl-dev zlib1g-dev \
@@ -134,8 +134,10 @@ function install_speedtest() {
 
   # Install Speedtest CLI
   sudo apt install speedtest
-  
+
 }
+
+{{ template "wezterm-definition.tmpl" . }}
 
 {{ template "setup-1password.tmpl" . }}
 
@@ -177,6 +179,9 @@ install_python
 
 # Install Speedtest CLI
 install_speedtest
+
+# WezTerm TERM definition
+install_term_definition
 
 # Disable login banner
 touch {{ .chezmoi.homeDir -}}/.hushlogin

@@ -22,12 +22,15 @@ function homebrew_postinstall() {
   echo "Installing required dependencies..."
   brew install {{ $formula | sortAlpha | uniq | join " " }}
   brew install --cask {{ $casks | sortAlpha | uniq | join " " }}
-  
+
 }
 
 {{ template "install-homebrew.tmpl" . }}
 
+{{ template "wezterm-definition.tmpl" . }}
+
 {{ template "setup-1password.tmpl" . }}
+
 
 #################### Main Program ####################
 
@@ -42,3 +45,7 @@ homebrew_postinstall
 
 # Setup 1Password
 setup_1password
+
+# WezTerm TERM definition
+install_term_definition
+
