@@ -7,15 +7,6 @@ return {
   opts = {
     highlight = { enable = true },
     indent = { enable = true },
-    ensure_installed = {
-      'html',
-      'lua',
-      'luadoc',
-      'luap',
-      'query',
-      'regex',
-      'vim',
-      'vimdoc',
-    },
+    ensure_installed = { 'html', 'lua', 'luadoc', 'luap', 'query', 'regex', 'vim', 'vimdoc' },
   },
 }

@@ -8,20 +8,15 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      if type(opts.ensure_installed) == 'table' then
-        vim.list_extend(opts.ensure_installed, { 'python', 'rst', 'toml' })
-      end
+      if type(opts.ensure_installed) ~= 'table' then return end
+      vim.list_extend(opts.ensure_installed, { 'python', 'rst', 'toml' })
     end,
   },
 
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        pyright = {},
-      },
-    },
+    opts = { servers = { pyright = {} } },
   },
 
   -- Configure debug adapter
@@ -53,5 +48,15 @@ return {
         },
       },
     },
+  },
+
+  -- Code annotations and documentation
+  {
+    'danymat/neogen',
+    opts = function(_, opts)
+      local util = require('util')
+      if type(opts.languages) ~= 'table' then return end
+      util.table_merge(opts.languages, { python = { template = { annotation_convention = 'google_docstrings' } } })
+    end,
   },
 }
