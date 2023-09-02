@@ -9,7 +9,12 @@ return {
     opts = {
       -- styles: storm (default), night, moon, day
       style = 'night',
+      on_colors = function(colors)
+        colors.border = colors.bg
+        colors.border_highlight = colors.green
+      end,
       on_highlights = function(highlights, colors)
+        highlights.ColorColumn = { bg = colors.fg }
         highlights.DiagnosticVirtualTextError = { fg = colors.error, bg = colors.none }
         highlights.DiagnosticVirtualTextWarn = { fg = colors.warning, bg = colors.none }
         highlights.DiagnosticVirtualTextInfo = { fg = colors.info, bg = colors.none }
@@ -47,6 +52,6 @@ return {
   },
   {
     'LazyVim/LazyVim',
-    opts = { colorscheme = 'vscode' },
+    opts = { colorscheme = 'tokyonight' },
   },
 }

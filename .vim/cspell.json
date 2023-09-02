@@ -23,11 +23,13 @@
     "neovim",
     "neotest",
     "nvim",
+    "onedark",
     "statusline",
     "stdpath",
     "systemlist",
     "textwidth",
     "tohtml",
+    "tokyonight",
     "treesitter",
     "venv"
   ]

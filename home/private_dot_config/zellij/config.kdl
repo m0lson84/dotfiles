@@ -7,7 +7,7 @@ pane_frames false
 default_layout "neovim"
 
 // Themes
-theme "vscode"
+theme "tokyonight"
 
 // Keybindings
 keybinds {

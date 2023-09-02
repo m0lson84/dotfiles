@@ -7,7 +7,7 @@ local M = {}
 --- Configure the terminal appearance.
 -- @param config The configuration table to modify.
 M.apply = function(config)
-  config.color_scheme = 'Dark+'
+  config.color_scheme = 'Tokyo Night'
   config.initial_rows = 40
   config.initial_cols = 120
   config.window_padding = {
