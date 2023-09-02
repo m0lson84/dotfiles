@@ -9,32 +9,38 @@ default_layout "neovim"
 // Themes
 theme "tokyonight"
 
+// UI
+ui {
+  pane_frames {
+    hide_session_name true
+  }
+}
+
 // Keybindings
-keybinds {
+keybinds clear-defaults=true {
   normal {
-    bind "Ctrl g" { SwitchToMode "locked"; }
     bind "Ctrl p" { SwitchToMode "pane"; }
-    bind "Alt n" { NewPane; }
-    bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
   }
   pane {
-    bind "h" "Left" { MoveFocus "Left"; }
-    bind "l" "Right" { MoveFocus "Right"; }
+    bind "Ctrl p" { SwitchToMode "normal"; }
     bind "j" "Down" { MoveFocus "Down"; }
     bind "k" "Up" { MoveFocus "Up"; }
     bind "p" { SwitchFocus; }
   }
-  locked {
-    bind "Ctrl g" { SwitchToMode "normal"; }
+  shared {
+    bind "Ctrl q" { Quit; }
+  }
+  shared_except "normal" {
+    bind "Esc" { SwitchToMode "normal"; }
   }
 }
 
 // Plugins
 plugins {
-  tab-bar { path "tab-bar"; }
-  status-bar { path "status-bar"; }
-  strider { path "strider"; }
   compact-bar { path "compact-bar"; }
   session-manager { path "session-manager"; }
+  status-bar { path "status-bar"; }
+  strider { path "strider"; }
+  tab-bar { path "tab-bar"; }
 }
 

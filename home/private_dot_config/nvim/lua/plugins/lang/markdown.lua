@@ -19,7 +19,9 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        marksman = {},
+        marksman = {
+          keys = { { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview', mode = { 'n' } } },
+        },
       },
     },
   },
@@ -29,7 +31,6 @@ return {
     'iamcco/markdown-preview.nvim',
     event = { 'BufRead' },
     build = function() vim.fn['mkdp#util#install']() end,
-    keys = { { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview' } },
     config = function()
       vim.g.mkdp_theme = 'light'
       vim.g.mkdp_markdown_css = '~/.config/markdown/github.css'

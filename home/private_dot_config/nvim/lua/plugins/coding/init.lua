@@ -3,8 +3,7 @@ Additional coding plugins
 --]]
 
 return {
-  { import = 'lazyvim.plugins.extras.coding.copilot' },
-  { import = 'lazyvim.plugins.extras.coding.yanky' },
   require('plugins.coding.copilot'),
-  require('plugins.coding.neogen'),
+  require('plugins.coding.docs'),
+  require('plugins.coding.yanky'),
 }

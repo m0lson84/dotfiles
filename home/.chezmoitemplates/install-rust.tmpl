@@ -1,0 +1,29 @@
+#######################################
+# Install Rust and toolchain
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_rust() {
+  echo "Checking Rust installation..."
+
+  # Check if rustup is installed
+  if command -v rustc --version > /dev/null; then
+    echo "Rust toolchain already installed"
+    rustup show
+    return 0
+  fi
+
+  if ! command -v rustup-init > /dev/null; then
+    echo "Rustup initialization script not found."
+    return 0
+  fi
+
+  echo "Installing Rust toolchain..."
+  rustup-init -y --verbose \
+    --default-toolchain stable \
+    --profile default \
+    --no-modify-path
+
+}

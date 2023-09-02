@@ -1,11 +1,16 @@
 --[[
-GitHub Copilot
+GitHub Copilot (https://github.com/zbirenbaum/copilot.lua)
 --]]
 
 return {
+  { import = 'lazyvim.plugins.extras.coding.copilot' },
   {
     'zbirenbaum/copilot.lua',
-    opts = { filetypes = { ['.'] = true } },
+    opts = {
+      filetypes = {
+        markdown = true,
+        ['.'] = false,
+      },
+    },
   },
-  { 'zbirenbaum/copilot-cmp' },
 }

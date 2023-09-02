@@ -3,6 +3,7 @@ edgy.nvim (https://github.com/folke/edgy.nvim)
 --]]
 
 return {
+  { import = 'lazyvim.plugins.extras.ui.edgy' },
   {
     'folke/edgy.nvim',
     opts = function()

@@ -16,7 +16,15 @@ return {
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
-    opts = { servers = { pyright = {} } },
+    opts = {
+      servers = {
+        pyright = {
+          keys = {
+            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+          },
+        },
+      },
+    },
   },
 
   -- Configure debug adapter

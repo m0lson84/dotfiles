@@ -29,6 +29,10 @@ source "$XDG_CONFIG_HOME"/bash/aliases.bash
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 source <(op completion bash)
 
+# Golang configuration
+export GOPATH="$HOME/go"
+export PATH="${GOPATH}/bin:$PATH"
+
 # Node.js configuration
 command -v nodenv >/dev/null && eval "$(nodenv init -)"
 
@@ -38,6 +42,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+# Rust configuration
+source "${HOME}/.cargo/env"
 
 {{- end }}
 

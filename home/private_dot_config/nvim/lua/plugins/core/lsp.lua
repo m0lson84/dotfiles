@@ -16,4 +16,15 @@ return {
       inlay_hints = { enabled = true },
     },
   },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = { 'mason.nvim' },
+    opts = function()
+      return {
+        root_dir = require('null-ls.utils').root_pattern('.vim', '.vscode', 'Makefile', '.git'),
+        sources = {},
+      }
+    end,
+  },
 }

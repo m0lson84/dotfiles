@@ -18,7 +18,11 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        bashls = {},
+        bashls = {
+          keys = {
+            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+          },
+        },
       },
     },
   },

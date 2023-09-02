@@ -22,6 +22,7 @@ return {
       servers = {
         tsserver = {
           keys = {
+            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
             { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
             { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
           },

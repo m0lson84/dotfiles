@@ -84,6 +84,10 @@ source "$XDG_CONFIG_HOME"/zsh/functions.zsh
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 eval "$(op completion zsh)"; compdef _op op
 
+# Golang configuration
+export GOPATH="$HOME/go"
+export PATH="${GOPATH}/bin:$PATH"
+
 # iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -99,6 +103,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+# Rust configuration
+source "${HOME}/.cargo/env"
 
 {{ end -}}
 

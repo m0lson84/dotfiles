@@ -2,8 +2,6 @@
 
 Cross platform configuration and environment setup managed by [chezmoi](https://www.chezmoi.io/).
 
-> Currently a work in progress
-
 ## Installation
 
 To install chezmoi as well as the defined configurations, following command:
