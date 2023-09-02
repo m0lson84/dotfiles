@@ -1,0 +1,17 @@
+#   _                           _ _
+#  | |                         (_) |
+#  | |     __ _ _____   _  __ _ _| |_
+#  | |    / _` |_  / | | |/ _` | | __|
+#  | |___| (_| |/ /| |_| | (_| | | |_
+#  \_____/\__,_/___|\__, |\__, |_|\__|
+#                    __/ | __/ |
+#                   |___/ |___/
+
+gui:
+  showRandomTip: false
+  showBottomLine: false
+  nerdFontsVersion: '3'
+git:
+  log:
+    showGraph: 'always'
+  parseEmoji: true
