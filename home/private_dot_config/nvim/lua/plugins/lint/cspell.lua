@@ -33,6 +33,10 @@ local config = {
 
 return {
   {
+    'williamboman/mason.nvim',
+    opts = function(_, opts) table.insert(opts.ensure_installed, 'cspell') end,
+  },
+  {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'davidmh/cspell.nvim' },
     opts = function(_, opts)

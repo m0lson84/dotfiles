@@ -3,5 +3,5 @@ Additional user interface (UI) plugins
 --]]
 
 return {
-  -- require('plugins.ui.edgy'),
+  require('plugins.ui.edgy'),
 }

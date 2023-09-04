@@ -10,7 +10,8 @@ return {
       -- styles: storm (default), night, moon, day
       style = 'night',
       on_colors = function(colors)
-        colors.border = colors.bg
+        colors.bg = colors.bg_dark
+        colors.border = colors.dark3
         colors.border_highlight = colors.green
       end,
       on_highlights = function(highlights, colors)

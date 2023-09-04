@@ -9,7 +9,7 @@ return {
     opts = {
       filetypes = {
         markdown = true,
-        ['.'] = false,
+        ['*'] = false,
       },
     },
   },

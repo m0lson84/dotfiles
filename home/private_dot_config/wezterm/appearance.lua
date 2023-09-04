@@ -2,12 +2,19 @@
 Configure the appearance of WezTerm.
 --]]
 
+local terminal = require('wezterm')
+
+-- Customize built-in color schemes.
+local color_schemes = terminal.get_builtin_color_schemes()
+color_schemes['Tokyo Night'].background = '#16161E'
+
 local M = {}
 
 --- Configure the terminal appearance.
 -- @param config The configuration table to modify.
 M.apply = function(config)
   config.color_scheme = 'Tokyo Night'
+  config.color_schemes = color_schemes
   config.initial_rows = 40
   config.initial_cols = 120
   config.window_padding = {

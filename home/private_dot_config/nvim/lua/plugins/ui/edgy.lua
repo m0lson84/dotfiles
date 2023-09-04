@@ -8,6 +8,9 @@ return {
     'folke/edgy.nvim',
     opts = function()
       local opts = {
+        animate = {
+          enabled = false,
+        },
         bottom = {
           'Trouble',
           {
@@ -31,7 +34,7 @@ return {
           {
             title = 'Test Output',
             ft = 'neotest-output-panel',
-            size = { height = 15 },
+            size = { height = 0.2 },
           },
         },
         left = {
@@ -48,14 +51,14 @@ return {
             ft = 'neo-tree',
             filter = function(buf) return vim.b[buf].neo_tree_source == 'git_status' end,
             open = 'Neotree position=right git_status',
-            pinned = true,
+            size = { width = 0.2 },
           },
           {
             title = 'Buffers',
             ft = 'neo-tree',
             filter = function(buf) return vim.b[buf].neo_tree_source == 'buffers' end,
             open = 'Neotree position=top buffers',
-            pinned = true,
+            size = { width = 0.2 },
           },
           {
             title = 'Test Summary',
