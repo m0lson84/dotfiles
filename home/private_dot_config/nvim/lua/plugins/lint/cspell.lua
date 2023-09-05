@@ -9,12 +9,12 @@ local CONFIG_FILES = {
 }
 
 --- Find a config file in the current directory or any parent directories.
----@param cwd string The directory to start searching from. Defaults to the current working directory.
----@return string|nil The path to the config file if found, otherwise nil.
+---@param cwd string|nil The directory to start searching from. Defaults to the current working directory.
+---@return string|nil
 local find_config = function(cwd)
   local util = require('util')
   for _, file in ipairs(CONFIG_FILES) do
-    local config_path = util.path.join(cwd, file)
+    local config_path = util.path.join(cwd or vim.loop.cwd(), file)
     if util.file.exists(config_path) then return config_path end
   end
   return nil
@@ -25,9 +25,9 @@ local config = {
   config_file_preferred_name = 'cspell.json',
   find_json = function(cwd)
     local util = require('util')
-    if util.vscode.config(cwd) then return find_config(util.vscode.config(cwd)) end
-    if util.vim.config(cwd) then return find_config(util.vim.config(cwd)) end
-    return nil
+    local vscode_config = find_config(util.vscode.config(cwd))
+    local vim_config = find_config(util.vim.config(cwd))
+    return vscode_config ~= nil and vscode_config or vim_config ~= nil and vim_config or nil
   end,
 }
 

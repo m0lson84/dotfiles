@@ -31,7 +31,7 @@ local function file_exists(path)
 end
 
 --- Get the path to the input directory (if exists).
----@param name The name of the directory to find.
+---@param name string The name of the directory to find.
 ---@param cwd string The current working directory.
 ---@return string|nil
 local function find_directory(name, cwd)
