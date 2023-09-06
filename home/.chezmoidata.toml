@@ -5,7 +5,7 @@ email = 'michaelolson84@gmail.com'
 [nodejs]
 version = '20.4.0'
 installer = 'npm install -g'
-globals = ['aws-cdk', '@nestjs/cli', 'turbo', 'typeorm', 'yarn']
+globals = ['@nestjs/cli', 'turbo', 'yarn']
 
 [python]
 version = '3.11.3'

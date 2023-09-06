@@ -7,7 +7,7 @@ Core LazyVim options
 -- Add any additional options here
 
 --[[
-  Vim global variables
+  Global variables
 ]]--
 
 -- Set leader key
@@ -30,8 +30,9 @@ vim.g.clipboard = {
 }
 {{- end }}
 
+
 --[[
-  Vim local options
+  Local options
 ]]--
 
 local opt = vim.opt
@@ -41,3 +42,20 @@ opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
 
+
+--[[
+  File types
+]]--
+
+vim.filetype.add({
+  extension = {
+    conf = "conf",
+    env = "dotenv",
+  },
+  filename = {
+    [".env"] = "dotenv",
+  },
+  pattern = {
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  }
+})
