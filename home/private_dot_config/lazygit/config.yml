@@ -15,3 +15,10 @@ git:
   log:
     showGraph: 'always'
   parseEmoji: true
+customCommands:
+  - key: 'C'
+    command: 'git cz c'
+    description: 'Commit with commitizen'
+    context: 'files'
+    loadingText: 'opening commitizen commit tool'
+    subprocess: true
