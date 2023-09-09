@@ -10,13 +10,6 @@ return {
     },
   },
   {
-    'neovim/nvim-lspconfig',
-    opts = {
-      format_notify = false,
-      inlay_hints = { enabled = true },
-    },
-  },
-  {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = { 'mason.nvim' },
@@ -26,5 +19,12 @@ return {
         sources = {},
       }
     end,
+  },
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      format_notify = false,
+      inlay_hints = { enabled = true },
+    },
   },
 }
