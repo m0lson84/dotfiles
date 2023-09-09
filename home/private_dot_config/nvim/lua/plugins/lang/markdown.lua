@@ -20,7 +20,9 @@ return {
     opts = {
       servers = {
         marksman = {
-          keys = { { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview', mode = { 'n' } } },
+          keys = {
+            { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview', mode = { 'n' } },
+          },
         },
       },
     },
