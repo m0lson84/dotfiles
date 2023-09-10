@@ -17,14 +17,14 @@ return {
           },
         },
       },
-    },
-    setup = {
-      ruff_lsp = function()
-        require('lazyvim.util').on_attach(function(client)
-          if client.name ~= 'ruff_lsp' then return end
-          client.server_capabilities.hoverProvider = false
-        end)
-      end,
+      setup = {
+        ruff_lsp = function()
+          require('lazyvim.util').on_attach(function(client)
+            if client.name ~= 'ruff_lsp' then return end
+            client.server_capabilities.hoverProvider = false
+          end)
+        end,
+      },
     },
   },
   {

@@ -5,7 +5,7 @@ Core LSP configuration
 return {
   {
     'folke/neoconf.nvim',
-    config = {
+    opts = {
       local_settings = '.vim/neoconf.json',
     },
   },
