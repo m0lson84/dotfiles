@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install applications and tools
+# ---------------------------------------------------------------------------
+
 
 {{/* Include external functions */}}
 {{ template "install-brewfile.tmpl" . }}
@@ -6,6 +10,7 @@
 {{ template "install-python.tmpl" . }}
 {{ template "install-rust.tmpl" . }}
 {{ template "vscode-extensions.tmpl" . }}
+
 
 #################### Main Program ####################
 
@@ -32,9 +37,3 @@ install_rust
 
 {{- end }}
 
-{{ if not (or .env.wsl .env.ephemeral) -}}
-
-# Install VSCode extensions
-install_extensions
-
-{{- end }}

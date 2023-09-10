@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Initial machine setup
+# ---------------------------------------------------------------------------
+
+
+{{/* Include external functions */}}
+{{ template "install-homebrew.tmpl" . }}
+{{ template "setup-1password.tmpl" . }}
+{{ template "wezterm-definition.tmpl" . }}
+
 
 #######################################
 # Post installation steps for Homebrew
@@ -91,8 +101,6 @@ function install_docker() {
 
 }
 
-{{ template "install-homebrew.tmpl" . }}
-
 #######################################
 # Install Python
 # https://github.com/pyenv/pyenv#automatic-installer
@@ -137,10 +145,6 @@ function install_speedtest() {
 
 }
 
-{{ template "wezterm-definition.tmpl" . }}
-
-{{ template "setup-1password.tmpl" . }}
-
 #######################################
 # Update Ubuntu packages
 # Globals:
@@ -152,6 +156,7 @@ function update_packages() {
   echo "Updating Ubuntu packages..."
   sudo apt update && sudo apt upgrade -y
 }
+
 
 #################### Main Program ####################
 

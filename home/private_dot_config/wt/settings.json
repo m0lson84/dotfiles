@@ -22,7 +22,7 @@
   "profiles": {
     "defaults": {
       "colorScheme": "Campbell",
-      "font": { "face": "Cascadia Code", "size": 10.0 },
+      "font": { "face": "Cascadia Code", "size": 9.0 },
       "useAtlasEngine": true,
       "hidden": true
     },
@@ -31,7 +31,7 @@
         "name": "PowerShell",
         "source": "Windows.Terminal.PowershellCore",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "font": { "face": "MesloLGM NF", "size": 10.0 },
+        "font": { "face": "MesloLGM NF", "size": 9.0 },
         "cursorShape": "filledBox",
         "scrollbarState": "hidden",
         "hidden": false
@@ -48,7 +48,7 @@
         "name": "WSL (Ubuntu)",
         "source": "Windows.Terminal.Wsl",
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-        "font": { "face": "JetBrainsMono Nerd Font", "size": 10.0 },
+        "font": { "face": "JetBrainsMono Nerd Font", "size": 9.0 },
         "colorScheme": "iTerm",
         "cursorShape": "filledBox",
         "scrollbarState": "hidden",

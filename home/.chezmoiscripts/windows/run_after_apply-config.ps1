@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------------------
+# Apply terminal and VS Code settings.
+# ---------------------------------------------------------------------------
+
 
 #######################################
 # Copy settings files
@@ -23,16 +27,12 @@ function Apply-Settings() {
 # Stop script on error
 $ErrorActionPreference = 'Stop'
 
-# Apply VSCode settings
-Write-Host "Applying Alacritty settings..."
-Apply-Settings -Source "$env:USERPROFILE/.config/alacritty/*" -Target "$env:APPDATA/alacritty"
-
 # Apply Powershell profile
 Write-Host "Applying Powershell profile..."
 Apply-Settings -Source "$env:USERPROFILE/.config/powershell/Profile.ps1" -Target "$env:USERPROFILE/Documents/PowerShell"
 
-# Apply VSCode settings
-Write-Host "Applying VSCode settings..."
+# Apply VS Code settings
+Write-Host "Applying VS Code settings..."
 Apply-Settings -Source "$env:USERPROFILE/.config/vscode/*" -Target "$env:APPDATA/Code/User"
 
 # Apply Windows Terminal settings

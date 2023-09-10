@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Apply VS Code settings and install extensions
+# ---------------------------------------------------------------------------
+
 
 {{/* Include external functions */}}
+{{ template "vscode-extensions.tmpl" . }}
 {{ template "vscode-settings.tmpl" . }}
+
 
 #################### Main Program ####################
 
@@ -10,3 +16,6 @@ set -eo pipefail
 
 # Apply VSCode settings
 apply_settings {{ .chezmoi.homeDir }}/Library/Application\ Support/Code/User/
+
+# Install VSCode extensions
+install_extensions

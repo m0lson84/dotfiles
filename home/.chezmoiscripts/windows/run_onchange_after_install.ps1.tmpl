@@ -1,6 +1,10 @@
+# ---------------------------------------------------------------------------
+# Update WinGet and upgrage all packages
+# ---------------------------------------------------------------------------
+
 
 #######################################
-# Install / update applications via Windows Package Manager (winget)
+# Install / update packages.
 # Globals:
 #   None
 # Arguments:
@@ -16,7 +20,6 @@ function Import-WinGetPackages() {
       return
   }
 
-  # Install/update packages
   try {
     winget import -i {{ .chezmoi.homeDir }}\.config\winget\packages.json
   } catch {

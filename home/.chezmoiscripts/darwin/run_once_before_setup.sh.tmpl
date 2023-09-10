@@ -3,6 +3,16 @@
 {{- $casks := list "1password-cli" -}}
 
 #!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Initial machine setup
+# ---------------------------------------------------------------------------
+
+
+{{/* Include external functions */}}
+{{ template "install-homebrew.tmpl" . }}
+{{ template "setup-1password.tmpl" . }}
+{{ template "wezterm-definition.tmpl" . }}
+
 
 #######################################
 # Post installation steps for Homebrew
@@ -24,12 +34,6 @@ function homebrew_postinstall() {
   brew install --cask {{ $casks | sortAlpha | uniq | join " " }}
 
 }
-
-{{ template "install-homebrew.tmpl" . }}
-
-{{ template "wezterm-definition.tmpl" . }}
-
-{{ template "setup-1password.tmpl" . }}
 
 
 #################### Main Program ####################
