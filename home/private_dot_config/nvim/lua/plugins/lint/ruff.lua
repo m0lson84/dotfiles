@@ -15,6 +15,22 @@ return {
           init_options = {
             settings = { args = config.args },
           },
+          commands = {
+            RuffAutoFix = {
+              function() vim.lsp.buf.code_action({ context = { only = { 'source.fixAll.ruff' } }, apply = true }) end,
+              description = 'Fix All',
+            },
+            RuffOrganizeImports = {
+              function()
+                vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports.ruff' } }, apply = true })
+              end,
+              description = 'Organize Imports',
+            },
+          },
+          keys = {
+            { '<leader>cf', '<cmd>RuffAutoFix<CR>', desc = 'Fix All' },
+            { '<leader>co', '<cmd>RuffOrganizeImports<CR>', desc = 'Organize Imports' },
+          },
         },
       },
       setup = {
@@ -37,8 +53,12 @@ return {
       end,
     },
     opts = function(_, opts)
-      local nls = require('null-ls')
-      table.insert(opts.sources, nls.builtins.formatting.ruff.with({ extra_args = config.args }))
+      table.insert(
+        opts.sources,
+        require('null-ls').builtins.formatting.ruff.with({
+          extra_args = config.args,
+        })
+      )
     end,
   },
 }

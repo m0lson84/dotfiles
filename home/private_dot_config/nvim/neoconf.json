@@ -1,11 +1,21 @@
 {
   "lspconfig": {
     "bashls": {},
-    "eslint": {},
+    "eslint": {
+      "format": true,
+      "codeActionsOnSave": {
+        "enable": true,
+        "mode": "all"
+      }
+    },
     "jsonls": {},
     "lua_ls": {},
     "pyright": {
       "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
+    },
+    "ruff_lsp": {
+      "fixAll": true,
+      "organizeImports": true
     },
     "rust_analyzer": {},
     "tsserver": {},
