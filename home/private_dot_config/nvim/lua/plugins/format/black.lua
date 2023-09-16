@@ -2,20 +2,15 @@
 Black (https://github.com/psf/black)
 --]]
 
-local config = {
-  extra_args = { '--line-length', '120' },
-}
-
 return {
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) table.insert(opts.ensure_installed, 'black') end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'black' }) end,
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'stevearc/conform.nvim',
     opts = function(_, opts)
-      local nls = require('null-ls')
-      table.insert(opts.sources, nls.builtins.formatting.black.with(config))
+      opts.formatters_by_ft = require('util').table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'black' })
     end,
   },
 }

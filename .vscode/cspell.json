@@ -1,7 +1,7 @@
 {
-  "flagWords": [],
-  "language": "en",
   "version": "0.2",
+  "language": "en",
+  "flagWords": [],
   "words": [
     "augroup",
     "autocmd",
@@ -12,6 +12,7 @@
     "devicons",
     "chezmoi",
     "colorcolumn",
+    "dotenv",
     "foldenable",
     "foldlevel",
     "foldlevelstart",
@@ -26,14 +27,18 @@
     "neovim",
     "neotest",
     "nvim",
-    "onedark",
+    "prettierd",
+    "shfmt",
     "statusline",
+    "stevearc",
     "stdpath",
+    "stylua",
     "systemlist",
     "textwidth",
     "tohtml",
     "tokyonight",
     "treesitter",
-    "venv"
+    "venv",
+    "williamboman"
   ]
 }

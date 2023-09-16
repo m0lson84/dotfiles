@@ -27,7 +27,7 @@ return {
     opts = function(_, opts)
       local util = require('util')
       if type(opts.languages) ~= 'table' then return end
-      util.table_merge(opts.languages, { rust = { template = { annotation_convention = 'rustdoc' } } })
+      util.table.merge(opts.languages, { rust = { template = { annotation_convention = 'rustdoc' } } })
     end,
   },
 }

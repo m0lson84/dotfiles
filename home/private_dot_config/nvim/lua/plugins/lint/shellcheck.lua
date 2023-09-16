@@ -2,21 +2,28 @@
 ShellCheck (https://www.shellcheck.net/)
 --]]
 
+-- Additional configuration.
 local config = {
-  extra_args = { '-e', 'SC1091' },
+  extra_args = { '-e', 'SH1091' },
 }
 
 return {
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) table.insert(opts.ensure_installed, 'shellcheck') end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'shellcheck' }) end,
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'mfussenegger/nvim-lint',
     opts = function(_, opts)
-      local nls = require('null-ls')
-      table.insert(opts.sources, nls.builtins.code_actions.shellcheck.with(config))
-      table.insert(opts.sources, nls.builtins.diagnostics.shellcheck.with(config))
+      local shellcheck = require('lint.linters.shellcheck')
+      require('lint').linters.shellcheck = vim.tbl_deep_extend('force', shellcheck, {
+        args = vim.tbl_flatten({ shellcheck.args, config.extra_args }),
+      })
+      opts.linters_by_ft = require('util').table.extend_keys(
+        opts.linters_by_ft,
+        { 'bash', 'dotenv', 'sh', 'zsh' },
+        { 'shellcheck' }
+      )
     end,
   },
 }

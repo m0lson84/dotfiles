@@ -2,25 +2,19 @@
 Prettier (https://prettier.io/)
 --]]
 
-local config = {
-  disabled_filetypes = {
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-  },
-}
-
 return {
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) table.insert(opts.ensure_installed, 'prettierd') end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'prettierd' }) end,
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'stevearc/conform.nvim',
     opts = function(_, opts)
-      local nls = require('null-ls')
-      table.insert(opts.sources, nls.builtins.formatting.prettierd.with(config))
+      opts.formatters_by_ft = require('util').table.extend_keys(
+        opts.formatters_by_ft,
+        { 'json', 'markdown', 'yaml' },
+        { 'prettierd' }
+      )
     end,
   },
 }

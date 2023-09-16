@@ -7,13 +7,14 @@ return {
   -- Add Python & related to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      if type(opts.ensure_installed) ~= 'table' then return end
-      vim.list_extend(opts.ensure_installed, { 'python', 'rst', 'toml' })
-    end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'python', 'rst', 'toml' }) end,
   },
 
   -- Configure language server
+  {
+    'williamboman/mason.nvim',
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'pyright' }) end,
+  },
   {
     'neovim/nvim-lspconfig',
     opts = {
@@ -64,7 +65,9 @@ return {
     opts = function(_, opts)
       local util = require('util')
       if type(opts.languages) ~= 'table' then return end
-      util.table_merge(opts.languages, { python = { template = { annotation_convention = 'google_docstrings' } } })
+      util.table.merge(opts.languages, {
+        python = { template = { annotation_convention = 'google_docstrings' } },
+      })
     end,
   },
 }

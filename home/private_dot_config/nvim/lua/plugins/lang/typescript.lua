@@ -8,9 +8,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      if type(opts.ensure_installed) == 'table' then
-        vim.list_extend(opts.ensure_installed, { 'javascript', 'jsdoc', 'typescript', 'tsx' })
-      end
+      vim.list_extend(opts.ensure_installed or {}, { 'javascript', 'jsdoc', 'typescript', 'tsx' })
     end,
   },
 
@@ -22,9 +20,9 @@ return {
       servers = {
         tsserver = {
           keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+            { '<leader>cD', '<cmd>Neogen<cr>',                    desc = 'Generate Docs',   mode = { 'n' } },
             { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
-            { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
+            { '<leader>cR', '<cmd>TypescriptRenameFile<CR>',      desc = 'Rename File' },
           },
           settings = function()
             local language = {
@@ -82,7 +80,7 @@ return {
             command = 'node',
             args = {
               require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-                .. '/js-debug/src/dapDebugServer.js',
+              .. '/js-debug/src/dapDebugServer.js',
               '${port}',
             },
           },

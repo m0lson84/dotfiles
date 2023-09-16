@@ -34,9 +34,10 @@ local config = {
 return {
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) table.insert(opts.ensure_installed, 'cspell') end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'cspell' }) end,
   },
   {
+    -- TODO: Migrate to nvim-lint. Need to figure out code actions.
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'davidmh/cspell.nvim' },
     opts = function(_, opts)

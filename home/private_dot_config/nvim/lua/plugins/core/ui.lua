@@ -9,7 +9,7 @@ return {
     opts = function(_, opts)
       local bufferline = require('bufferline')
       local util = require('util')
-      opts.options = util.table_merge(opts.options, {
+      opts.options = util.table.merge(opts.options, {
         groups = { items = { bufferline.groups.builtin.pinned:with({ icon = '' }) } },
         hover = { enabled = true, delay = 100, reveal = { 'close' } },
         always_show_bufferline = false,
@@ -85,7 +85,7 @@ return {
             },
           },
           lualine_y = {
-            { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
+            { 'progress', separator = ' ',                  padding = { left = 1, right = 0 } },
             { 'location', padding = { left = 0, right = 1 } },
           },
           lualine_z = {
