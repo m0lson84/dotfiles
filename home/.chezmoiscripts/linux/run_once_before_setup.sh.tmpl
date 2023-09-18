@@ -102,6 +102,21 @@ function install_docker() {
 }
 
 #######################################
+# Install Git Credential Manager
+# https://github.com/git-ecosystem/git-credential-manager
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_gcm() {
+  echo "Installing Git Credential Manager..."
+  curl -L -O https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.3.2/gcm-linux_amd64.2.3.2.deb
+  sudo dpkg -i gcm-linux_amd64.2.3.2.deb
+  rm gcm-linux_amd64.2.3.2.deb
+}
+
+#######################################
 # Install Python
 # https://github.com/pyenv/pyenv#automatic-installer
 # Globals:
@@ -174,6 +189,9 @@ setup_1password
 
 # Install Docker Engine
 install_docker
+
+# Install Git Credential Manager
+install_gcm
 
 # Install Homebrew
 install_homebrew

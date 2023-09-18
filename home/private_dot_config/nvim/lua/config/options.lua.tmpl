@@ -14,8 +14,8 @@ Core LazyVim options
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-{{ if .env.wsl -}}
--- Share Windows clipboard with WSL
+-- System clipboard provider
+{{- if .env.wsl -}}
 vim.g.clipboard = {
   name = 'WSL Clipboard',
   copy = {
@@ -28,6 +28,8 @@ vim.g.clipboard = {
   },
   cache_enabled = true,
 }
+{{- else -}}
+vim.g.clipboard += unnamedplus
 {{- end }}
 
 

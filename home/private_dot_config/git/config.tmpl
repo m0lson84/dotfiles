@@ -4,7 +4,7 @@
 {{- $credentials = "/usr/local/share/gcm-core/git-credential-manager" -}}
 {{- end -}}
 {{- if eq .env.os "linux" -}}
-{{- $credentials = "/usr/share/gcm-core/git-credential-manager" -}}
+{{- $credentials = "/usr/local/bin/git-credential-manager" -}}
 {{- end -}}
 {{- if .env.wsl -}}
 {{- $credentials = "/mnt/c/Program\\\\ Files/Git/mingw64/bin/git-credential-manager.exe" -}}
@@ -83,6 +83,7 @@ forceSignAnnotated = true
 [credential]
 provider = auto
 guiPrompt = false
+credentialStore = {{ if eq .env.os "debian" -}} keychain {{- else -}} gpg {{- end }}
 helper =
 helper = {{ $credentials }}
 

@@ -8,8 +8,8 @@
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
   "microsoft/git"
-  "teamookla/speedtest"
-) -}}
+  "teamookla/speedtest" )
+-}}
 {{- end -}}
 
 {{- /* Formula to install */ -}}
@@ -69,11 +69,15 @@
   "wget"
   "xz"
   "zlib"
-  "zsh"
-  ) -}}
+  "zsh" )
+-}}
 {{- end -}}
 {{- if eq .env.os "linux" -}}
-{{- $formula = concat $formula ( list "gcc" "kubernetes-cli" ) -}}
+{{- $formula = concat $formula ( list
+  "gcc"
+  "pass"
+  "xclip" )
+-}}
 {{- end -}}
 
 {{- /* Casks to install */ -}}
@@ -118,8 +122,8 @@
   "visual-studio-code"
   "vlc"
   "wezterm"
-  "zoom"
-  ) -}}
+  "zoom" )
+-}}
 {{- end -}}
 
 
