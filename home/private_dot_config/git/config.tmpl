@@ -83,7 +83,7 @@ forceSignAnnotated = true
 [credential]
 provider = auto
 guiPrompt = false
-credentialStore = {{ if eq .env.os "debian" -}} keychain {{- else -}} gpg {{- end }}
+credentialStore = {{ if eq .env.os "darwin" -}} keychain {{- else -}} gpg {{- end }}
 helper =
 helper = {{ $credentials }}
 

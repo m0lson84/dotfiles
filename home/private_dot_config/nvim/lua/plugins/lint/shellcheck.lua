@@ -13,17 +13,12 @@ return {
     opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'shellcheck' }) end,
   },
   {
-    'mfussenegger/nvim-lint',
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      local shellcheck = require('lint.linters.shellcheck')
-      require('lint').linters.shellcheck = vim.tbl_deep_extend('force', shellcheck, {
-        args = vim.tbl_flatten({ shellcheck.args, config.extra_args }),
+      vim.list_extend(opts.sources, {
+        require('null-ls').builtins.code_actions.shellcheck.with(config),
+        require('null-ls').builtins.diagnostics.shellcheck.with(config),
       })
-      opts.linters_by_ft = require('util').table.extend_keys(
-        opts.linters_by_ft,
-        { 'bash', 'dotenv', 'sh', 'zsh' },
-        { 'shellcheck' }
-      )
     end,
   },
 }

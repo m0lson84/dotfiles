@@ -33,7 +33,7 @@ return {
             },
           },
           keys = {
-            { '<leader>cf', '<cmd>RuffAutoFix<CR>',         desc = 'Fix All' },
+            { '<leader>cf', '<cmd>RuffAutoFix<CR>', desc = 'Fix All' },
             { '<leader>co', '<cmd>RuffOrganizeImports<CR>', desc = 'Organize Imports' },
           },
         },
@@ -49,12 +49,10 @@ return {
     },
   },
   {
-    'stevearc/conform.nvim',
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      local ruff = require('conform.formatters.ruff')
-      opts.formatters_by_ft = require('util').table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'ruff' })
-      require('conform').formatters.ruff = vim.tbl_deep_extend('force', ruff, {
-        args = require('conform.util').extend_args(ruff.args, config.extra_args, { append = true }),
+      vim.list_extend(opts.sources, {
+        require('null-ls').builtins.formatting.ruff.with(config),
       })
     end,
   },

@@ -15,16 +15,27 @@ return {
           settings = { workingDirectory = { mode = 'auto' } },
         },
       },
+      setup = {
+        eslint = function()
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            callback = function(event)
+              if not require('lazyvim.plugins.lsp.format').enabled() then return end
+              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = 'eslint' })[1]
+              if not client then return end
+              local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+              if #diag > 0 then vim.cmd('EslintFixAll') end
+            end,
+          })
+        end,
+      },
     },
   },
   {
-    'stevearc/conform.nvim',
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = require('util').table.extend_keys(
-        opts.formatters_by_ft,
-        { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-        { 'eslint_d' }
-      )
+      vim.list_extend(opts.sources, {
+        require('null-ls').builtins.formatting.eslint_d,
+      })
     end,
   },
 }

@@ -37,13 +37,12 @@ return {
     opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'cspell' }) end,
   },
   {
-    -- TODO: Migrate to nvim-lint. Need to figure out code actions.
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'davidmh/cspell.nvim' },
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      local cspell = require('cspell')
-      table.insert(opts.sources, cspell.code_actions.with({ config = config }))
-      table.insert(opts.sources, cspell.diagnostics.with({ config = config }))
+      vim.list_extend(opts.sources, {
+        require('null-ls').builtins.code_actions.cspell.with({ config = config }),
+        require('null-ls').builtins.diagnostics.cspell.with({ config = config }),
+      })
     end,
   },
 }

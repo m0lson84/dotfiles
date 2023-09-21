@@ -8,9 +8,11 @@ return {
     opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'stylua' }) end,
   },
   {
-    'stevearc/conform.nvim',
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = require('util').table.extend_keys(opts.formatters_by_ft, { 'lua' }, { 'stylua' })
+      vim.list_extend(opts.sources, {
+        require('null-ls').builtins.formatting.stylua,
+      })
     end,
   },
 }
