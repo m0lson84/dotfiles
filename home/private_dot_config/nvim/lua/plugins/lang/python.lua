@@ -70,4 +70,15 @@ return {
       })
     end,
   },
+
+  -- Activate virtual environment
+  {
+    'linux-cultist/venv-selector.nvim',
+    cmd = 'VenvSelect',
+    keys = { { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = 'Select VirtualEnv' } },
+    opts = {
+      name = { '.venv', 'venv' },
+      dap_enabled = true,
+    },
+  },
 }
