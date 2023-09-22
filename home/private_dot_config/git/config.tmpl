@@ -1,10 +1,17 @@
 
 {{- $credentials := "manager" -}}
+{{- $store := "gpg" -}}
 {{- if eq .env.os "darwin" -}}
 {{- $credentials = "/usr/local/share/gcm-core/git-credential-manager" -}}
+{{- $store = "keychain" -}}
 {{- end -}}
 {{- if eq .env.os "linux" -}}
 {{- $credentials = "/usr/local/bin/git-credential-manager" -}}
+{{- $store = "secretservice" -}}
+{{- end -}}
+{{- if eq .env.os "windows" -}}
+{{- $credentials = "C:/Program\\\\ Files/Git/mingw64/bin/git-credential-manager.exe" -}}
+{{- $store = "wincredman" -}}
 {{- end -}}
 {{- if .env.wsl -}}
 {{- $credentials = "/mnt/c/Program\\\\ Files/Git/mingw64/bin/git-credential-manager.exe" -}}
@@ -83,7 +90,7 @@ forceSignAnnotated = true
 [credential]
 provider = auto
 guiPrompt = false
-credentialStore = {{ if eq .env.os "darwin" -}} keychain {{- else -}} gpg {{- end }}
+credentialStore = {{ $store }}
 helper =
 helper = {{ $credentials }}
 
