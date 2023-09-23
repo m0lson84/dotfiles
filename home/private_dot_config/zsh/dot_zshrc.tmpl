@@ -6,9 +6,7 @@
 {{- end -}}
 
 {{- /* Default terminal */ -}}
-{{- $terminal := "iTerm2" -}}
-{{- if eq .env.os "darwin" -}} {{- $terminal = "kitty" -}} {{- end -}}
-{{- if eq .env.os "linux" -}} {{- $terminal = "alacritty" -}} {{- end -}}
+{{- $terminal := "wezterm" -}}
 {{- if eq .env.os "windows" -}} {{- $terminal = "wt" -}} {{- end -}}
 
 
@@ -68,7 +66,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Default Apps
 export BROWSER={{ $browser | quote }}
-export EDITOR="zellij --layout neovim"
+export EDITOR="nvim"
 export TERMINAL={{ $terminal | quote }}
 export VISUAL="nvim"
 

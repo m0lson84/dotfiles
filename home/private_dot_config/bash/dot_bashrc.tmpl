@@ -13,9 +13,9 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
 # Default Apps
-export BROWSER="firefox"
-export EDITOR="zellij --layout neovim"
-export TERMINAL="iterm2"
+export BROWSER="chrome"
+export EDITOR="nvim"
+export TERMINAL="wezterm"
 export VISUAL="nvim"
 export VSCODE="code"
 
@@ -50,5 +50,7 @@ source "${HOME}/.cargo/env"
 
 # Starship initialization
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
-eval "$(starship init bash)"
-eval "$(starship completions bash)"
+if command -v starship >/dev/null; then
+  eval "$(starship init bash)"
+  eval "$(starship completions bash)"
+fi

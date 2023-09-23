@@ -16,7 +16,7 @@ PATH="/usr/local/bin:$PATH"
 export AWS_SDK_LOAD_CONFIG=1
 
 # Homebrew configuration
-if type brew &>/dev/null; then
+if command -v brew >/dev/null; then
   HOMEBREW_PREFIX="$(brew --prefix)"
   eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then

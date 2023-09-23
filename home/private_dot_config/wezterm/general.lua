@@ -10,8 +10,10 @@ local M = {}
 M.apply = function(config, os)
   config.check_for_updates = false
   config.enable_kitty_keyboard = true
-  config.enable_tab_bar = false
   config.term = 'wezterm'
+
+  -- Window configuration
+  config.enable_tab_bar = false
   config.window_close_confirmation = 'NeverPrompt'
   config.window_decorations = 'TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW'
 
