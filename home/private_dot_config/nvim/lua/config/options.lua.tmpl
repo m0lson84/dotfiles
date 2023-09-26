@@ -15,7 +15,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- System clipboard provider
-{{- if .env.wsl -}}
+{{ if .env.wsl -}}
 vim.g.clipboard = {
   name = 'WSL Clipboard',
   copy = {
@@ -28,8 +28,6 @@ vim.g.clipboard = {
   },
   cache_enabled = true,
 }
-{{- else -}}
-vim.g.clipboard += unnamedplus
 {{- end }}
 
 
