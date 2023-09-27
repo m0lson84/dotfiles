@@ -13,9 +13,13 @@ M.apply = function(config, os)
   config.term = 'wezterm'
 
   -- Window configuration
-  config.enable_tab_bar = false
   config.window_close_confirmation = 'NeverPrompt'
   config.window_decorations = 'TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW'
+
+  -- Tab bar configuration
+  config.enable_tab_bar = true
+  config.use_fancy_tab_bar = false
+  config.tab_bar_at_bottom = true
 
   -- Start in WSL if running on windows
   if os == 'windows' then config.default_prog = { 'ubuntu' } end

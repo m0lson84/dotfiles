@@ -22,6 +22,7 @@ local os = {{ .env.os | quote }}
 require('general').apply(config, os)
 require('appearance').apply(config)
 require('font').apply(config, os)
+require('keymaps').apply(config, os)
 require('events')
 
 return config
