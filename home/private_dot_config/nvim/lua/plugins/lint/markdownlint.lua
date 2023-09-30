@@ -2,22 +2,27 @@
 markdownlint (https://github.com/DavidAnson/markdownlint)
 --]]
 
--- Additional configuration.
+-- Linter configuration
 local config = {
+  args = {},
   extra_args = { '--config', '~/.config/nvim/markdownlint.json' },
 }
 
 return {
+
+  -- Install dependencies
   {
     'williamboman/mason.nvim',
     opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'markdownlint' }) end,
   },
+
+  -- Configure linter
   {
-    'nvimtools/none-ls.nvim',
-    opts = function(_, opts)
-      vim.list_extend(opts.sources, {
-        require('null-ls').builtins.diagnostics.markdownlint.with(config),
-      })
-    end,
+    'mfussenegger/nvim-lint',
+    opts = {
+      linters = {
+        markdownlint = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
+      },
+    },
   },
 }

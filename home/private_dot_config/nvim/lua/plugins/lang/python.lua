@@ -2,19 +2,18 @@
 Python language support
 --]]
 
+-- Import utility functions
+local util = require('util')
+
 return {
 
-  -- Add Python & related to treesitter
+  -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'python', 'rst', 'toml' }) end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ninja', 'python', 'rst', 'toml' }) end,
   },
 
   -- Configure language server
-  {
-    'williamboman/mason.nvim',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'pyright' }) end,
-  },
   {
     'neovim/nvim-lspconfig',
     opts = {
@@ -26,6 +25,14 @@ return {
         },
       },
     },
+  },
+
+  -- Configure formatters
+  {
+    'stevearc/conform.nvim',
+    opts = function(_, opts)
+      opts.formatters_by_ft = util.formatter.set(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'black' })
+    end,
   },
 
   -- Configure debug adapter

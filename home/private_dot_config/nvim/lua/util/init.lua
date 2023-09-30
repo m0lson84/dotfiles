@@ -58,6 +58,17 @@ local function is_empty(text) return text == nil or text == '' end
 ---@param ... string: The paths to join.
 local function path_join(...) return table.concat(vim.tbl_flatten({ ... }), '/') end
 
+--- Create a table with the given keys and value.
+---@param keys table: The keys to create the table with.
+---@param value any: The value to set for each key.
+local function table_create(keys, value)
+  local table = {}
+  for _, key in ipairs(keys) do
+    table[key] = value
+  end
+  return table
+end
+
 --- Extend a table of lists by key.
 ---@param table table The table to extend.
 ---@param keys table List of keys to extend.
@@ -99,9 +110,11 @@ local M = {}
 M.cursor = (function() return { has_words_before = cursor_has_words_before } end)()
 M.dir = (function() return { exists = directory_exists } end)()
 M.file = (function() return { exists = file_exists } end)()
+M.formatter = (function() return { set = table_extend_keys } end)()
+M.linter = (function() return { set = table_extend_keys } end)()
 M.path = (function() return { dirname = directory_name, join = path_join } end)()
 M.string = (function() return { is_empty = is_empty } end)()
-M.table = (function() return { extend_keys = table_extend_keys, merge = table_merge } end)()
+M.table = (function() return { create = table_create, extend_keys = table_extend_keys, merge = table_merge } end)()
 M.vim = (function() return { config = vim_config_dir } end)()
 M.vscode = (function() return { config = vscode_config_dir } end)()
 

@@ -8,8 +8,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = function(_, opts)
       local bufferline = require('bufferline')
-      local util = require('util')
-      opts.options = util.table.merge(opts.options, {
+      opts.options = require('util').table.merge(opts.options, {
         groups = { items = { bufferline.groups.builtin.pinned:with({ icon = '' }) } },
         hover = { enabled = true, delay = 100, reveal = { 'close' } },
         always_show_bufferline = false,

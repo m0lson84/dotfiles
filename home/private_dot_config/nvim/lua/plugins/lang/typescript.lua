@@ -2,9 +2,12 @@
 Javascript / Typescript language support
 --]]
 
+-- Import utility functions
+local util = require('util')
+
 return {
 
-  -- Add Typescript & related to treesitter
+  -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
@@ -15,14 +18,25 @@ return {
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 'jose-elias-alvarez/typescript.nvim' },
+    dependencies = { 'nvimtools/none-ls.nvim' },
     opts = {
       servers = {
         tsserver = {
           keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>',                    desc = 'Generate Docs',   mode = { 'n' } },
-            { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
-            { '<leader>cR', '<cmd>TypescriptRenameFile<CR>',      desc = 'Rename File' },
+            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+            {
+              '<leader>co',
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { 'source.organizeImports.ts' },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = 'Organize Imports',
+            },
           },
           settings = function()
             local language = {
@@ -40,19 +54,18 @@ return {
           end,
         },
       },
-      setup = {
-        tsserver = function(_, opts)
-          require('typescript').setup({ server = opts })
-          return true
-        end,
-      },
     },
   },
+
+  -- Configure formatters
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, require('typescript.extensions.null-ls.code-actions'))
+      opts.formatters_by_ft = util.formatter.set(
+        opts.formatters_by_ft,
+        { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        { 'eslint_d' }
+      )
     end,
   },
 
@@ -80,7 +93,7 @@ return {
             command = 'node',
             args = {
               require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-              .. '/js-debug/src/dapDebugServer.js',
+                .. '/js-debug/src/dapDebugServer.js',
               '${port}',
             },
           },

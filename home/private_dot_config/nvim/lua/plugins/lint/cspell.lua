@@ -32,15 +32,29 @@ local config = {
 }
 
 return {
+
+  -- Install dependencies
   {
     'williamboman/mason.nvim',
     opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'cspell' }) end,
   },
+
+  -- Configure code actions
   {
     'nvimtools/none-ls.nvim',
     opts = function(_, opts)
       vim.list_extend(opts.sources, {
         require('null-ls').builtins.code_actions.cspell.with({ config = config }),
+      })
+    end,
+  },
+
+  -- Configure linter
+  -- TODO: Migrate to nvim-lint once I figure out how to pass config to cspell.
+  {
+    'nvimtools/none-ls.nvim',
+    opts = function(_, opts)
+      vim.list_extend(opts.sources, {
         require('null-ls').builtins.diagnostics.cspell.with({ config = config }),
       })
     end,

@@ -4,10 +4,10 @@ Rust language support
 
 return {
 
-  -- Use LazyVim plugin as a starting point
+  -- Import starting configuration
   { import = 'lazyvim.plugins.extras.lang.rust' },
 
-  -- Additional LSP configuration
+  -- Configure language server
   {
     'neovim/nvim-lspconfig',
     opts = {

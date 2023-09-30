@@ -4,10 +4,10 @@ Go language support
 
 return {
 
-  -- Use LazyVim plugin as a starting point
+  -- Import extra configuration
   { import = 'lazyvim.plugins.extras.lang.go' },
 
-  -- Additional LSP configuration
+  -- Configure language server
   {
     'neovim/nvim-lspconfig',
     opts = {

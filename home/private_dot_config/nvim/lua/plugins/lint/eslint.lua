@@ -3,10 +3,14 @@ ESLint (https://eslint.org/)
 --]]
 
 return {
+
+  -- Install dependencies
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'eslint-lsp', 'eslint_d' }) end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'eslint_d' }) end,
   },
+
+  -- Configure language server
   {
     'neovim/nvim-lspconfig',
     opts = {
@@ -29,13 +33,5 @@ return {
         end,
       },
     },
-  },
-  {
-    'nvimtools/none-ls.nvim',
-    opts = function(_, opts)
-      vim.list_extend(opts.sources, {
-        require('null-ls').builtins.formatting.eslint_d,
-      })
-    end,
   },
 }

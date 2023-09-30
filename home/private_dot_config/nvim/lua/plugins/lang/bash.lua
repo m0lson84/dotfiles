@@ -2,9 +2,12 @@
 Bash language support
 --]]
 
+-- Import utility functions
+local util = require('util')
+
 return {
 
-  -- Add markdown to treesitter
+  -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
@@ -25,5 +28,21 @@ return {
         },
       },
     },
+  },
+
+  -- Configure linting
+  {
+    'mfussenegger/nvim-lint',
+    opts = function(_, opts)
+      opts.linters_by_ft = util.linter.set(opts.linters_by_ft, { 'bash', 'dotenv', 'sh', 'zsh' }, { 'shellcheck' })
+    end,
+  },
+
+  -- Configure formatting
+  {
+    'stevearc/conform.nvim',
+    opts = function(_, opts)
+      opts.formatters_by_ft = util.formatter.set(opts.formatters_by_ft, { 'bash', 'dotenv', 'sh', 'zsh' }, { 'shfmt' })
+    end,
   },
 }
