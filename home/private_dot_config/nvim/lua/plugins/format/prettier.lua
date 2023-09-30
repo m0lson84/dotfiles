@@ -17,8 +17,8 @@ return {
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatter_by_ft = util.formatter.set(
-        opts.formatter_by_ft,
+      opts.formatters_by_ft = util.formatter.set(
+        opts.formatters_by_ft,
         { 'css', 'graphql', 'handlebars', 'html', 'less', 'scss', 'vue' },
         { 'prettierd' }
       )
