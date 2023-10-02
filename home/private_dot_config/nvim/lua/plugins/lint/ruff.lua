@@ -2,20 +2,12 @@
 Ruff (https://beta.ruff.rs/docs/)
 --]]
 
--- Linter configuration
 local config = {
   args = { '--fix', '-e', '-n', '--stdin-filename', '$FILENAME', '-' },
   extra_args = { '--select', 'ALL' },
 }
 
 return {
-
-  -- Install dependencies
-  {
-    'williamboman/mason.nvim',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff-lsp', 'ruff' }) end,
-  },
-
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
@@ -57,6 +49,12 @@ return {
   -- Configure formatter
   {
     'stevearc/conform.nvim',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff-lsp', 'ruff' }) end,
+      },
+    },
     opts = {
       formatters = {
         ruff_fix = { args = vim.tbl_flatten({ config.args, config.extra_args }) },

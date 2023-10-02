@@ -6,16 +6,14 @@ Prettier (https://prettier.io/)
 local util = require('util')
 
 return {
-
-  -- Install dependencies
-  {
-    'williamboman/mason.nvim',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'prettierd' }) end,
-  },
-
-  -- Configure formatter
   {
     'stevearc/conform.nvim',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'prettierd' }) end,
+      },
+    },
     opts = function(_, opts)
       opts.formatters_by_ft = util.formatter.set(
         opts.formatters_by_ft,
