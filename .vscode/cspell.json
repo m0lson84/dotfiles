@@ -1,6 +1,4 @@
 {
-  "flagWords": [],
-  "language": "en",
   "words": [
     "augroup",
     "autocmd",
@@ -16,13 +14,16 @@
     "foldlevel",
     "foldlevelstart",
     "folke",
+    "getcwd",
     "keymaps",
+    "launchjs",
     "lazypath",
     "lazyvim",
     "lspconfig",
     "lualine",
     "mapleader",
     "maplocalleader",
+    "markdownlint",
     "neovim",
     "neotest",
     "nvim",
@@ -40,7 +41,9 @@
     "treesitter",
     "venv",
     "williamboman",
-    "markdownlint"
+    "yanky"
   ],
-  "version": "0.2"
+  "version": "0.2",
+  "language": "en",
+  "flagWords": []
 }
