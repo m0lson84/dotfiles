@@ -12,7 +12,9 @@ local M = {}
 M.apply = function(config, os)
   config.disable_default_key_bindings = false
   config.keys = {
-    { mods = 'SUPER',      key = 'w', action = terminal.action.CloseCurrentTab({ confirm = false }) },
+    { mods = 'SUPER|SHIFT', key = 'p', action = terminal.action.ShowLauncher },
+    { mods = 'CTRL|SHIFT', key = 'p', action = terminal.action.ShowLauncher },
+    { mods = 'SUPER', key = 'w', action = terminal.action.CloseCurrentTab({ confirm = false }) },
     { mods = 'CTRL|SHIFT', key = 'w', action = terminal.action.CloseCurrentTab({ confirm = false }) },
   }
 end
