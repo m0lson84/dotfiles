@@ -39,7 +39,7 @@ end
 
 --- Get the path to the input directory (if exists).
 ---@param name string The name of the directory to find.
----@param cwd string The current working directory.
+---@param cwd string|nil The current working directory. Defaults to the current working directory.
 ---@return string|nil
 local function find_directory(name, cwd)
   local current_dir = cwd or vim.loop.cwd()
@@ -48,6 +48,19 @@ local function find_directory(name, cwd)
     if directory_exists(dir_path) then return dir_path end
     current_dir = vim.loop.fs_realpath(current_dir .. '/..')
   until current_dir == '/'
+  return nil
+end
+
+--- Get the path to the first found input file (if exists).
+---@param names table The names of the files to find.
+---@param cwd string The current working directory.
+---@return string|nil
+local function find_files(names, cwd)
+  for _, file in ipairs(names) do
+    local file_path = table.concat({ cwd or vim.loop.cwd(), file }, '/')
+    if file_exists(file_path) then return file_path end
+  end
+  return nil
 end
 
 --- Whether a string is empty.
@@ -96,12 +109,12 @@ local function table_merge(...)
 end
 
 --- Get the path to the Neovim (Vim) configuration directory (if exists).
----@param cwd string The current working directory.
+---@param cwd string|nil The current working directory. Defaults to the current working directory
 ---@return string|nil
 local function vim_config_dir(cwd) return find_directory('.vim', cwd or vim.loop.cwd()) end
 
 --- Get the path to the VS Code configuration directory (if exists).
----@param cwd string The current working directory.
+---@param cwd string|nil The current working directory. Defaults to the current working directory
 ---@return string|nil
 local function vscode_config_dir(cwd) return find_directory('.vscode', cwd or vim.loop.cwd()) end
 
@@ -109,9 +122,7 @@ local M = {}
 
 M.cursor = (function() return { has_words_before = cursor_has_words_before } end)()
 M.dir = (function() return { exists = directory_exists } end)()
-M.file = (function() return { exists = file_exists } end)()
-M.formatter = (function() return { set = table_extend_keys } end)()
-M.linter = (function() return { set = table_extend_keys } end)()
+M.file = (function() return { exists = file_exists, find = find_files } end)()
 M.path = (function() return { dirname = directory_name, join = path_join } end)()
 M.string = (function() return { is_empty = is_empty } end)()
 M.table = (function() return { create = table_create, extend_keys = table_extend_keys, merge = table_merge } end)()

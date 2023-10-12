@@ -34,7 +34,11 @@ return {
   {
     'mfussenegger/nvim-lint',
     opts = function(_, opts)
-      opts.linters_by_ft = util.linter.set(opts.linters_by_ft, { 'bash', 'dotenv', 'sh', 'zsh' }, { 'shellcheck' })
+      opts.linters_by_ft = util.table.extend_keys(
+        opts.linters_by_ft,
+        { 'bash', 'dotenv', 'sh', 'zsh' },
+        { 'shellcheck' }
+      )
     end,
   },
 
@@ -42,7 +46,23 @@ return {
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = util.formatter.set(opts.formatters_by_ft, { 'bash', 'dotenv', 'sh', 'zsh' }, { 'shfmt' })
+      opts.formatters_by_ft = util.table.extend_keys(
+        opts.formatters_by_ft,
+        { 'bash', 'dotenv', 'sh', 'zsh' },
+        { 'shfmt' }
+      )
+    end,
+  },
+
+  -- Code annotations and documentation
+  {
+    'danymat/neogen',
+    opts = function(_, opts)
+      opts.languages = util.table.extend_keys(
+        opts.languages or {},
+        { 'sh' },
+        { template = { annotation_convention = 'google_bash' } }
+      )
     end,
   },
 }

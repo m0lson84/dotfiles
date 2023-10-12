@@ -31,7 +31,7 @@ return {
   {
     'mfussenegger/nvim-lint',
     opts = function(_, opts)
-      opts.linters_by_ft = util.linter.set(opts.linters_by_ft, { 'markdown' }, { 'markdownlint' })
+      opts.linters_by_ft = util.table.extend_keys(opts.linters_by_ft, { 'markdown' }, { 'markdownlint' })
     end,
   },
 
@@ -39,7 +39,11 @@ return {
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = util.formatter.set(opts.formatters_by_ft, { 'markdown', 'markdown_mdx' }, { 'prettierd' })
+      opts.formatters_by_ft = util.table.extend_keys(
+        opts.formatters_by_ft,
+        { 'markdown', 'markdown_mdx' },
+        { 'prettierd' }
+      )
     end,
   },
 

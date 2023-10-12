@@ -3,7 +3,6 @@ Ruff (https://beta.ruff.rs/docs/)
 --]]
 
 local config = {
-  args = { '--fix', '-e', '-n', '--stdin-filename', '$FILENAME', '-' },
   extra_args = { '--select', 'ALL' },
 }
 
@@ -11,6 +10,12 @@ return {
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff-lsp' }) end,
+      },
+    },
     opts = {
       servers = {
         ruff_lsp = {
@@ -37,7 +42,7 @@ return {
       },
       setup = {
         ruff_lsp = function()
-          require('lazyvim.util').on_attach(function(client, _)
+          require('lazyvim.util').lsp.on_attach(function(client, _)
             if client.name ~= 'ruff_lsp' then return end
             client.server_capabilities.hoverProvider = false
           end)
@@ -52,12 +57,12 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff-lsp', 'ruff' }) end,
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff' }) end,
       },
     },
     opts = {
       formatters = {
-        ruff_fix = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
+        ruff_fix = { extra_args = config.extra_args },
       },
     },
   },

@@ -7,14 +7,25 @@ local util = require('util')
 
 return {
 
-  -- Import extra configuration
-  { import = 'lazyvim.plugins.extras.lang.typescript' },
+  -- Configure language server
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        tsserver = {
+          keys = {
+            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+          },
+        },
+      },
+    },
+  },
 
   -- Configure formatters
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = util.formatter.set(
+      opts.formatters_by_ft = util.table.extend_keys(
         opts.formatters_by_ft,
         { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         { 'eslint_d' }
@@ -44,9 +55,9 @@ return {
           }
         end
       end
-      local languages = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
-      require('dap.ext.vscode').load_launchjs(nil, { ['pwa-node'] = languages })
-      for _, lang in ipairs(languages) do
+      local file_types = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
+      require('dap.ext.vscode').load_launchjs(nil, { ['pwa-node'] = file_types })
+      for _, lang in ipairs(file_types) do
         if not dap.configurations['pwa-node'] then
           dap.configurations[lang] = {
             {
@@ -90,5 +101,18 @@ return {
         },
       },
     },
+  },
+
+  -- Code annotations and documentation
+  {
+    'danymat/neogen',
+    opts = function(_, opts)
+      if type(opts.languages) ~= 'table' then return end
+      opts.languages = util.table.extend_keys(
+        opts.languages,
+        { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        { template = { annotation_convention = 'jsdoc' } }
+      )
+    end,
   },
 }

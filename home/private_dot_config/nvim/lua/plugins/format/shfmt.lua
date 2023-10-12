@@ -3,7 +3,6 @@ shfmt (https://github.com/patrickvane/shfmt)
 --]]
 
 local config = {
-  args = { '-filename', '$FILENAME' },
   extra_args = { '-i', '2', '-ci' },
 }
 
@@ -18,7 +17,7 @@ return {
     },
     opts = {
       formatters = {
-        shfmt = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
+        shfmt = { extra_args = config.extra_args },
       },
     },
   },

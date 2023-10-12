@@ -15,9 +15,6 @@ return {
       linters_by_ft = {
         editorconfig = { 'editorconfig-checker' },
       },
-      linters = {
-        ['editorconfig-checker'] = {},
-      },
     },
   },
 }

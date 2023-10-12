@@ -2,10 +2,10 @@
 Rust language support
 --]]
 
-return {
+-- Import utility functions
+local util = require('util')
 
-  -- Import starting configuration
-  { import = 'lazyvim.plugins.extras.lang.rust' },
+return {
 
   -- Configure language server
   {
@@ -25,7 +25,6 @@ return {
   {
     'danymat/neogen',
     opts = function(_, opts)
-      local util = require('util')
       if type(opts.languages) ~= 'table' then return end
       util.table.merge(opts.languages, { rust = { template = { annotation_convention = 'rustdoc' } } })
     end,

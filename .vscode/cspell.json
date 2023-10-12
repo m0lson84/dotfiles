@@ -1,4 +1,7 @@
 {
+  "version": "0.2",
+  "language": "en",
+  "flagWords": [],
   "words": [
     "augroup",
     "autocmd",
@@ -42,8 +45,5 @@
     "venv",
     "williamboman",
     "yanky"
-  ],
-  "version": "0.2",
-  "language": "en",
-  "flagWords": []
+  ]
 }

@@ -3,7 +3,6 @@ ShellCheck (https://www.shellcheck.net/)
 --]]
 
 local config = {
-  args = { '--format', 'json', '-' },
   extra_args = { '-e', 'SH1091' },
 }
 
@@ -18,7 +17,7 @@ return {
     },
     opts = {
       linters = {
-        shellcheck = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
+        shellcheck = { extra_args = config.extra_args },
       },
     },
   },

@@ -6,7 +6,6 @@ local panel_height = 0.25
 local sidebar_width = 0.2
 
 return {
-  { import = 'lazyvim.plugins.extras.ui.edgy' },
   {
     'folke/edgy.nvim',
     opts = function()

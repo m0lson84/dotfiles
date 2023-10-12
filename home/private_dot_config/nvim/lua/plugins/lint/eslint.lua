@@ -3,14 +3,9 @@ ESLint (https://eslint.org/)
 --]]
 
 return {
+  -- Configure language server
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'eslint_d' }) end,
-      },
-    },
     opts = {
       servers = {
         eslint = {
@@ -19,17 +14,23 @@ return {
       },
       setup = {
         eslint = function()
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            callback = function(event)
-              if not require('lazyvim.plugins.lsp.format').enabled() then return end
-              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = 'eslint' })[1]
-              if not client then return end
-              local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
-              if #diag > 0 then vim.cmd('EslintFixAll') end
-            end,
-          })
+          local config = { name = 'eslint: lsp', primary = false, priority = 200, filter = 'eslint' }
+          local formatter = require('lazyvim.util').lsp.formatter(config)
+          require('lazyvim.util').format.register(formatter)
         end,
       },
     },
+  },
+
+  -- Configure formatter
+  {
+    'stevearc/conform.nvim',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'eslint_d' }) end,
+      },
+    },
+    opts = {},
   },
 }

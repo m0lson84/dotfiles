@@ -9,7 +9,5 @@ return {
   require('plugins.format'),
   require('plugins.lang'),
   require('plugins.lint'),
-  require('plugins.test'),
   require('plugins.ui'),
-  require('plugins.util'),
 }

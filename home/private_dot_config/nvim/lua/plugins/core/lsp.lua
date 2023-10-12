@@ -3,8 +3,6 @@ Core LSP configuration
 --]]
 
 return {
-  { import = 'lazyvim.plugins.extras.formatting.conform' },
-  { import = 'lazyvim.plugins.extras.linting.nvim-lint' },
   {
     'neovim/nvim-lspconfig',
     opts = {

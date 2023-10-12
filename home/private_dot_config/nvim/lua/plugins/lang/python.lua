@@ -21,6 +21,7 @@ return {
         pyright = {
           keys = {
             { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
+            { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = 'Select VirtualEnv' },
           },
         },
       },
@@ -31,7 +32,7 @@ return {
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = util.formatter.set(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'black' })
+      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'black' })
     end,
   },
 
@@ -70,11 +71,11 @@ return {
   {
     'danymat/neogen',
     opts = function(_, opts)
-      local util = require('util')
-      if type(opts.languages) ~= 'table' then return end
-      util.table.merge(opts.languages, {
-        python = { template = { annotation_convention = 'google_docstrings' } },
-      })
+      opts.languages = util.table.extend_keys(
+        opts.languages or {},
+        { 'python' },
+        { template = { annotation_convention = 'google_docstrings' } }
+      )
     end,
   },
 
@@ -82,7 +83,6 @@ return {
   {
     'linux-cultist/venv-selector.nvim',
     cmd = 'VenvSelect',
-    keys = { { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = 'Select VirtualEnv' } },
     opts = {
       name = { '.venv', 'venv' },
       dap_enabled = true,

@@ -2,10 +2,10 @@
 Go language support
 --]]
 
-return {
+-- Import utility functions
+local util = require('util')
 
-  -- Import extra configuration
-  { import = 'lazyvim.plugins.extras.lang.go' },
+return {
 
   -- Add languages to treesitter
   {
@@ -25,5 +25,17 @@ return {
         },
       },
     },
+  },
+
+  -- Code annotations and documentation
+  {
+    'danymat/neogen',
+    opts = function(_, opts)
+      opts.languages = util.table.extend_keys(
+        opts.languages or {},
+        { 'go' },
+        { template = { annotation_convention = 'godoc' } }
+      )
+    end,
   },
 }
