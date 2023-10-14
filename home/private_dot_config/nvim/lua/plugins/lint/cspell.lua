@@ -15,12 +15,6 @@ local find_config = function(cwd)
   return vscode_config ~= nil and vscode_config or vim_config ~= nil and vim_config or nil
 end
 
-local cspell_json = find_config(vim.loop.cwd())
-local config = {
-  args = { 'lint', '--no-color', '--no-progress', '--no-summary' },
-  extra_args = { '--config', cspell_json ~= nil and cspell_json or vim.loop.cwd() .. '/.vscode/cspell.json' },
-}
-
 return {
   -- Configure linter
   {
@@ -32,9 +26,7 @@ return {
       },
     },
     opts = {
-      linters = {
-        cspell = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
-      },
+      linters_by_ft = { ['*'] = { 'cspell' } },
     },
   },
 
