@@ -17,18 +17,6 @@ return {
     },
   },
 
-  -- Configure formatters
-  {
-    'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(
-        opts.formatters_by_ft,
-        { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-        { 'eslint_d' }
-      )
-    end,
-  },
-
   -- Configure debug adapter
   {
     'mfussenegger/nvim-dap',
