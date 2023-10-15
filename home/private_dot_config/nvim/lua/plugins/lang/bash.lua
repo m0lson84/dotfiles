@@ -26,18 +26,6 @@ return {
     },
   },
 
-  -- Configure linting
-  {
-    'mfussenegger/nvim-lint',
-    opts = function(_, opts)
-      opts.linters_by_ft = util.table.extend_keys(
-        opts.linters_by_ft,
-        { 'bash', 'dotenv', 'sh', 'zsh' },
-        { 'shellcheck' }
-      )
-    end,
-  },
-
   -- Configure formatting
   {
     'stevearc/conform.nvim',

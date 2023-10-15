@@ -34,7 +34,6 @@ return {
   -- Configure debug adapter
   {
     'mfussenegger/nvim-dap',
-    optional = true,
     dependencies = {
       'mfussenegger/nvim-dap-python',
       config = function()
@@ -48,7 +47,6 @@ return {
   -- Configure test runner
   {
     'nvim-neotest/neotest',
-    optional = true,
     dependencies = { 'nvim-neotest/neotest-python' },
     opts = {
       adapters = {
