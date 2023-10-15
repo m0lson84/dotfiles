@@ -11,12 +11,6 @@ return {
     },
   },
   {
-    'nvimtools/none-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = { 'mason.nvim' },
-    opts = function() return { sources = { require('null-ls').builtins.code_actions.refactoring } } end,
-  },
-  {
     'stevearc/conform.nvim',
     opts = function(_, opts)
       opts.formatters_by_ft = {}
