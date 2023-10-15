@@ -18,11 +18,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        gopls = {
-          keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
-          },
-        },
+        gopls = {},
       },
     },
   },
@@ -30,12 +26,10 @@ return {
   -- Code annotations and documentation
   {
     'danymat/neogen',
-    opts = function(_, opts)
-      opts.languages = util.table.extend_keys(
-        opts.languages or {},
-        { 'go' },
-        { template = { annotation_convention = 'godoc' } }
-      )
-    end,
+    opts = {
+      languages = {
+        go = { template = { annotation_convention = 'godoc' } },
+      },
+    },
   },
 }

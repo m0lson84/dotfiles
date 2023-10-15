@@ -12,11 +12,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        tsserver = {
-          keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
-          },
-        },
+        tsserver = {},
       },
     },
   },
@@ -107,9 +103,8 @@ return {
   {
     'danymat/neogen',
     opts = function(_, opts)
-      if type(opts.languages) ~= 'table' then return end
       opts.languages = util.table.extend_keys(
-        opts.languages,
+        opts.languages or {},
         { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         { template = { annotation_convention = 'jsdoc' } }
       )

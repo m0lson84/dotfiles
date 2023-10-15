@@ -18,12 +18,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        pyright = {
-          keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
-            { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = 'Select VirtualEnv' },
-          },
-        },
+        pyright = {},
       },
     },
   },
@@ -70,19 +65,20 @@ return {
   -- Code annotations and documentation
   {
     'danymat/neogen',
-    opts = function(_, opts)
-      opts.languages = util.table.extend_keys(
-        opts.languages or {},
-        { 'python' },
-        { template = { annotation_convention = 'google_docstrings' } }
-      )
-    end,
+    opts = {
+      languages = {
+        python = { template = { annotation_convention = 'google_docstrings' } },
+      },
+    },
   },
 
   -- Activate virtual environment
   {
     'linux-cultist/venv-selector.nvim',
     cmd = 'VenvSelect',
+    keys = {
+      { '<leader>cv', '<cmd>:VenvSelect<cr>', ft = 'python', desc = 'Select VirtualEnv' },
+    },
     opts = {
       name = { '.venv', 'venv' },
       dap_enabled = true,

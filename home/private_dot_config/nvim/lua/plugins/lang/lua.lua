@@ -18,11 +18,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        lua_ls = {
-          keys = {
-            { '<leader>cD', '<cmd>Neogen<cr>', desc = 'Generate Docs', mode = { 'n' } },
-          },
-        },
+        lua_ls = {},
       },
     },
   },
@@ -38,12 +34,10 @@ return {
   -- Code annotations and documentation
   {
     'danymat/neogen',
-    opts = function(_, opts)
-      opts.languages = util.table.extend_keys(
-        opts.languages or {},
-        { 'lua' },
-        { template = { annotation_convention = 'emmylua' } }
-      )
-    end,
+    opts = {
+      languages = {
+        lua = { template = { annotation_convention = 'emmylua' } },
+      },
+    },
   },
 }
