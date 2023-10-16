@@ -2,10 +2,6 @@
 Black (https://github.com/psf/black)
 --]]
 
-local config = {
-  extra_args = { '--line-length', '120' },
-}
-
 return {
   {
     'stevearc/conform.nvim',
@@ -17,7 +13,7 @@ return {
     },
     opts = {
       formatters = {
-        black = { extra_args = config.extra_args },
+        black = { prepend_args = { '--line-length', '120' } },
       },
     },
   },

@@ -2,10 +2,6 @@
 Ruff (https://beta.ruff.rs/docs/)
 --]]
 
-local config = {
-  extra_args = { '--select', 'ALL' },
-}
-
 return {
   -- Configure language server
   {
@@ -20,7 +16,7 @@ return {
       servers = {
         ruff_lsp = {
           init_options = {
-            settings = { args = config.extra_args },
+            settings = { args = { '--select', 'ALL' } },
           },
           commands = {
             RuffAutoFix = {
@@ -62,7 +58,7 @@ return {
     },
     opts = {
       formatters = {
-        ruff_fix = { extra_args = config.extra_args },
+        ruff_fix = { prepend_args = { '--select', 'ALL' } },
       },
     },
   },

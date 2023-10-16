@@ -2,10 +2,6 @@
 shfmt (https://github.com/patrickvane/shfmt)
 --]]
 
-local config = {
-  extra_args = { '-i', '2', '-ci' },
-}
-
 return {
   {
     'stevearc/conform.nvim',
@@ -17,7 +13,7 @@ return {
     },
     opts = {
       formatters = {
-        shfmt = { extra_args = config.extra_args },
+        shfmt = { prepend_args = { '-i', '2', '-ci' } },
       },
     },
   },
