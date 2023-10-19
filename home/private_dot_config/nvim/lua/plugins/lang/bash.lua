@@ -19,11 +19,25 @@ return {
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'shellcheck' }) end,
+      },
+    },
     opts = {
       servers = {
         bashls = {},
       },
     },
+  },
+
+  -- Configure linters
+  {
+    'mfussenegger/nvim-lint',
+    opts = function(_, opts)
+      opts.linters_by_ft = util.table.extend_keys(opts.linters_by_ft, { 'dotenv' }, { 'dotenv_linter' })
+    end,
   },
 
   -- Configure formatting

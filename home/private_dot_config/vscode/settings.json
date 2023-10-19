@@ -212,6 +212,7 @@
   "python.terminal.activateEnvironment": true,
   "python.testing.pytestEnabled": true,
   "ruff.importStrategy": "fromEnvironment",
+  "ruff.lint.args": ["--select", "ALL"],
   "[python]": {
     "editor.codeActionsOnSave": { "source.fixAll": true, "source.organizeImports": true },
     "editor.defaultFormatter": "ms-python.black-formatter",
