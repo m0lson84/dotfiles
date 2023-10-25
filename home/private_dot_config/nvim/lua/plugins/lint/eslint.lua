@@ -21,4 +21,16 @@ return {
       },
     },
   },
+
+  -- Configure formatter
+  {
+    'stevearc/conform.nvim',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'eslint_d' }) end,
+      },
+    },
+    opts = {},
+  },
 }
