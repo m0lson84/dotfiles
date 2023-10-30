@@ -15,6 +15,20 @@
 
 
 #######################################
+# Install pyenv
+# https://github.com/pyenv/pyenv#automatic-installer
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_pyenv() {
+  echo "Installing pyenv..."
+  curl https://pyenv.run | bash
+}
+
+
+#######################################
 # Post installation steps for Homebrew
 # Globals:
 #   None
@@ -43,9 +57,10 @@ set -euo pipefail
 
 # Install Homebrew
 install_homebrew
-
-# Run post installation steps
 homebrew_postinstall
+
+# Install pyenv
+install_pyenv
 
 # Setup 1Password
 setup_1password

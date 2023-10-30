@@ -10,4 +10,4 @@ globals = ['@nestjs/cli', 'neovim', 'turbo', 'yarn']
 [python]
 version = '3.11.3'
 installer = 'pip install -U'
-globals = ['black', 'pynvim', 'ruff', 'ruff-lsp']
+globals = ['black', 'ruff', 'ruff-lsp']

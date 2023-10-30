@@ -117,15 +117,15 @@ function install_gcm() {
 }
 
 #######################################
-# Install Python
+# Install pyenv
 # https://github.com/pyenv/pyenv#automatic-installer
 # Globals:
 #   None
 # Arguments:
 #   None
 #######################################
-function install_python() {
-  echo "Installing Python..."
+function install_pyenv() {
+  echo "Installing pyenv..."
 
   # Install dependencies
   sudo apt update
@@ -197,8 +197,8 @@ install_gcm
 install_homebrew
 homebrew_postinstall
 
-# Install Python
-install_python
+# Install pyenv
+install_pyenv
 
 # Install Speedtest CLI
 install_speedtest
