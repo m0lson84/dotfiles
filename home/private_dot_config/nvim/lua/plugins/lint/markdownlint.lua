@@ -2,11 +2,6 @@
 markdownlint (https://github.com/DavidAnson/markdownlint)
 --]]
 
-local config = {
-  args = {},
-  extra_args = { '--config', '~/.config/nvim/markdownlint.json' },
-}
-
 return {
   {
     'mfussenegger/nvim-lint',
@@ -18,7 +13,9 @@ return {
     },
     opts = {
       linters = {
-        markdownlint = { args = vim.tbl_flatten({ config.args, config.extra_args }) },
+        markdownlint = {
+          args = { '--config', '~/.config/nvim/markdownlint.json' },
+        },
       },
     },
   },

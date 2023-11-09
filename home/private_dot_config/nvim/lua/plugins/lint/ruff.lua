@@ -2,7 +2,12 @@
 Ruff (https://beta.ruff.rs/docs/)
 --]]
 
+local config = {
+  args = { '--select', 'ALL' },
+}
+
 return {
+
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
@@ -16,7 +21,7 @@ return {
       servers = {
         ruff_lsp = {
           init_options = {
-            settings = { args = { '--select', 'ALL' } },
+            settings = { args = config.args },
           },
           commands = {
             RuffAutoFix = {
@@ -58,7 +63,7 @@ return {
     },
     opts = {
       formatters = {
-        ruff_fix = { prepend_args = { '--select', 'ALL' } },
+        ruff_fix = { prepend_args = config.args },
       },
     },
   },
