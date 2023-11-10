@@ -23,7 +23,14 @@ export VSCODE="code"
 source "$XDG_CONFIG_HOME"/bash/.fzf.bash
 source "$XDG_CONFIG_HOME"/bash/aliases.bash
 
-{{ if not .env.ephemeral -}}
+{{- if .env.wsl }}
+
+# Additional paths
+export PATH="/snap/bin:$PATH"
+
+{{ end -}}
+
+{{- if not .env.ephemeral }}
 
 # 1Password CLI configuration
 export SSH_AUTH_SOCK=~/.1password/agent.sock
@@ -46,7 +53,7 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 # Rust configuration
 source "${HOME}/.cargo/env"
 
-{{- end }}
+{{ end -}}
 
 # Starship initialization
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml

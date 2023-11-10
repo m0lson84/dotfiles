@@ -55,12 +55,19 @@ source $ZSH/oh-my-zsh.sh
 setopt autocd
 setopt histignorespace
 
-{{ if eq .env.os "darwin" -}}
+{{- if eq .env.os "darwin" }}
 
 # Additional paths
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export PATH="/usr/local/opt/python@3.10/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+{{ end -}}
+
+{{- if .env.wsl }}
+
+# Additional paths
+export PATH="/snap/bin:$PATH"
 
 {{ end -}}
 
