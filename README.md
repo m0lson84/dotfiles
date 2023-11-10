@@ -10,4 +10,5 @@ To install chezmoi as well as the defined configurations, following command:
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --purge-binary --apply m0lson84
 ```
 
-The `--purge-binary` flag will remove the binary after the installation is done. Chezmoi will install itself using the preferred package manager on the system.
+The `--purge-binary` flag will remove the binary after the installation is done.
+Chezmoi will install itself using the preferred package manager on the system.
