@@ -31,6 +31,8 @@
     "neotest",
     "nvim",
     "prettierd",
+    "pyright ",
+    "pytest",
     "shellcheck",
     "shfmt",
     "statusline",

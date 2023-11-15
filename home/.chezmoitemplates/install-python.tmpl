@@ -27,6 +27,7 @@ function install_python() {
   pyenv global "$desired"
 
   echo "Installing global dependencies..."
+  eval "$(pyenv init -)"
   pyenv shell "$desired"
   pip install --upgrade pip
   {{ .python.installer }} {{ .python.globals | join " " }}
@@ -34,4 +35,9 @@ function install_python() {
   echo "Installing poetry..."
   curl -sSL https://install.python-poetry.org | python3 -
 
+  echo "Creating virtualenv for neovim..."
+  pyenv virtualenv "$desired" neovim
+  pyenv activate neovim
+  pip install --upgrade pip
+  pip install pynvim
 }

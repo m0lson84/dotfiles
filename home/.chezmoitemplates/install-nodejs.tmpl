@@ -11,7 +11,7 @@ function install_nodejs() {
 
   # Check if nodenv is installed
   command -v nodenv >/dev/null || return 0
-  
+
   current=$(nodenv global)
   desired={{ .nodejs.version }}
 
@@ -27,6 +27,7 @@ function install_nodejs() {
   nodenv global "$desired"
 
   echo "Installing global dependencies..."
+  eval "$(nodenv init -)"
   nodenv shell "$desired"
   {{ .nodejs.installer }} {{ .nodejs.globals | join " " }}
 
