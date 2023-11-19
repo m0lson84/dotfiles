@@ -20,6 +20,7 @@ M.apply = function(config, os)
   config.enable_tab_bar = true
   config.use_fancy_tab_bar = false
   config.tab_bar_at_bottom = true
+  config.hide_tab_bar_if_only_one_tab = true
 
   -- Start in WSL if running on windows
   if os == 'windows' then config.default_prog = { 'ubuntu' } end

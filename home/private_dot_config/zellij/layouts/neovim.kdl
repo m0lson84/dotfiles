@@ -1,20 +1,10 @@
-
-// Default layout
 layout {
-  pane {
-    name "editor"
-    command "nvim"
-    size "80%"
-    focus true
+  tab name="editor" focus=true {
+    pane { plugin { location "zellij:compact-bar"; }; size 1; }
+    pane { command "nvim"; focus true; }
   }
-  pane {
-    name "terminal"
-    split_direction "vertical"
-    size "20%"
-  }
-  pane split_direction="vertical" {
-    plugin location="zellij:compact-bar"
-    borderless true
-    size 1
+  tab name="terminal" {
+    pane { plugin { location "zellij:compact-bar"; }; size 1; }
+    pane { focus true; }
   }
 }

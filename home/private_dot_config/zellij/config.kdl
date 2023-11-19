@@ -19,19 +19,64 @@ ui {
 // Keybindings
 keybinds clear-defaults=true {
   normal {
+    bind "Alt h Alt Left" { MoveFocusOrTab "Left"; }
+    bind "Alt j Alt Down" { MoveFocusOrTab "Down"; }
+    bind "Alt k Alt Up" { MoveFocusOrTab "Up"; }
+    bind "Alt l Alt Right" { MoveFocusOrTab "Right"; }
     bind "Ctrl p" { SwitchToMode "pane"; }
+    bind "Ctrl t" { NewTab { layout "terminal"; }; }
+    bind "Ctrl w" { CloseTab; }
   }
   pane {
-    bind "Ctrl p" { SwitchToMode "normal"; }
-    bind "j" "Down" { MoveFocus "Down"; }
-    bind "k" "Up" { MoveFocus "Up"; }
+    bind "h" "Left" { MoveFocus "Left"; SwitchToMode "normal"; }
+    bind "j" "Down" { MoveFocus "Down"; SwitchToMode "normal"; }
+    bind "k" "Up" { MoveFocus "Up";  SwitchToMode "normal";}
+    bind "l" "Right" { MoveFocus "Right"; SwitchToMode "normal"; }
     bind "p" { SwitchFocus; }
+  }
+  session {
+    bind "Ctrl o" { SwitchToMode "normal"; }
+    bind "Ctrl s" { SwitchToMode "scroll"; }
+    bind "d" { Detach; }
+    bind "w" {
+      LaunchOrFocusPlugin "zellij:session-manager" { floating true; move_to_focused_tab true; };
+      SwitchToMode "Normal"
+    }
+  }
+  tmux {
+      bind "[" { SwitchToMode "scroll"; }
+      bind "Ctrl b" { Write 2; SwitchToMode "normal"; }
+      bind "\"" { NewPane "Down"; SwitchToMode "normal"; }
+      bind "%" { NewPane "Right"; SwitchToMode "normal"; }
+      bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+      bind "c" { NewTab; SwitchToMode "normal"; }
+      bind "," { SwitchToMode "RenameTab"; }
+      bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
+      bind "n" { GoToNextTab; SwitchToMode "normal"; }
+      bind "Left" { MoveFocus "Left"; SwitchToMode "normal"; }
+      bind "Right" { MoveFocus "Right"; SwitchToMode "normal"; }
+      bind "Down" { MoveFocus "Down"; SwitchToMode "normal"; }
+      bind "Up" { MoveFocus "Up"; SwitchToMode "normal"; }
+      bind "h" { MoveFocus "Left"; SwitchToMode "normal"; }
+      bind "l" { MoveFocus "Right"; SwitchToMode "normal"; }
+      bind "j" { MoveFocus "Down"; SwitchToMode "normal"; }
+      bind "k" { MoveFocus "Up"; SwitchToMode "normal"; }
+      bind "o" { FocusNextPane; }
+      bind "d" { Detach; }
+      bind "Space" { NextSwapLayout; }
+      bind "x" { CloseFocus; SwitchToMode "normal"; }
   }
   shared {
     bind "Ctrl q" { Quit; }
   }
-  shared_except "normal" {
+  shared_except "normal" "locked" {
     bind "Esc" { SwitchToMode "normal"; }
+  }
+  shared_except "session" "locked" {
+    bind "Ctrl o" { SwitchToMode "session"; }
+  }
+  shared_except "tmux" "locked" {
+    bind "Ctrl b" { SwitchToMode "tmux"; }
   }
 }
 
@@ -43,4 +88,3 @@ plugins {
   strider { path "strider"; }
   tab-bar { path "tab-bar"; }
 }
-
