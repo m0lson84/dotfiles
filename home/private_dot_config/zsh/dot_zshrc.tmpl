@@ -86,8 +86,16 @@ source "$XDG_CONFIG_HOME"/zsh/functions.zsh
 {{ if not .env.ephemeral -}}
 
 # 1Password CLI configuration
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-eval "$(op completion zsh)"; compdef _op op
+if command -v op &>/dev/null; then
+# export SSH_AUTH_SOCK=~/.1password/agent.sock
+  eval "$(op completion zsh)"; compdef _op op
+fi
+
+# DevPod configuration
+if command -v devpod &>/dev/null; then
+  eval "$(devpod completion zsh)"
+  compdef _devpod devpod
+fi
 
 # Golang configuration
 export GOPATH="$HOME/go"
@@ -97,10 +105,14 @@ export PATH="${GOPATH}/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Kubectl auto completion
-command -v kubectl >/dev/null && source <(kubectl completion zsh)
+if command -v kubectl &>/dev/null; then
+  source <(kubectl completion zsh)
+fi
 
 # Node.js configuration
-command -v nodenv >/dev/null && eval "$(nodenv init -)"
+if command -v nodenv &>/dev/null; then
+  eval "$(nodenv init -)"
+fi
 
 # Python configuration
 export PATH="${HOME}/.local/bin:$PATH"

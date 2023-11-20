@@ -19,15 +19,11 @@ ui {
 // Keybindings
 keybinds clear-defaults=true {
   normal {
-    bind "Alt h Alt Left" { MoveFocusOrTab "Left"; }
-    bind "Alt j Alt Down" { MoveFocusOrTab "Down"; }
-    bind "Alt k Alt Up" { MoveFocusOrTab "Up"; }
-    bind "Alt l Alt Right" { MoveFocusOrTab "Right"; }
     bind "Ctrl p" { SwitchToMode "pane"; }
-    bind "Ctrl t" { NewTab { layout "terminal"; }; }
-    bind "Ctrl w" { CloseTab; }
+    bind "Ctrl t" { SwitchToMode "tab"; }
   }
   pane {
+    bind "Ctrl p" { SwitchToMode "normal"; }
     bind "h" "Left" { MoveFocus "Left"; SwitchToMode "normal"; }
     bind "j" "Down" { MoveFocus "Down"; SwitchToMode "normal"; }
     bind "k" "Up" { MoveFocus "Up";  SwitchToMode "normal";}
@@ -42,6 +38,14 @@ keybinds clear-defaults=true {
       LaunchOrFocusPlugin "zellij:session-manager" { floating true; move_to_focused_tab true; };
       SwitchToMode "Normal"
     }
+  }
+  tab {
+    bind "Ctrl t" { SwitchToMode "normal"; }
+    bind "h Left" { GoToPreviousTab; }
+    bind "l Right" { GoToNextTab; }
+    bind "n" { NewTab { layout "terminal"; }; }
+    bind "d" { CloseTab; }
+    bind "t" { ToggleTab; }
   }
   tmux {
       bind "[" { SwitchToMode "scroll"; }

@@ -63,6 +63,20 @@ local function find_files(names, cwd)
   return nil
 end
 
+--- Get configured logger.
+---@return PlenaryLogger logger Local logging instance.
+local function get_logger()
+  return require('plenary.log').new({
+    plugin = 'Local',
+    level = 'debug',
+    use_console = 'async',
+    outfile = vim.fn.stdpath('state') .. 'local.log',
+    fmt_msg = function(_, mode, path, line, msg)
+      return ('%-6s%s %s: %s\n'):format(mode:upper(), os.date(), vim.fn.fnamemodify(path, ':.') .. ':' .. line, msg)
+    end,
+  })
+end
+
 --- Whether a string is empty.
 ---@param text string: The string to check.
 local function is_empty(text) return text == nil or text == '' end
@@ -70,6 +84,19 @@ local function is_empty(text) return text == nil or text == '' end
 --- Join a list of paths.
 ---@param ... string: The paths to join.
 local function path_join(...) return table.concat(vim.tbl_flatten({ ... }), '/') end
+
+--- Split a string by a given character.
+---@param input string The input string.
+---@param sep string The character to split the string by.
+---@return table strings The split string.
+local function split_string(input, sep)
+  if sep == nil then sep = '%s' end
+  local result = {}
+  for str in string.gmatch(input, '([^' .. sep .. ']+)') do
+    table.insert(result, str)
+  end
+  return result
+end
 
 --- Create a table with the given keys and value.
 ---@param keys table: The keys to create the table with.
@@ -123,8 +150,9 @@ local M = {}
 M.cursor = (function() return { has_words_before = cursor_has_words_before } end)()
 M.dir = (function() return { exists = directory_exists } end)()
 M.file = (function() return { exists = file_exists, find = find_files } end)()
+M.logger = get_logger
 M.path = (function() return { dirname = directory_name, join = path_join } end)()
-M.string = (function() return { is_empty = is_empty } end)()
+M.string = (function() return { is_empty = is_empty, spllit = split_string } end)()
 M.table = (function() return { create = table_create, extend_keys = table_extend_keys, merge = table_merge } end)()
 M.vim = (function() return { config = vim_config_dir } end)()
 M.vscode = (function() return { config = vscode_config_dir } end)()
