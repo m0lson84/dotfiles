@@ -1,10 +1,9 @@
 layout {
-  tab name="editor" focus=true {
-    pane { command "nvim"; focus true; }
-    pane { plugin { location "zellij:compact-bar"; }; size 1; }
-  }
-  tab name="terminal" {
-    pane { focus true; }
-    pane { plugin { location "zellij:compact-bar"; }; size 1; }
-  }
+  pane_template name="neovim" { command "nvim"; }
+  pane_template name="compact-bar" { plugin { location "zellij:compact-bar"; }; borderless true; }
+  pane_template name="status-bar" { plugin { location "zellij:status-bar"; }; borderless true; }
+  pane_template name="tab-bar" { plugin { location "zellij:tab-bar"; }; borderless true; }
+  default_tab_template { compact-bar size=1; children; }
+  tab name="editor" focus=true { neovim; }
+  tab name="terminal" { pane; }
 }

@@ -10,7 +10,7 @@
 
 // General
 default_shell "zsh"
-pane_frames false
+pane_frames true
 
 // Layouts
 default_layout "neovim"
@@ -21,6 +21,7 @@ theme "tokyonight"
 // UI
 ui {
   pane_frames {
+    rounded_corners false
     hide_session_name true
   }
 }
