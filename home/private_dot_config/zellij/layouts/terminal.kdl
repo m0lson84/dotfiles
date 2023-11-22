@@ -1,4 +1,4 @@
 layout {
-  pane { plugin { location "zellij:compact-bar"; }; size 1; }
   pane { name "terminal"; }
+  pane { plugin { location "zellij:compact-bar"; }; size 1; }
 }

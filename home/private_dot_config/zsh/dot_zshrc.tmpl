@@ -9,6 +9,20 @@
 {{- $terminal := "wezterm" -}}
 {{- if eq .env.os "windows" -}} {{- $terminal = "wt" -}} {{- end -}}
 
+{{- /* Additional paths */ -}}
+{{- $paths := list "${HOME}/.local/bin" -}}
+{{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
+{{- if eq .env.os "darwin" -}}
+{{- $paths = concat $paths ( list
+  "/usr/local/opt/openssl@1.1/bin"
+  "/usr/local/opt/python@3.10/bin"
+  "/usr/local/sbin" )
+-}}
+{{- end -}}
+
+{{- /* Additional configurations */ -}}
+{{- $configs := list ".fzf.zsh" "aliases.zsh" "completions.zsh" "functions.zsh" -}}
+
 
 #             _
 #            | |
@@ -26,10 +40,12 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
 {{ if not .env.ephemeral -}}
+
 # Enable Homebrew auto completion
 HOMEBREW_PREFIX={{ if eq .env.os "linux" -}} /home/linuxbrew/.linuxbrew {{- else -}} /usr/local {{- end }}
 FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 unset HOMEBREW_PREFIX
+
 {{- end }}
 
 # If you come from bash you might have to change your $PATH.
@@ -55,21 +71,10 @@ source $ZSH/oh-my-zsh.sh
 setopt autocd
 setopt histignorespace
 
-{{- if eq .env.os "darwin" }}
-
 # Additional paths
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-{{ end -}}
-
-{{- if .env.wsl }}
-
-# Additional paths
-export PATH="/snap/bin:$PATH"
-
-{{ end -}}
+{{- range ( $paths | sortAlpha | uniq ) }}
+export PATH="{{ . }}:$PATH"
+{{- end }}
 
 # Default Apps
 export BROWSER={{ $browser | quote }}
@@ -77,24 +82,11 @@ export EDITOR="nvim"
 export TERMINAL={{ $terminal | quote }}
 export VISUAL="nvim"
 
-# Load additional configurations
-source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh
-source "$XDG_CONFIG_HOME"/zsh/aliases.zsh
-source "$XDG_CONFIG_HOME"/zsh/completions.zsh
-source "$XDG_CONFIG_HOME"/zsh/functions.zsh
-
 {{ if not .env.ephemeral -}}
 
 # 1Password CLI configuration
-if command -v op &>/dev/null; then
+if command -v op >/dev/null; then
 # export SSH_AUTH_SOCK=~/.1password/agent.sock
-  eval "$(op completion zsh)"; compdef _op op
-fi
-
-# DevPod configuration
-if command -v devpod &>/dev/null; then
-  eval "$(devpod completion zsh)"
-  compdef _devpod devpod
 fi
 
 # Golang configuration
@@ -104,18 +96,7 @@ export PATH="${GOPATH}/bin:$PATH"
 # iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Kubectl auto completion
-if command -v kubectl &>/dev/null; then
-  source <(kubectl completion zsh)
-fi
-
-# Node.js configuration
-if command -v nodenv &>/dev/null; then
-  eval "$(nodenv init -)"
-fi
-
 # Python configuration
-export PATH="${HOME}/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -128,5 +109,9 @@ source "${HOME}/.cargo/env"
 
 # Starship initialization
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
-eval "$(starship init zsh)"
-eval "$(starship completions zsh)"
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# Load additional configurations
+{{- range ( $configs | sortAlpha | uniq ) }}
+source "$XDG_CONFIG_HOME"/zsh/{{ . }}
+{{- end }}

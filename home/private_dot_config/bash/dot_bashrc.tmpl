@@ -1,3 +1,12 @@
+
+{{- /* Additional paths */ -}}
+{{- $paths := list "${HOME}/.local/bin" -}}
+{{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
+
+{{- /* Additional configurations */ -}}
+{{- $configs := list ".fzf.bash" "aliases.bash" -}}
+
+
 #     _               _
 #    | |             | |
 #    | |__   __ _ ___| |__  _ __ ___
@@ -19,22 +28,18 @@ export TERMINAL="wezterm"
 export VISUAL="nvim"
 export VSCODE="code"
 
-# Load additional configurations
-source "$XDG_CONFIG_HOME"/bash/.fzf.bash
-source "$XDG_CONFIG_HOME"/bash/aliases.bash
-
-{{- if .env.wsl }}
-
 # Additional paths
-export PATH="/snap/bin:$PATH"
-
-{{ end -}}
+{{- range ( $paths | sortAlpha | uniq ) }}
+export PATH="{{ . }}:$PATH"
+{{- end }}
 
 {{- if not .env.ephemeral }}
 
 # 1Password CLI configuration
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-source <(op completion bash)
+if command -v op >/dev/null; then
+  export SSH_AUTH_SOCK=~/.1password/agent.sock
+  source <(op completion bash)
+fi
 
 # Golang configuration
 export GOPATH="$HOME/go"
@@ -44,7 +49,6 @@ export PATH="${GOPATH}/bin:$PATH"
 command -v nodenv >/dev/null && eval "$(nodenv init -)"
 
 # Python environment configuration
-export PATH="${HOME}/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -61,3 +65,8 @@ if command -v starship >/dev/null; then
   eval "$(starship init bash)"
   eval "$(starship completions bash)"
 fi
+
+# Load additional configurations
+{{- range ( $configs | sortAlpha | uniq ) }}
+source "$XDG_CONFIG_HOME"/zsh/{{ . }}
+{{- end }}

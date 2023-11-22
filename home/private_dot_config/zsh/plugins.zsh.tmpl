@@ -6,7 +6,6 @@
 {{- $plugins = concat $plugins ( list "aliases" "git" ) -}}
 
 {{- /* Environment specific */ -}}
-{{- if .work -}} {{- $plugins = concat $plugins ( list "aws" ) -}} {{- end -}}
 {{- if eq .env.os "darwin" -}} {{- $plugins = concat $plugins ( list "macos" ) -}} {{- end -}}
 {{- if eq .env.os "linux" -}} {{- $plugins = concat $plugins ( list "ubuntu" ) -}} {{- end -}}
 {{- if not .env.ephemeral -}} {{- $plugins = concat $plugins ( list "brew" "vscode" ) -}} {{- end -}}

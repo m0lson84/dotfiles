@@ -1,10 +1,10 @@
 layout {
   tab name="editor" focus=true {
-    pane { plugin { location "zellij:compact-bar"; }; size 1; }
     pane { command "nvim"; focus true; }
+    pane { plugin { location "zellij:compact-bar"; }; size 1; }
   }
   tab name="terminal" {
-    pane { plugin { location "zellij:compact-bar"; }; size 1; }
     pane { focus true; }
+    pane { plugin { location "zellij:compact-bar"; }; size 1; }
   }
 }

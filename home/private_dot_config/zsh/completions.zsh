@@ -14,3 +14,30 @@ zstyle ':autocomplete:*' list-lines 5
 zstyle ':autocomplete:history-incremental-search-*:*' list-lines 10
 zstyle ':autocomplete:*' fzf-completion yes
 zstyle ':autocomplete:*' widget-style menu-complete
+
+# 1Password CLI
+if command -v op >/dev/null; then
+  eval "$(op completion zsh)"
+  compdef _op op
+fi
+
+# DevPod
+if command -v devpod >/dev/null; then
+  eval "$(devpod completion zsh)"
+  compdef _devpod devpod
+fi
+
+# Kubernetes
+if command -v kubectl >/dev/null; then
+  source <(kubectl completion zsh)
+fi
+
+# Node.js
+if command -v nodenv >/dev/null; then
+  eval "$(nodenv init -)"
+fi
+
+# Starship initialization
+if command -v starship >/dev/null; then
+  eval "$(starship completions zsh)"
+fi
