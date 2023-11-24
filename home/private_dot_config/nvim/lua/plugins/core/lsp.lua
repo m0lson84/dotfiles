@@ -11,6 +11,12 @@ return {
     },
   },
   {
+    'williamboman/mason.nvim',
+    opts = {
+      ui = { border = 'rounded' },
+    },
+  },
+  {
     'stevearc/conform.nvim',
     opts = function(_, opts)
       opts.formatters_by_ft = {}

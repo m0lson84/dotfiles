@@ -26,4 +26,8 @@ return {
       opts.config.header = vim.split(string.rep('\n', 8) .. logo .. '\n\n', '\n')
     end,
   },
+  {
+    'folke/noice.nvim',
+    opts = function(_, opts) opts.presets.lsp_doc_border = true end,
+  },
 }

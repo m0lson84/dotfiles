@@ -38,6 +38,7 @@ require('lazy').setup({
   defaults = { lazy = false, version = false },
   install = { colorscheme = { 'tokyonight', 'habamax' } },
   checker = { enabled = true },
+  ui = { border = 'rounded' },
   performance = {
     rtp = {
       disabled_plugins = {
