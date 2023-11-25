@@ -10,8 +10,8 @@ color_schemes['Tokyo Night'].background = '#16161E'
 
 local M = {}
 
---- Configure the terminal appearance.
--- @param config The configuration table to modify.
+--- Configure the appearance of the terminal.
+---@param config table The terminal configuration to modify.
 M.apply = function(config)
   config.color_scheme = 'Tokyo Night'
   config.color_schemes = color_schemes

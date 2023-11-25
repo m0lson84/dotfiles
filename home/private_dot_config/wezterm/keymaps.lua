@@ -7,9 +7,8 @@ local terminal = require('wezterm')
 local M = {}
 
 --- Configure the keybinds used in the terminal.
--- @param config The configuration table to modify.
--- @param os The operating system the terminal is running in.
-M.apply = function(config, os)
+---@param config table The terminal configuration to modify.
+M.apply = function(config)
   config.disable_default_key_bindings = false
   config.keys = {
     { mods = 'SUPER|SHIFT', key = 'p', action = terminal.action.ShowLauncher },
