@@ -7,37 +7,27 @@
 #                      | |
 #                      |_|
 
-zstyle ':autocomplete:*' default-context ''
-zstyle ':autocomplete:*' min-delay 0.25
-zstyle ':autocomplete:*' min-input 3
-zstyle ':autocomplete:*' list-lines 5
-zstyle ':autocomplete:history-incremental-search-*:*' list-lines 10
-zstyle ':autocomplete:*' fzf-completion yes
-zstyle ':autocomplete:*' widget-style menu-complete
-
 # 1Password CLI
 if command -v op >/dev/null; then
-  eval "$(op completion zsh)"
-  compdef _op op
+  source <(op completion bash)
 fi
 
 # Bob (Neovim version manager)
 if command -v bob >/dev/null; then
-  source <(bob complete zsh)
+  source <(bob complete bash)
 fi
 
 # DevPod
 if command -v devpod >/dev/null; then
-  eval "$(devpod completion zsh)"
-  compdef _devpod devpod
+  source <(devpod complete bash)
 fi
 
 # Kubernetes
 if command -v kubectl >/dev/null; then
-  source <(kubectl completion zsh)
+  source <(kubectl completion bash)
 fi
 
 # Starship initialization
 if command -v starship >/dev/null; then
-  eval "$(starship completions zsh)"
+  source <(starship completions bash)
 fi

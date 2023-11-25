@@ -4,7 +4,7 @@
 {{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
 
 {{- /* Additional configurations */ -}}
-{{- $configs := list ".fzf.bash" "aliases.bash" -}}
+{{- $configs := list ".fzf.bash" "aliases.bash" "completions.zsh" -}}
 
 
 #     _               _
@@ -45,6 +45,9 @@ fi
 export GOPATH="$HOME/go"
 export PATH="${GOPATH}/bin:$PATH"
 
+# Neovim configuration
+export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
+
 # Node.js configuration
 command -v nodenv >/dev/null && eval "$(nodenv init -)"
 
@@ -63,7 +66,6 @@ source "${HOME}/.cargo/env"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
 if command -v starship >/dev/null; then
   eval "$(starship init bash)"
-  eval "$(starship completions bash)"
 fi
 
 # Load additional configurations

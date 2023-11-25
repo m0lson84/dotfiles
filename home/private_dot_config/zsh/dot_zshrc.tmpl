@@ -96,6 +96,12 @@ export PATH="${GOPATH}/bin:$PATH"
 # iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Neovim configuration
+export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
+
+# Node.js configuration
+command -v nodenv >/dev/null && eval "$(nodenv init -)"
+
 # Python configuration
 export PYENV_ROOT="$HOME/.pyenv"
 export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
