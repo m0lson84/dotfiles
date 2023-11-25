@@ -1,7 +1,7 @@
 layout {
-  pane_template name="compact-bar" { plugin { location "zellij:compact-bar"; }; borderless true; }
-  pane_template name="status-bar" { plugin { location "zellij:status-bar"; }; borderless true; }
-  pane_template name="tab-bar" { plugin { location "zellij:tab-bar"; }; borderless true; }
-  default_tab_template { compact-bar size=1; children; }
+  pane_template name="compact-bar" { plugin { location "zellij:compact-bar"; }; }
+  pane_template name="status-bar" { plugin { location "zellij:status-bar"; }; }
+  pane_template name="tab-bar" { plugin { location "zellij:tab-bar"; }; }
+  default_tab_template { tab-bar size=1; children; status-bar size=2; }
   tab name="terminal" { pane; }
 }

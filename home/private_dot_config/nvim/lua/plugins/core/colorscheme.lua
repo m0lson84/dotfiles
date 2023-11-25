@@ -12,8 +12,8 @@ return {
       on_colors = function(colors)
         local util = require('tokyonight.util')
         colors.bg = colors.bg_dark
-        colors.border = util.lighten(colors.dark3, 0.95, colors.fg_dark)
-        colors.border_highlight = util.darken(colors.blue1, 0.9)
+        colors.border = util.lighten(colors.dark3, 0.9, colors.fg_dark)
+        colors.border_highlight = util.darken(colors.blue1, 0.8)
         colors.unused = util.lighten(colors.terminal_black, 0.6, colors.fg_dark)
       end,
       on_highlights = function(highlights, colors)
