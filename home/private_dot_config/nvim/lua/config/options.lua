@@ -36,6 +36,9 @@ vim.g.loaded_perl_provider = 0
 vim.g.node_host_prog = '~/.nodenv/versions/{{ .nodejs.version }}/lib/node_modules/neovim'
 vim.g.python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 
+-- UI
+vim.g.window_border = 'rounded'
+
 --[[
 -- Local options
 --]]

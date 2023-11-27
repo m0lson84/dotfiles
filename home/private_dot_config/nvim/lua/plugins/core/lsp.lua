@@ -5,15 +5,16 @@ Core LSP configuration
 return {
   {
     'neovim/nvim-lspconfig',
-    opts = {
-      format_notify = false,
-      inlay_hints = { enabled = true },
-    },
+    opts = function(_, opts)
+      opts.format_notify = false
+      opts.inlay_hints = { enabled = true }
+      require('lspconfig.ui.windows').default_options = { border = vim.g.window_border }
+    end,
   },
   {
     'williamboman/mason.nvim',
     opts = {
-      ui = { border = 'rounded' },
+      ui = { border = vim.g.window_border },
     },
   },
   {

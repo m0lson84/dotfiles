@@ -9,7 +9,7 @@ return {
     opts = {
       servers = {
         eslint = {
-          settings = { workingDirectory = { mode = 'auto' } },
+          settings = { workingDirectories = { mode = 'auto' } },
         },
       },
       setup = {
