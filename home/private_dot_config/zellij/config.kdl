@@ -15,6 +15,9 @@ pane_frames false
 // Layouts
 default_layout "neovim"
 
+// Sessions
+session_serialization false
+
 // Themes
 theme "tokyonight"
 
