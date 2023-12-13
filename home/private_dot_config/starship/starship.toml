@@ -147,7 +147,7 @@ expiration_symbol = " "
 format = "[$symbol$profile]($style) "
 profile_aliases = { sd-dev = "sp dev", work = "company" }
 region_aliases = { us-east-1 = "VA", us-east-2 = "OH" }
-symbol = " "
+symbol = "󰸏 "
 
 [azure]
 disabled = false
@@ -175,7 +175,7 @@ command = """
   symbol="󰊢 "
   remote=$(command git ls-remote --get-url 2> /dev/null)
   if [[ "$remote" =~ "azure" ]]; then symbol=" "; fi
-  if [[ "$remote" =~ "bitbucket" ]]; then symbol=" "; fi
+  if [[ "$remote" =~ "bitbucket" ]]; then symbol="󰂨 "; fi
   if [[ "$remote" =~ "github" ]]; then symbol=" "; fi
   if [[ "$remote" =~ "gitlab" ]]; then symbol=" "; fi
   echo "$symbol"

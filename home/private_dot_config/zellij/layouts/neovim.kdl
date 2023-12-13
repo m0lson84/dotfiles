@@ -1,13 +1,41 @@
 layout {
+
   pane_template name="neovim" { command "nvim"; }
   pane_template name="compact-bar" { plugin { location "zellij:compact-bar"; }; }
   pane_template name="status-bar" { plugin { location "zellij:status-bar"; }; }
   pane_template name="tab-bar" { plugin { location "zellij:tab-bar"; }; }
-  default_tab_template { tab-bar size=1; children; status-bar size=2; }
+  pane_template name="zjstatus" {
+    plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+
+      hide_frame_for_single_pane "true"
+
+      format_left  "{mode}#[fg=blue,bg=#383E5A,bold]  {session} #[fg=#383E5A,bg=bg] #[fg=white,bg=fg]󰓩  {tabs}"
+      format_right "#[fg=blue,bg=bg]{datetime}"
+      format_space "#[bg=fg]"
+
+      datetime          "#[fg=#1A1B26,bg=blue]{format}"
+      datetime_format   "  %H:%M "
+      datetime_timezone "America/Detroit"
+
+      mode_normal   "#[fg=#1A1B26,bg=blue,bold] NORMAL #[fg=blue,bg=#383E5A]"
+      mode_pane     "#[fg=#1A1B26,bg=magenta,bold] PANE #[fg=magenta,bg=#383E5A]"
+      mode_session  "#[fg=#1A1B26,bg=yellow,bold] SESSION #[fg=yellow,bg=#383E5A]"
+      mode_tab      "#[fg=#1A1B26,bg=green,bold] TAB #[fg=green,bg=#383E5A]"
+
+      tab_normal  "#[fg=#A9B1D6,bg=fg] [{index}] {name}"
+      tab_active  "#[fg=green,bg=fg,bold,italic] [{index}] {name}"
+
+    }
+  }
+
+  default_tab_template { children; zjstatus size=1; }
   tab_template name="editor" { children; }
+
   editor name="editor" focus=true { neovim; }
   tab name="terminal" { pane; }
+
 }
+
 keybinds  {
   normal {
     bind "Ctrl e" { GoToTab 1; SwitchToMode "locked"; }
