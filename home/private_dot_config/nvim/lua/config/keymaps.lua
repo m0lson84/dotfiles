@@ -24,6 +24,9 @@ end
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- yank/put
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste over selection' })
+
 -- LazyGit
 vim.keymap.set('n', '<leader>gg', function() lazygit(util.root()) end, { desc = 'Lazygit (root dir)' })
 vim.keymap.set('n', '<leader>gG', function() lazygit(nil) end, { desc = 'Lazygit (cwd)' })
