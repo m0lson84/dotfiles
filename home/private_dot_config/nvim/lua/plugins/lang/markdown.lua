@@ -52,8 +52,7 @@ return {
       { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', ft = 'markdown', desc = 'Markdown Preview' },
     },
     config = function()
-      vim.g.mkdp_theme = 'light'
-      vim.g.mkdp_markdown_css = '~/.config/markdown/github.css'
+      vim.g.mkdp_theme = 'dark'
       vim.g.mkdp_page_title = 'Markdown Preview'
     end,
   },
