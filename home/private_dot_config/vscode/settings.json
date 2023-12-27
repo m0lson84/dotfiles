@@ -21,9 +21,13 @@
   // Editor
   "editor.accessibilitySupport": "off",
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.codeActionsOnSave": { "addMissingImports": true, "source.fixAll": true, "source.sortImports": true },
+  "editor.codeActionsOnSave": {
+    "addMissingImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.sortImports": "explicit"
+  },
   "editor.detectIndentation": false,
-  "editor.fontFamily": "JetBrainsMono NF",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.fontSize": 12,
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
@@ -31,6 +35,7 @@
   "editor.formatOnType": false,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
@@ -39,7 +44,11 @@
   "editor.suggest.showMethods": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 4,
-  "editor.tokenColorCustomizations": { "textMateRules": [] },
+  "editor.tokenColorCustomizations": {
+    "[*Light*]": { "textMateRules": [{ "scope": "ref.matchtext", "settings": { "foreground": "#000" } }] },
+    "[*Dark*]": { "textMateRules": [{ "scope": "ref.matchtext", "settings": { "foreground": "#fff" } }] },
+    "textMateRules": []
+  },
   "editor.wordWrap": "on",
 
   // Terminal
@@ -50,7 +59,7 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.enablePersistentSessions": false,
-  "terminal.integrated.fontFamily": "JetBrainsMono NF",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.profiles.linux": {
     "bash": { "path": "/bin/bash", "icon": "terminal-bash" },
@@ -98,6 +107,7 @@
     "dto": "public",
     "entities": "database",
     "express": "app",
+    "gateways": "pipe",
     "http": "public",
     "logger": "log",
     "migrations": "database",
@@ -112,7 +122,9 @@
 
   // Experimental
   "diffEditor.experimental.showEmptyDecorations": true,
-  "diffEditor.experimental.useVersion2": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
 
   // Bash
   "shellcheck.exclude": ["1091"],
@@ -200,7 +212,9 @@
     "MD028": false
   },
   "[markdown]": {
-    "editor.codeActionsOnSave": { "source.organizeLinkDefinitions": true },
+    "editor.codeActionsOnSave": {
+      "source.organizeLinkDefinitions": "explicit"
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
@@ -215,7 +229,10 @@
   "ruff.importStrategy": "fromEnvironment",
   "ruff.lint.args": ["--select", "ALL"],
   "[python]": {
-    "editor.codeActionsOnSave": { "source.fixAll": true, "source.organizeImports": true },
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [120]
   },
@@ -334,6 +351,7 @@
   },
   "dev.containers.gitCredentialHelperConfigLocation": "none",
   "dotfiles.repository": "https://github.com/m0lson84/dotfiles.git",
+  "remote.autoForwardPortsSource": "hybrid",
 
   // ESLint
   "eslint.codeActionsOnSave.mode": "problems",
@@ -356,6 +374,11 @@
   // Jest
   "jest.autoRun": "off",
   "jest.jestCommandLine": "npm test --",
+
+  // Neovim
+  "vscode-neovim.neovimExecutablePaths.darwin": "~/.local/share/bob/nvim-bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "~/.local/share/bob/nvim-bin/nvim",
+  "vscode-neovim.useWSL": true,
 
   // Prettier
   "prettier.bracketSpacing": true,
