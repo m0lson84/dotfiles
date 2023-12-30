@@ -31,7 +31,7 @@ M.cursor = (function() return { has_words_before = cursor_has_words_before } end
 M.dir = require('util.directory')
 M.file = require('util.file')
 M.logger = get_logger
-M.jupyter = require('util.jupyter')
+M.notebook = require('util.notebook')
 M.path = require('util.path')
 M.string = require('util.string')
 M.table = require('util.table')
