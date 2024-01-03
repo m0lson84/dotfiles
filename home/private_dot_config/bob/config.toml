@@ -1,0 +1,20 @@
+#  ______  ___________
+#  | ___ \|  _  | ___ \
+#  | |_/ /| | | | |_/ /
+#  | ___ \| | | | ___ \
+#  | |_/ /\ \_/ / |_/ /
+#  \____/  \___/\____/
+#
+#
+
+# Feature flags
+enable_nightly_info = true
+enable_release_build = true
+
+# File paths
+download_location = "$HOME/.local/share/bob"
+installation_location = "$HOME/.local/share/bob/nvim-bin"
+
+# Download configuration
+rollback_limit = 3
+github_mirror = "https://github.com"
