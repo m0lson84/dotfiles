@@ -3,14 +3,19 @@
 --]]
 
 return {
-  'rest-nvim/rest.nvim',
-  opts = {
-    result_split_horizontal = false,
-    result_split_in_place = false,
-    stay_in_current_window_after_split = true,
-    result = {
-      show_curl_command = false,
-      show_statistics = true,
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'http' }) end,
+  },
+  {
+    'rest-nvim/rest.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    ft = 'http',
+    opts = {
+      stay_in_current_window_after_split = true,
+    },
+    keys = {
+      { '<leader>ch', '<Plug>RestNvim', desc = 'Execute HTTP request' },
     },
   },
 }

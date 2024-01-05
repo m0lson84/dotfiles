@@ -19,20 +19,18 @@ return {
     'Vigemus/iron.nvim',
     config = function(_, opts) require('iron.core').setup(opts) end,
     opts = function()
-      local iron = require('iron')
       return {
         highlight = { italic = true },
         ignore_blank_lines = true,
         config = {
           scratch_repl = true,
           repl_definition = {
-            javascript = iron.fts.javascript.node,
-            lua = iron.fts.lua.lua,
-            python = iron.fts.python.ipython,
-            typescript = iron.fts.typescript.ts,
-            sh = iron.fts.sh.zsh,
+            javascript = require('iron.fts.javascript').node,
+            python = require('iron.fts.python').ipython,
+            sh = require('iron.fts.sh').zsh,
+            typescript = require('iron.fts.typescript').ts,
           },
-          repl_open_cmd = iron.view.right('40%'),
+          repl_open_cmd = require('iron.view').right('40%'),
         },
         keymaps = {
           interupt = '<space>jk',
@@ -41,8 +39,8 @@ return {
       }
     end,
     keys = {
-      { '<leader>jo', ':IronReplHere', desc = 'Open REPL' },
-      { '<leader>jr', ':IronRestart', desc = 'Restart REPL' },
+      { '<leader>jo', '<cmd>IronReplHere<cr>', desc = 'Open REPL' },
+      { '<leader>jr', '<cmd>IronRestart<cr>', desc = 'Restart REPL' },
       { '<leader>je', function() util.notebook.execute_cell() end, desc = 'Execute cell' },
       { '<leader>jc', function() util.notebook.insert_cell('# %%') end, desc = 'Insert code cell' },
       { '<leader>jm', function() util.notebook.insert_cell('# %% [markdown]') end, desc = 'Insert markdown cell' },

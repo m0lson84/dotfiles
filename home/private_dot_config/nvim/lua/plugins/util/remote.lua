@@ -19,6 +19,9 @@ local client_launch = function(port, workspace)
   })
 end
 
+--- Cleanup Neovim installation from remote.
+local cleanup_remote = function() return '<cmd>RemoteCleanup ' .. vim.fn.input('Workspace: ') .. '<cr>' end
+
 --- Create a development container.
 local create_container = function()
   local logger = util.get_logger()
@@ -29,28 +32,22 @@ local create_container = function()
   end
 end
 
+--- Delete workspace configuration.
+local delete_config = function() return '<cmd>RemoteConfigDel ' .. vim.fn.input('Workspace: ') .. '<cr>' end
+
+--- Stop remote session.
+local stop_session = function() return '<cmd>RemoteStop ' .. vim.fn.input('Workspace: ') .. '<cr>' end
+
 return {
   {
     'amitds1997/remote-nvim.nvim',
     keys = {
-      { '<leader>rc', function() create_container() end, desc = 'Create container' },
+      { '<leader>rc', create_container, desc = 'Create container' },
       { '<leader>rs', '<cmd>RemoteStart<cr>', desc = 'Start session' },
-      {
-        '<leader>rx',
-        function() return '<cmd>RemoteStop ' .. vim.fn.input('Workspace: ') .. '<cr>' end,
-        desc = 'Stop session',
-      },
+      { '<leader>rx', stop_session, desc = 'Stop session' },
       { '<leader>ri', '<cmd>RemoteSessionInfo<cr>', desc = 'Remote session info' },
-      {
-        '<leader>rc',
-        function() return '<cmd>RemoteCleanup ' .. vim.fn.input('Workspace: ') .. '<cr>' end,
-        desc = 'Stop session',
-      },
-      {
-        '<leader>rd',
-        function() return '<cmd>RemoteConfigDel ' .. vim.fn.input('Workspace: ') .. '<cr>' end,
-        desc = 'Delete configuration',
-      },
+      { '<leader>rc', cleanup_remote, desc = 'Cleanup remote' },
+      { '<leader>rd', delete_config, desc = 'Delete configuration' },
       { '<leader>rl', '<cmd>RemoteLog<cr>', desc = 'Open remote logs' },
     },
     opts = {

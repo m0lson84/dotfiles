@@ -61,6 +61,8 @@ vim.filetype.add({
   extension = {
     conf = 'conf',
     env = 'dotenv',
+    http = 'http',
+    rest = 'http',
   },
   filename = {
     ['.env'] = 'dotenv',
