@@ -62,6 +62,7 @@ return {
               request = 'launch',
               program = '${file}',
               cwd = '${workspaceFolder}',
+              console = 'integratedTerminal',
             },
             {
               name = 'Attach to Process',
@@ -69,6 +70,7 @@ return {
               request = 'attach',
               processId = require('dap.utils').pick_process,
               cwd = '${workspaceFolder}',
+              console = 'integratedTerminal',
             },
           }
         end
