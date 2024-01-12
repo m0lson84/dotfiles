@@ -32,8 +32,6 @@ encryption = "gpg"
 [data]
 name = {{ $name | quote }}
 email = {{ $email | quote }}
-personal = {{ $personal | quote }}
-spindance = {{ $spindance | quote }}
 work = {{ eq $email $spindance }}
 
 [data.env]
@@ -43,10 +41,13 @@ codespaces = {{ $codespaces }}
 devcontainer = {{ $devcontainer }}
 ephemeral = {{ or $codespaces $devcontainer }}
 
-[data.onepassword]
-address = "my.1password.com"
-account = "QBDDA7S63NEQHDH4VKB6E3SC6I"
+[data.personal]
 email = {{ $personal | quote }}
+onepassword = { account = "QBDDA7S63NEQHDH4VKB6E3SC6I", url = "my.1password.com" }
+
+[data.spindance]
+email = {{ $spindance| quote }}
+onepassword = { account = "LJECLVN5XRBDLE2QRE7B5RFJHM", url = "spindance.1password.com" }
 
 [edit]
 command = {{ $editor | quote }}
