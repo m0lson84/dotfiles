@@ -32,49 +32,50 @@ return {
   -- Configure debug adapter
   {
     'mfussenegger/nvim-dap',
-    opts = function()
+    opts = function(_, opts)
       local dap = require('dap')
-      for _, adapter in ipairs({ 'node', 'pwa-node' }) do
-        if not dap.adapters[adapter] then
-          require('dap').adapters[adapter] = {
-            type = 'server',
-            host = 'localhost',
-            port = '${port}',
-            executable = {
-              command = 'node',
-              args = {
-                require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-                  .. '/js-debug/src/dapDebugServer.js',
-                '${port}',
-              },
+
+      -- Configure node.js adapter
+      if not dap.adapters['pwa-node'] then
+        require('dap').adapters['pwa-node'] = {
+          type = 'server',
+          host = 'localhost',
+          port = '${port}',
+          executable = {
+            command = 'node',
+            args = {
+              require('mason-registry').get_package('js-debug-adapter'):get_install_path()
+                .. '/js-debug/src/dapDebugServer.js',
+              '${port}',
             },
-          }
-        end
+          },
+        }
       end
-      local file_types = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
-      require('dap.ext.vscode').load_launchjs(nil, { ['pwa-node'] = file_types })
-      for _, lang in ipairs(file_types) do
-        if not dap.configurations['pwa-node'] then
-          dap.configurations[lang] = {
-            {
-              name = 'Launch File',
-              type = 'pwa-node',
-              request = 'launch',
-              program = '${file}',
-              cwd = '${workspaceFolder}',
-              console = 'integratedTerminal',
-            },
-            {
-              name = 'Attach to Process',
-              type = 'pwa-node',
-              request = 'attach',
-              processId = require('dap.utils').pick_process,
-              cwd = '${workspaceFolder}',
-              console = 'integratedTerminal',
-            },
-          }
-        end
+
+      -- Define default configurations
+      local filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
+      for _, lang in ipairs(filetypes) do
+        dap.configurations[lang] = {
+          {
+            name = 'Launch File',
+            type = 'pwa-node',
+            request = 'launch',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+            console = 'integratedTerminal',
+          },
+          {
+            name = 'Attach to Process',
+            type = 'pwa-node',
+            request = 'attach',
+            processId = require('dap.utils').pick_process,
+            cwd = '${workspaceFolder}',
+            console = 'integratedTerminal',
+          },
+        }
       end
+
+      return opts
     end,
   },
 

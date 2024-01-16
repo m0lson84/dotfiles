@@ -1,14 +1,9 @@
 --[[
-Global utility functions.
+  Global utility functions.
+  @module Utilities
+  @alias utils
 ]]
 --
-
---- Whether the cursor is on the first column of the line.
-local function cursor_has_words_before()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
 
 --- Get configured logger.
 ---@return PlenaryLogger logger Local logging instance.
@@ -27,7 +22,7 @@ end
 local M = {}
 
 M.config = require('util.config')
-M.cursor = (function() return { has_words_before = cursor_has_words_before } end)()
+M.cursor = require('util.cursor')
 M.dir = require('util.directory')
 M.file = require('util.file')
 M.logger = get_logger

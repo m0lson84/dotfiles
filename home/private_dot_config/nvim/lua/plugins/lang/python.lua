@@ -27,7 +27,7 @@ return {
   {
     'stevearc/conform.nvim',
     opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'black' })
+      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'ruff_format' })
     end,
   },
 
@@ -35,13 +35,18 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      'mfussenegger/nvim-dap-python',
-      config = function()
-        local path = require('mason-registry').get_package('debugpy'):get_install_path()
-        require('dap-python').setup(path .. '/venv/bin/python')
-        require('dap.ext.vscode').load_launchjs()
-      end,
+      {
+        'mfussenegger/nvim-dap-python',
+        config = function()
+          local path = require('mason-registry').get_package('debugpy'):get_install_path()
+          require('dap-python').setup(path .. '/venv/bin/python')
+        end,
+      },
     },
+    opts = function(_, opts)
+      require('dap.ext.vscode').type_to_filetypes.python = { 'python' }
+      return opts
+    end,
   },
 
   -- Configure test runner

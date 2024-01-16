@@ -24,7 +24,7 @@ M.find = function(name, cwd)
   local current_dir = cwd or vim.loop.cwd()
   repeat
     local dir_path = current_dir .. '/' .. name
-    if M.directory_exists(dir_path) then return dir_path end
+    if M.exists(dir_path) then return dir_path end
     current_dir = vim.loop.fs_realpath(current_dir .. '/..')
   until current_dir == '/'
   return nil

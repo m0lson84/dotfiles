@@ -64,6 +64,7 @@ return {
     opts = {
       formatters = {
         ruff_fix = { prepend_args = config.args },
+        ruff_format = {},
       },
     },
   },

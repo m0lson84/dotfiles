@@ -8,7 +8,7 @@
 #
 
 [global]
-load_dotenv = true
+load_dotenv = false
 
 [whitelist]
 prefix = ["~/source"]

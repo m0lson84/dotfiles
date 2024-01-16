@@ -20,9 +20,24 @@ end
 M.find = function(names, cwd)
   for _, file in ipairs(names) do
     local file_path = table.concat({ cwd or vim.loop.cwd(), file }, '/')
-    if M.file_exists(file_path) then return file_path end
+    if M.exists(file_path) then return file_path end
   end
   return nil
+end
+
+--- Search for files matching a given pattern.
+---@param pattern string The file pattern to match.
+---@param root_dir string The root directory to start in.
+---@return string[]
+M.search = function(pattern, root_dir)
+  local matches = {}
+  local files = io.popen('find "' .. root_dir .. '" -type f')
+  if files == nil then return {} end
+  for file in files:lines() do
+    if file:match(pattern) then table.insert(matches, file) end
+  end
+  files:close()
+  return matches
 end
 
 return M
