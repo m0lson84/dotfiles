@@ -32,6 +32,11 @@ if command -v devpod >/dev/null; then
   compdef _devpod devpod
 fi
 
+# Fast Node Manager (fnm)
+if command -v fnm >/dev/null; then
+  eval $(fnm completions --shell zsh)
+fi
+
 # Kubernetes
 if command -v kubectl >/dev/null; then
   source <(kubectl completion zsh)

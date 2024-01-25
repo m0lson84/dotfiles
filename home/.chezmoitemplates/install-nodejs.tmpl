@@ -9,10 +9,10 @@ function install_nodejs() {
   local current
   local desired
 
-  # Check if nodenv is installed
-  command -v nodenv >/dev/null || return 0
+  # Check if fnm is installed
+  command -v fnm >/dev/null || return 0
 
-  current=$(nodenv global)
+  current=$(fnm current)
   desired={{ .nodejs.version }}
 
   echo "Checking Node.js version..."
@@ -23,12 +23,10 @@ function install_nodejs() {
   fi
 
   echo "Installing Node.js $desired..."
-  nodenv install "$desired"
-  nodenv global "$desired"
+  fnm install "$desired"
+  fnm default "$desired"
 
   echo "Installing global dependencies..."
-  eval "$(nodenv init -)"
-  nodenv shell "$desired"
   {{ .nodejs.installer }} {{ .nodejs.globals | join " " }}
 
 }

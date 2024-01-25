@@ -3,7 +3,7 @@ name = 'Michael Olson'
 email = 'michaelolson84@gmail.com'
 
 [nodejs]
-version = '20.9.0'
+version = '20.11.0'
 installer = 'npm install -g'
 globals = ['@nestjs/cli', 'neovim', 'turbo', 'yarn']
 

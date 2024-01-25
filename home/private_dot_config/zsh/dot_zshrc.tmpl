@@ -100,7 +100,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
 
 # Node.js configuration
-command -v nodenv >/dev/null && eval "$(nodenv init -)"
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
 
 # Python configuration
 export PYENV_ROOT="$HOME/.pyenv"
