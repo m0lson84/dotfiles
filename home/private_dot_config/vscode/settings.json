@@ -7,7 +7,6 @@
   "files.autoSave": "onFocusChange",
   "files.associations": { ".env": "dotenv", ".env.*": "dotenv", "*.rest": "http" },
   "files.exclude": { "**/.git": false, "**/__pycache__": true },
-  "notebook.cellToolbarLocation": { "default": "right", "jupyter-notebook": "left" },
   "security.workspace.trust.untrustedFiles": "open",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": true,
@@ -50,6 +49,10 @@
     "textMateRules": []
   },
   "editor.wordWrap": "on",
+
+  // Notebook
+  "notebook.cellToolbarLocation": { "default": "right", "jupyter-notebook": "left" },
+  "notebook.lineNumbers": "on",
 
   // Terminal
   "terminal.external.osxExec": "wezterm.app",
@@ -123,7 +126,7 @@
   // Experimental
   "diffEditor.experimental.showEmptyDecorations": true,
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "vscodevim.vim": 1
   },
 
   // Bash
@@ -377,11 +380,6 @@
   "jest.autoRun": "off",
   "jest.jestCommandLine": "npm test --",
 
-  // Neovim
-  "vscode-neovim.neovimExecutablePaths.darwin": "~/.local/share/bob/nvim-bin/nvim",
-  "vscode-neovim.neovimExecutablePaths.linux": "~/.local/share/bob/nvim-bin/nvim",
-  "vscode-neovim.useWSL": true,
-
   // Prettier
   "prettier.bracketSpacing": true,
   "prettier.printWidth": 120,
@@ -394,5 +392,20 @@
   // Ruff
   "ruff.format.args": [],
   "ruff.importStrategy": "fromEnvironment",
-  "ruff.lint.args": ["--select", "ALL"]
+  "ruff.lint.args": ["--select", "ALL"],
+
+  // Vim
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.highlightedyank.enable": true,
+  "vim.leader": "<space>",
+  "vim.smartRelativeLine": true,
+  "vim.textwidth": 120,
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindings": [
+    { "before": ["H"], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["L"], "commands": ["workbench.action.nextEditor"] },
+    { "before": ["<leader>", "e"], "commands": ["workbench.view.explorer"] },
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"] }
+  ]
 }
