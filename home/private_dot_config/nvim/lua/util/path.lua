@@ -7,7 +7,8 @@
 local M = {}
 
 --- Join a list of paths.
----@param ... string: The paths to join.
+---@param ... string | string[] The paths to join.
+---@return string path The joined path.
 M.join = function(...) return table.concat(vim.tbl_flatten({ ... }), '/') end
 
 return M

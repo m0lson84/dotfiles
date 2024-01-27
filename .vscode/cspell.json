@@ -12,6 +12,8 @@
     "chezmoi",
     "colorcolumn",
     "datetime",
+    "devcontainer",
+    "devpod ",
     "dotenv",
     "devicons",
     "foldenable",

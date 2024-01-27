@@ -10,4 +10,5 @@ return {
   require('plugins.lang'),
   require('plugins.lint'),
   require('plugins.ui'),
+  require('plugins.util'),
 }

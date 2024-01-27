@@ -41,11 +41,17 @@ local stop_session = function() return '<cmd>RemoteStop ' .. vim.fn.input('Works
 return {
   {
     'amitds1997/remote-nvim.nvim',
+    version = '*',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
     keys = {
       { '<leader>rc', create_container, desc = 'Create container' },
       { '<leader>rs', '<cmd>RemoteStart<cr>', desc = 'Start session' },
       { '<leader>rx', stop_session, desc = 'Stop session' },
-      { '<leader>ri', '<cmd>RemoteSessionInfo<cr>', desc = 'Remote session info' },
+      { '<leader>ri', '<cmd>RemoteInfo<cr>', desc = 'Remote session info' },
       { '<leader>rc', cleanup_remote, desc = 'Cleanup remote' },
       { '<leader>rd', delete_config, desc = 'Delete configuration' },
       { '<leader>rl', '<cmd>RemoteLog<cr>', desc = 'Open remote logs' },
