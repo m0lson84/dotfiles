@@ -7,6 +7,11 @@
 -- Add any additional options here
 
 --[[
+-- Environment
+--]]
+vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
+
+--[[
 -- Global variables
 --]]
 
@@ -33,7 +38,8 @@ end
 -- Providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.g.python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+vim.g.node_host_prog = '~/.local/share/mise/installs/node/lts/bin/node'
+vim.g.python3_host_prog = '~/.local/share/mise/installs/python/3.11/bin/python'
 
 -- UI
 vim.g.window_border = 'rounded'

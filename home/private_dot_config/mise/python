@@ -1,0 +1,6 @@
+black
+jupytext
+poetry
+pynvim
+ruff
+ruff-lsp

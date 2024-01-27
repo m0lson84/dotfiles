@@ -1,4 +1,0 @@
-[python]
-version = '3.11.6'
-installer = 'pip install -U'
-globals = ['black', 'jupytext', 'ruff', 'ruff-lsp']

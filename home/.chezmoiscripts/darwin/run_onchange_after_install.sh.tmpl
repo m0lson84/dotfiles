@@ -6,8 +6,6 @@
 
 {{/* Include external functions */}}
 {{ template "install-brewfile.tmpl" . }}
-{{ template "install-nodejs.tmpl" . }}
-{{ template "install-python.tmpl" . }}
 {{ template "install-rust.tmpl" . }}
 
 
@@ -21,12 +19,6 @@ eval "$($(brew --prefix)/bin/brew shellenv)"
 
 # Install dependencies
 install_brewfile
-
-# Install / update Node.js
-install_nodejs
-
-# Install / update Python
-install_python
 
 # Install Rust
 install_rust

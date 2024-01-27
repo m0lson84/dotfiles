@@ -6,8 +6,6 @@
 
 {{/* Include external functions */}}
 {{ template "install-brewfile.tmpl" . }}
-{{ template "install-nodejs.tmpl" . }}
-{{ template "install-python.tmpl" . }}
 {{ template "install-rust.tmpl" . }}
 {{ template "vscode-extensions.tmpl" . }}
 
@@ -25,12 +23,6 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 
 # Install dependencies
 install_brewfile
-
-# Install / update Node.js
-install_nodejs
-
-# Install / update Python
-install_python
 
 # Install Rust
 install_rust

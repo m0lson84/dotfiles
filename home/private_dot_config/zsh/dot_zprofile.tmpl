@@ -1,16 +1,31 @@
-#                          __ _ _      
-#                         / _(_) |     
-#     _____ __  _ __ ___ | |_ _| | ___ 
+
+{{- /* Additional paths */ -}}
+{{- $paths := list "${HOME}/.local/bin" "/usr/local/bin" -}}
+{{- if not .env.ephemeral -}} {{- $paths = concat $paths ( list "$HOME/.local/share/mise/shims" ) -}} {{- end -}}
+{{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
+{{- if eq .env.os "darwin" -}}
+{{- $paths = concat $paths ( list
+  "/usr/local/opt/openssl@1.1/bin"
+  "/usr/local/opt/python@3.10/bin"
+  "/usr/local/sbin" )
+-}}
+{{- end -}}
+
+
+#                          __ _ _
+#                         / _(_) |
+#     _____ __  _ __ ___ | |_ _| | ___
 #    |_  / '_ \| '__/ _ \|  _| | |/ _ \
 #   _ / /| |_) | | | (_) | | | | |  __/
 #  (_)___| .__/|_|  \___/|_| |_|_|\___|
-#        | |                           
-#        |_|                           
+#        | |
+#        |_|
 
 
 # Additional paths
-export PATH=$PATH:.
-PATH="/usr/local/bin:$PATH"
+{{- range ( $paths | sortAlpha | uniq ) }}
+export PATH="{{ . }}:$PATH"
+{{- end }}
 
 # AWS SDK config
 export AWS_SDK_LOAD_CONFIG=1
@@ -18,9 +33,15 @@ export AWS_SDK_LOAD_CONFIG=1
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
 
+# Neovim configuration
+export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
+
 {{ if eq .env.os "darwin" -}}
 
 # OrbStack: command-line tools and integration
 source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
 
 {{- end }}
+
+# Poetry configuration
+export POETRY_HOME="${HOME}/.local/share/pypoetry"

@@ -117,28 +117,6 @@ function install_gcm() {
 }
 
 #######################################
-# Install pyenv
-# https://github.com/pyenv/pyenv#automatic-installer
-# Globals:
-#   None
-# Arguments:
-#   None
-#######################################
-function install_pyenv() {
-  echo "Installing pyenv..."
-
-  # Install dependencies
-  sudo apt update
-  sudo apt install -y make build-essential libssl-dev zlib1g-dev \
-    libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev \
-    xz-utils libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev llvm tk-dev
-
-  # Install pyenv
-  curl https://pyenv.run | bash
-
-}
-
-#######################################
 # Install Speedtest CLI
 # https://www.speedtest.net/apps/cli
 # Globals:
@@ -196,9 +174,6 @@ install_gcm
 # Install Homebrew
 install_homebrew
 homebrew_postinstall
-
-# Install pyenv
-install_pyenv
 
 # Install Speedtest CLI
 install_speedtest

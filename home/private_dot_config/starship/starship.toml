@@ -125,7 +125,6 @@ symbol = " "
 
 [python]
 format = "[$symbol$version]($style) "
-pyenv_version_name = true
 symbol = " "
 
 [ruby]

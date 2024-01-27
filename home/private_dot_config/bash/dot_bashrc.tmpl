@@ -41,21 +41,16 @@ if command -v op >/dev/null; then
   source <(op completion bash)
 fi
 
-# Golang configuration
-export GOPATH="$HOME/go"
-export PATH="${GOPATH}/bin:$PATH"
+# mise-en-place configuration
+export MISE_ENV_FILE=.env
+export MISE_GO_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/golang"
+export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
+export MISE_PYTHON_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/python"
+command -v mise >/dev/null && eval "$(mise activate bash)"
+command -v mise >/dev/null && eval "$(mise hook-env -s bash)"
 
 # Neovim configuration
 export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
-
-# Node.js configuration
-command -v nodenv >/dev/null && eval "$(nodenv init -)"
-
-# Python environment configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 # Rust configuration
 source "${HOME}/.cargo/env"
