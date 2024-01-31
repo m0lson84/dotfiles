@@ -32,6 +32,7 @@ local load_launchjs = function(path)
   for _, filetype in ipairs(vscode.type_to_filetypes.node) do
     if not dap.configurations[filetype] then goto continue end
     for _, config in ipairs(dap.configurations[filetype]) do
+      config.console = 'integratedTerminal'
       if config.type == 'node' then config.type = 'pwa-node' end
     end
     ::continue::
