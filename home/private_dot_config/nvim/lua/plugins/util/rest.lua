@@ -15,7 +15,7 @@ return {
       stay_in_current_window_after_split = true,
     },
     keys = {
-      { '<leader>ch', '<Plug>RestNvim', desc = 'Execute HTTP request' },
+      { '<leader>ch', '<Plug>RestNvim', ft = 'http', desc = 'Execute HTTP request' },
     },
   },
 }
