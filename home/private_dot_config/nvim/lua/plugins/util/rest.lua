@@ -17,5 +17,6 @@ return {
     keys = {
       { '<leader>ch', '<Plug>RestNvim', ft = 'http', desc = 'Execute HTTP request' },
     },
+    config = function(_, opts) require('rest-nvim').setup(opts) end,
   },
 }
