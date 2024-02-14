@@ -10,6 +10,7 @@
 
 [settings]
 experimental = true
+go_set_gobin = false
 
 [tools]
 go = "1.22"
