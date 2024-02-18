@@ -23,3 +23,7 @@ customCommands:
     context: 'files'
     loadingText: 'opening commitizen commit tool'
     subprocess: true
+  - key: 'u'
+    command: 'git undo'
+    description: 'Undo last commit'
+    context: 'files'
