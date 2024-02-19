@@ -19,4 +19,12 @@ return {
     },
     config = function(_, opts) require('rest-nvim').setup(opts) end,
   },
+  {
+    'folke/edgy.nvim',
+    opts = function(_, opts)
+      opts.right = vim.list_extend(opts.right or {}, {
+        { title = 'REST Client', ft = 'httpResult', size = { width = 0.4 } },
+      })
+    end,
+  },
 }

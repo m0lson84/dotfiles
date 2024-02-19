@@ -17,7 +17,7 @@ return {
   },
   {
     'Vigemus/iron.nvim',
-    config = function(_, opts) require('iron.core').setup(opts) end,
+    main = 'iron.core',
     opts = function()
       return {
         highlight = { italic = true },
@@ -30,7 +30,7 @@ return {
             sh = require('iron.fts.sh').zsh,
             typescript = require('iron.fts.typescript').ts,
           },
-          repl_open_cmd = require('iron.view').right('40%'),
+          repl_open_cmd = require('iron.view').split.right('40%'),
         },
         keymaps = {
           interupt = '<space>jk',
@@ -45,6 +45,14 @@ return {
       { '<leader>jc', function() util.notebook.insert_cell('# %%') end, desc = 'Insert code cell' },
       { '<leader>jm', function() util.notebook.insert_cell('# %% [markdown]') end, desc = 'Insert markdown cell' },
     },
+  },
+  {
+    'folke/edgy.nvim',
+    opts = function(_, opts)
+      opts.right = vim.list_extend(opts.right or {}, {
+        { title = 'REPL', ft = 'iron.nvim', size = { width = 0.4 } },
+      })
+    end,
   },
   {
     'folke/which-key.nvim',
