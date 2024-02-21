@@ -35,6 +35,9 @@ end
 --- Delete workspace configuration.
 local delete_config = function() return '<cmd>RemoteConfigDel ' .. vim.fn.input('Workspace: ') .. '<cr>' end
 
+--- Path to the Neovim installation script.
+local install_script = function() return util.path.join(vim.fn.stdpath('config'), 'scripts', 'neovim_install.sh') end
+
 --- Stop remote session.
 local stop_session = function() return '<cmd>RemoteStop ' .. vim.fn.input('Workspace: ') .. '<cr>' end
 
@@ -57,9 +60,8 @@ return {
       { '<leader>rl', '<cmd>RemoteLog<cr>', desc = 'Open remote logs' },
     },
     opts = {
-      neovim_install_script_path = util.path.join(vim.fn.stdpath('config'), 'scripts', 'neovim_install.sh'),
-      neovim_user_config_path = vim.fn.stdpath('config'),
-      local_client_config = { callback = client_launch },
+      client_callback = client_launch,
+      neovim_install_script_path = install_script(),
       log = { level = 'debug' },
     },
   },

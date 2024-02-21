@@ -38,8 +38,8 @@ end
 -- Providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.g.node_host_prog = '~/.local/share/mise/installs/node/lts/bin/node'
-vim.g.python3_host_prog = '~/.local/share/mise/installs/python/3.11/bin/python'
+vim.g.node_host_prog = vim.fn.expand('~/.local/share/mise/installs/node/lts/bin/neovim-node-host')
+vim.g.python3_host_prog = vim.fn.expand('~/.local/share/mise/installs/python/3.11/bin/python')
 
 -- UI
 vim.g.window_border = 'rounded'

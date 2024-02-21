@@ -33,7 +33,7 @@ return {
           repl_open_cmd = require('iron.view').split.right('40%'),
         },
         keymaps = {
-          interupt = '<space>jk',
+          interrupt = '<space>jk',
           exit = '<space>jq',
         },
       }
