@@ -67,12 +67,16 @@ return {
 
       -- Map debug adapters to filetypes
       vscode.type_to_filetypes = {
+        delve = { 'go' },
         go = { 'go' },
         lldb = { 'cpp', 'c', 'rust' },
         node = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         ['pwa-node'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         python = { 'python' },
       }
+
+      -- Load configurations from launch.json
+      vscode.load_launchjs()
 
       return opts
     end,
@@ -92,8 +96,8 @@ return {
         },
         {
           elements = {
-            { id = 'console', size = 0.65 },
-            { id = 'repl', size = 0.35 },
+            { id = 'repl', size = 0.5 },
+            { id = 'console', size = 0.5 },
           },
           position = 'bottom',
           size = 15,

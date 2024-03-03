@@ -13,6 +13,17 @@ return {
     end,
   },
 
+  -- Configure debug adapter
+  {
+    'mfussenegger/nvim-dap',
+    opts = function(_, opts)
+      for _, config in ipairs(require('dap').configurations.go) do
+        config.console = 'integratedTerminal'
+      end
+      return opts
+    end,
+  },
+
   -- Code annotations and documentation
   {
     'danymat/neogen',
