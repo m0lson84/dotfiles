@@ -15,4 +15,4 @@ go_set_gobin = false
 [tools]
 go = "1.22"
 node = "lts"
-python = "3.11"
+python = "3.12"
