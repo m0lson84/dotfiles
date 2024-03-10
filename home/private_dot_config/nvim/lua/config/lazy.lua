@@ -2,9 +2,14 @@
 Core LazyVim config
 --]]
 
+-- Import utility functions
+local util = require('util')
+
+-- Path to lazy.nvim installation
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-if not vim.loop.fs_stat(lazypath) then
+-- Check if lazy.nvim is installed
+if not util.dir.exists(lazypath) then
   vim.fn.system({
     'git',
     'clone',
@@ -15,8 +20,10 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
+-- Add lazy.nvim to runtimepath
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+-- Setup lazy.nvim
 require('lazy').setup({
   spec = {
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },

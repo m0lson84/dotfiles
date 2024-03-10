@@ -4,7 +4,8 @@
   @alias config
 --]]
 
-local directory = require('util.directory')
+-- Import utility functions
+local util = { dir = require('util.directory') }
 
 local M = {}
 
@@ -16,11 +17,11 @@ M.dir = function(path) return M.vim(path) or M.vscode(path) end
 --- Get the path to the Neovim (Vim) configuration directory (if exists).
 ---@param path string|nil Path to the directory to start searching in. Defaults to the current working directory.
 ---@return string|nil
-M.vim = function(path) return directory.find('.vim', path or vim.loop.cwd()) end
+M.vim = function(path) return util.dir.find('.vim', path or vim.fn.getcwd()) end
 
 --- Get the path to the VS Code configuration directory (if exists).
 ---@param path string|nil Path to the directory to start searching in. Defaults to the current working directory.
 ---@return string|nil
-M.vscode = function(path) return directory.find('.vscode', path or vim.loop.cwd()) end
+M.vscode = function(path) return util.dir.find('.vscode', path or vim.fn.getcwd()) end
 
 return M

@@ -5,28 +5,28 @@
 --]]
 
 --- Whether current os is windows.
-local is_windows = vim.loop.os_uname().version:match('Windows')
+local is_windows = jit.os:find('Windows')
 
 local M = {}
 
---- Whether a directory exists at the given path.
+--- Checks whether a directory exists at the given path.
 ---@param path string: The path to check.
 M.exists = function(path)
-  local stat = vim.loop.fs_stat(path)
-  return stat and stat.type == 'directory' or false
+  local full_path = vim.fn.resolve(path)
+  return vim.fn.isdirectory(full_path) ~= 0
 end
 
 --- Get the path to the input directory (if exists).
 ---@param name string The name of the directory to find.
----@param cwd string|nil The current working directory. Defaults to the current working directory.
+---@param start_dir string|nil The path in which to start the search. Defaults to the current working directory.
 ---@return string|nil
-M.find = function(name, cwd)
-  local current_dir = cwd or vim.loop.cwd()
+M.find = function(name, start_dir)
+  local current = vim.fn.resolve(start_dir) or vim.fn.getcwd()
   repeat
-    local dir_path = current_dir .. '/' .. name
-    if M.exists(dir_path) then return dir_path end
-    current_dir = vim.loop.fs_realpath(current_dir .. '/..')
-  until current_dir == '/'
+    local path = current .. '/' .. name
+    if M.exists(path) then return path end
+    current = vim.fn.resolve(current .. '/..')
+  until current == '/'
   return nil
 end
 
