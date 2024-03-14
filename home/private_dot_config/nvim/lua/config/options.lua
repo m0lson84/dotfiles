@@ -51,6 +51,7 @@ vim.g.window_border = 'rounded'
 local opt = vim.opt
 
 -- Code folding options
+opt.foldcolumn = '1'
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
