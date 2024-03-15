@@ -35,6 +35,7 @@ if util.get_target().platform == 'windows' then config.default_prog = { 'ubuntu'
 
 require('appearance').apply(config)
 require('font').apply(config)
+require('hyperlink').apply(config)
 require('keymaps').apply(config)
 require('events')
 
