@@ -30,4 +30,15 @@ return {
     'folke/noice.nvim',
     opts = function(_, opts) opts.presets.lsp_doc_border = true end,
   },
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true,
+    opts = {
+      override_by_filename = {
+        -- TODO: Remove once symbols-only nerd font update is released
+        -- https://github.com/ryanoasis/nerd-fonts/commit/a4ccb3b6feb0bd42b858164b8e21723e27311b01
+        ['.prettierrc'] = {},
+      },
+    },
+  },
 }
