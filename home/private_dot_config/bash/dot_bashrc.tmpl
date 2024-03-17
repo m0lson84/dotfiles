@@ -4,7 +4,7 @@
 {{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
 
 {{- /* Additional configurations */ -}}
-{{- $configs := list ".fzf.bash" "aliases.bash" "completions.zsh" -}}
+{{- $configs := list ".fzf.bash" "aliases.bash" "completions.bash" -}}
 
 
 #     _               _
@@ -65,5 +65,5 @@ fi
 
 # Load additional configurations
 {{- range ( $configs | sortAlpha | uniq ) }}
-source "$XDG_CONFIG_HOME"/zsh/{{ . }}
+source "$XDG_CONFIG_HOME"/bash/{{ . }}
 {{- end }}
