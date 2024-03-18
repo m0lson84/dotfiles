@@ -12,6 +12,7 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim' },
     ft = 'hurl',
     opts = {
+      debug = true,
       mode = 'popup',
     },
     keys = {
