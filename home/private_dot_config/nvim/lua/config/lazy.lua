@@ -45,7 +45,7 @@ require('lazy').setup({
   defaults = { lazy = false, version = false },
   install = { colorscheme = { 'tokyonight', 'habamax' } },
   checker = { enabled = true },
-  ui = { title = ' lazy.nvim ', border = 'single' },
+  ui = { title = ' lazy.nvim ', border = 'rounded' },
   performance = {
     rtp = {
       disabled_plugins = {
