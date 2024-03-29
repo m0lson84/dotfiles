@@ -7,10 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed or {}, { 'templ' })
-      vim.treesitter.language.register('gotmpl', 'tmpl')
-    end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'gotmpl', 'templ' }) end,
   },
 
   -- Configure debug adapter

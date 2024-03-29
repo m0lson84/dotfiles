@@ -69,6 +69,7 @@ vim.filetype.add({
     env = 'dotenv',
     http = 'http',
     rest = 'http',
+    tmpl = 'gotmpl',
   },
   filename = {
     ['.env'] = 'dotenv',
