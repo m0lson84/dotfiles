@@ -75,6 +75,12 @@ return {
     },
   },
 
+  -- Auto bracket support
+  {
+    'hrsh7th/nvim-cmp',
+    opts = function(_, opts) vim.list_extend(opts.auto_brackets or {}, { 'python' }) end,
+  },
+
   -- Activate virtual environment
   {
     'linux-cultist/venv-selector.nvim',

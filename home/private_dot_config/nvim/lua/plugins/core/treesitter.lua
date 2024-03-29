@@ -7,6 +7,6 @@ return {
   opts = {
     highlight = { enable = true, additional_vim_regex_highlighting = true },
     indent = { enable = true },
-    ensure_installed = { 'git_config', 'gitignore', 'html', 'make', 'query', 'regex', 'vim', 'vimdoc' },
+    ensure_installed = { 'git_config', 'gitignore', 'html', 'kdl', 'make', 'query', 'regex', 'vim', 'vimdoc' },
   },
 }

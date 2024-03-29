@@ -20,7 +20,7 @@ if not util.dir.exists(lazypath) then
   })
 end
 
--- Add lazy.nvim to runtimepath
+-- Add lazy.nvim to runtime path
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 -- Setup lazy.nvim
