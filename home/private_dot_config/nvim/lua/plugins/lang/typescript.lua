@@ -5,14 +5,45 @@ Javascript / Typescript language support
 -- Import utility functions
 local util = require('util')
 
+--- Register a code action with the LSP client
+---@param action string The action to be performed.
+---@return function
+local code_action = function(action)
+  return function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { action },
+        diagnostics = {},
+      },
+    })
+  end
+end
+
 return {
+
+  -- Add languages to treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'javascript', 'typescript', 'tsx' }) end,
+  },
 
   -- Configure language server
   {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        tsserver = {},
+        tsserver = {
+          keys = {
+            { '<leader>co', code_action('source.organizeImports'), desc = 'Organize Imports' },
+            { '<leader>cR', code_action('source.removeUnused'), desc = 'Remove Unused Imports' },
+          },
+          settings = {
+            completions = {
+              completeFunctionCalls = true,
+            },
+          },
+        },
       },
     },
   },
@@ -32,6 +63,12 @@ return {
   -- Configure debug adapter
   {
     'mfussenegger/nvim-dap',
+    dependencies = {
+      {
+        'williamboman/mason.nvim',
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'js-debug-adapter' }) end,
+      },
+    },
     opts = function(_, opts)
       local dap = require('dap')
 
