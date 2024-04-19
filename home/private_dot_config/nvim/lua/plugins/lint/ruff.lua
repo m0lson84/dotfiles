@@ -14,12 +14,12 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff-lsp' }) end,
+        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff' }) end,
       },
     },
     opts = {
       servers = {
-        ruff_lsp = {
+        ruff = {
           init_options = {
             settings = { args = config.args },
           },
@@ -44,7 +44,7 @@ return {
       setup = {
         ruff_lsp = function()
           require('lazyvim.util').lsp.on_attach(function(client, _)
-            if client.name ~= 'ruff_lsp' then return end
+            if client.name ~= 'ruff' then return end
             client.server_capabilities.hoverProvider = false
           end)
         end,
@@ -55,12 +55,6 @@ return {
   -- Configure formatter
   {
     'stevearc/conform.nvim',
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ruff' }) end,
-      },
-    },
     opts = {
       formatters = {
         ruff_fix = { prepend_args = config.args },
