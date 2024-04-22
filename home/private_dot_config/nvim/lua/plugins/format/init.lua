@@ -9,4 +9,5 @@ return {
   require('plugins.format.prettier'),
   require('plugins.format.shfmt'),
   require('plugins.format.stylua'),
+  require('plugins.format.taplo'),
 }

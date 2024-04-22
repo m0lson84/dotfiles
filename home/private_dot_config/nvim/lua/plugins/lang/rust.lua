@@ -26,7 +26,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ron', 'rust', 'toml' }) end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ron', 'rust' }) end,
   },
 
   -- Configure language plugin

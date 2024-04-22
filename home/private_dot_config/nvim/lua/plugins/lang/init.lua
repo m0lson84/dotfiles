@@ -11,6 +11,7 @@ return {
   require('plugins.lang.markdown'),
   require('plugins.lang.python'),
   require('plugins.lang.rust'),
+  require('plugins.lang.toml'),
   require('plugins.lang.typescript'),
   require('plugins.lang.yaml'),
 }
