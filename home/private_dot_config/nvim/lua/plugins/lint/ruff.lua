@@ -25,12 +25,20 @@ return {
           },
           commands = {
             RuffAutoFix = {
-              function() vim.lsp.buf.code_action({ context = { only = { 'source.fixAll.ruff' } }, apply = true }) end,
+              function()
+                vim.lsp.buf.code_action({
+                  context = { only = { 'source.fixAll' }, diagnostics = {} },
+                  apply = true,
+                })
+              end,
               description = 'Fix All',
             },
             RuffOrganizeImports = {
               function()
-                vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports.ruff' } }, apply = true })
+                vim.lsp.buf.code_action({
+                  context = { only = { 'source.organizeImports' }, diagnostics = {} },
+                  apply = true,
+                })
               end,
               description = 'Organize Imports',
             },
