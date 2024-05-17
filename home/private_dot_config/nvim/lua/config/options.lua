@@ -19,6 +19,9 @@ vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
+-- Show deprecation warnings
+vim.g.deprecation_warnings = true
+
 -- System clipboard provider
 if vim.env.WSLENV then
   vim.g.clipboard = {

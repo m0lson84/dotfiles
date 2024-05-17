@@ -13,7 +13,7 @@
     "pyright": {
       "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
     },
-    "ruff_lsp": {
+    "ruff": {
       "fixAll": true,
       "organizeImports": true
     },

@@ -23,34 +23,22 @@ return {
           init_options = {
             settings = { args = config.args },
           },
-          commands = {
-            RuffAutoFix = {
-              function()
-                vim.lsp.buf.code_action({
-                  context = { only = { 'source.fixAll' }, diagnostics = {} },
-                  apply = true,
-                })
-              end,
-              description = 'Fix All',
-            },
-            RuffOrganizeImports = {
+          keys = {
+            {
+              '<leader>co',
               function()
                 vim.lsp.buf.code_action({
                   context = { only = { 'source.organizeImports' }, diagnostics = {} },
                   apply = true,
                 })
               end,
-              description = 'Organize Imports',
+              desc = 'Organize Imports',
             },
-          },
-          keys = {
-            { '<leader>cf', '<cmd>RuffAutoFix<CR>', desc = 'Fix All' },
-            { '<leader>co', '<cmd>RuffOrganizeImports<CR>', desc = 'Organize Imports' },
           },
         },
       },
       setup = {
-        ruff_lsp = function()
+        ruff = function()
           require('lazyvim.util').lsp.on_attach(function(client, _)
             if client.name ~= 'ruff' then return end
             client.server_capabilities.hoverProvider = false

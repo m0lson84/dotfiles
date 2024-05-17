@@ -6,9 +6,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     opts = function(_, opts)
-      opts.format_notify = false
-      opts.inlay_hints = { enabled = true }
       require('lspconfig.ui.windows').default_options = { border = vim.g.window_border }
+      return opts
     end,
   },
   {
