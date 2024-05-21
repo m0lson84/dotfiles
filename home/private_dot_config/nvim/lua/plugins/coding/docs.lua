@@ -10,13 +10,12 @@ return {
       {
         '<leader>cD',
         '<cmd>Neogen<cr>',
-        ft = { 'bash', 'go', 'javascript', 'lua', 'python', 'rust', 'sh', 'typescript', 'zsh' },
+        ft = { 'bash', 'cs', 'go', 'javascript', 'lua', 'python', 'rust', 'sh', 'typescript', 'zsh' },
         desc = 'Generate Docs',
       },
     },
     opts = {
       languages = {},
-      snippet_engine = 'luasnip',
     },
   },
 }

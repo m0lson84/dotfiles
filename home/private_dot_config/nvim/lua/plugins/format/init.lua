@@ -4,6 +4,7 @@ Additional formatter plugins
 
 return {
   require('plugins.format.black'),
+  require('plugins.format.csharpier'),
   require('plugins.format.gofumpt'),
   require('plugins.format.goimports'),
   require('plugins.format.prettier'),

@@ -4,6 +4,7 @@ Additional language server protocol (LSP) plugins
 
 return {
   require('plugins.lang.bash'),
+  require('plugins.lang.csharp'),
   require('plugins.lang.docker'),
   require('plugins.lang.go'),
   require('plugins.lang.json'),
