@@ -1,5 +1,11 @@
 
+{{- /* Credential helper */ -}}
 {{- $credentials := "manager" -}}
+{{- if .env.wsl -}}
+{{- $credentials = "/mnt/c/Program\\\\ Files/Git/mingw64/bin/git-credential-manager.exe" -}}
+{{- end -}}
+
+{{- /* Credential store */ -}}
 {{- $store := "gpg" -}}
 {{- if eq .env.os "darwin" -}}
 {{- $store = "keychain" -}}
