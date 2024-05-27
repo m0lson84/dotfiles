@@ -42,7 +42,7 @@ return {
             cargo = {
               allFeatures = true,
               loadOutDirsFromCheck = true,
-              runBuildScripts = true,
+              buildScripts = { enable = true },
             },
             checkOnSave = {
               allFeatures = true,
@@ -61,7 +61,7 @@ return {
         },
       },
     },
-    config = function(_, opts) vim.g.rustaceanvim = opts end,
+    config = function(_, opts) vim.g.rustaceanvim = vim.tbl_deep_extend('keep', vim.g.rustaceanvim or {}, opts) end,
   },
 
   -- Configure language server
@@ -76,6 +76,12 @@ return {
         },
       },
     },
+  },
+
+  -- Configure debug adapter
+  {
+    'williamboman/mason.nvim',
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'codelldb' }) end,
   },
 
   -- Configure test runner
@@ -103,7 +109,7 @@ return {
         'Saecki/crates.nvim',
         event = { 'BufRead Cargo.toml' },
         opts = {
-          src = { cmp = { enabled = true } },
+          completion = { cmp = { enabled = true } },
         },
       },
     },
