@@ -3,7 +3,8 @@
     "bashls": {},
     "eslint": {
       "format": true,
-      "codeActionsOnSave": {
+      "run": "onSave",
+      "codeActionOnSave": {
         "enable": true,
         "mode": "all"
       }

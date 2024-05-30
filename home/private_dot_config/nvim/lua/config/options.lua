@@ -68,6 +68,7 @@ opt.formatexpr = 'v:lua.require\'conform\'.formatexpr()'
 
 vim.filetype.add({
   extension = {
+    ['code-workspace'] = 'jsonc',
     conf = 'conf',
     env = 'dotenv',
     http = 'http',

@@ -86,7 +86,7 @@ return {
       opts.formatters_by_ft = util.table.extend_keys(
         opts.formatters_by_ft,
         { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-        { 'eslint_d', 'prettierd' }
+        {}
       )
     end,
   },
