@@ -5,21 +5,6 @@ Javascript / Typescript language support
 -- Import utility functions
 local util = require('util')
 
---- Register a code action with the LSP client
----@param action string The action to be performed.
----@return function
-local code_action = function(action)
-  return function()
-    vim.lsp.buf.code_action({
-      apply = true,
-      context = {
-        only = { action },
-        diagnostics = {},
-      },
-    })
-  end
-end
-
 return {
 
   -- Add languages to treesitter
@@ -30,22 +15,68 @@ return {
 
   -- Configure language server
   {
+    'yioneko/nvim-vtsls',
+    lazy = true,
+    opts = {},
+    config = function(_, opts) require('vtsls').config(opts) end,
+  },
+  {
     'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        tsserver = {
-          keys = {
-            { '<leader>co', code_action('source.organizeImports'), desc = 'Organize Imports' },
-            { '<leader>cR', code_action('source.removeUnused'), desc = 'Remove Unused Imports' },
-          },
-          settings = {
-            completions = {
-              completeFunctionCalls = true,
+    opts = function(_, opts)
+      local lang = {
+        updateImportsOnFileMove = {
+          enabled = 'always',
+        },
+        suggest = {
+          completeFunctionCalls = true,
+          includeCompletionsForImportStatements = true,
+        },
+      }
+      opts.servers.vtsls = {
+        settings = {
+          complete_function_calls = true,
+          vtsls = {
+            autoUseWorkspaceTsdk = true,
+            enableMoveToFileCodeAction = true,
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
             },
           },
+          javascript = lang,
+          typescript = lang,
         },
-      },
-    },
+        keys = {
+          {
+            'gD',
+            function() require('vtsls').commands.goto_source_definition(0) end,
+            desc = 'Goto Source Definition',
+          },
+          {
+            'gR',
+            function() require('vtsls').commands.file_references(0) end,
+            desc = 'File References',
+          },
+          {
+            '<leader>cD',
+            function() require('vtsls').commands.fix_all(0) end,
+            desc = 'Fix all diagnostics',
+          },
+          {
+            '<leader>cM',
+            function() require('vtsls').commands.add_missing_imports(0) end,
+            desc = 'Add missing imports',
+          },
+          {
+            '<leader>co',
+            function() require('vtsls').commands.organize_imports(0) end,
+            desc = 'Organize Imports',
+          },
+        },
+      }
+      return opts
+    end,
   },
 
   -- Configure formatters
