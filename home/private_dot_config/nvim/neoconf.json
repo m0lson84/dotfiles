@@ -1,5 +1,6 @@
 {
   "lspconfig": {
+    "basedpyright": {},
     "bashls": {},
     "eslint": {
       "format": true,
@@ -11,12 +12,11 @@
     },
     "jsonls": {},
     "lua_ls": {},
-    "pyright": {
-      "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
+    "python": {
+      "pythonPath": "${workspaceFolder}/.venv/bin/python"
     },
     "ruff": {
-      "fixAll": true,
-      "organizeImports": true
+      "lint.select": ["ALL"]
     },
     "rust_analyzer": {},
     "tsserver": {},

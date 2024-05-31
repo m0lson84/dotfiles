@@ -2,10 +2,6 @@
 Ruff (https://beta.ruff.rs/docs/)
 --]]
 
-local config = {
-  args = { '--select', 'ALL' },
-}
-
 return {
 
   -- Configure language server
@@ -20,9 +16,7 @@ return {
     opts = {
       servers = {
         ruff = {
-          init_options = {
-            settings = { args = config.args },
-          },
+          settings = {},
           keys = {
             {
               '<leader>co',
@@ -44,17 +38,6 @@ return {
             client.server_capabilities.hoverProvider = false
           end)
         end,
-      },
-    },
-  },
-
-  -- Configure formatter
-  {
-    'stevearc/conform.nvim',
-    opts = {
-      formatters = {
-        ruff_fix = { prepend_args = config.args },
-        ruff_format = {},
       },
     },
   },
