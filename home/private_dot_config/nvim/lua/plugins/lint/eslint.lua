@@ -10,6 +10,9 @@ return {
       servers = {
         eslint = {
           settings = {
+            format = true,
+            run = 'onSave',
+            codeActionsOnSave = { enable = true, mode = 'all' },
             workingDirectories = { mode = 'auto' },
           },
         },

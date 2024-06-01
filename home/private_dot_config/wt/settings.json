@@ -31,7 +31,7 @@
         "name": "PowerShell",
         "source": "Windows.Terminal.PowershellCore",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "font": { "face": "MesloLGM Nerd Font", "size": 9.0 },
+        "font": { "face": "JetBrainsMono Nerd Font", "size": 9.0 },
         "cursorShape": "filledBox",
         "scrollbarState": "hidden",
         "hidden": false

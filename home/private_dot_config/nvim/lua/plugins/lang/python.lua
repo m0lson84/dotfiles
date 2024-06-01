@@ -88,13 +88,12 @@ return {
   -- Activate virtual environment
   {
     'linux-cultist/venv-selector.nvim',
+    branch = 'regexp',
+    ft = 'python',
     cmd = 'VenvSelect',
     keys = {
       { '<leader>cv', '<cmd>:VenvSelect<cr>', ft = 'python', desc = 'Select VirtualEnv' },
     },
-    opts = {
-      name = { '.venv', 'venv' },
-      dap_enabled = true,
-    },
+    opts = {},
   },
 }

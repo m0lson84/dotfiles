@@ -15,6 +15,7 @@ return {
 
   -- Configure language server
   {
+    -- TODO: Remove once LazyVim 12.6.0 is landed
     'yioneko/nvim-vtsls',
     lazy = true,
     opts = {},

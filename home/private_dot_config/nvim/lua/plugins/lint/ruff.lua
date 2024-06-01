@@ -16,7 +16,11 @@ return {
     opts = {
       servers = {
         ruff = {
-          settings = {},
+          settings = {
+            lint = {
+              select = { 'ALL' },
+            },
+          },
           keys = {
             {
               '<leader>co',
