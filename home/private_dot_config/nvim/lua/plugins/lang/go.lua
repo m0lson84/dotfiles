@@ -65,10 +65,11 @@ return {
       },
       setup = {
         gopls = function(_, _)
-          require('lazyvim.util').lsp.on_attach(function(client, _)
+          LazyVim.lsp.on_attach(function(client, _)
             if client.name ~= 'gopls' then return end
             if client.server_capabilities.semanticTokensProvider then return end
             local semantic = client.config.capabilities.textDocument.semanticTokens
+            if not semantic then return end
             client.server_capabilities.semanticTokensProvider = {
               full = true,
               range = true,

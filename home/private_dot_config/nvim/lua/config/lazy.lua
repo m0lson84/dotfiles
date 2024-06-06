@@ -2,14 +2,11 @@
 Core LazyVim config
 --]]
 
--- Import utility functions
-local util = require('util')
-
 -- Path to lazy.nvim installation
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Check if lazy.nvim is installed
-if not util.dir.exists(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     'git',
     'clone',

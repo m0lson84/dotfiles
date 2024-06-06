@@ -19,9 +19,13 @@ return {
       },
       setup = {
         eslint = function()
-          local config = { name = 'eslint: lsp', primary = false, priority = 200, filter = 'eslint' }
-          local formatter = require('lazyvim.util').lsp.formatter(config)
-          require('lazyvim.util').format.register(formatter)
+          local formatter = LazyVim.lsp.formatter({
+            name = 'eslint: lsp',
+            primary = false,
+            priority = 200,
+            filter = 'eslint',
+          })
+          LazyVim.format.register(formatter)
         end,
       },
     },

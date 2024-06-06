@@ -68,8 +68,7 @@ return {
           ['<c-Down>'] = function(win) win:resize('height', -2) end,
         },
       }
-      local util = require('lazyvim.util')
-      if util.has('symbols-outline.nvim') then
+      if LazyVim.has('symbols-outline.nvim') then
         table.insert(opts.left, {
           title = 'Outline',
           ft = 'Outline',

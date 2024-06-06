@@ -2,12 +2,10 @@
 Core LazyVim keymaps
 --]]
 
-local util = require('lazyvim.util')
-
 --- Open LazyGit in a terminal window.
 ---@param cwd string|nil The current working directory.
 local lazygit = function(cwd)
-  util.terminal({ 'lazygit' }, { cwd = cwd, border = 'none', esc_esc = false, ctrl_hjkl = false })
+  LazyVim.terminal({ 'lazygit' }, { cwd = cwd, border = 'none', esc_esc = false, ctrl_hjkl = false })
 end
 
 --- Switch to terminal tab if running in Zellij else open lazyterm.
@@ -17,7 +15,7 @@ local terminal = function()
     vim.fn.system({ 'zellij', 'action', 'switch-mode', 'normal' })
     return
   end
-  util.terminal()
+  LazyVim.terminal()
 end
 
 -- Keymaps are automatically loaded on the VeryLazy event
@@ -28,7 +26,7 @@ end
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste over selection' })
 
 -- LazyGit
-vim.keymap.set('n', '<leader>gg', function() lazygit(util.root()) end, { desc = 'Lazygit (root dir)' })
+vim.keymap.set('n', '<leader>gg', function() lazygit(LazyVim.root()) end, { desc = 'Lazygit (root dir)' })
 vim.keymap.set('n', '<leader>gG', function() lazygit(nil) end, { desc = 'Lazygit (cwd)' })
 
 -- Terminal
