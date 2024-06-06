@@ -2,9 +2,6 @@
 Core debug adapter protocol configuration
 --]]
 
--- Import utility functions
-local util = require('util')
-
 --- Load all configurations from any found VS Code launch.json files.
 ---@param path string|nil Path to the directory to start searching in. Defaults to the current working directory.
 local load_launchjs = function(path)

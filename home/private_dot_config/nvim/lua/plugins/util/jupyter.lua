@@ -2,8 +2,6 @@
 -- Plugins for interfacing with Jupyter Notebooks
 --]]
 
-local util = require('util')
-
 return {
   {
     'goerz/jupytext.vim',

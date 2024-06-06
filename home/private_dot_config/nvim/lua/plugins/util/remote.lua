@@ -2,9 +2,6 @@
 remote.nvim (https://github.com/amitds1997/remote-nvim.nvim)
 --]]
 
--- Import utility functions
-local util = require('util')
-
 --- Remote startup callback.
 ---@param port number Port of the remote server.
 ---@param workspace table Configuration of the development workspace.

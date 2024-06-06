@@ -2,9 +2,6 @@
 Prettier (https://prettier.io/)
 --]]
 
--- Import utility functions
-local util = require('util')
-
 return {
   {
     'stevearc/conform.nvim',

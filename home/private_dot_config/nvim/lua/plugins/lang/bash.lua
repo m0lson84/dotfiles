@@ -2,9 +2,6 @@
 Bash language support
 --]]
 
--- Import utility functions
-local util = require('util')
-
 return {
 
   -- Add languages to treesitter

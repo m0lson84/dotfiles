@@ -2,9 +2,6 @@
 CSpell (https://cspell.org/)
 --]]
 
--- Import utility functions
-local util = require('util')
-
 return {
   {
     'mfussenegger/nvim-lint',

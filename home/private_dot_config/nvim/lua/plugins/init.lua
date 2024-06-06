@@ -2,6 +2,9 @@
 Neovim plugin configuration
 --]]
 
+---Local utility functions
+_G.util = require('util')
+
 return {
   require('plugins.core'),
   require('plugins.coding'),

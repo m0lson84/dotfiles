@@ -2,9 +2,6 @@
 Javascript / Typescript language support
 --]]
 
--- Import utility functions
-local util = require('util')
-
 return {
 
   -- Add languages to treesitter
@@ -15,7 +12,7 @@ return {
 
   -- Configure language server
   {
-    -- TODO: Remove once LazyVim 12.6.0 is landed
+    -- TODO: Create local handlers and remove dependency
     'yioneko/nvim-vtsls',
     lazy = true,
     opts = {},
@@ -24,6 +21,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     opts = function(_, opts)
+      local vtsls = require('vtsls')
       local lang = {
         updateImportsOnFileMove = {
           enabled = 'always',
@@ -49,31 +47,11 @@ return {
           typescript = lang,
         },
         keys = {
-          {
-            'gD',
-            function() require('vtsls').commands.goto_source_definition(0) end,
-            desc = 'Goto Source Definition',
-          },
-          {
-            'gR',
-            function() require('vtsls').commands.file_references(0) end,
-            desc = 'File References',
-          },
-          {
-            '<leader>cD',
-            function() require('vtsls').commands.fix_all(0) end,
-            desc = 'Fix all diagnostics',
-          },
-          {
-            '<leader>cM',
-            function() require('vtsls').commands.add_missing_imports(0) end,
-            desc = 'Add missing imports',
-          },
-          {
-            '<leader>co',
-            function() require('vtsls').commands.organize_imports(0) end,
-            desc = 'Organize Imports',
-          },
+          { 'gD', function() vtsls.commands.goto_source_definition(0) end, desc = 'Goto Source Definition' },
+          { 'gR', function() vtsls.commands.file_references(0) end, desc = 'File References' },
+          { '<leader>cD', function() vtsls.commands.fix_all(0) end, desc = 'Fix all diagnostics' },
+          { '<leader>cM', function() vtsls.commands.add_missing_imports(0) end, desc = 'Add missing imports' },
+          { '<leader>co', function() vtsls.commands.organize_imports(0) end, desc = 'Organize Imports' },
         },
       }
       return opts
