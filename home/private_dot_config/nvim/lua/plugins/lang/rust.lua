@@ -26,7 +26,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ron', 'rust' }) end,
+    opts = { ensure_installed = { 'ron', 'rust' } },
   },
 
   -- Configure language plugin
@@ -81,7 +81,7 @@ return {
   -- Configure debug adapter
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'codelldb' }) end,
+    opts = { ensure_installed = { 'codelldb' } },
   },
 
   -- Configure test runner

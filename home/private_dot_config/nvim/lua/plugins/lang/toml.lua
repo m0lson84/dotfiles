@@ -7,7 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'toml' }) end,
+    opts = { ensure_installed = { 'toml' } },
   },
 
   -- Configure language server

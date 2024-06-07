@@ -7,7 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'yaml' }) end,
+    opts = { ensure_installed = { 'yaml' } },
   },
 
   -- Schema store support

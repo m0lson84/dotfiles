@@ -7,7 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'ninja', 'python', 'rst' }) end,
+    opts = { ensure_installed = { 'ninja', 'python', 'rst' } },
   },
 
   -- Configure language server
@@ -38,10 +38,7 @@ return {
     dependencies = {
       {
         'mfussenegger/nvim-dap-python',
-        config = function()
-          local path = require('mason-registry').get_package('debugpy'):get_install_path()
-          require('dap-python').setup(path .. '/venv/bin/python')
-        end,
+        config = function() require('dap-python').setup(LazyVim.get_pkg_path('debugpy', '/venv/bin/python')) end,
       },
     },
     opts = function(_, opts)

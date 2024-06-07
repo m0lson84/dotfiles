@@ -7,12 +7,11 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'javascript', 'typescript', 'tsx' }) end,
+    opts = { ensure_installed = { 'javascript', 'typescript', 'tsx' } },
   },
 
   -- Configure language server
   {
-    -- TODO: Create local handlers and remove dependency
     'yioneko/nvim-vtsls',
     lazy = true,
     opts = {},
@@ -74,10 +73,7 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'js-debug-adapter' }) end,
-      },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'js-debug-adapter' } } },
     },
     opts = function(_, opts)
       local dap = require('dap')
@@ -91,12 +87,23 @@ return {
           executable = {
             command = 'node',
             args = {
-              require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-                .. '/js-debug/src/dapDebugServer.js',
+              LazyVim.get_pkg_path('js-debug-adapter', '/js-debug/src/dapDebugServer.js'),
               '${port}',
             },
           },
         }
+      end
+
+      if not dap.adapters['node'] then
+        dap.adapters['node'] = function(cb, config)
+          if config.type == 'node' then config.type = 'pwa-node' end
+          local nativeAdapter = dap.adapters['pwa-node']
+          if type(nativeAdapter) == 'function' then
+            nativeAdapter(cb, config)
+          else
+            cb(nativeAdapter)
+          end
+        end
       end
 
       -- Define default configurations

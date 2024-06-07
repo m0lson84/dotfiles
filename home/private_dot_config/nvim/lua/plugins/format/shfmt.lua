@@ -6,10 +6,7 @@ return {
   {
     'stevearc/conform.nvim',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'shfmt' }) end,
-      },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'shfmt' } } },
     },
     opts = {
       formatters = {

@@ -7,7 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'markdown', 'markdown_inline', 'mermaid' }) end,
+    opts = { ensure_installed = { 'markdown', 'markdown_inline', 'mermaid' } },
   },
 
   -- Configure language server

@@ -7,9 +7,7 @@ return {
   -- Add languages to treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed or {}, { 'go', 'gomod', 'gosum', 'gotmpl', 'templ' })
-    end,
+    opts = { ensure_installed = { 'go', 'gomod', 'gosum', 'gotmpl', 'templ' } },
   },
 
   -- Configure language server
@@ -93,14 +91,8 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'delve' }) end,
-      },
-      {
-        'leoluz/nvim-dap-go',
-        config = true,
-      },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'delve' } } },
+      { 'leoluz/nvim-dap-go', config = true },
     },
     opts = function(_, opts)
       for _, config in ipairs(require('dap').configurations.go) do

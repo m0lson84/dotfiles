@@ -6,10 +6,7 @@ return {
   {
     'mfussenegger/nvim-lint',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'hadolint' }) end,
-      },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'hadolint' } } },
     },
     opts = {
       linters = {

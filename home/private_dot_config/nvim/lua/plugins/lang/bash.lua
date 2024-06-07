@@ -17,10 +17,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      {
-        'williamboman/mason.nvim',
-        opts = function(_, opts) vim.list_extend(opts.ensure_installed or {}, { 'shellcheck' }) end,
-      },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'shellcheck' } } },
     },
     opts = {
       servers = {
