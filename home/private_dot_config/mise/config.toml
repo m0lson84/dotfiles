@@ -10,9 +10,9 @@
 
 [settings]
 experimental = true
-go_set_gobin = false
+go_set_gobin = true
 
 [tools]
-go = "1.22"
-node = "lts"
+go     = "1.22"
+node   = "lts"
 python = "3.12"
