@@ -8,4 +8,5 @@ return {
   require('plugins.lint.hadolint'),
   require('plugins.lint.markdownlint'),
   require('plugins.lint.ruff'),
+  require('plugins.lint.sqlfluff'),
 }
