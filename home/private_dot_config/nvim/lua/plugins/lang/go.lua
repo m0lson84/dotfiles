@@ -82,9 +82,11 @@ return {
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'go' }, { 'goimports', 'gofumpt' })
-    end,
+    opts = {
+      formatters_by_ft = {
+        go = { 'goimports', 'gofumpt' },
+      },
+    },
   },
 
   -- Configure debug adapter

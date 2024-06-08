@@ -23,21 +23,22 @@ return {
   -- Configure linters
   {
     'mfussenegger/nvim-lint',
-    opts = function(_, opts)
-      opts.linters_by_ft = util.table.extend_keys(opts.linters_by_ft, { 'markdown' }, { 'markdownlint' })
-    end,
+    opts = {
+      linters_by_ft = {
+        markdown = { 'markdownlint' },
+      },
+    },
   },
 
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(
-        opts.formatters_by_ft,
-        { 'markdown', 'markdown_mdx' },
-        { 'prettierd' }
-      )
-    end,
+    opts = {
+      formatters_by_ft = {
+        markdown = { 'prettierd' },
+        markdown_mdx = { 'prettierd' },
+      },
+    },
   },
 
   -- Markdown preview

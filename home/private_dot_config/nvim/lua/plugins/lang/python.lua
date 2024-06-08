@@ -27,9 +27,11 @@ return {
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'python' }, { 'ruff_fix', 'ruff_format' })
-    end,
+    opts = {
+      formatters_by_ft = {
+        python = { 'ruff_fix', 'ruff_format' },
+      },
+    },
   },
 
   -- Configure debug adapter

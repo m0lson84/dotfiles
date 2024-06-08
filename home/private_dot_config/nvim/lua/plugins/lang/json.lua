@@ -41,8 +41,11 @@ return {
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'json', 'jsonc' }, { 'prettierd' })
-    end,
+    opts = {
+      formatters_by_ft = {
+        json = { 'prettierd' },
+        jsonc = { 'prettierd' },
+      },
+    },
   },
 }

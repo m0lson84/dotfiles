@@ -29,9 +29,11 @@ return {
   -- Configure linters
   {
     'mfussenegger/nvim-lint',
-    opts = function(_, opts)
-      opts.linters_by_ft = util.table.extend_keys(opts.linters_by_ft, { 'dotenv' }, { 'dotenv_linter' })
-    end,
+    opts = {
+      linters_by_ft = {
+        dotenv = { 'dotenv_linter' },
+      },
+    },
   },
 
   -- Configure formatting

@@ -23,8 +23,10 @@ return {
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(opts.formatters_by_ft, { 'toml' }, { 'taplo' })
-    end,
+    opts = {
+      formatters_by_ft = {
+        toml = { 'taplo' },
+      },
+    },
   },
 }
