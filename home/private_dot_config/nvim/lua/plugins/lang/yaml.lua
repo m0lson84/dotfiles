@@ -54,9 +54,10 @@ return {
       setup = {
         yamlls = function()
           if vim.fn.has('nvim-0.10') == 0 then
-            LazyVim.lsp.on_attach(function(client, _)
-              if client.name == 'yamlls' then client.server_capabilities.documentFormattingProvider = true end
-            end)
+            LazyVim.lsp.on_attach(
+              function(client, _) client.server_capabilities.documentFormattingProvider = true end,
+              'yamlls'
+            )
           end
         end,
       },
