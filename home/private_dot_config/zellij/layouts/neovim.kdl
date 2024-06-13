@@ -1,11 +1,8 @@
 layout {
 
   pane_template name="neovim" { command "nvim"; }
-  pane_template name="compact-bar" { plugin { location "zellij:compact-bar"; }; }
-  pane_template name="status-bar" { plugin { location "zellij:status-bar"; }; }
-  pane_template name="tab-bar" { plugin { location "zellij:tab-bar"; }; }
-  pane_template name="zjstatus" {
-    plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+  pane_template name="statusline" {
+    plugin location="zjstatus" {
 
       hide_frame_for_single_pane "true"
 
@@ -28,7 +25,7 @@ layout {
     }
   }
 
-  default_tab_template { children; zjstatus size=1; }
+  default_tab_template { children; statusline size=1; }
   tab_template name="editor" { children; }
 
   editor name="editor" focus=true { neovim; }

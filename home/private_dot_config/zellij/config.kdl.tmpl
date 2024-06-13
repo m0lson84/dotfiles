@@ -11,6 +11,7 @@
 // General
 default_shell "zsh"
 pane_frames false
+styled_underlines {{ if .env.wsl }}false{{ else }}true{{ end }}
 
 // Layouts
 default_layout "neovim"
@@ -20,14 +21,6 @@ session_serialization false
 
 // Themes
 theme "tokyonight"
-
-// UI
-ui {
-  pane_frames {
-    rounded_corners false
-    hide_session_name true
-  }
-}
 
 // Keybindings
 keybinds  {
@@ -41,9 +34,12 @@ keybinds  {
 
 // Plugins
 plugins {
-  compact-bar { path "compact-bar"; }
-  session-manager { path "session-manager"; }
-  status-bar { path "status-bar"; }
-  strider { path "strider"; }
-  tab-bar { path "tab-bar"; }
+  welcome-screen location="zellij:session-manager" { welcome_screen true; }
+  session-manager location="zellij:session-manager"
+  filepicker location="zellij:strider" { cwd "/"; }
+  strider location="zellij:strider"
+  status-bar location="zellij:status-bar"
+  compact-bar location="zellij:compact-bar"
+  tab-bar location="zellij:tab-bar"
+  zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm"
 }
