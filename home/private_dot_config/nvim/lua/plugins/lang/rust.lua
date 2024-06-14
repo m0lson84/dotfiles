@@ -39,15 +39,11 @@ return {
         on_attach = function(_, bufnr) debuggables(bufnr) end,
         default_settings = {
           ['rust-analyzer'] = {
+            checkOnSave = true,
             cargo = {
               allFeatures = true,
               loadOutDirsFromCheck = true,
               buildScripts = { enable = true },
-            },
-            checkOnSave = {
-              allFeatures = true,
-              command = 'clippy',
-              extraArgs = { '--no-deps' },
             },
             procMacro = {
               enable = true,
