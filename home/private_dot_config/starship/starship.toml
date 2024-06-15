@@ -1,5 +1,11 @@
-# Get editor completions based on the config schema
-"$schema" = "https://starship.rs/config-schema.json"
+#       _                 _     _
+#      | |               | |   (_)
+#   ___| |_ __ _ _ __ ___| |__  _ _ __
+#  / __| __/ _` | '__/ __| '_ \| | '_ \
+#  \__ \ || (_| | |  \__ \ | | | | |_) |
+#  |___/\__\__,_|_|  |___/_| |_|_| .__/
+#                                | |
+#                                |_|
 
 
 # ========================================
@@ -8,7 +14,6 @@
 
 add_newline = false
 continuation_prompt = '▶▶ '
-right_format = "$all"
 format = """
 $os\
 $shell\
@@ -22,19 +27,20 @@ $git_metrics\
 $git_status\
 $character
 """
+right_format = "$all"
 
 [cmd_duration]
 disabled = true
-format = "[took $duration]($style)"
-style = "101"
+format   = "[took $duration]($style)"
+style    = "101"
 
 [directory]
-read_only = " 󰌾"
+read_only        = " 󰌾"
 truncate_to_repo = true
 
 [package]
 disabled = true
-symbol = "󰏗 "
+symbol   = "󰏗 "
 
 
 # ========================================
@@ -42,64 +48,64 @@ symbol = "󰏗 "
 # ========================================
 
 [battery]
-disabled = true
-charging_symbol = '⚡️ '
+charging_symbol    = '⚡️ '
+disabled           = true
 discharging_symbol = '💀 '
-full_symbol = '🔋 '
+full_symbol        = '🔋 '
 
 [hostname]
-disabled = false
-ssh_only = true
+disabled   = false
+ssh_only   = true
 ssh_symbol = " "
 
 [memory_usage]
 disabled = true
-symbol = "󰍛 "
+symbol   = "󰍛 "
 
 [os]
 disabled = false
-format = "[$symbol]($style)"
+format   = "[$symbol]($style)"
 
 [os.symbols]
-Alpaquita = " "
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
+Alpaquita        = " "
+Alpine           = " "
+Amazon           = " "
+Android          = " "
+Arch             = " "
+Artix            = " "
+CentOS           = " "
+Debian           = " "
+DragonFly        = " "
+Emscripten       = " "
+EndeavourOS      = " "
+Fedora           = " "
+FreeBSD          = " "
+Garuda           = "󰛓 "
+Gentoo           = " "
+HardenedBSD      = "󰞌 "
+Illumos          = "󰈸 "
+Linux            = " "
+Mabox            = " "
+Macos            = " "
+Manjaro          = " "
+Mariner          = " "
+MidnightBSD      = " "
+Mint             = " "
+NetBSD           = " "
+NixOS            = " "
+OpenBSD          = "󰈺 "
+OracleLinux      = "󰌷 "
+Pop              = " "
+Raspbian         = " "
 RedHatEnterprise = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = "󰍲 "
+Redhat           = " "
+Redox            = "󰀘 "
+SUSE             = " "
+Solus            = "󰠳 "
+Ubuntu           = " "
+Unknown          = " "
+Windows          = "󰍲 "
+openSUSE         = " "
 
 
 # ========================================
@@ -108,7 +114,7 @@ Windows = "󰍲 "
 
 [c]
 disabled = false
-symbol = " "
+symbol   = " "
 
 [dart]
 symbol = " "
@@ -141,26 +147,26 @@ symbol = " "
 # ========================================
 
 [aws]
-disabled = false
+disabled          = false
 expiration_symbol = " "
-format = "[$symbol$profile]($style) "
-profile_aliases = { sd-dev = "sp dev", work = "company" }
-region_aliases = { us-east-1 = "VA", us-east-2 = "OH" }
-symbol = "󰸏 "
+format            = "[$symbol$profile]($style) "
+profile_aliases   = { sd-dev = "sp dev", work = "company" }
+region_aliases    = { us-east-1 = "VA", us-east-2 = "OH" }
+symbol            = "󰸏 "
 
 [azure]
 disabled = false
-format = "[$symbol($username)]($style) "
-symbol = "󰠅 "
+format   = "[$symbol($username)]($style) "
+symbol   = "󰠅 "
 
 [gcloud]
 disabled = false
-symbol = "󱇶 "
+symbol   = "󱇶 "
 
 [terraform]
 disabled = false
-format = "[$symbol$workspace]($style) "
-symbol = "󱁢"
+format   = "[$symbol$workspace]($style) "
+symbol   = "󱁢"
 
 
 # ========================================
@@ -168,8 +174,6 @@ symbol = "󱁢"
 # ========================================
 
 [custom.git_icon]
-disabled = true
-description = "Display symbol for git repository."
 command = """
   symbol="󰊢 "
   remote=$(command git ls-remote --get-url 2> /dev/null)
@@ -179,18 +183,20 @@ command = """
   if [[ "$remote" =~ "gitlab" ]]; then symbol=" "; fi
   echo "$symbol"
 """
+description = "Display symbol for git repository."
+disabled = true
 format = "[$output]($style)  "
+shell = ["--noprofile", "--norc", "bash"]
 style = "bold white"
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
-shell = ["bash", "--noprofile", "--norc"]
 
 [fossil_branch]
 symbol = " "
 
 [git_branch]
 disabled = false
-format = "[$symbol$branch]($style) "
-symbol = " "
+format   = "[$symbol$branch]($style) "
+symbol   = " "
 
 [git_metrics]
 disabled = true
