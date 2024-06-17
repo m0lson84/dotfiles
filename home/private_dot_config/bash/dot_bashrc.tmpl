@@ -55,6 +55,9 @@ export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
 # Rust configuration
 source "${HOME}/.cargo/env"
 
+# zoxide configuration
+eval "$(zoxide init --cmd cd  bash)"
+
 {{ end -}}
 
 # Starship initialization

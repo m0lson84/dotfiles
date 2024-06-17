@@ -84,6 +84,9 @@ export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
 # Rust configuration
 source "${HOME}/.cargo/env"
 
+# zoxide configuration
+eval "$(zoxide init --cmd cd  zsh)"
+
 {{ end -}}
 
 # Starship initialization
