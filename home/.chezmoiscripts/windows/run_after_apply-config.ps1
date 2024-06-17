@@ -27,6 +27,10 @@ function Apply-Settings() {
 # Stop script on error
 $ErrorActionPreference = 'Stop'
 
+# Apply Alacritty settings
+Write-Host "Applying Alacritty settings..."
+Apply-Settings -Source "$env:USERPROFILE/.config/alacritty/*" -Target "$env:APPDATA/alacritty"
+
 # Apply Powershell profile
 Write-Host "Applying Powershell profile..."
 Apply-Settings -Source "$env:USERPROFILE/.config/powershell/Profile.ps1" -Target "$env:USERPROFILE/Documents/PowerShell"
