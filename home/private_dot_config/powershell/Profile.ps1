@@ -31,6 +31,19 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
+function list {
+    cmd /c "eza -l -a --icons=always"
+}
+
+function upgrade {
+    cmd /c "winget upgrade --all"
+}
+
+# Better CD
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 # Aliases
-Set-Alias clr "clear"
-Set-Alias msbuild "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
+Set-Alias -Name clr -Value clear
+Set-Alias -Name ls -Value list
+Set-Alias -Name msbuild -Value "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
+Set-Alias -Name upgrayedd -Value upgrade
