@@ -1,9 +1,6 @@
 
 {{- /* Tap repositories */ -}}
-{{- $taps := list
-  "homebrew/bundle"
-  "homebrew/cask-versions"
--}}
+{{- $taps := list "homebrew/bundle" -}}
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
