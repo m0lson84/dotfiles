@@ -74,6 +74,16 @@ return {
     },
   },
 
+  -- Configure formatters
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        rust = { 'rustfmt' },
+      },
+    },
+  },
+
   -- Configure debug adapter
   {
     'williamboman/mason.nvim',

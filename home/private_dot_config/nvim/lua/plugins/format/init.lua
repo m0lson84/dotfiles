@@ -7,6 +7,7 @@ return {
   require('plugins.format.gofumpt'),
   require('plugins.format.goimports'),
   require('plugins.format.prettier'),
+  require('plugins.format.rustfmt'),
   require('plugins.format.shfmt'),
   require('plugins.format.sqlfmt'),
   require('plugins.format.stylua'),
