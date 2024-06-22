@@ -1,16 +1,21 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2023-07-21T19:46:45.684-00:00",
+  "CreationDate": "2024-06-22T07:40:05.511-00:00",
   "Sources": [
     {
       "Packages": [
         { "PackageIdentifier": "AgileBits.1Password" },
+        { "PackageIdentifier": "AgileBits.1Password.CLI" },
+        { "PackageIdentifier": "ajeetdsouza.zoxide" },
+        { "PackageIdentifier": "Canonical.Ubuntu.2204" },
         { "PackageIdentifier": "Discord.Discord" },
-        { "PackageIdentifier": "Elgato.StreamDeck" },
+        { "PackageIdentifier": "dorssel.usbipd-win" },
+        { "PackageIdentifier": "Elgato.CameraHub" },
         { "PackageIdentifier": "FocusriteAudioEngineeringLtd.FocusriteControl" },
         { "PackageIdentifier": "Git.Git" },
-        { "PackageIdentifier": "Google.Drive" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "JesseDuffield.lazygit" },
+        { "PackageIdentifier": "junegunn.fzf" },
         { "PackageIdentifier": "Logitech.GHUB" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
@@ -18,13 +23,14 @@
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Nvidia.GeForceExperience" },
         { "PackageIdentifier": "OBSProject.OBSStudio" },
-        { "PackageIdentifier": "Olivia.VIA" },
+        { "PackageIdentifier": "Ookla.Speedtest.CLI" },
         { "PackageIdentifier": "ShareX.ShareX" },
         { "PackageIdentifier": "Spotify.Spotify" },
+        { "PackageIdentifier": "TheBrowserCompany.Arc" },
         { "PackageIdentifier": "twpayne.chezmoi" },
         { "PackageIdentifier": "Valve.Steam" },
         { "PackageIdentifier": "VideoLAN.VLC" },
-        { "PackageIdentifier": "WinDirStat.WinDirStat" }
+        { "PackageIdentifier": "wez.wezterm" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
@@ -34,5 +40,5 @@
       }
     }
   ],
-  "WinGetVersion": "1.6.1573-preview"
+  "WinGetVersion": "1.9.1551-preview"
 }

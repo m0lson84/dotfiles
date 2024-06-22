@@ -10,7 +10,7 @@
 # Arguments:
 #   None
 #######################################
-function Import-WinGetPackages() {
+function Install-Packages() {
   Write-Host "Updating applications via WinGet..."
 
   # Check if 'winget' is available in the system
@@ -32,4 +32,4 @@ function Import-WinGetPackages() {
 #################### Main Program ####################
 
 # Update packages
-Import-WinGetPackages
+Install-Packages
