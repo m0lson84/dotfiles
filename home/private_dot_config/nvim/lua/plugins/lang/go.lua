@@ -89,7 +89,7 @@ return {
     'mfussenegger/nvim-dap',
     dependencies = {
       { 'williamboman/mason.nvim', opts = { ensure_installed = { 'delve' } } },
-      { 'leoluz/nvim-dap-go', config = true },
+      { 'leoluz/nvim-dap-go', opts = {} },
     },
     opts = function(_, opts)
       for _, config in ipairs(require('dap').configurations.go) do
