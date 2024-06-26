@@ -5,7 +5,7 @@ csharpier (https://csharpier.com)
 return {
   {
     'stevearc/conform.nvim',
-    depends = {
+    dependencies = {
       { 'williamboman/mason.nvim', opts = { ensure_installed = { 'csharpier' } } },
     },
     opts = {

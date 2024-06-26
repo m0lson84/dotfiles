@@ -5,7 +5,7 @@ gofumpt (https://github.com/mvdan/gofumpt)
 return {
   {
     'stevearc/conform.nvim',
-    depends = {
+    dependencies = {
       { 'williamboman/mason.nvim', opts = { ensure_installed = { 'gofumpt' } } },
     },
     opts = {
