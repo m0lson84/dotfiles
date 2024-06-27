@@ -10,10 +10,7 @@ return {
     },
     opts = {
       formatters = {
-        csharpier = {
-          command = 'dotnet-csharpier',
-          args = { '--write-stdout' },
-        },
+        csharpier = {},
       },
     },
   },

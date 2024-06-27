@@ -41,9 +41,16 @@ return {
             { 'gr', find_all_references, desc = 'Find All References' },
             { '<leader>D', goto_type_definition, desc = 'Goto Type Definition' },
           },
-          enable_roslyn_analyzers = true,
-          organize_imports_on_format = true,
-          enable_import_completion = true,
+          settings = {
+            FormattingOptions = {
+              EnableEditorConfigSupport = true,
+              OrganizeImports = true,
+            },
+            RoslynExtensionsOptions = {
+              EnableAnalyzersSupport = true,
+              EnableImportCompletion = true,
+            },
+          },
         },
       },
     },
@@ -97,7 +104,9 @@ return {
     dependencies = { 'Issafalcon/neotest-dotnet' },
     opts = {
       adapters = {
-        ['neotest-dotnet'] = {},
+        ['neotest-dotnet'] = {
+          discovery_root = 'solution',
+        },
       },
     },
   },
