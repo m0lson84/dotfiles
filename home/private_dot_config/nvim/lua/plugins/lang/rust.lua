@@ -37,6 +37,7 @@ return {
     opts = {
       server = {
         on_attach = function(_, bufnr) debuggables(bufnr) end,
+        load_vscode_settings = true,
         default_settings = {
           ['rust-analyzer'] = {
             checkOnSave = true,
