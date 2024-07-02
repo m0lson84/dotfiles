@@ -12,9 +12,9 @@ return {
       on_colors = function(colors)
         local tokyonight = require('tokyonight.util')
         colors.bg = colors.bg_dark
-        colors.border = tokyonight.lighten(colors.dark3, 0.9, colors.fg_dark)
-        colors.border_highlight = tokyonight.darken(colors.blue1, 0.8)
-        colors.unused = tokyonight.lighten(colors.terminal_black, 0.6, colors.fg_dark)
+        colors.border = tokyonight.blend(colors.dark3, 0.9, colors.fg_dark)
+        colors.border_highlight = tokyonight.blend(colors.blue1, 0.8, colors.bg)
+        colors.unused = tokyonight.blend(colors.terminal_black, 0.6, colors.fg_dark)
       end,
       on_highlights = function(highlights, colors)
         highlights.ColorColumn = { bg = colors.fg }
