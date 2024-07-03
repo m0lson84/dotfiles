@@ -11,13 +11,14 @@ return {
     'jellydn/hurl.nvim',
     dependencies = { 'MunifTanjim/nui.nvim' },
     ft = 'hurl',
+    keys = {
+      { '<leader>ha', '<cmd>HurlRunner<cr>', ft = 'hurl', desc = 'Execute all requests' },
+      { '<leader>he', '<cmd>HurlRunnerAt<cr>', ft = 'hurl', desc = 'Execute selected request' },
+      { '<leader>hm', '<cmd>HurlManageVariable<cr>', ft = 'hurl', desc = 'Manage environment' },
+    },
     opts = {
       debug = true,
       mode = 'popup',
-    },
-    keys = {
-      { '<leader>cH', '<cmd>HurlRunner<cr>', ft = 'hurl', desc = 'Run Hurl file' },
-      { '<leader>ch', '<cmd>HurlRunnerAt<cr>', ft = 'hurl', desc = 'Send selected request' },
     },
   },
 }

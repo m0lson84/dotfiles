@@ -53,6 +53,6 @@ return {
   },
   {
     'folke/which-key.nvim',
-    opts = function(_, opts) opts.defaults['<leader>i'] = { name = '+REPL' } end,
+    opts = function(_, opts) opts.defaults['<leader>i'] = { name = '+repl' } end,
   },
 }
