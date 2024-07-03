@@ -9,6 +9,7 @@
 --[[
 -- Environment
 --]]
+
 -- vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
 
 --[[
@@ -18,9 +19,6 @@
 -- Set leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
-
--- Show deprecation warnings
-vim.g.deprecation_warnings = true
 
 -- System clipboard provider
 if vim.env.WSLENV then
@@ -37,6 +35,10 @@ if vim.env.WSLENV then
     cache_enabled = true,
   }
 end
+
+-- LazyVim
+vim.g.deprecation_warnings = true
+vim.g.lazyvim_picker = 'fzf'
 
 -- Providers
 vim.g.loaded_ruby_provider = 0
@@ -86,4 +88,5 @@ vim.filetype.add({
 --[[
 -- Zellij
 --]]
+
 if vim.env.ZELLIJ ~= nil then vim.fn.system({ 'zellij', 'action', 'switch-mode', 'locked' }) end
