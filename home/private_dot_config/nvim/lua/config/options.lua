@@ -44,7 +44,7 @@ vim.g.lazyvim_picker = 'fzf'
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.node_host_prog = vim.fn.expand('~/.local/share/mise/installs/node/lts/bin/neovim-node-host')
-vim.g.python3_host_prog = vim.fn.expand('~/.local/share/mise/installs/python/3.11/bin/python')
+vim.g.python3_host_prog = vim.fn.expand('~/.local/share/mise/installs/python/3.12/bin/python')
 
 -- UI
 vim.g.window_border = 'rounded'
