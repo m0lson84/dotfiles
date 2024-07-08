@@ -92,4 +92,14 @@ return {
     },
     opts = {},
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      file = {
+        ['.python-version'] = { glyph = '󰌠', hl = 'MiniIconsYellow' },
+      },
+    },
+  },
 }

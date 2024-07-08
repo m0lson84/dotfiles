@@ -48,4 +48,14 @@ return {
       },
     },
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      extension = {
+        ['json.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+      },
+    },
+  },
 }

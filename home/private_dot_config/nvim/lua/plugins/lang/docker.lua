@@ -30,4 +30,14 @@ return {
       },
     },
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      filetype = {
+        ['yaml.docker-compose'] = { hl = 'MiniIconsAzure' },
+      },
+    },
+  },
 }

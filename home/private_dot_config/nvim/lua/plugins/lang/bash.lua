@@ -57,4 +57,18 @@ return {
       },
     },
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      extension = {
+        bash = { glyph = '', hl = 'MiniIconsGrey' },
+        zsh = { glyph = '', hl = 'MiniIconsGrey' },
+        ['bash.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+        ['sh.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+        ['zsh.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+      },
+    },
+  },
 }

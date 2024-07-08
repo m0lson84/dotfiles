@@ -29,4 +29,14 @@ return {
       },
     },
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      extension = {
+        ['toml.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+      },
+    },
+  },
 }

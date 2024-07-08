@@ -73,4 +73,14 @@ return {
       },
     },
   },
+
+  -- Filetype icons
+  {
+    'echasnovski/mini.icons',
+    opts = {
+      extension = {
+        ['yaml.tmpl'] = { glyph = '', hl = 'MiniIconsGrey' },
+      },
+    },
+  },
 }
