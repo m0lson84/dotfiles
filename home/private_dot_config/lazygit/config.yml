@@ -27,3 +27,7 @@ customCommands:
     command: 'git undo'
     description: 'Undo last commit'
     context: 'files'
+  - key: 'u'
+    command: 'git undo'
+    description: 'Undo last commit'
+    context: 'commits'
