@@ -48,7 +48,7 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     keys = {
-      { '<leader>rc', create_container, desc = 'Create container' },
+      { '<leader>rn', create_container, desc = 'Create container' },
       { '<leader>rs', '<cmd>RemoteStart<cr>', desc = 'Start session' },
       { '<leader>rx', stop_session, desc = 'Stop session' },
       { '<leader>ri', '<cmd>RemoteInfo<cr>', desc = 'Remote session info' },
@@ -64,6 +64,17 @@ return {
   },
   {
     'folke/which-key.nvim',
-    opts = function(_, opts) opts.defaults['<leader>r'] = { name = '+remote' } end,
+    opts = {
+      spec = {
+        { '<leader>r', group = 'remote', icon = { icon = '󰢹', color = 'blue' } },
+        { '<leader>rc', name = 'Cleanup remote', icon = { icon = '󰃢', color = 'yellow' } },
+        { '<leader>rd', name = 'Delete configuration', icon = { icon = '', color = 'orange' } },
+        { '<leader>ri', name = 'Remote session info', icon = { icon = '', color = 'azure' } },
+        { '<leader>rl', name = 'Open remote logs', icon = { icon = '', color = 'blue' } },
+        { '<leader>rn', name = 'Create container', icon = { icon = '', color = 'cyan' } },
+        { '<leader>rs', name = 'Start session', icon = { icon = '', color = 'green' } },
+        { '<leader>rx', name = 'Start session', icon = { icon = '', color = 'red' } },
+      },
+    },
   },
 }

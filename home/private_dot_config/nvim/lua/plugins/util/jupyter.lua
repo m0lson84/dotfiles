@@ -18,6 +18,10 @@ return {
   },
   {
     'folke/which-key.nvim',
-    opts = function(_, opts) opts.defaults['<leader>j'] = { name = '+jupyter' } end,
+    opts = {
+      spec = {
+        { '<leader>j', group = 'jupyter', icon = { icon = '', color = 'orange' } },
+      },
+    },
   },
 }

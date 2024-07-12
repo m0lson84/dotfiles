@@ -21,6 +21,18 @@ return {
   },
   {
     'folke/which-key.nvim',
-    opts = function(_, opts) opts.defaults['<leader>h'] = { name = '+http' } end,
+    opts = {
+      preset = 'modern',
+      show_help = false,
+      spec = {
+        { '<leader>h', group = 'http', icon = { icon = '', color = 'red' } },
+      },
+      win = {
+        title = false,
+      },
+      layout = {
+        align = 'center',
+      },
+    },
   },
 }

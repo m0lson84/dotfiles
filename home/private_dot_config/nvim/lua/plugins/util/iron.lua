@@ -53,6 +53,10 @@ return {
   },
   {
     'folke/which-key.nvim',
-    opts = function(_, opts) opts.defaults['<leader>i'] = { name = '+repl' } end,
+    opts = {
+      spec = {
+        { '<leader>i', group = 'repl', icon = { icon = '', color = 'green' } },
+      },
+    },
   },
 }
