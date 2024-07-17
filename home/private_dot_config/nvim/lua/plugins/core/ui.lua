@@ -32,6 +32,7 @@ return {
         ['.chezmoiversion'] = { glyph = '', hl = 'MiniIconsGrey' },
       },
       filetype = {
+        curl = { glyph = '', hl = 'MiniIconsRed' },
         http = { glyph = '', hl = 'MiniIconsRed' },
       },
     },

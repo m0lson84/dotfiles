@@ -61,6 +61,9 @@ return {
           { title = 'Test Summary', ft = 'neotest-summary', size = { width = sidebar_width } },
           'neo-tree',
         },
+        right = {
+          { title = 'Response', ft = 'hurl-nvim', size = { width = 0.3 } },
+        },
         keys = {
           ['<c-Right>'] = function(win) win:resize('width', 2) end,
           ['<c-Left>'] = function(win) win:resize('width', -2) end,
