@@ -173,11 +173,11 @@ return {
     'echasnovski/mini.icons',
     opts = {
       file = {
-        ['.eslintrc.js'] = { glyph = '󰱺', hl = 'MiniIconsYellow' },
+        ['.eslintrc.js'] = { glyph = '󰱺', hl = 'MiniIconsPurple' },
         ['.node-version'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['.prettierrc'] = { glyph = '', hl = 'MiniIconsPurple' },
         ['.yarnrc.yml'] = { glyph = '', hl = 'MiniIconsBlue' },
-        ['eslint.config.js'] = { glyph = '󰱺', hl = 'MiniIconsYellow' },
+        ['eslint.config.js'] = { glyph = '󰱺', hl = 'MiniIconsPurple' },
         ['package.json'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['tsconfig.json'] = { glyph = '', hl = 'MiniIconsAzure' },
         ['tsconfig.build.json'] = { glyph = '', hl = 'MiniIconsAzure' },
