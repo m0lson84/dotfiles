@@ -25,14 +25,14 @@ if vim.env.WSLENV then
   vim.g.clipboard = {
     name = 'WSL Clipboard',
     copy = {
-      ['+'] = 'wl-copy --foreground --type text/plain',
-      ['*'] = 'wl-copy --foreground --primary -- type text/plain',
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
     },
     paste = {
-      ['+'] = function() return vim.fn.systemlist('wl-paste --no-newline | sed -e "s/\r$//"', { '' }, 1) end,
-      ['*'] = function() return vim.fn.systemlist('wl-paste --primary --no-newline | sed -e "s/\r$//"', { '' }, 1) end,
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
     },
-    cache_enabled = true,
+    cache_enabled = false,
   }
 end
 
