@@ -70,6 +70,9 @@ if command -v op >/dev/null; then
 # export SSH_AUTH_SOCK=~/.1password/agent.sock
 fi
 
+# bat configuration
+export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
+
 # mise-en-place configuration
 export MISE_ENV_FILE=.env
 export MISE_GO_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/golang"
