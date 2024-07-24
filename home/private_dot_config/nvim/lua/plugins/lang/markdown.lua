@@ -25,7 +25,7 @@ return {
     'mfussenegger/nvim-lint',
     opts = {
       linters_by_ft = {
-        markdown = { 'markdownlint' },
+        markdown = { 'markdownlint-cli2' },
       },
     },
   },
@@ -52,6 +52,29 @@ return {
     config = function()
       vim.g.mkdp_theme = 'dark'
       vim.g.mkdp_page_title = 'Markdown Preview'
+    end,
+  },
+
+  -- Markdown rendering
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    dependencies = { 'echasnovski/mini.icons' },
+    opts = {
+      file_types = { 'markdown', 'norg', 'rmd', 'org' },
+      heading = { enabled = false },
+      code = {
+        sign = false,
+        width = 'block',
+        right_pad = 1,
+      },
+    },
+    config = function(_, opts)
+      require('render-markdown').setup(opts)
+      LazyVim.toggle.map('<leader>um', {
+        name = 'Render Markdown',
+        get = function() return require('render-markdown.state').enabled end,
+        set = function(_) require('render-markdown').toggle() end,
+      })
     end,
   },
 }
