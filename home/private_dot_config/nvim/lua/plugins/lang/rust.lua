@@ -32,8 +32,8 @@ return {
   -- Configure language plugin
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    ft = { 'rust' },
+    version = '^5',
+    lazy = false,
     opts = {
       server = {
         on_attach = function(_, bufnr) debuggables(bufnr) end,
