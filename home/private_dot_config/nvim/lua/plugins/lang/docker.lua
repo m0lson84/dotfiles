@@ -35,6 +35,9 @@ return {
   {
     'echasnovski/mini.icons',
     opts = {
+      file = {
+        ['.dockerignore'] = { glyph = '󰡨', hl = 'MiniIconsBlue' },
+      },
       filetype = {
         ['yaml.docker-compose'] = { hl = 'MiniIconsAzure' },
       },
