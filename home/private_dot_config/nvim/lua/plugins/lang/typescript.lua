@@ -60,13 +60,14 @@ return {
   -- Configure formatters
   {
     'stevearc/conform.nvim',
-    opts = function(_, opts)
-      opts.formatters_by_ft = util.table.extend_keys(
-        opts.formatters_by_ft,
-        { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-        {}
-      )
-    end,
+    opts = {
+      formatters_by_ft = {
+        javascript = { 'biome-check', 'prettierd', stop_after_first = true },
+        javascriptreact = { 'biome-check', 'prettierd', stop_after_first = true },
+        typescript = { 'biome-check', 'prettierd', stop_after_first = true },
+        typescriptreact = { 'biome-check', 'prettierd', stop_after_first = true },
+      },
+    },
   },
 
   -- Configure debug adapter

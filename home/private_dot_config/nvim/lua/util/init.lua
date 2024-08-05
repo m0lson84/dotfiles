@@ -25,6 +25,7 @@ M.config = require('util.config')
 M.cursor = require('util.cursor')
 M.dir = require('util.directory')
 M.file = require('util.file')
+M.format = require('util.format')
 M.logger = get_logger
 M.notebook = require('util.notebook')
 M.path = require('util.path')

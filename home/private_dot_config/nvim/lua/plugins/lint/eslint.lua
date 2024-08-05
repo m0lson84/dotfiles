@@ -3,7 +3,6 @@ ESLint (https://eslint.org/)
 --]]
 
 return {
-  -- Configure language server
   {
     'neovim/nvim-lspconfig',
     opts = {

@@ -43,8 +43,8 @@ return {
     'stevearc/conform.nvim',
     opts = {
       formatters_by_ft = {
-        json = { 'prettierd' },
-        jsonc = { 'prettierd' },
+        json = { 'biome-check', 'prettierd', stop_after_first = true },
+        jsonc = { 'biome-check', 'prettierd', stop_after_first = true },
       },
     },
   },

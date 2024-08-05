@@ -2,9 +2,15 @@
 Ruff (https://beta.ruff.rs/docs/)
 --]]
 
-return {
+--- Organize all imports
+local organize_imports = function()
+  vim.lsp.buf.code_action({
+    context = { only = { 'source.organizeImports' }, diagnostics = {} },
+    apply = true,
+  })
+end
 
-  -- Configure language server
+return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -19,16 +25,7 @@ return {
             },
           },
           keys = {
-            {
-              '<leader>co',
-              function()
-                vim.lsp.buf.code_action({
-                  context = { only = { 'source.organizeImports' }, diagnostics = {} },
-                  apply = true,
-                })
-              end,
-              desc = 'Organize Imports',
-            },
+            { '<leader>co', organize_imports, desc = 'Organize imports' },
           },
         },
       },
