@@ -20,6 +20,7 @@ local toggle_view = function() require('kulala').toggle_view() end
 return {
   'mistweaverco/kulala.nvim',
   ft = 'http',
+  opts = {},
   keys = {
     { '<leader>hr', execute_request, ft = 'http', desc = 'Execute request' },
     { '<leader>hv', toggle_view, ft = 'http', desc = 'Toggle response view' },
@@ -27,5 +28,4 @@ return {
     { '<leader>hp', jump_previous, ft = 'http', desc = 'Jump to previousrequest' },
     { '<leader>he', select_env, ft = 'http', desc = 'Set selected environment' },
   },
-  opts = {},
 }
