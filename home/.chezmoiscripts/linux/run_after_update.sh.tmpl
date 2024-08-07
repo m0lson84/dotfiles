@@ -19,7 +19,7 @@ function update_apt_packages() {
   echo "Updating apt packages..."
   sudo apt update && sudo apt upgrade -y
   sudo apt autoclean
-  sudo apt autoremove
+  sudo apt autoremove -y
 }
 
 

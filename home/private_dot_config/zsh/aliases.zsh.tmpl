@@ -1,7 +1,7 @@
 
 {{- /* Update applications */ -}}
-{{- $update:= "aguu -y && bubu" -}}
-{{- if eq .env.os "darwin" -}} {{- $update = "bubu && mas upgrade" -}} {{- end -}}
+{{- $update := "apt_update && brew_update" -}}
+{{- if eq .env.os "darwin" -}} {{- $update = "brew_update && mas upgrade" -}} {{- end -}}
 
 #         _ _
 #        | (_)
