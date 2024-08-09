@@ -39,6 +39,9 @@ return {
   },
   {
     'folke/noice.nvim',
+    -- TODO: Remove version contraint once this issue is resolved:
+    -- https://github.com/folke/noice.nvim/issues/923
+    version = '4.4.7',
     opts = function(_, opts) opts.presets.lsp_doc_border = true end,
   },
   {
