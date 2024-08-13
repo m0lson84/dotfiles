@@ -162,6 +162,6 @@ del = branch -D
 graph = log --graph --pretty=changelog
 last = log -1 HEAD --stat
 new = checkout -b
-save = !git add -A && git commit -a -m "chore: savepoint"
+save = !git add -A && git commit -a -m 'chore: savepoint'
 undo = reset HEAD~1 --mixed
 update = pull --autostash --rebase
