@@ -9,6 +9,7 @@ return {
     opts = {
       -- styles: storm (default), night, moon, day
       style = 'night',
+      plugins = { markdown = true },
       on_colors = function(colors)
         local tokyonight = require('tokyonight.util')
         colors.bg = colors.bg_dark

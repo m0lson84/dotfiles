@@ -57,7 +57,7 @@ return {
 
   -- Markdown rendering
   {
-    'MeanderingProgrammer/markdown.nvim',
+    'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       file_types = { 'markdown', 'norg', 'rmd', 'org' },
