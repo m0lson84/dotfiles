@@ -12,6 +12,6 @@
 experimental = true
 
 [tools]
-go     = "1.22"
+go     = "1.23"
 node   = "lts"
 python = "3.12"
