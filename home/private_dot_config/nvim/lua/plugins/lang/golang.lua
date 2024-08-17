@@ -106,7 +106,9 @@ return {
     dependencies = { 'fredrikaverpil/neotest-golang' },
     opts = {
       adapters = {
-        ['neotest-golang'] = { dap_go_enabled = true },
+        ['neotest-golang'] = {
+          warn_test_not_executed = false,
+        },
       },
     },
   },

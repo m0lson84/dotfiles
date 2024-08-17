@@ -6,7 +6,7 @@ return {
   require('plugins.lang.bash'),
   require('plugins.lang.csharp'),
   require('plugins.lang.docker'),
-  require('plugins.lang.go'),
+  require('plugins.lang.golang'),
   require('plugins.lang.json'),
   require('plugins.lang.lua'),
   require('plugins.lang.markdown'),
