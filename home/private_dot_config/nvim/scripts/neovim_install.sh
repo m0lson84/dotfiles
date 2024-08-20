@@ -136,7 +136,7 @@ function parse_arguments() {
 #######################################
 function usage() {
   echo "
-  Usage: $0 -n [THING_NAME] -t [TOPIC] -p [PAYLOAD] -c [COUNT]
+  Usage: $0 -v [VERSION] -d [DIR] -f [FORCE]
 
   Options:
     -v, --version (Optional) The version of Neovim to install. Default: 'stable'
