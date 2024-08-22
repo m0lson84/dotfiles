@@ -4,6 +4,7 @@
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
+  "leoafarias/fvm"
   "microsoft/git"
   "teamookla/speedtest" )
 -}}
@@ -32,6 +33,7 @@
   "kubernetes-cli"
   "lazydocker"
   "lazygit"
+  "leoafarias/fvm/fvm"
   "mise"
   "openssl"
   "pandoc"
@@ -97,6 +99,7 @@
   "devpod"
   "duet"
   "elgato-camera-hub"
+  "flutter"
   "focusrite-control"
   "font-jetbrains-mono"
   "font-jetbrains-mono-nerd-font"
