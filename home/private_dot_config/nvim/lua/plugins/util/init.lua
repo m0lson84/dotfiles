@@ -3,7 +3,7 @@ Additional utility plugins
 --]]
 
 return {
-  require('plugins.util.curl'),
+  require('plugins.util.diffview'),
   require('plugins.util.hurl'),
   require('plugins.util.iron'),
   require('plugins.util.kulala'),
