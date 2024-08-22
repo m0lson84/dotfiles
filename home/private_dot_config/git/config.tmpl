@@ -108,19 +108,26 @@ useHttpPath = true
 # ========================================
 
 [core]
-editor = code --wait
+editor = nvim
 
 [diff]
-tool = vscode
+tool = nvim
 
-[difftool "vscode"]
-cmd = code --wait --diff $LOCAL $REMOTE
+[difftool]
+prompt = false
+
+[difftool "nvim"]
+cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]
-tool = vscode
+tool = nvim
 
-[mergetool "vscode"]
-cmd = code --wait $MERGED
+[mergetool]
+keepBackup = false
+prompt = false
+
+[mergetool "nvim"]
+cmd = nvim -n -c "DiffviewOpen" "$MERGE"
 
 
 # ========================================
