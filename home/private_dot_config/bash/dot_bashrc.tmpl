@@ -56,7 +56,9 @@ export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
 source "${HOME}/.cargo/env"
 
 # zoxide configuration
-eval "$(zoxide init --cmd cd  bash)"
+if command -v zoxide  >/dev/null; then
+  eval "$(zoxide init --cmd cd  bash)"
+fi
 
 {{ end -}}
 

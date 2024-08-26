@@ -10,15 +10,15 @@
 
 # Path to FZF installation
 FZF_PATH=
-{{- if eq .env.os "darwin" -}}
-"$(brew --prefix)/opt/fzf/shell"
-{{- else -}}
+{{- if .env.ephemeral -}}
 /usr/share/doc/fzf/examples
+{{- else -}}
+"$(brew --prefix)/opt/fzf/shell"
 {{- end }}
 
 # Setup fzf
 # ---------
-{{ if eq .env.os "darwin" -}}
+{{ if not .env.ephemeral -}}
 if [[ ! "$PATH" == *"$(brew --prefix)"/opt/fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}$(brew --prefix)/opt/fzf/bin"
 fi
