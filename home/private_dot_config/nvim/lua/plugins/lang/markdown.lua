@@ -43,9 +43,15 @@ return {
 
   -- Markdown preview
   {
-    'iamcco/markdown-preview.nvim',
+    'jannis-baum/vivify.vim',
+  },
+  {
+    'Tweekism/markdown-preview.nvim',
     event = { 'BufRead' },
-    build = function() vim.fn['mkdp#util#install']() end,
+    build = function()
+      require('lazy').load({ plugins = { 'markdown-preview.nvim' } })
+      vim.fn['mkdp#util#install']()
+    end,
     keys = {
       { '<leader>cp', '<cmd>MarkdownPreviewToggle<cr>', ft = 'markdown', desc = 'Markdown Preview' },
     },

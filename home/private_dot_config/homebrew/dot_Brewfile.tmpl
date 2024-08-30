@@ -1,10 +1,14 @@
 
 {{- /* Tap repositories */ -}}
-{{- $taps := list "homebrew/bundle" -}}
+{{- $taps := list
+  "homebrew/bundle"
+  "jannis-baum/tap"
+  "leoafarias/fvm"
+  "oven-sh/bun"
+-}}
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
-  "leoafarias/fvm"
   "microsoft/git"
   "teamookla/speedtest" )
 -}}
@@ -52,6 +56,7 @@
   "tidy-html5"
   "tree"
   "uv"
+  "vivify"
   "wget"
   "yazi"
   "zellij"
@@ -66,10 +71,10 @@
   "mosquitto"
   "readline"
   "redis"
+  "speedtest"
   "sqlite3"
   "switchaudio-osx"
   "tcl-tk"
-  "teamookla/speedtest/speedtest"
   "zlib"
   "zsh" )
 -}}
