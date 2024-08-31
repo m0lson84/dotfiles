@@ -1,21 +1,17 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2024-06-22T07:40:05.511-00:00",
+  "CreationDate": "2024-08-31T18:42:00.000-00:00",
   "Sources": [
     {
       "Packages": [
         { "PackageIdentifier": "AgileBits.1Password" },
         { "PackageIdentifier": "AgileBits.1Password.CLI" },
         { "PackageIdentifier": "ajeetdsouza.zoxide" },
-        { "PackageIdentifier": "Canonical.Ubuntu.2204" },
         { "PackageIdentifier": "Discord.Discord" },
-        { "PackageIdentifier": "dorssel.usbipd-win" },
         { "PackageIdentifier": "Elgato.CameraHub" },
-        { "PackageIdentifier": "FocusriteAudioEngineeringLtd.FocusriteControl" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
         { "PackageIdentifier": "JesseDuffield.lazygit" },
-        { "PackageIdentifier": "junegunn.fzf" },
         { "PackageIdentifier": "Logitech.GHUB" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
@@ -29,8 +25,7 @@
         { "PackageIdentifier": "TheBrowserCompany.Arc" },
         { "PackageIdentifier": "twpayne.chezmoi" },
         { "PackageIdentifier": "Valve.Steam" },
-        { "PackageIdentifier": "VideoLAN.VLC" },
-        { "PackageIdentifier": "wez.wezterm" }
+        { "PackageIdentifier": "VideoLAN.VLC" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
@@ -40,5 +35,5 @@
       }
     }
   ],
-  "WinGetVersion": "1.9.1551-preview"
+  "WinGetVersion": "1.9.2411-preview"
 }
