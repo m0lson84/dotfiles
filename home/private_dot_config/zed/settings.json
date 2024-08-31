@@ -1,0 +1,64 @@
+
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette
+{
+  // General
+  "cursor_blink": false,
+  "current_line_highlight": "line",
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "relative_line_numbers": true,
+  "file_types": {},
+  "inlay_hints": { "enabled": true },
+  "preferred_line_length": 120,
+  "wrap_guides": [
+    120
+  ],
+
+  // Theme
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 12,
+  "ui_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night"
+  },
+
+  // Vim
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always"
+  },
+
+  // LSP
+  "lsp": {
+    "bashls": {},
+    "dockerls": {},
+    "docker_compose_language_server": {},
+    "gopls": {},
+    "jsonls": {}
+  },
+
+  // Languages
+  "languages": {
+    "JavaScript": {
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    },
+    "TypeScript": {
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    }
+  }
+}
