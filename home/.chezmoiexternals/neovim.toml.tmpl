@@ -1,0 +1,8 @@
+
+{{- define "git" -}}
+type = "git-repo"
+{{- end -}}
+
+[".config/nvim"]
+{{ template "git" }}
+url = "https://github.com/m0lson84/neovim.git"
