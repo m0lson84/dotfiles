@@ -1,14 +1,21 @@
 
 {{- /* Additional paths */ -}}
 {{- $paths := list "${HOME}/.local/bin" "/usr/local/bin" -}}
-{{- if not .env.ephemeral -}} {{- $paths = concat $paths ( list "$HOME/.local/share/mise/shims" ) -}} {{- end -}}
 {{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
+{{- if not .env.ephemeral -}}
+  {{- $paths = concat $paths ( list
+    "$HOME/.local/share/bob/nvim-bin"
+    "$HOME/.local/share/mise/shims"
+    "$HOME/.pub-cache/bin"
+    "$HOME/flutter/bin" )
+  -}}
+{{- end -}}
 {{- if eq .env.os "darwin" -}}
-{{- $paths = concat $paths ( list
-  "/usr/local/opt/openssl@1.1/bin"
-  "/usr/local/opt/python@3.10/bin"
-  "/usr/local/sbin" )
--}}
+  {{- $paths = concat $paths ( list
+    "/usr/local/opt/openssl@1.1/bin"
+    "/usr/local/opt/python@3.10/bin"
+    "/usr/local/sbin" )
+  -}}
 {{- end -}}
 
 
@@ -32,9 +39,6 @@ export AWS_SDK_LOAD_CONFIG=1
 
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
-
-# Neovim configuration
-export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
 
 {{ if eq .env.os "darwin" -}}
 
