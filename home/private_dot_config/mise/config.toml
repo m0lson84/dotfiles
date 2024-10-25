@@ -8,10 +8,17 @@
 #                                              |_|
 
 
-[settings]
-experimental = true
-
 [tools]
+bun    = "1.1"
+deno   = "2.0"
 go     = "1.23"
 node   = "lts"
-python = "3.12"
+python = "3.13"
+
+[settings]
+env_file                 = ".env"
+experimental             = true
+go_default_packages_file = "~/.config/mise/golang"
+
+[settings.python]
+default_packages_file = "~/.config/mise/python"

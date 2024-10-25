@@ -74,10 +74,7 @@ fi
 export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
 
 # mise-en-place configuration
-export MISE_ENV_FILE=.env
-export MISE_GO_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/golang"
 export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
-export MISE_PYTHON_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/python"
 command -v mise >/dev/null && eval "$(mise activate zsh)"
 command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 
