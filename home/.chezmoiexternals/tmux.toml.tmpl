@@ -1,0 +1,11 @@
+{{- define "archive" -}}
+type = "archive"
+stripComponents = 1
+refreshPeriod = "168h"
+exact = true
+{{- end -}}
+
+
+[".config/tmux/plugins/tpm"]
+{{ template "archive" }}
+url = "https://github.com/tmux-plugins/tpm/archive/master.tar.gz"
