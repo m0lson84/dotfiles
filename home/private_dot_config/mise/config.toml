@@ -14,6 +14,7 @@ deno   = "2.0"
 go     = "1.23"
 node   = "lts"
 python = "3.13"
+ruby   = "3.3"
 
 [settings]
 env_file                 = ".env"
@@ -22,3 +23,6 @@ go_default_packages_file = "~/.config/mise/golang"
 
 [settings.python]
 default_packages_file = "~/.config/mise/python"
+
+[settings.ruby]
+default_packages_file = "~/.config/mise/ruby"
