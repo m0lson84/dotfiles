@@ -37,6 +37,15 @@ export PATH="{{ . }}:$PATH"
 # AWS SDK config
 export AWS_SDK_LOAD_CONFIG=1
 
+{{ if eq .env.os "linux" -}}
+
+# Chrome configuration
+if command -v flatpak >/dev/null; then
+export CHROME_EXECUTABLE="$( flatpak info com.google.Chrome -l )/export/bin/com.google.Chrome"
+fi
+
+{{- end }}
+
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
 
