@@ -19,6 +19,7 @@ if terminal.config_builder then config = terminal.config_builder() end
 config.check_for_updates = false
 config.enable_kitty_keyboard = true
 config.front_end = 'WebGpu'
+config.max_fps = 240
 config.term = 'wezterm'
 
 -- Window
