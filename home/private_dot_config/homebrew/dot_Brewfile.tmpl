@@ -4,12 +4,12 @@
   "homebrew/bundle"
   "jannis-baum/tap"
   "leoafarias/fvm"
-  "oven-sh/bun"
 -}}
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
   "microsoft/git"
+  "nikitabobko/tap"
   "teamookla/speedtest" )
 -}}
 {{- end -}}
@@ -99,6 +99,7 @@
 {{- $casks = concat $casks ( list
   "1password"
   "1password-cli"
+  "aerospace"
   "arc"
   "bartender"
   "cleanmymac"
@@ -116,7 +117,6 @@
   "google-drive"
   "httpie"
   "karabiner-elements"
-  "keymapp"
   "microsoft-excel"
   "microsoft-outlook"
   "microsoft-teams"
@@ -165,7 +165,6 @@ cask "{{ . }}"
 
 {{- /* MacOS App Store */ -}}
 {{ if eq .env.os "darwin" }}
-mas "Essentials", id: 1588151344
 mas "Harvest", id: 506189836
 mas "1Password for Safari", id: 1569813296
 {{ end -}}
