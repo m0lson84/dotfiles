@@ -23,6 +23,10 @@ customCommands:
     context: 'files'
     loadingText: 'opening commitizen commit tool'
     subprocess: true
+  - key: '<c-s>'
+    command: 'git save'
+    description: 'Create savepoint commit'
+    context: 'files'
   - key: 'u'
     command: 'git undo'
     description: 'Undo last commit'
