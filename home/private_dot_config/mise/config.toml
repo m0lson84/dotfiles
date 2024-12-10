@@ -10,7 +10,7 @@
 
 [tools]
 bun    = "1.1"
-deno   = "2.0"
+deno   = "2.1"
 go     = "1.23"
 node   = "lts"
 python = "3.13"
