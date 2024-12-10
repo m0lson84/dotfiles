@@ -111,9 +111,17 @@ function install_docker() {
 #######################################
 function install_gcm() {
   echo "Installing Git Credential Manager..."
-  curl -L -O https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.3.2/gcm-linux_amd64.2.3.2.deb
-  sudo dpkg -i gcm-linux_amd64.2.3.2.deb
-  rm gcm-linux_amd64.2.3.2.deb
+  gcm_version="2.6.0"
+
+  # Download debian package
+  curl -L -O "https://github.com/git-ecosystem/git-credential-manager/releases/download/v$gcm_version/gcm-linux_amd64.$gcm_version.deb"
+
+  # Install Git Credential Manager
+  sudo dpkg -i "gcm-linux_amd64.$gcm_version.deb"
+
+  # Cleanup downloaded files
+  rm "gcm-linux_amd64.$gcm_version.deb"
+
 }
 
 #######################################
