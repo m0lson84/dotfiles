@@ -17,12 +17,5 @@ python = "3.13"
 ruby   = "3.3"
 
 [settings]
-env_file                 = ".env"
-experimental             = true
-go_default_packages_file = "~/.config/mise/golang"
-
-[settings.python]
-default_packages_file = "~/.config/mise/python"
-
-[settings.ruby]
-default_packages_file = "~/.config/mise/ruby"
+env_file     = ".env"
+experimental = true
