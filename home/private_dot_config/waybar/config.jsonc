@@ -1,0 +1,34 @@
+{
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["network", "wireplumber", "clock"],
+  "clock": {
+    "format": "<span>   </span>{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "rewrite": {
+      "(.*) - Discord": "Discord",
+      "(.*) - Google Chrome": "Google Chrome",
+      "(.*) - Slack": "Slack",
+      "(.*) — Zen Browser": "Zen Browser"
+    }
+  },
+  "network": {
+    "format-wifi": "<span size='13000'> </span>{essid}",
+    "format-ethernet": "<span size='13000'> </span>",
+    "format-linked": "{ifname} (No IP) 󰩠",
+    "format-disconnected": "<span size='13000'>󰌙 </span>",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  },
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": [" ", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  }
+}

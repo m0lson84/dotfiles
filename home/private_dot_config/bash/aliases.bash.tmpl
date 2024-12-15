@@ -19,9 +19,10 @@ alias finder=yazi
 alias ls="eza -l -a --icons=always"
 alias upgrayedd={{ $update | quote }}
 
-{{ if eq .env.os "darwin" -}}
+{{- if eq .env.os "darwin" }}
 
 # Python
 alias python2=/usr/local/bin/python2.7
 
-{{- end }}
+{{ end -}}
+

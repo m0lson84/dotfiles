@@ -1,6 +1,9 @@
 
 {{- /* Default browser */ -}}
 {{- $browser := "chrome" -}}
+{{- if eq .env.distro "arch" -}}
+{{- $browser = "google-chrome-stable" -}}
+{{- end -}}
 {{- if .env.wsl -}}
 {{- $browser = "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" -}}
 {{- end -}}
@@ -39,9 +42,6 @@ unset HOMEBREW_PREFIX
 
 # ZSH configuration
 ZSH=$HOME/.oh-my-zsh
-
-# VS Code plugin
-VSCODE="code"
 
 # Disable Oh-My-ZSH update
 DISABLE_UPDATE_PROMPT=true
