@@ -33,7 +33,7 @@ yay_update() {
   yay -Yc
 }
 
-{{ if eq .env.os "darwin" -}}
+{{- if eq .env.os "darwin" }}
 
 # Fix for OBS virtual camera in Slack
 fix_obs_virtual_cam_in_slack() {
@@ -44,4 +44,5 @@ fix_obs_virtual_cam_in_slack() {
   sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Plugin).app"
 }
 
-{{- end }}
+{{ end -}}
+
