@@ -1,7 +1,8 @@
 
 {{- /* Update applications */ -}}
-{{- $update := "apt_update && brew_update" -}}
+{{- $update := "yay_update" -}}
 {{- if eq .env.os "darwin" -}} {{- $update = "brew_update && mas upgrade" -}} {{- end -}}
+{{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "apt_update && brew_update" -}} {{- end -}}
 
 #         _ _
 #        | (_)

@@ -1,0 +1,22 @@
+{{- /* Default packages */ -}}
+{{- $packages := list "base-devel" "curl" "fzf" "git" "gnupg" "unzip" "wget" "zsh" -}}
+
+{{- $sudo := "sudo " -}}
+{{- if eq .chezmoi.username "root" -}}
+{{-   $sudo = "" -}}
+{{- end -}}
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install package dependencies
+# ---------------------------------------------------------------------------
+
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Install packages
+{{ $sudo }}pacman -Syu
+{{ $sudo }}pacman -S --needed --noconfirm {{ $packages | join " " }}

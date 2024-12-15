@@ -25,6 +25,14 @@ brew_update() {
   brew autoremove && brew cleanup
 }
 
+# Update yay packages
+yay_update() {
+  echo  "\nUpdating yay packages..."
+  yay -Syu
+  echo "Running cleaning up tasks..."
+  yay -Yc
+}
+
 {{ if eq .env.os "darwin" -}}
 
 # Fix for OBS virtual camera in Slack

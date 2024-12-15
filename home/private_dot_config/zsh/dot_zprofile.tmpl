@@ -46,8 +46,12 @@ fi
 
 {{- end }}
 
+{{ if .env.homebrew -}}
+
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
+
+{{- end }}
 
 {{ if eq .env.os "darwin" -}}
 

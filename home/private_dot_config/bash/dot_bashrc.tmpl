@@ -4,7 +4,7 @@
 {{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
 
 {{- /* Additional configurations */ -}}
-{{- $configs := list ".fzf.bash" "aliases.bash" "completions.bash" -}}
+{{- $configs := list "aliases.bash" "completions.bash" -}}
 
 
 #     _               _
@@ -40,6 +40,9 @@ if command -v op >/dev/null; then
   export SSH_AUTH_SOCK=~/.1password/agent.sock
   source <(op completion bash)
 fi
+
+# fzf configuration
+eval "$(fzf --bash)"
 
 # mise-en-place configuration
 export MISE_ENV_FILE=.env

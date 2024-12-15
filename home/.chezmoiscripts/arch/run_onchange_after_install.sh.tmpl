@@ -1,0 +1,70 @@
+{{- /* Packages to install */ -}}
+{{- $packages := list
+  "act"
+  "aws-cli-v2"
+  "bob"
+  "btop"
+  "buf"
+  "chezmoi"
+  "cmake"
+  "curl"
+  "eza"
+  "fd"
+  "fzf"
+  "fvm"
+  "git"
+  "glow"
+  "helm"
+  "hurl"
+  "jq"
+  "just"
+  "kubectl"
+  "lazydocker"
+  "lazygit"
+  "mise-bin"
+  "pre-commit"
+  "python-commitizen"
+  "ripgrep"
+  "rye"
+  "slides"
+  "sqlc"
+  "starship"
+  "tree"
+  "tree-sitter"
+  "ttf-jetbrains-mono"
+  "ttf-jetbrains-mono-nerd"
+  "ttf-nerd-fonts-symbols-mono"
+  "uv"
+  "wget"
+  "yazi"
+  "zellij"
+  "zoxide"
+-}}
+
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install applications and tools
+# ---------------------------------------------------------------------------
+
+
+{{/* Include external functions */}}
+{{ template "install-rust.tmpl" . }}
+
+
+#################### Main Program ####################
+
+# Stop script on error
+set -eo pipefail
+
+{{ if not .env.ephemeral -}}
+
+# Install packages
+yay -Syu
+yay -S --needed --noconfirm {{ $packages | join " " }}
+
+# Install Rust
+install_rust
+
+{{- end }}
+

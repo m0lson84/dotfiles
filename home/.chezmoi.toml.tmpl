@@ -3,8 +3,17 @@
 {{- $personal := "michaelolson84@gmail.com" -}}
 {{- $spindance := "michael.olson@spindance.com" -}}
 
+{{- /* Linux distrobution */ -}}
+{{- $distro := "" -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $distro = .chezmoi.osRelease.id -}}
+{{- end -}}
+
 {{- /* Check if running in WSL */ -}}
 {{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+
+{{- /* Check using Homebrew as package manager */ -}}
+{{- $homebrew := or (eq .chezmoi.os "darwin") (has $distro (list "pop" "ubuntu")) -}}
 
 {{- /* Detect GitHub codespaces, VSCode remote containers and Docker containers */ -}}
 {{- $codespaces := env "CODESPACES" | not | not -}}
@@ -37,9 +46,11 @@ work = {{ eq $email $spindance }}
 [data.env]
 os = {{ .chezmoi.os | quote }}
 wsl = {{ $wsl }}
+distro = {{ $distro | quote }}
 codespaces = {{ $codespaces }}
 devcontainer = {{ $devcontainer }}
 ephemeral = {{ or $codespaces $devcontainer }}
+homebrew = {{ $homebrew }}
 
 [data.personal]
 email = {{ $personal | quote }}

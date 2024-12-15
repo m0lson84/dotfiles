@@ -10,7 +10,7 @@
 {{- if eq .env.os "windows" -}} {{- $terminal = "wt" -}} {{- end -}}
 
 {{- /* Additional configurations */ -}}
-{{- $configs := list ".fzf.zsh" "aliases.zsh" "completions.zsh" "functions.zsh" -}}
+{{- $configs := list "aliases.zsh" "completions.zsh" "functions.zsh" -}}
 
 
 #             _
@@ -28,7 +28,7 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
-{{ if not .env.ephemeral -}}
+{{ if and (.env.homebrew) (not .env.ephemeral) -}}
 
 # Enable Homebrew auto completion
 HOMEBREW_PREFIX={{ if eq .env.os "linux" -}} /home/linuxbrew/.linuxbrew {{- else -}} /usr/local {{- end }}
@@ -73,13 +73,16 @@ fi
 # bat configuration
 export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
 
+# fzf configuration
+eval "$(fzf --zsh)"
+
 # mise-en-place configuration
 export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
 command -v mise >/dev/null && eval "$(mise activate zsh)"
 command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 
 # OpenSSL configuration
-export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl)"
+export CONFIGURE_OPTS="-with-openssl=$({{- if .env.homebrew -}}brew --prefix openssl{{- else -}}which openssl{{- end -}})"
 
 # Rust configuration
 source "${HOME}/.cargo/env"

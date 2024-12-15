@@ -8,16 +8,24 @@
 # System files
 **/.DS_Store
 
+{{- /* MacOS specific configuration */ -}}
 {{ if ne .env.os "darwin" }}
 .chezmoiscripts/darwin/**
 .1password
 {{ end }}
 
+{{- /* Linux specific configuration */ -}}
 {{ if ne .env.os "linux" }}
-.chezmoiscripts/linux/**
 .local/share/fonts
 {{ end }}
+{{ if ne .env.distro "arch" }}
+.chezmoiscripts/arch/**
+{{ end }}
+{{ if not ( has .env.distro ( list "pop" "ubuntu" ) ) }}
+.chezmoiscripts/ubuntu/**
+{{ end }}
 
+{{- /* Windows specific configuration */ -}}
 {{ if ne .env.os "windows" }}
 .chezmoiscripts/windows/**
 AppData
