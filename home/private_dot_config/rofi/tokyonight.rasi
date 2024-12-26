@@ -16,6 +16,7 @@
   cyan    : #4abaaf;
 
   accent: @red;
+  selected: @blue;
   urgent: @yellow;
 
   background-color : transparent;
@@ -36,7 +37,7 @@ window {
   x-offset : 4px;
   y-offset : 26px;
 
-  background-color: @bg1;
+  background-color: @bg0;
   border: 2px;
   border-color: @bg3;
   border-radius: 6px;
@@ -83,16 +84,16 @@ element normal urgent {
 }
 
 element normal active {
-  text-color: @accent;
+  text-color: @selected;
 }
 
 element alternate active {
-  text-color: @accent;
+  text-color: @selected;
 }
 
 element selected {
-  text-color       : @bg1;
-  background-color : @accent;
+  text-color       : @bg2;
+  background-color : @selected;
 }
 
 element selected urgent {

@@ -1,7 +1,7 @@
 
 {{- /* Initialize general info */ -}}
 {{- $personal := "michaelolson84@gmail.com" -}}
-{{- $spindance := "michael.olson@spindance.com" -}}
+{{- $work := "michael.olson@mutuallyhuman.com" -}}
 
 {{- /* Linux distrobution */ -}}
 {{- $distro := "" -}}
@@ -21,7 +21,7 @@
 
 {{- /* User information */ -}}
 {{- $name :=  default "Michael Olson" (env "USER_NAME") -}}
-{{- $email := default $spindance (env "USER_EMAIL") -}}
+{{- $email := default $personal (env "USER_EMAIL") -}}
 {{- if hasKey . "name" -}} {{- $name = .name -}} {{- end -}}
 {{- if hasKey . "email" -}} {{- $email = .email -}} {{- end -}}
 
@@ -41,7 +41,7 @@ encryption = "gpg"
 [data]
 name = {{ $name | quote }}
 email = {{ $email | quote }}
-work = {{ eq $email $spindance }}
+work = {{ eq $email $work }}
 
 [data.env]
 os = {{ .chezmoi.os | quote }}
@@ -52,13 +52,13 @@ devcontainer = {{ $devcontainer }}
 ephemeral = {{ or $codespaces $devcontainer }}
 homebrew = {{ $homebrew }}
 
+[data.mhs]
+email = {{ $work | quote }}
+onepassword = { account = "UFHA2NBMT5GCDNLTAOJJCQZ3IM", url = "mutuallyhuman.1password.com" }
+
 [data.personal]
 email = {{ $personal | quote }}
 onepassword = { account = "QBDDA7S63NEQHDH4VKB6E3SC6I", url = "my.1password.com" }
-
-[data.spindance]
-email = {{ $spindance| quote }}
-onepassword = { account = "LJECLVN5XRBDLE2QRE7B5RFJHM", url = "spindance.1password.com" }
 
 [edit]
 command = {{ $editor | quote }}
