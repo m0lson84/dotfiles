@@ -12,6 +12,7 @@
 {{ if ne .env.os "darwin" }}
 .chezmoiscripts/darwin/**
 .1password
+.config/aerospace
 {{ end }}
 
 {{- /* Linux specific configuration */ -}}
@@ -20,6 +21,9 @@
 {{ end }}
 {{ if ne .env.distro "arch" }}
 .chezmoiscripts/arch/**
+.config/hypr
+.config/rofi
+.config/waybar
 {{ end }}
 {{ if not ( has .env.distro ( list "pop" "ubuntu" ) ) }}
 .chezmoiscripts/ubuntu/**
@@ -28,6 +32,9 @@
 {{- /* Windows specific configuration */ -}}
 {{ if ne .env.os "windows" }}
 .chezmoiscripts/windows/**
+.config/powershell
+.config/winget
+.config/wt
 AppData
 Documents
 {{ else }}

@@ -4,7 +4,7 @@
 {{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
 
 {{- /* Additional configurations */ -}}
-{{- $configs := list "aliases.bash" "completions.bash" -}}
+{{- $configs := list "aliases.bash" "completions.bash" "functions.bash" -}}
 
 
 #     _               _
