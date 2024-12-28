@@ -17,9 +17,11 @@
 # General
 title = Terminal
 confirm-close-surface = false
+resize-overlay = never
 copy-on-select = true
 
 # Shell
+shell-integration = zsh
 shell-integration-features = no-cursor
 
 # Theme
@@ -38,7 +40,6 @@ cursor-style = block
 cursor-style-blink = false
 
 # Window
-window-decoration = false
 window-height = 40
 window-width = 120
 window-padding-balance = true
@@ -50,6 +51,7 @@ window-padding-y = 4
 {{- if eq .env.os "linux" }}
 
 # Linux
+window-decoration = false
 gtk-tabs-location = hidden
 
 {{- end }}
@@ -59,6 +61,7 @@ gtk-tabs-location = hidden
 
 # MacOS
 window-colorspace = display-p3
+macos-titlebar-style = hidden
 
 {{- end }}
 
