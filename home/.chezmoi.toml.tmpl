@@ -31,9 +31,13 @@
 {{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
-{{- /* Editor */ -}}
+{{- /* Default apps */ -}}
+{{- $browser := "chrome" -}}
 {{- $editor := "nvim" -}}
-{{- if eq .chezmoi.os "windows" -}} {{- $editor = "code" -}} {{- end -}}
+{{- $terminal := "ghostty" -}}
+{{- if eq .env.distro "arch" -}}
+{{- $browser = "google-chrome-stable" -}}
+{{- end -}}
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 encryption = "gpg"
@@ -42,6 +46,11 @@ encryption = "gpg"
 name = {{ $name | quote }}
 email = {{ $email | quote }}
 work = {{ eq $email $work }}
+
+[data.default]
+browser = {{ $browser | quote }}
+editor = {{ $editor | quote }}
+terminal = {{ $terminal | quote }}
 
 [data.env]
 os = {{ .chezmoi.os | quote }}

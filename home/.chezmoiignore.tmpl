@@ -1,7 +1,3 @@
-# Neovim
-.config/nvim/lazyvim.json
-.config/nvim/lazy-lock.json
-
 # Oh-My-Zsh
 .oh-my-zsh/cache/**
 
@@ -16,9 +12,6 @@
 {{ end }}
 
 {{- /* Linux specific configuration */ -}}
-{{ if ne .env.os "linux" }}
-.local/share/fonts
-{{ end }}
 {{ if ne .env.distro "arch" }}
 .chezmoiscripts/arch/**
 .config/hypr
@@ -29,25 +22,6 @@
 .chezmoiscripts/ubuntu/**
 {{ end }}
 
-{{- /* Windows specific configuration */ -}}
-{{ if ne .env.os "windows" }}
-.chezmoiscripts/windows/**
-.config/powershell
-.config/winget
-.config/wt
-AppData
-Documents
-{{ else }}
-.aws
-.bash_aliases
-.config/git/cookies
-.oh-my-zsh
-.oh-my-zsh/**
-.zprofile
-.zshrc
-{{ end }}
-
 {{ if .env.ephemeral -}}
 .aws
-.ssh
 {{ end }}

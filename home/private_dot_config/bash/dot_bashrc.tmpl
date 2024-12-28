@@ -1,4 +1,30 @@
 
+{{- /* Default apps */ -}}
+{{- $browser := "chrome" -}}
+{{- $editor := "nvim" -}}
+{{- $terminal := "wezterm" -}}
+{{- if eq .env.distro "arch" -}}
+{{- $browser = "google-chrome-stable" -}}
+{{- end -}}
+
+{{- /* Additional paths */ -}}
+{{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
+{{- if not .env.ephemeral -}}
+  {{- $paths = concat $paths ( list
+    "$HOME/.local/share/bob/nvim-bin"
+    "$HOME/.local/share/mise/shims"
+    "$HOME/.pub-cache/bin"
+    "$HOME/flutter/bin" )
+  -}}
+{{- end -}}
+{{- if eq .env.os "darwin" -}}
+  {{- $paths = concat $paths ( list
+    "/usr/local/opt/openssl@1.1/bin"
+    "/usr/local/opt/python@3.10/bin"
+    "/usr/local/sbin" )
+  -}}
+{{- end -}}
+
 {{- /* Additional configurations */ -}}
 {{- $configs := list "aliases.bash" "completions.bash" "functions.bash" -}}
 
@@ -12,19 +38,25 @@
 #
 #
 
+
 # XDG Base Directory Specification
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
-# Default Apps
-export BROWSER="chrome"
-export EDITOR="nvim"
-export TERMINAL="wezterm"
-export VISUAL="nvim"
-export VSCODE="code"
-
 {{- if not .env.ephemeral }}
+
+# Additional paths
+{{- range ( $paths | sortAlpha | uniq ) }}
+PATH="{{ . }}:$PATH"
+{{- end }}
+export PATH=$PATH
+
+# Default Apps
+export BROWSER={{ .default.browser | quote }}
+export EDITOR={{ .default.editor | quote }}
+export TERMINAL={{ .default.terminal | quote }}
+export VISUAL={{ .default.editor | quote }}
 
 # 1Password CLI configuration
 if command -v op >/dev/null; then
@@ -32,8 +64,21 @@ if command -v op >/dev/null; then
   source <(op completion bash)
 fi
 
+# AWS SDK config
+export AWS_SDK_LOAD_CONFIG=1
+
+{{- if eq .env.distro "arch" }}
+
+# Chrome configuration
+export CHROME_EXECUTABLE="$( which google-chrome-stable )"
+
+{{- end }}
+
 # fzf configuration
 eval "$(fzf --bash)"
+
+# Homebrew configuration
+command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
 
 # mise-en-place configuration
 export MISE_ENV_FILE=.env
@@ -41,8 +86,19 @@ export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
 command -v mise >/dev/null && eval "$(mise activate bash)"
 command -v mise >/dev/null && eval "$(mise hook-env -s bash)"
 
-# Neovim configuration
-export PATH="${HOME}/.local/share/bob/nvim-bin:${PATH}"
+{{- if eq .env.os "darwin" }}
+
+# OrbStack: command-line tools and integration
+source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
+
+{{- end }}
+
+# Poetry configuration
+export POETRY_HOME="$HOME/.local/share/pypoetry"
+
+# Rye configuration
+export RYE_HOME="$HOME/.config/rye"
+export RUFF_CACHE_DIR=".cache/ruff"
 
 # Rust configuration
 source "${HOME}/.cargo/env"
