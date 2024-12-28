@@ -1,3 +1,23 @@
+
+{{- /* Additional paths */ -}}
+{{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
+{{- if not .env.ephemeral -}}
+  {{- $paths = concat $paths ( list
+    "$HOME/.local/share/bob/nvim-bin"
+    "$HOME/.local/share/mise/shims"
+    "$HOME/.pub-cache/bin"
+    "$HOME/flutter/bin" )
+  -}}
+{{- end -}}
+{{- if eq .env.os "darwin" -}}
+  {{- $paths = concat $paths ( list
+    "/usr/local/opt/openssl@1.1/bin"
+    "/usr/local/opt/python@3.10/bin"
+    "/usr/local/sbin" )
+  -}}
+{{- end -}}
+
+
 #                      __ _ _
 #                     / _(_) |
 #     _ __  _ __ ___ | |_ _| | ___
@@ -9,28 +29,38 @@
 
 
 # Additional paths
-export PATH=$PATH:.
-PATH="/usr/local/bin:$PATH"
+{{- range ( $paths | sortAlpha | uniq ) }}
+PATH="{{ . }}:$PATH"
+{{- end }}
+export PATH=$PATH
 
 # AWS SDK config
 export AWS_SDK_LOAD_CONFIG=1
 
-# Homebrew configuration
-if command -v brew >/dev/null; then
-  HOMEBREW_PREFIX="$(brew --prefix)"
-  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
-  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
-    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-  else
-    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
-      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-    done
-  fi
-fi
+{{- if eq .env.distro "arch" }}
 
-{{ if eq .env.os "darwin" -}}
+# Chrome configuration
+export CHROME_EXECUTABLE="$( which google-chrome-stable )"
+
+{{- end }}
+
+{{- if .env.homebrew }}
+
+# Homebrew configuration
+command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
+
+{{- end }}
+
+{{- if eq .env.os "darwin" }}
 
 # OrbStack: command-line tools and integration
 source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 
 {{- end }}
+
+# Poetry configuration
+export POETRY_HOME="$HOME/.local/share/pypoetry"
+
+# Rye configuration
+export RYE_HOME="$HOME/.config/rye"
+export RUFF_CACHE_DIR=".cache/ruff"

@@ -1,4 +1,19 @@
 layout {
-  default_tab_template { tab-bar size=1; children; status-bar size=2; }
+
+  pane_template name="status" {
+    plugin location="status-bar"
+  }
+
+  pane_template name="tabs" {
+    plugin location="tab-bar"
+  }
+
+  default_tab_template {
+    tabs size=1
+    children
+    status size=2
+  }
+
   tab name="terminal" { pane; }
+
 }

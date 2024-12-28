@@ -168,3 +168,8 @@ alt-shift-l = ['join-with right', 'mode main']
 down       = 'volume down'
 shift-down = ['mode main', 'volume set 0']
 up         = 'volume up'
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run       = ["layout tiling"]

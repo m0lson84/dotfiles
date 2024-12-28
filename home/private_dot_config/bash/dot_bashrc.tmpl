@@ -1,8 +1,4 @@
 
-{{- /* Additional paths */ -}}
-{{- $paths := list "${HOME}/.local/bin" -}}
-{{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
-
 {{- /* Additional configurations */ -}}
 {{- $configs := list "aliases.bash" "completions.bash" "functions.bash" -}}
 
@@ -27,11 +23,6 @@ export EDITOR="nvim"
 export TERMINAL="wezterm"
 export VISUAL="nvim"
 export VSCODE="code"
-
-# Additional paths
-{{- range ( $paths | sortAlpha | uniq ) }}
-export PATH="{{ . }}:$PATH"
-{{- end }}
 
 {{- if not .env.ephemeral }}
 
@@ -61,7 +52,7 @@ if command -v zoxide  >/dev/null; then
   eval "$(zoxide init --cmd cd  bash)"
 fi
 
-{{ end -}}
+{{- end }}
 
 # Starship initialization
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml

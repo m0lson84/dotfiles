@@ -11,7 +11,7 @@
 // General
 default_shell "zsh"
 pane_frames false
-styled_underlines {{ if .env.wsl }}false{{ else }}true{{ end }}
+styled_underlines true
 
 // Layouts
 default_layout "neovim"
@@ -34,12 +34,12 @@ keybinds  {
 
 // Plugins
 plugins {
-  welcome-screen location="zellij:session-manager" { welcome_screen true; }
-  session-manager location="zellij:session-manager"
-  filepicker location="zellij:strider" { cwd "/"; }
-  strider location="zellij:strider"
-  status-bar location="zellij:status-bar"
-  compact-bar location="zellij:compact-bar"
   tab-bar location="zellij:tab-bar"
+  status-bar location="zellij:status-bar"
+  strider location="zellij:strider"
+  compact-bar location="zellij:compact-bar"
+  session-manager location="zellij:session-manager"
+  welcome-screen location="zellij:session-manager" { welcome_screen true; }
+  filepicker location="zellij:strider" { cwd "/"; }
   zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm"
 }

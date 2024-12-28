@@ -30,7 +30,7 @@ themes {
   tokyonight-night {
     fg "#C0CAF5"
     bg "#292E42"
-    black "#15161E"
+    black "#16161E"
     red "#F7768E"
     green "#9ECE6A"
     yellow "#E0AF68"

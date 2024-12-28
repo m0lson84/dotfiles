@@ -1,0 +1,66 @@
+
+{{- /* Font settings */ -}}
+{{- $font := dict "family" "JetBrains Mono" "size" 9 -}}
+{{- if eq .env.os "darwin" -}}{{- set $font "size" 12 -}}{{- end -}}
+
+
+#   _____ _               _   _
+#  |  __ \ |             | | | |
+#  | |  \/ |__   ___  ___| |_| |_ _   _
+#  | | __| '_ \ / _ \/ __| __| __| | | |
+#  | |_\ \ | | | (_) \__ \ |_| |_| |_| |
+#   \____/_| |_|\___/|___/\__|\__|\__, |
+#                                  __/ |
+#                                 |___/
+
+
+# General
+title = Terminal
+confirm-close-surface = false
+copy-on-select = true
+
+# Shell
+command = zsh -l -i
+shell-integration-features = no-cursor
+
+# Theme
+theme = tokyo-night
+window-theme = ghostty
+
+# Font
+font-family = {{ $font.family }}
+font-size = {{ $font.size }}
+font-thicken = true
+bold-is-bright = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Window
+window-decoration = false
+window-height = 40
+window-width = 120
+window-padding-balance = true
+window-padding-x = 4
+window-padding-y = 4
+
+{{- /* Linux specific */ -}}
+{{- if eq .env.os "linux" }}
+
+# Linux
+gtk-tabs-location = hidden
+
+{{- end }}
+
+{{- /* MacOS specific */ -}}
+{{- if eq .env.os "darwin" }}
+
+# MacOS
+window-colorspace = display-p3
+
+{{- end }}
+
+# Imports
+config-file = ./keymaps
+

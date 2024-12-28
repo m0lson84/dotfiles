@@ -1,7 +1,6 @@
 
 {{- /* Additional paths */ -}}
-{{- $paths := list "${HOME}/.local/bin" "/usr/local/bin" -}}
-{{- if .env.wsl -}} {{- $paths = concat $paths ( list "/snap/bin" ) -}} {{- end -}}
+{{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
 {{- if not .env.ephemeral -}}
   {{- $paths = concat $paths ( list
     "$HOME/.local/share/bob/nvim-bin"
@@ -31,29 +30,28 @@
 
 # Additional paths
 {{- range ( $paths | sortAlpha | uniq ) }}
-export PATH="{{ . }}:$PATH"
+PATH="{{ . }}:$PATH"
 {{- end }}
+export PATH=$PATH
 
 # AWS SDK config
 export AWS_SDK_LOAD_CONFIG=1
 
-{{ if eq .env.os "linux" -}}
+{{- if eq .env.distro "arch" }}
 
 # Chrome configuration
-if command -v flatpak >/dev/null; then
-export CHROME_EXECUTABLE="$( flatpak info com.google.Chrome -l )/export/bin/com.google.Chrome"
-fi
+export CHROME_EXECUTABLE="$( which google-chrome-stable )"
 
 {{- end }}
 
-{{ if .env.homebrew -}}
+{{- if .env.homebrew }}
 
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
 
 {{- end }}
 
-{{ if eq .env.os "darwin" -}}
+{{- if eq .env.os "darwin" }}
 
 # OrbStack: command-line tools and integration
 source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
@@ -61,8 +59,8 @@ source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
 {{- end }}
 
 # Poetry configuration
-export POETRY_HOME="${HOME}/.local/share/pypoetry"
+export POETRY_HOME="$HOME/.local/share/pypoetry"
 
 # Rye configuration
-export RYE_HOME="${HOME}/.config/rye"
+export RYE_HOME="$HOME/.config/rye"
 export RUFF_CACHE_DIR=".cache/ruff"

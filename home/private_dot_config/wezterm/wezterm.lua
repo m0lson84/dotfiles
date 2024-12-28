@@ -35,6 +35,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = 'NeverPrompt'
 config.window_decorations = util.get_target().platform == 'linux' and 'NONE'
   or 'TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW'
+
 -- Start in WSL if running on windows
 if util.get_target().platform == 'windows' then config.default_prog = { 'ubuntu' } end
 

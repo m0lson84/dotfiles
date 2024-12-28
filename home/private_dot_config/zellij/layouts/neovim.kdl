@@ -1,6 +1,9 @@
 layout {
 
-  pane_template name="neovim" { command "nvim"; }
+  pane_template name="neovim" {
+    command "nvim"
+  }
+
   pane_template name="statusline" {
     plugin location="zjstatus" {
 
@@ -23,6 +26,7 @@ layout {
       tab_active  "#[fg=green,bg=fg,bold,italic] [{index}] {name}"
 
     }
+
   }
 
   default_tab_template { children; statusline size=1; }
