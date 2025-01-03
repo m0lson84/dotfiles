@@ -19,6 +19,14 @@
 {{- $codespaces := env "CODESPACES" | not | not -}}
 {{- $devcontainer := env "REMOTE_CONTAINERS" | not | not -}}
 
+{{- /* Default apps */ -}}
+{{- $browser := "chrome" -}}
+{{- $editor := "nvim" -}}
+{{- $terminal := "ghostty" -}}
+{{- if eq $distro "arch" -}}
+{{-   $browser = "google-chrome-stable" -}}
+{{- end -}}
+
 {{- /* User information */ -}}
 {{- $name :=  default "Michael Olson" (env "USER_NAME") -}}
 {{- $email := default $personal (env "USER_EMAIL") -}}
@@ -31,13 +39,16 @@
 {{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
-{{- /* Default apps */ -}}
-{{- $browser := "chrome" -}}
-{{- $editor := "nvim" -}}
-{{- $terminal := "ghostty" -}}
-{{- if eq .env.distro "arch" -}}
-{{- $browser = "google-chrome-stable" -}}
-{{- end -}}
+
+#        _                              _
+#       | |                            (_)
+#    ___| |__   ___ _____ __ ___   ___  _
+#   / __| '_ \ / _ \_  / '_ ` _ \ / _ \| |
+#  | (__| | | |  __// /| | | | | | (_) | |
+#   \___|_| |_|\___/___|_| |_| |_|\___/|_|
+#
+#
+
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 encryption = "gpg"
