@@ -1,7 +1,10 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["apps"],
-  "dictionaryDefinitions": [{ "name": "apps", "path": "./.cspell/apps.txt" }],
+  "dictionaries": ["apps", "config"],
+  "dictionaryDefinitions": [
+    { "name": "apps", "path": "./.cspell/apps.txt" },
+    { "name": "config", "path": "./.cspell/config.txt" }
+  ],
   "words": ["datetime", "dotenv", "fullscreen", "keybinds", "keymaps", "tokyonight"]
 }

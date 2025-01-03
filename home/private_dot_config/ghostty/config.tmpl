@@ -1,7 +1,11 @@
 
 {{- /* Font settings */ -}}
-{{- $font := dict "family" "JetBrains Mono" "size" 9 -}}
-{{- if eq .env.os "darwin" -}}{{- set $font "size" 12 -}}{{- end -}}
+{{- $font_family := "JetBrains Mono" -}}
+{{- $font_style := "Medium" -}}
+{{- $font_size := 9 -}}
+{{- if eq .env.os "darwin" -}}
+{{-   $font_size = 12 -}}
+{{- end -}}
 
 
 #   _____ _               _   _
@@ -29,10 +33,9 @@ theme = tokyo-night
 window-theme = ghostty
 
 # Font
-font-family = {{ $font.family }}
-font-style = Medium
-font-size = {{ $font.size }}
-font-thicken = true
+font-family = {{ $font_family }}
+font-style = {{ $font_style }}
+font-size = {{ $font_size }}
 bold-is-bright = true
 
 # Cursor
@@ -60,8 +63,11 @@ gtk-tabs-location = hidden
 {{- if eq .env.os "darwin" }}
 
 # MacOS
+macos-option-as-alt = true
+macos-titlebar-style = native
+macos-titlebar-proxy-icon = hidden
+quit-after-last-window-closed = true
 window-colorspace = display-p3
-macos-titlebar-style = hidden
 
 {{- end }}
 
