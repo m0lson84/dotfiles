@@ -65,12 +65,12 @@ terminal = {{ $terminal | quote }}
 
 [data.env]
 os = {{ .chezmoi.os | quote }}
-wsl = {{ $wsl }}
 distro = {{ $distro | quote }}
 codespaces = {{ $codespaces }}
 devcontainer = {{ $devcontainer }}
 ephemeral = {{ or $codespaces $devcontainer }}
 homebrew = {{ $homebrew }}
+wsl = {{ $wsl }}
 
 [data.mhs]
 email = {{ $work | quote }}
