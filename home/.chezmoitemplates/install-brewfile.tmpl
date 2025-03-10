@@ -8,5 +8,5 @@
 function install_brewfile() {
   echo "Installing dependencies from Brewfile"
   echo "hash: {{ include "private_dot_config/homebrew/dot_Brewfile.tmpl" | sha256sum }}"
-  brew bundle --global --cleanup --no-lock -v || true
+  brew bundle --global --cleanup -v || true
 }
