@@ -1,0 +1,66 @@
+{{- /* Default packages */ -}}
+{{ $packages := list "curl" "git" "gpg" "jq" "ripgrep" "unzip" "wget" -}}
+
+{{- $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install package dependencies
+# ---------------------------------------------------------------------------
+
+#######################################
+# Install fish shell
+#######################################
+function install_fish() {
+  echo "Installing fish shell..."
+
+  echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_12/ /' \
+    | sudo tee /etc/apt/sources.list.d/shells:fish:release:4.list
+
+  curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:4/Debian_12/Release.key \
+    | gpg --dearmor \
+    | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_4.gpg > /dev/null
+
+  sudo apt update
+  sudo apt install -y fish
+}
+
+#######################################
+# Install mise-en-place
+#######################################
+function install_mise() {
+  echo "Installing mise-en-place..."
+  curl https://mise.run | sh
+}
+
+#######################################
+# Install rust
+#######################################
+function install_rust() {
+  echo "Installing rust..."
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  source "$HOME/.cargo/env"
+  rustup install stable
+}
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Install packages
+{{ $sudo }}apt-get update
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+# Install fish
+install_fish
+
+# Install rust
+install_rust
+
+# Install tool manager
+install_mise

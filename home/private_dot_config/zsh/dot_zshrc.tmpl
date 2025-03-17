@@ -11,6 +11,7 @@
 {{- end -}}
 {{- if eq .env.os "darwin" -}}
   {{- $paths = concat $paths ( list
+    "/opt/homebrew/opt/libpq/bin"
     "/usr/local/opt/openssl@1.1/bin"
     "/usr/local/opt/python@3.10/bin"
     "/usr/local/sbin" )
@@ -53,13 +54,13 @@ source $ZSH/oh-my-zsh.sh
 setopt autocd
 setopt histignorespace
 
-{{- if not .env.ephemeral }}
-
 # Additional paths
 {{- range ( $paths | sortAlpha | uniq ) }}
 PATH="{{ . }}:$PATH"
 {{- end }}
 export PATH=$PATH
+
+{{- if not .env.ephemeral }}
 
 # Default Apps
 export BROWSER={{ .default.browser | quote }}
@@ -67,16 +68,10 @@ export EDITOR={{ .default.editor | quote }}
 export TERMINAL={{ .default.terminal | quote }}
 export VISUAL={{ .default.editor | quote }}
 
-# 1Password CLI configuration
-if command -v op >/dev/null; then
-# export SSH_AUTH_SOCK=~/.1password/agent.sock
-fi
+# OpenSSL configuration
+export CONFIGURE_OPTS="-with-openssl=$({{- if .env.homebrew -}}brew --prefix openssl{{- else -}}which openssl{{- end -}})"
 
-# AWS SDK config
-export AWS_SDK_LOAD_CONFIG=1
-
-# bat configuration
-export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
+{{- end }}
 
 {{- if eq .env.distro "arch" }}
 
@@ -85,8 +80,21 @@ export CHROME_EXECUTABLE="$( which google-chrome-stable )"
 
 {{- end }}
 
+{{- if eq .env.os "darwin" }}
+
+# OrbStack: command-line tools and integration
+source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
+
+{{- end }}
+
+# AWS SDK config
+export AWS_SDK_LOAD_CONFIG=1
+
+# bat configuration
+export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
+
 # fzf configuration
-eval "$(fzf --zsh)"
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
 
 # Homebrew configuration
 command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
@@ -97,34 +105,20 @@ export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
 command -v mise >/dev/null && eval "$(mise activate zsh)"
 command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 
-# OpenSSL configuration
-export CONFIGURE_OPTS="-with-openssl=$({{- if .env.homebrew -}}brew --prefix openssl{{- else -}}which openssl{{- end -}})"
-
-{{- if eq .env.os "darwin" }}
-
-# OrbStack: command-line tools and integration
-source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
-
-{{- end }}
-
 # Poetry configuration
 export POETRY_HOME="$HOME/.local/share/pypoetry"
 
-# Rye configuration
-export RYE_HOME="$HOME/.config/rye"
-export RUFF_CACHE_DIR=".cache/ruff"
-
 # Rust configuration
-source "${HOME}/.cargo/env"
-
-# zoxide configuration
-eval "$(zoxide init --cmd cd  zsh)"
-
-{{- end }}
+if [ -f "${HOME}/.cargo/env" ]; then
+  source "${HOME}/.cargo/env"
+fi
 
 # Starship initialization
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
 command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# zoxide configuration
+command -v zoxide >/dev/null && eval "$(zoxide init --cmd cd  zsh)"
 
 # Load additional configurations
 {{- range ( $configs | sortAlpha | uniq ) }}

@@ -9,7 +9,6 @@
 
 
 // General
-default_shell "zsh"
 pane_frames false
 styled_underlines true
 

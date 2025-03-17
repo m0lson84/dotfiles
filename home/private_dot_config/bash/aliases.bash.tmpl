@@ -13,11 +13,18 @@
 #
 
 
+{{ if not .env.ephemeral -}}
+
 # General
 alias cat=bat
 alias finder=yazi
 alias ls="eza -l -a --icons=always"
 alias upgrayedd={{ $update | quote }}
+
+# Devcontainers
+alias devc="devccontainer_cli"
+
+{{- end }}
 
 {{- if eq .env.os "darwin" }}
 
