@@ -19,7 +19,7 @@ default_layout "neovim"
 session_serialization false
 
 // Themes
-theme "tokyonight-night"
+theme "tokyo-night-dark"
 
 // Keybindings
 keybinds  {

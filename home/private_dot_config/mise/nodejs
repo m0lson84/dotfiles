@@ -1,6 +1,7 @@
 @biomejs/biome
 @nestjs/cli
 aws-cdk
+fish-lsp
 neovim
 turbo
 yarn

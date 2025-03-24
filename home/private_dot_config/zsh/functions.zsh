@@ -88,10 +88,10 @@ function _devcontainer_up() {
     }')
 
   devcontainer up \
-    --remove-existing-container \
     --workspace-folder . \
     --remote-env "$remote_env" \
     --additional-features "$additional_features" \
-    --dotfiles-repository "$dotfiles"
+    --dotfiles-repository "$dotfiles" \
+    --include-merged-configuration
 
 }

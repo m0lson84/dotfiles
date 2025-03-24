@@ -1,4 +1,3 @@
-
 {{- /* Additional paths */ -}}
 {{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
 {{- if not .env.ephemeral -}}
@@ -12,7 +11,6 @@
 {{- if eq .env.os "darwin" -}}
   {{- $paths = concat $paths ( list
     "/opt/homebrew/opt/libpq/bin"
-    "/usr/local/opt/openssl@1.1/bin"
     "/usr/local/opt/python@3.10/bin"
     "/usr/local/sbin" )
   -}}
@@ -68,15 +66,40 @@ export EDITOR={{ .default.editor | quote }}
 export TERMINAL={{ .default.terminal | quote }}
 export VISUAL={{ .default.editor | quote }}
 
-# OpenSSL configuration
-export CONFIGURE_OPTS="-with-openssl=$({{- if .env.homebrew -}}brew --prefix openssl{{- else -}}which openssl{{- end -}})"
-
 {{- end }}
+
+# AWS SDK config
+export AWS_SDK_LOAD_CONFIG=1
+
+# bat configuration
+export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
 
 {{- if eq .env.distro "arch" }}
 
 # Chrome configuration
 export CHROME_EXECUTABLE="$( which google-chrome-stable )"
+
+{{- end }}
+
+# fzf configuration
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
+
+# Homebrew configuration
+HOMEBREW_PREFIX="$(command -v brew >/dev/null && brew --prefix || echo /opt/homebrew)"
+if [ -f "${HOMEBREW_PREFIX}/bin/brew" ]; then
+  eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+fi
+
+# mise-en-place configuration
+export MISE_ENV_FILE=.env
+export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
+command -v mise >/dev/null && eval "$(mise activate zsh)"
+command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
+
+{{- if not .env.ephemeral }}
+
+# OpenSSL configuration
+export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
 
 {{- end }}
 
@@ -86,24 +109,6 @@ export CHROME_EXECUTABLE="$( which google-chrome-stable )"
 source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
 
 {{- end }}
-
-# AWS SDK config
-export AWS_SDK_LOAD_CONFIG=1
-
-# bat configuration
-export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
-
-# fzf configuration
-command -v fzf >/dev/null && eval "$(fzf --zsh)"
-
-# Homebrew configuration
-command -v brew >/dev/null && eval "$($(brew --prefix)/bin/brew shellenv)"
-
-# mise-en-place configuration
-export MISE_ENV_FILE=.env
-export MISE_NODE_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/mise/nodejs"
-command -v mise >/dev/null && eval "$(mise activate zsh)"
-command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 
 # Poetry configuration
 export POETRY_HOME="$HOME/.local/share/pypoetry"

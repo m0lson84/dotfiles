@@ -1,0 +1,14 @@
+{{ if eq .env.os "darwin" -}}
+
+#######################################
+# Fix for OBS virtual camera in Slack
+#######################################
+function slackfix --description "Fix for OBS virtual camera in Slack"
+    echo "Applying virtual camera fix for Slack..."
+    sudo codesign --remove-signature "/Applications/Slack.app/"
+    sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app"
+    sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app"
+    sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Plugin).app"
+end
+
+{{- end }}

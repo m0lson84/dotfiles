@@ -1,0 +1,42 @@
+{{- /* Update applications */ -}}
+{{- $update := "_yay_update" -}}
+{{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade" -}} {{- end -}}
+{{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "_apt_update && _brew_update" -}} {{- end -}}
+
+#######################################
+# Update all installed packages
+#######################################
+function upgrayedd --description "Update all installed packages"
+   {{ $update }}
+end
+
+#######################################
+# Update all apt packages
+#######################################
+function _apt_update --description "Update all installed apt packages"
+    echo "Updating apt packages..."
+    sudo apt update && sudo apt upgrade -y
+    echo "Running cleaning up tasks..."
+    sudo apt autoremove -y && sudo apt autoclean
+end
+
+#######################################
+# Update Homebrew formulas/casks
+#######################################
+function _brew_update --description "Update all installed homebrew formula/casks"
+    echo "Updating homebrew formulas/casks..."
+    brew update && brew outdated
+    brew upgrade
+    echo "Running cleaning up tasks..."
+    brew autoremove && brew cleanup
+end
+
+#######################################
+# Update all yay packages
+#######################################
+function _yay_update --description "Update all installed yay packages"
+    echo "Updating yay packages..."
+    yay -Syu
+    echo "Running cleaning up tasks..."
+    yay -Yc
+end

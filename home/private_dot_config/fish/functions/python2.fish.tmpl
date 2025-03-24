@@ -1,0 +1,10 @@
+{{ if eq .env.os "darwin" -}}
+
+#######################################
+# Alias for Python version 2.x on MacOS
+#######################################
+function python2 --description "Alias for Python version 2.x"
+    /usr/local/bin/python2.7
+end
+
+{{- end }}

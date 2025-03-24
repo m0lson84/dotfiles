@@ -1,0 +1,10 @@
+{{ if not .env.ephemeral -}}
+
+#######################################
+# Open terminal file manager
+#######################################
+function finder --description "Open terminal file manager"
+    yazi $argv
+end
+
+{{- end }}

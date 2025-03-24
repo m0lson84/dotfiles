@@ -1,5 +1,5 @@
 {{- /* Default packages */ -}}
-{{ $packages := list "curl" "git" "gpg" "jq" "ripgrep" "unzip" "wget" -}}
+{{ $packages := list "curl" "fd-find" "git" "gpg" "jq" "ripgrep" "unzip" "wget" -}}
 
 {{- $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}

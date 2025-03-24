@@ -83,8 +83,8 @@ autostash = true
 [tag]
 forceSignAnnotated = true
 
-{{- if not .env.ephemeral }}
 
+{{ if not .env.ephemeral -}}
 
 # ========================================
 # Security
@@ -100,8 +100,8 @@ helper = {{ $credentials }}
 [credential "https://dev.azure.com"]
 useHttpPath = true
 
+{{- end }}
 
-{{ end -}}
 
 # ========================================
 # Tools

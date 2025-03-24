@@ -1,0 +1,10 @@
+{{ if not .env.ephemeral -}}
+
+#######################################
+# List directory contents
+#######################################
+function ls --description "List directory contents"
+    eza -l -a --icons=always $argv
+end
+
+{{- end }}
