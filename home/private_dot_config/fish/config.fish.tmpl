@@ -55,15 +55,43 @@ set -x EDITOR {{ .default.editor | quote }}
 set -x TERMINAL {{ .default.terminal | quote }}
 set -x VISUAL {{ .default.editor | quote }}
 
-# OpenSSL configuration
-set -x CONFIGURE_OPTS "-with-openssl=$({{- if .env.homebrew -}}brew --prefix openssl{{- else -}}which openssl{{- end -}})"
-
 {{- end }}
+
+# AWS SDK config
+set -x AWS_SDK_LOAD_CONFIG 1
+
+# bat configuration
+set -x BAT_CONFIG_PATH "$XDG_CONFIG_HOME/bat/config.conf"
 
 {{- if eq .env.distro "arch" }}
 
 # Chrome configuration
 set -x CHROME_EXECUTABLE "$( which google-chrome-stable )"
+
+{{- end }}
+
+# fzf configuration
+if type -q fzf
+    fzf --fish | source
+end
+
+# Homebrew configuration
+set -l HOMEBREW_PREFIX (command -v brew >/dev/null; and brew --prefix; or echo /opt/homebrew)
+if test -f "$HOMEBREW_PREFIX/bin/brew"
+    eval ($HOMEBREW_PREFIX/bin/brew shellenv)
+end
+
+# mise-en-place configuration
+set -gx MISE_ENV_FILE ".env"
+set -gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/nodejs"
+if type -q mise
+    mise activate fish | source
+end
+
+{{- if not .env.ephemeral }}
+
+# OpenSSL configuration
+export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
 
 {{- end }}
 
@@ -73,30 +101,6 @@ set -x CHROME_EXECUTABLE "$( which google-chrome-stable )"
 source "$HOME/.orbstack/shell/init.fish" 2>/dev/null || :
 
 {{- end }}
-
-# AWS SDK config
-set -x AWS_SDK_LOAD_CONFIG 1
-
-# bat configuration
-set -x BAT_CONFIG_PATH "$XDG_CONFIG_HOME/bat/config.conf"
-
-# fzf configuration
-if type -q fzf
-    fzf --fish | source
-end
-
-# Homebrew configuration
-if type -q brew
-    set prefix (brew --prefix)
-    eval "$($prefix/bin/brew shellenv)"
-end
-
-# mise-en-place configuration
-set -gx MISE_ENV_FILE ".env"
-set -gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/nodejs"
-if type -q mise
-    mise activate fish | source
-end
 
 # Poetry configuration
 set -x POETRY_HOME "$HOME/.local/share/pypoetry"

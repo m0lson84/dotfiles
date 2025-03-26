@@ -48,14 +48,11 @@ end
 --- Get the collection of programs that can be launched.
 ---@return SpawnCommand[] programs The collection of programs that can be launched.
 function M.launch_programs()
-  local system = M.get_target()
-  local source_dir = system.platform == 'darwin' and '/opt/homebrew/bin/' or '/usr/bin/'
-
   local programs = {}
+  local source = M.get_target().platform == 'darwin' and '/opt/homebrew/bin/' or '/usr/bin/'
   for _, shell in ipairs({ 'fish', 'bash', 'zsh' }) do
-    table.insert(programs, { label = shell, args = { source_dir .. shell } })
+    table.insert(programs, { label = shell, args = { source .. shell } })
   end
-
   return programs
 end
 
