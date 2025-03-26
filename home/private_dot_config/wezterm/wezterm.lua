@@ -9,11 +9,11 @@
 
 --]]
 
-local terminal = require('wezterm')
 local util = require('util')
+local wezterm = require('wezterm') --[[@as Wezterm]]
 
 local config = {}
-if terminal.config_builder then config = terminal.config_builder() end
+if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Environment
 local platform = util.get_target().platform

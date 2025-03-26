@@ -2,7 +2,7 @@
 Handling of events in WezTerm.
 --]]
 
-local terminal = require('wezterm')
+local wezterm = require('wezterm') --[[@as Wezterm]]
 
 -- Set window title
-terminal.on('format-window-title', function(_, _, _, _, _) return 'Terminal' end)
+wezterm.on('format-window-title', function(_, _, _, _, _) return 'Terminal' end)

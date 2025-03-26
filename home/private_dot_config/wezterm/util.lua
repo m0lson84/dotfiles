@@ -2,7 +2,7 @@
 -- Utility functions for configuring WezTerm.
 --]]
 
-local terminal = require('wezterm')
+local wezterm = require('wezterm') --[[@as Wezterm]]
 
 --- Split a string by a given separator.
 ---@param input string The string to split.
@@ -26,7 +26,7 @@ local M = {}
 --- Get information about the target platform.
 ---@return TargetInfo target Information about the target platform.
 function M.get_target()
-  local target = split_string(terminal.target_triple, '-')
+  local target = split_string(wezterm.target_triple, '-')
   return {
     arch = target[1],
     os = target[2],

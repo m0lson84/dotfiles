@@ -2,7 +2,7 @@
 Configure the keybinds used in WezTerm.
 --]]
 
-local terminal = require('wezterm')
+local wezterm = require('wezterm') --[[@as Wezterm]]
 
 local M = {}
 
@@ -11,10 +11,10 @@ local M = {}
 M.apply = function(config)
   config.disable_default_key_bindings = false
   config.keys = {
-    { mods = 'SUPER|SHIFT', key = 'p', action = terminal.action.ShowLauncher },
-    { mods = 'CTRL|SHIFT', key = 'p', action = terminal.action.ShowLauncher },
-    { mods = 'SUPER', key = 'w', action = terminal.action.CloseCurrentTab({ confirm = false }) },
-    { mods = 'CTRL|SHIFT', key = 'w', action = terminal.action.CloseCurrentTab({ confirm = false }) },
+    { mods = 'SUPER|SHIFT', key = 'p', action = wezterm.action.ShowLauncher },
+    { mods = 'CTRL|SHIFT', key = 'p', action = wezterm.action.ShowLauncher },
+    { mods = 'SUPER', key = 'w', action = wezterm.action.CloseCurrentTab({ confirm = false }) },
+    { mods = 'CTRL|SHIFT', key = 'w', action = wezterm.action.CloseCurrentTab({ confirm = false }) },
   }
 end
 
