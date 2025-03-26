@@ -24,12 +24,9 @@ config.enable_kitty_keyboard = true
 config.term = 'wezterm'
 
 -- Programs
-config.default_prog = platform == 'windows' and { 'ubuntu' } or { 'fish' }
-config.launch_menu = {
-  { label = 'fish', args = { 'fish' } },
-  { label = 'bash', args = { 'bash' } },
-  { label = 'zsh', args = { 'zsh' } },
-}
+local programs = util.launch_programs()
+config.default_prog = programs[1].args
+config.launch_menu = programs
 
 -- Rendering
 config.enable_wayland = true
