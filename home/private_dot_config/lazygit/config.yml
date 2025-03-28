@@ -12,10 +12,12 @@ gui:
   showBottomLine: false
   nerdFontsVersion: '3'
   border: 'single'
+
 git:
   log:
     showGraph: 'always'
   parseEmoji: true
+
 customCommands:
   - key: 'C'
     command: 'clear && git cz c'
@@ -23,15 +25,82 @@ customCommands:
     context: 'files'
     loadingText: 'opening commitizen commit tool'
     subprocess: true
+
   - key: '<c-s>'
     command: 'git save'
     description: 'Create savepoint commit'
     context: 'files'
+
   - key: 'u'
     command: 'git undo'
     description: 'Undo last commit'
     context: 'files'
+
   - key: 'u'
     command: 'git undo'
     description: 'Undo last commit'
     context: 'commits'
+
+  - key: '<c-v>'
+    context: 'global'
+    description: 'Create a new conventional commit'
+    loadingText: 'Creating conventional commit...'
+    command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
+    prompts:
+      - type: 'menu'
+        key: 'Type'
+        title: 'Select the type of change you are committing'
+        options:
+          - name: 'fix'
+            description: 'A bug fix. Correlates with PATCH in SemVer'
+            value: 'fix'
+          - name: 'feat'
+            description: 'A new feature. Correlates with MINOR in SemVer'
+            value: 'feat'
+          - name: 'docs'
+            description: 'Documentation only changes'
+            value: 'docs'
+          - name: 'style'
+            description: 'Changes that do not affect the meaning of the code'
+            value: 'style'
+          - name: 'refactor'
+            description: 'A code change that neither fixes a bug nor adds a feature'
+            value: 'refactor'
+          - name: 'perf'
+            description: 'A code change that improves performance'
+            value: 'perf'
+          - name: 'test'
+            description: 'Adding missing tests or correcting existing tests'
+            value: 'test'
+          - name: 'build'
+            description: 'Changes that affect the build system or external dependencies'
+            value: 'build'
+          - name: 'ci'
+            description: 'Changes to CI configuration files and scripts'
+            value: 'ci'
+          - name: 'chore'
+            description: "Other changes that don't modify src or test files"
+            value: 'chore'
+          - name: 'revert'
+            description: 'Reverts a previous commit'
+            value: 'revert'
+      - type: 'input'
+        title: 'What is the scope of this change? (optional)'
+        key: 'Scope'
+        initialValue: ''
+      - type: 'input'
+        title: 'Write a short and imperative summary of the code changes'
+        key: 'Message'
+        initialValue: ''
+      - type: 'menu'
+        key: 'Breaking'
+        title: 'Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer'
+        options:
+          - name: 'no'
+            value: ''
+          - name: 'yes'
+            value: '!'
+      - type: 'confirm'
+        key: 'Confirm'
+        title: 'Commit'
+        body: 'Are you sure you want to commit?'
