@@ -6,13 +6,23 @@
 function devc
     set op $argv[1]
     switch $op
+        case build
+            _devcontainer_build
         case up
             _devcontainer_up
         case exec
-            _devcontainer_exec $argv[2]
+            _devcontainer_exec $argv[2..-1]
         case '*'
             echo "Invalid operation: $op"
     end
+end
+
+#######################################
+# Build a devcontainer image
+#######################################
+function _devcontainer_build
+    echo "Building development container image..."
+    devcontainer build --workspace-folder .
 end
 
 #######################################
@@ -22,7 +32,7 @@ end
 #######################################
 function _devcontainer_exec
     echo "Executing command in development container..."
-    devcontainer exec --workspace-folder . $argv[1]
+    devcontainer exec --workspace-folder . $argv
 end
 
 #######################################
