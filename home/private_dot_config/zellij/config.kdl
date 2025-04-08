@@ -9,6 +9,7 @@
 
 
 // General
+default_shell "fish"
 pane_frames false
 styled_underlines true
 

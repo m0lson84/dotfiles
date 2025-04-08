@@ -44,9 +44,6 @@ set -g fish_greeting
 fish_add_path --append --path {{ . }}
 {{- end }}
 
-# Default shell
-set -x SHELL "fish"
-
 {{- if not .env.ephemeral }}
 
 # Default Apps
