@@ -1,4 +1,13 @@
 
+{{- /* Defaults */ -}}
+{{- $shell := "fish" -}}
+
+{{- /* Source directory */ -}}
+{{- $source := "/usr/bin" -}}
+{{- if eq .env.os "darwin" -}}
+{{-   $source = "/opt/homebrew/bin" -}}
+{{- end -}}
+
 {{- /* Font settings */ -}}
 {{- $font_family := "JetBrains Mono" -}}
 {{- $font_style := "Medium" -}}
@@ -25,8 +34,8 @@ resize-overlay = never
 copy-on-select = true
 
 # Shell
-command = fish
-shell-integration = fish
+command = {{ $source }}/{{ $shell }}
+shell-integration = {{ $shell }}
 shell-integration-features = no-cursor
 
 # Theme
