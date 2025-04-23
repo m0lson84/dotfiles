@@ -20,12 +20,9 @@
 {{- $devcontainer := env "REMOTE_CONTAINERS" | not | not -}}
 
 {{- /* Default apps */ -}}
-{{- $browser := "chrome" -}}
+{{- $browser := "zen-browser" -}}
 {{- $editor := "nvim" -}}
 {{- $terminal := "ghostty" -}}
-{{- if eq $distro "arch" -}}
-{{-   $browser = "google-chrome-stable" -}}
-{{- end -}}
 
 {{- /* User information */ -}}
 {{- $name :=  default "Michael Olson" (env "USER_NAME") -}}
