@@ -18,9 +18,10 @@ ruby   = "3.4"
 rust   = "stable"
 
 [settings]
-env_file                 = ".env"
-experimental             = true
-go_default_packages_file = "~/.config/mise/golang"
+env_file                            = ".env"
+experimental                        = true
+go_default_packages_file            = "~/.config/mise/golang"
+idiomatic_version_file_enable_tools = ["go", "node", "python", "ruby"]
 
 [settings.python]
 default_packages_file = "~/.config/mise/python"
