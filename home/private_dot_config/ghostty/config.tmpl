@@ -28,7 +28,6 @@
 
 
 # General
-title = Terminal
 confirm-close-surface = false
 resize-overlay = never
 copy-on-select = true
@@ -64,8 +63,9 @@ window-padding-y = 4
 {{- if eq .env.os "linux" }}
 
 # Linux
-window-decoration = false
-gtk-tabs-location = hidden
+adw-toolbar-style = flat
+gtk-tabs-location = bottom
+window-decoration = server
 
 {{- end }}
 
