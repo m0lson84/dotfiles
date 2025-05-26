@@ -10,9 +10,10 @@
 
 {{- /* Font settings */ -}}
 {{- $font_family := "JetBrains Mono" -}}
-{{- $font_style := "Medium" -}}
+{{- $font_style := "SemiBold" -}}
 {{- $font_size := 9 -}}
 {{- if eq .env.os "darwin" -}}
+{{-   $font_style = "Medium" -}}
 {{-   $font_size = 12 -}}
 {{- end -}}
 

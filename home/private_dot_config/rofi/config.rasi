@@ -2,7 +2,7 @@ configuration {
   modes: ["drun"];
   show-icons: true;
   drun-display-format: "{icon}  {name}";
-  terminal: "wezterm";
+  terminal: "ghostty";
 }
 
 @import "~/.config/rofi/tokyonight.rasi"
