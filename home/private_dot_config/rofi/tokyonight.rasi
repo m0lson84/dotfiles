@@ -1,6 +1,24 @@
-* {
-  font:   "JetBrains Nerd Font Regular 18";
 
+configuration {
+  drun {
+    display-name : "";
+  }
+
+  run {
+    display-name : "";
+  }
+
+  window {
+    display-name : "";
+  }
+
+  timeout {
+    delay  : 10;
+    action : "kb-cancel";
+  }
+}
+
+* {
   bg0     : #1a1b26;
   bg1     : #1f2335;
   bg2     : #24283b;
@@ -15,9 +33,9 @@
   magenta : #9a7ecc;
   cyan    : #4abaaf;
 
-  accent: @red;
-  selected: @blue;
-  urgent: @yellow;
+  accent   : @red;
+  selected : @blue;
+  urgent   : @yellow;
 
   background-color : transparent;
   text-color       : @fg0;
@@ -27,46 +45,40 @@
   spacing : 0;
 }
 
-element-icon, element-text, scrollbar {
-  cursor: pointer;
-}
-
 window {
   location : center;
   width    : 600px;
   x-offset : 4px;
   y-offset : 26px;
 
-  background-color: @bg0;
-  border: 2px;
-  border-color: @bg3;
-  border-radius: 6px;
+  background-color : @bg0;
+  border           : 2px;
+  border-color     : @bg3;
+  border-radius    : 6px;
 }
 
 inputbar {
-  spacing  : 12px;
-  padding  : 12px;
-  children : [ icon-search, entry ];
-  background-color: @bg0;
+  spacing          : 8px;
+  children         : [ prompt, entry ];
+  background-color : @bg0;
 }
 
-icon-search, entry, element-icon, element-text {
-  vertical-align: 0.5;
+prompt, entry, element-icon, element-text {
+  vertical-align : 0.5;
 }
 
-icon-search {
-  expand   : false;
-  filename : "search-symbolic";
-  size     : 14px;
+prompt {
+  background-color : inherit;
+  text-color       : @fg2;
+  padding          : 12px 8px;
 }
 
 textbox {
-  padding          : 4px 8px;
+  padding          : 8px;
   background-color : @bg2;
 }
 
 listview {
-  padding      : 8px 8px;
   lines        : 12;
   columns      : 1;
   scrollbar    : false;
@@ -80,15 +92,15 @@ element {
 }
 
 element normal urgent {
-  text-color: @urgent;
+  text-color : @urgent;
 }
 
 element normal active {
-  text-color: @selected;
+  text-color : @selected;
 }
 
 element alternate active {
-  text-color: @selected;
+  text-color : @selected;
 }
 
 element selected {
@@ -101,15 +113,10 @@ element selected urgent {
 }
 
 element-icon {
-  size: 0.8em;
+  size : 0.8em;
 }
 
 element-text {
-  text-color: inherit;
+  text-color : inherit;
 }
 
-scrollbar {
-  handle-width : 4px;
-  handle-color : @fg2;
-  padding      : 0 4px;
-}
