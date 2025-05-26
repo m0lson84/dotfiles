@@ -24,7 +24,7 @@ customCommands:
     description: 'Commit with commitizen'
     context: 'files'
     loadingText: 'opening commitizen commit tool'
-    subprocess: true
+    output: terminal
 
   - key: '<c-s>'
     command: 'git save'
