@@ -8,6 +8,7 @@
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
   "homebrew/cask-fonts"
+  "hashicorp/tap"
   "microsoft/git"
   "nikitabobko/tap"
   "teamookla/speedtest" )
@@ -31,7 +32,6 @@
   "delve"
   "devcontainer"
   "dotenv-linter"
-  "dotnet"
   "eza"
   "fd"
   "fish"
@@ -68,9 +68,10 @@
  -}}
 {{- if eq .env.os "darwin" -}}
 {{- $formula = concat $formula ( list
-  "blueutil"
+  "azure-cli"
   "gnupg"
   "gnu-sed"
+  "hashicorp/tap/terraform"
   "libpq"
   "mas"
   "mosquitto"
@@ -78,7 +79,6 @@
   "redis"
   "speedtest"
   "sqlite3"
-  "switchaudio-osx"
   "tailwindcss"
   "tcl-tk"
   "zlib"
