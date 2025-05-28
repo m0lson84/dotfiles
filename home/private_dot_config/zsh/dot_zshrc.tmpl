@@ -2,6 +2,8 @@
 {{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
 {{- if not .env.ephemeral -}}
   {{- $paths = concat $paths ( list
+    "$HOME/.dotnet"
+    "$HOME/.dotnet/tools"
     "$HOME/.local/share/bob/nvim-bin"
     "$HOME/.local/share/mise/shims"
     "$HOME/.pub-cache/bin"
@@ -80,6 +82,11 @@ export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
 export CHROME_EXECUTABLE="$( which google-chrome-stable )"
 
 {{- end }}
+
+# dotnet configuration
+if [ -d "$HOME/.dotnet" ]; then
+  export DOTNET_ROOT="$HOME/.dotnet"
+fi
 
 # fzf configuration
 command -v fzf >/dev/null && eval "$(fzf --zsh)"

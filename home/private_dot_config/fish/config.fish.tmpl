@@ -2,6 +2,8 @@
 {{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
 {{- if not .env.ephemeral -}}
   {{- $paths = concat $paths ( list
+    "$HOME/.dotnet"
+    "$HOME/.dotnet/tools"
     "$HOME/.local/share/bob/nvim-bin"
     "$HOME/.local/share/mise/shims"
     "$HOME/.pub-cache/bin"
@@ -29,9 +31,9 @@
 
 
 # XDG Base Directory Specification
-set -x XDG_CACHE_HOME "$HOME/.cache"
-set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
 
 # Enable VI key bindings
 set -g fish_key_bindings fish_vi_key_bindings
@@ -47,25 +49,30 @@ fish_add_path --append --path {{ . }}
 {{- if not .env.ephemeral }}
 
 # Default Apps
-set -x BROWSER {{ .default.browser | quote }}
-set -x EDITOR {{ .default.editor | quote }}
-set -x TERMINAL {{ .default.terminal | quote }}
-set -x VISUAL {{ .default.editor | quote }}
+set -gx BROWSER {{ .default.browser | quote }}
+set -gx EDITOR {{ .default.editor | quote }}
+set -gx TERMINAL {{ .default.terminal | quote }}
+set -gx VISUAL {{ .default.editor | quote }}
 
 {{- end }}
 
 # AWS SDK config
-set -x AWS_SDK_LOAD_CONFIG 1
+set -gx AWS_SDK_LOAD_CONFIG 1
 
 # bat configuration
-set -x BAT_CONFIG_PATH "$XDG_CONFIG_HOME/bat/config.conf"
+set -gx BAT_CONFIG_PATH "$XDG_CONFIG_HOME/bat/config.conf"
 
 {{- if eq .env.distro "arch" }}
 
 # Chrome configuration
-set -x CHROME_EXECUTABLE "$( which google-chrome-stable )"
+set -gx CHROME_EXECUTABLE "$( which google-chrome-stable )"
 
 {{- end }}
+
+# dotnet configuration
+if test -d "$HOME/.dotnet"
+    set -gx DOTNET_ROOT "$HOME/.dotnet"
+end
 
 # fzf configuration
 if type -q fzf
@@ -100,7 +107,7 @@ source "$HOME/.orbstack/shell/init.fish" 2>/dev/null || :
 {{- end }}
 
 # Poetry configuration
-set -x POETRY_HOME "$HOME/.local/share/pypoetry"
+set -gx POETRY_HOME "$HOME/.local/share/pypoetry"
 
 # Rust configuration
 if test -f "$HOME/.cargo/env"
