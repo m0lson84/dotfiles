@@ -13,7 +13,7 @@
 # ========================================
 
 add_newline = false
-continuation_prompt = '▶▶ '
+continuation_prompt = "▶▶ "
 format = """
 $os\
 $shell\
@@ -48,10 +48,10 @@ symbol   = "󰏗 "
 # ========================================
 
 [battery]
-charging_symbol    = '⚡️ '
+charging_symbol    = "⚡️ "
 disabled           = true
-discharging_symbol = '💀 '
-full_symbol        = '🔋 '
+discharging_symbol = "💀 "
+full_symbol        = "🔋 "
 
 [hostname]
 disabled   = false
@@ -113,33 +113,54 @@ openSUSE         = " "
 # ========================================
 
 [c]
-disabled = false
-symbol   = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [dart]
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
+
+[dotnet]
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [golang]
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [lua]
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [nodejs]
-format = "[$symbol$version]($style) "
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = "󰎙 "
 
 [python]
-format = "[$symbol$version]($style) "
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [ruby]
-format = "[$symbol$version]($style) "
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 [rust]
-format = "[$symbol$version]($style) "
-symbol = " "
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
+
+[zig]
+format         = "[$symbol$version]($style) "
+version_format = "${raw}"
+symbol         = " "
 
 
 # ========================================
@@ -150,14 +171,15 @@ symbol = " "
 disabled          = false
 expiration_symbol = " "
 format            = "[$symbol$profile]($style) "
-profile_aliases   = { sd-dev = "sp dev", work = "company" }
+profile_aliases   = { mhs-dev = "dev" }
 region_aliases    = { us-east-1 = "VA", us-east-2 = "OH" }
-symbol            = "󰸏 "
+symbol            = " "
 
 [azure]
-disabled = false
-format   = "[$symbol($username)]($style) "
-symbol   = "󰠅 "
+disabled             = false
+format               = "[$symbol($subscription)]($style) "
+symbol               = " "
+subscription_aliases = { "Microsoft Azure Sponsorship 2" = "mhs" }
 
 [gcloud]
 disabled = false
@@ -166,7 +188,7 @@ symbol   = "󱇶 "
 [terraform]
 disabled = false
 format   = "[$symbol$workspace]($style) "
-symbol   = "󱁢"
+symbol   = " "
 
 
 # ========================================
@@ -188,7 +210,7 @@ disabled = true
 format = "[$output]($style)  "
 shell = ["--noprofile", "--norc", "bash"]
 style = "bold white"
-when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+when = "git rev-parse --is-inside-work-tree 2> /dev/null"
 
 [fossil_branch]
 symbol = " "
