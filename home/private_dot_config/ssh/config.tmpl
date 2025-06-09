@@ -1,0 +1,7 @@
+{{- /* Agents */ -}}
+{{- $1password := "~/.1password/agent.sock" -}}
+
+Host terminal.shop
+  HostName terminal.shop
+  User {{ .personal.email }}
+  IdentityAgent {{ $1password }}
