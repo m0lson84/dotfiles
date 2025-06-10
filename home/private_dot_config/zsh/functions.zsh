@@ -34,11 +34,13 @@ function brew_update() {
 #   The operation to execute.
 #######################################
 function devcontainer_cli() {
-  local args=$1
+  local op=$1
+  local args=${@:2}
   case $1 in
-    "up") _devcontainer_up ;;
-    "exec") _devcontainer_exec $2 ;;
-    *) echo "Invalid operation: $1" ;;
+    "build") _devcontainer_build $args ;;
+    "up") _devcontainer_up $args ;;
+    "exec") _devcontainer_exec $args ;;
+    *) echo "Invalid operation: $op" ;;
   esac
 }
 
@@ -66,32 +68,52 @@ yay_update() {
 #######################################
 # Create and run a devcontainer
 # Arguments:
+#   Additional arguments for building the container.
+#######################################
+function _devcontainer_exec() {
+  local args=$@
+
+  echo "Building development container image..."
+  devcontainer build \
+    --workspace-folder . \
+    $args
+}
+
+#######################################
+# Create and run a devcontainer
+# Arguments:
 #   The command to execute in the container.
 #######################################
 function _devcontainer_exec() {
+  local args=$@
+
   echo "Executing command in development container..."
-  devcontainer exec --workspace-folder . $1
+  devcontainer exec \
+    --workspace-folder . \
+    $args
 }
 
 #######################################
 # Create and run a devcontainer
 #######################################
 function _devcontainer_up() {
-  echo "Building and running development container..."
+  local args=$@
 
-  dotfiles="https://github.com/m0lson84/dotfiles.git"
-  remote_env="REMOTE_CONTAINERS=true"
-  additional_features=$(jq -n -c \
+  local dotfiles="https://github.com/m0lson84/dotfiles.git"
+  local remote_env="REMOTE_CONTAINERS=true"
+  local additional_features=$(jq -n -c \
     '{
       "ghcr.io/devcontainers-extra/features/starship:1": {},
       "ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "nightly" }
     }')
 
+  echo "Building and running development container..."
   devcontainer up \
     --workspace-folder . \
     --remote-env "$remote_env" \
     --additional-features "$additional_features" \
     --dotfiles-repository "$dotfiles" \
-    --include-merged-configuration
+    --include-merged-configuration \
+    $args
 
 }

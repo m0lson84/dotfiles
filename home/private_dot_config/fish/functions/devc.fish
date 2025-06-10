@@ -7,9 +7,9 @@ function devc
     set op $argv[1]
     switch $op
         case build
-            _devcontainer_build
+            _devcontainer_build $argv[2..-1]
         case up
-            _devcontainer_up
+            _devcontainer_up $argv[2..-1]
         case exec
             _devcontainer_exec $argv[2..-1]
         case '*'
@@ -22,7 +22,9 @@ end
 #######################################
 function _devcontainer_build
     echo "Building development container image..."
-    devcontainer build --workspace-folder .
+    devcontainer build \
+        --workspace-folder . \
+        $argv
 end
 
 #######################################
@@ -32,7 +34,9 @@ end
 #######################################
 function _devcontainer_exec
     echo "Executing command in development container..."
-    devcontainer exec --workspace-folder . $argv
+    devcontainer exec \
+        --workspace-folder . \
+        $argv
 end
 
 #######################################
@@ -55,6 +59,7 @@ function _devcontainer_up
         --remote-env "$remote_env" \
         --additional-features "$additional_features" \
         --dotfiles-repository "$dotfiles" \
-        --include-merged-configuration
+        --include-merged-configuration \
+        $argv
 
 end
