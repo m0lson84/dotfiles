@@ -56,6 +56,11 @@ set -gx VISUAL {{ .default.editor | quote }}
 
 {{- end }}
 
+# Atuin configuration
+if type -q atuin
+    atuin init fish | source
+end
+
 # AWS SDK config
 set -gx AWS_SDK_LOAD_CONFIG 1
 

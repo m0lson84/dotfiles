@@ -70,6 +70,9 @@ export VISUAL={{ .default.editor | quote }}
 
 {{- end }}
 
+# Atuin configuration
+command -v atuin >/dev/null && eval "$(atuin init zsh)"
+
 # AWS SDK config
 export AWS_SDK_LOAD_CONFIG=1
 
