@@ -1,13 +1,11 @@
 
 {{- /* Tap repositories */ -}}
 {{- $taps := list
-  "homebrew/bundle"
   "jannis-baum/tap"
   "leoafarias/fvm"
 -}}
 {{- if eq .env.os "darwin" -}}
 {{- $taps = concat $taps ( list
-  "homebrew/cask-fonts"
   "hashicorp/tap"
   "microsoft/git"
   "nikitabobko/tap"
@@ -29,7 +27,6 @@
   "chezmoi"
   "cmake"
   "curl"
-  "delve"
   "devcontainer"
   "dotenv-linter"
   "eza"
@@ -49,14 +46,12 @@
   "lazygit"
   "mise"
   "openssl"
-  "pre-commit"
   "ripgrep"
   "rustup"
   "shfmt"
   "slides"
   "sqlc"
   "starship"
-  "tidy-html5"
   "tmux"
   "tree"
   "tree-sitter"
@@ -68,6 +63,7 @@
  -}}
 {{- if eq .env.os "darwin" -}}
 {{- $formula = concat $formula ( list
+  "atuin"
   "azure-cli"
   "gnupg"
   "gnu-sed"
@@ -83,13 +79,6 @@
   "tcl-tk"
   "zlib"
   "zsh" )
--}}
-{{- end -}}
-{{- if eq .env.os "linux" -}}
-{{- $formula = concat $formula ( list
-  "gcc"
-  "pass"
-  "xclip" )
 -}}
 {{- end -}}
 
@@ -129,12 +118,18 @@
   "thunderbird@esr"
   "visual-studio-code"
   "vlc"
-  "wezterm"
+  "wezterm@nightly"
   "zed"
   "zen"
   "zoom" )
 -}}
 {{- end -}}
+
+{{- /* Apps to install */ -}}
+{{- $mas := dict
+  "1Password for Safari" "1569813296"
+  "Harvest" "506189836"
+-}}
 
 
 #    ______                    __ _ _
@@ -146,23 +141,39 @@
 #
 #
 
-{{- /* Taps */ -}}
+
+{{ if gt (len $taps) 0 -}}
+
+# Taps
 {{- range ( $taps | sortAlpha | uniq ) }}
 tap "{{ . }}"
 {{- end }}
 
-{{- /* Formula */ -}}
+{{- end }}
+
+{{ if gt (len $formula) 0 -}}
+
+# Formula
 {{- range ( $formula | sortAlpha | uniq ) }}
 brew "{{ . }}"
 {{- end }}
 
-{{- /* Casks */ -}}
+{{- end }}
+
+{{ if gt (len $casks) 0 -}}
+
+# Casks
 {{- range ( $casks | sortAlpha | uniq ) }}
 cask "{{ . }}"
 {{- end }}
 
-{{- /* MacOS App Store */ -}}
-{{ if eq .env.os "darwin" }}
-mas "Harvest", id: 506189836
-mas "1Password for Safari", id: 1569813296
-{{ end -}}
+{{- end }}
+
+{{ if eq .env.os "darwin" -}}
+
+# App Store
+{{- range $name, $id := $mas }}
+mas "{{ $name }}", id: {{ $id }}
+{{- end }}
+
+{{- end }}

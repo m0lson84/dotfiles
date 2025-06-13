@@ -6,5 +6,5 @@
     { "name": "apps", "path": "./.cspell/apps.txt" },
     { "name": "config", "path": "./.cspell/config.txt" }
   ],
-  "words": ["datetime", "dotenv", "fullscreen", "keybinds", "keymaps", "tokyonight"]
+  "words": ["datetime", "dotenv", "fullscreen", "keybinds", "keymap", "keymaps", "tokyonight"]
 }

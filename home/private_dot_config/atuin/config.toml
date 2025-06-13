@@ -1,0 +1,31 @@
+#    ___  _         _
+#   / _ \| |       (_)
+#  / /_\ \ |_ _   _ _ _ __
+#  |  _  | __| | | | | '_ \
+#  | | | | |_| |_| | | | | |
+#  \_| |_/\__|\__,_|_|_| |_|
+#
+#
+
+
+style        = "auto"
+invert       = true
+show_preview = true
+
+store_failed   = false
+secrets_filter = true
+
+enter_accept  = false
+keymap_mode   = "vim-insert"
+keymap_cursor = { vim_insert = "steady-bar", vim_normal = "steady-block" }
+
+[stats]
+common_subcommands = ["cargo", "chezmoi", "docker", "git", "kubectl", "mise", "nvim", "uv", "yarn", "zellij"]
+common_prefix      = ["sudo"]
+ignored_commands   = ["cat", "cd", "clear", "exit", "ls", "reboot"]
+
+[dotfiles]
+enabled = false
+
+[theme]
+name = "marine"
