@@ -1,26 +1,69 @@
-{{- /* Packages to install */ -}}
-{{- $packages := list
+{{- /* System */ -}}
+{{- $system := list
+  "hypridle"
+  "hyprlock"
+  "hyprpaper"
+  "hyprshot"
+  "rofi-wayland"
+  "waybar"
+-}}
+
+{{- /* Applications */ -}}
+{{- $apps := list
+  "1password"
+  "discord"
+  "easyeffects"
+  "ghostty-git"
+  "google-chrome"
+  "obs-studio-git"
+  "obsidian"
+  "redisinsight-bin"
+  "solaar"
+  "spotify"
+  "thunderbird"
+  "vlc"
+  "wezterm-git"
+  "zed"
+  "zen-browser-bin"
+  "zoom"
+-}}
+
+{{- /* Tools */ -}}
+{{- $tools := list
   "act"
+  "amazon-ecr-credential-helper"
   "annotator"
-  "aws-cli-v2-bin"
+  "atuin"
+  "aws-cli-bin"
+  "aws-sam-cli-bin"
+  "aws-session-manager-plugin"
+  "azure-cli"
+  "bash-completion"
+  "bat"
   "bob"
   "btop"
   "buf"
   "chezmoi"
   "cmake"
   "curl"
+  "dbmate"
+  "devcontainer-cli"
+  "docker"
+  "docker-compose"
+  "epiphany"
   "eza"
+  "fastfetch"
   "fd"
-  "fzf"
+  "fish"
+  "flatpak"
   "fvm"
+  "fzf"
+  "github-cli"
   "git"
   "glow"
+  "gnupg"
   "helm"
   "hurl"
-  "hypridle"
-  "hyprlock"
-  "hyprpaper"
-  "hyprshot"
   "jq"
   "just"
   "kubectl"
@@ -28,15 +71,21 @@
   "lazygit"
   "man-db"
   "man-pages"
-  "mise-bin"
+  "minikube"
+  "mise"
+  "mosquitto"
+  "ookla-speedtest-bin"
+  "opencode-bin"
   "pre-commit"
+  "quarto-cli-bin"
   "ripgrep"
-  "rofi-wayland"
   "slides"
   "sqlc"
   "starship"
   "swappy"
   "swaync"
+  "tailwindcss-cli"
+  "terraform"
   "tree"
   "tree-sitter"
   "ttf-jetbrains-mono"
@@ -44,13 +93,19 @@
   "ttf-meslo"
   "ttf-nerd-fonts-symbols-mono"
   "uv"
-  "waybar"
+  "vivify-bin"
   "wget"
+  "wl-clip-persist"
+  "wl-clipboard"
   "yazi"
   "zellij"
   "zig"
   "zoxide"
 -}}
+
+
+{{- /* Packages to install */ -}}
+{{- $packages := concat $system $apps $tools -}}
 
 
 #!/usr/bin/env bash
@@ -72,7 +127,7 @@ set -eo pipefail
 
 # Install packages
 yay -Syu
-yay -S --needed --noconfirm {{ $packages | join " " }}
+yay -S --needed --noconfirm {{ $packages | sortAlpha | uniq | join " " }}
 
 # Install Rust
 install_rust
