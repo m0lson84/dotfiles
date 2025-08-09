@@ -1,0 +1,67 @@
+#   _    _       _ _
+#  | |  | |     | | |
+#  | |  | | __ _| | | _____ _ __
+#  | |/\| |/ _` | | |/ / _ \ '__|
+#  \  /\  / (_| | |   <  __/ |
+#   \/  \/ \__,_|_|_|\_\___|_|
+#
+#
+
+
+theme           = "tokyonight"
+hotreload_theme = true
+as_window       = false
+
+[list]
+dynamic_sub           = true
+keyboard_scroll_style = "emacs"
+max_entries           = 200
+show_initial_entries  = true
+single_click          = true
+visibility_threshold  = 20
+placeholder           = "No Results"
+
+[search]
+argument_delimiter = "#"
+placeholder        = " Search..."
+delay              = 0
+resume_last_query  = false
+
+[activation_mode]
+labels = "jkl;asdf"
+
+[builtins.hyprland_keybinds]
+show_sub_when_single = true
+path                 = "~/.config/hypr/hyprland.conf"
+weight               = 5
+name                 = "hyprland_keybinds"
+placeholder          = "Hyprland Keybinds"
+switcher_only        = true
+hidden               = true
+
+[builtins.applications]
+weight                        = 5
+name                          = "applications"
+placeholder                   = "  Search..."
+prioritize_new                = false
+hide_actions_with_empty_query = true
+context_aware                 = false
+refresh                       = true
+show_sub_when_single          = false
+show_icon_when_single         = true
+show_generic                  = true
+history                       = true
+hidden                        = true
+
+[builtins.applications.actions]
+enabled            = false
+hide_category      = true
+hide_without_query = true
+
+[builtins.dmenu]
+hidden                = true
+weight                = 5
+name                  = "dmenu"
+placeholder           = "Dmenu"
+switcher_only         = true
+show_icon_when_single = true

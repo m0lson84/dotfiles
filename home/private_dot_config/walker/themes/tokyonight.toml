@@ -1,0 +1,16 @@
+[ui.window.box]
+width      = 600
+min_width  = 600
+max_width  = 600
+height     = 400
+min_height = 400
+max_height = 400
+
+# List constraints - match rofi's 12 lines
+[ui.window.box.scroll.list]
+height     = 320
+min_height = 320
+max_height = 320
+
+[ui.window.box.scroll.list.item.icon]
+pixel_size = 32
