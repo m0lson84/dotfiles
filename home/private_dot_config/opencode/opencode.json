@@ -3,5 +3,11 @@
   "model": "Claude Sonnet 4",
   "theme": "tokyonight",
   "layout": "stretch",
+  "permission": {
+    "bash": {
+      "git *": "ask",
+      "*": "allow"
+    }
+  },
   "mcp": {}
 }
