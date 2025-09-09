@@ -15,13 +15,11 @@ local M = {}
 M.apply = function(config)
   config.color_scheme = 'Tokyo Night'
   config.color_schemes = color_schemes
-  config.initial_rows = 40
-  config.initial_cols = 120
   config.window_padding = {
-    left = '0.5cell',
-    right = '0.5cell',
-    top = '0.25cell',
-    bottom = '0.25cell',
+    left = '6px',
+    right = '6px',
+    top = '6px',
+    bottom = '6px',
   }
 end
 
