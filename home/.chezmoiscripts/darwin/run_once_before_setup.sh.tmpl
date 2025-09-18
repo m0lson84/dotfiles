@@ -2,17 +2,35 @@
 {{- $formula := list "curl" "git" "jq" "mas" "wget" -}}
 {{- $casks := list "1password-cli" -}}
 
+
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
 # Initial machine setup
 # ---------------------------------------------------------------------------
 
-
 {{/* Include external functions */}}
-{{ template "install-homebrew.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
 
+#######################################
+# Install Homebrew
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function install_homebrew() {
+  echo "Installing Homebrew..."
+
+  {{- if  eq .env.os "darwin" }}
+  # Install dependencies
+  command xcode-select -v >/dev/null || xcode-select --install
+  {{- end }}
+
+  SOURCE_REPO="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+  {{ if ne .env.os "darwin" }}NONINTERACTIVE=1 {{ end }}/bin/bash -c "$(curl -fsSL "${SOURCE_REPO}")"
+
+}
 
 #######################################
 # Post installation steps for Homebrew
@@ -21,7 +39,7 @@
 # Arguments:
 #   None
 #######################################
-function homebrew_postinstall() {
+function setup_homebrew() {
   echo "Running Homebrew post installation steps..."
 
   # Setup Homebrew in shell environment
@@ -43,7 +61,7 @@ set -euo pipefail
 
 # Install Homebrew
 install_homebrew
-homebrew_postinstall
+setup_homebrew
 
 # Setup 1Password
 setup_1password

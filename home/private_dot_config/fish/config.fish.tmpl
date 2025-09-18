@@ -70,7 +70,7 @@ set -gx BAT_CONFIG_PATH "$XDG_CONFIG_HOME/bat/config.conf"
 {{- if eq .env.distro "arch" }}
 
 # Chrome configuration
-set -gx CHROME_EXECUTABLE "$( which google-chrome-stable )"
+set -gx CHROME_EXECUTABLE "$( which chromium )"
 
 {{- end }}
 

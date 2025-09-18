@@ -14,15 +14,9 @@
 {{- /* Linux specific configuration */ -}}
 {{ if ne .env.distro "arch" }}
 .chezmoiscripts/arch/**
-.config/hypr
-.config/rofi
-.config/waybar
 {{ end }}
 {{ if ne .env.distro "debian" }}
 .chezmoiscripts/debian/**
-{{ end }}
-{{ if not ( has .env.distro ( list "pop" "ubuntu" ) ) }}
-.chezmoiscripts/ubuntu/**
 {{ end }}
 
 {{- /* Devcontainer specific configuration */ -}}

@@ -82,7 +82,7 @@ export BAT_CONFIG_PATH="${XDG_CONFIG_HOME}/bat/config.conf"
 {{- if eq .env.distro "arch" }}
 
 # Chrome configuration
-export CHROME_EXECUTABLE="$( which google-chrome-stable )"
+export CHROME_EXECUTABLE="$( which chromium )"
 
 {{- end }}
 
