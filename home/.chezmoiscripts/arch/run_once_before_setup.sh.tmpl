@@ -29,21 +29,6 @@ function install_1password() {
 }
 
 #######################################
-# Install Docker Engine
-# https://docs.docker.com/engine/install/ubuntu/
-# Globals:
-#   None
-# Arguments:
-#   None
-#######################################
-function install_docker() {
-  echo "Installing Docker..."
-  sudo pacman -S --noconfirm docker docker-compose docker-buildx
-  sudo systemctl enable --now docker.service
-  sudo usermod "$USER" --append --group docker
-}
-
-#######################################
 # Install Git Credential Manager
 # https://github.com/git-ecosystem/git-credential-manager
 # Globals:
@@ -60,22 +45,6 @@ function install_gcm() {
   curl -L -O "https://github.com/git-ecosystem/git-credential-manager/releases/download/v$version/$zip_file"
   sudo tar -xvf "$zip_file" -C /usr/local/bin
   rm "$zip_file"
-
-}
-
-#######################################
-# Install package from AUR
-# Globals:
-#   None
-# Arguments:
-#   None
-#######################################
-function install_yay(){
-  package=$1
-
-  echo "Installing $package from AUR..."
-  git clone "https://aur.archlinux.org/$package.git"
-  cd "$package" && makepkg -si && cd .. && rm -rf "$package"
 
 }
 
@@ -99,19 +68,10 @@ set -euo pipefail
 # Update packages
 update_packages
 
-# Install yay
-if ! command -v yay &> /dev/null; then
-  install_yay "yay-bin"
-fi
-
 {{ if not .env.ephemeral -}}
 
 # Install 1Password CLI
-install_1password
 setup_1password
-
-# Install Docker Engine
-install_docker
 
 # Install Git Credential Manager
 install_gcm

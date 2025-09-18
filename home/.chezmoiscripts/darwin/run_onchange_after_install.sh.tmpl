@@ -1,13 +1,19 @@
+{{- /* Taps to install */ -}}
+{{- $taps := .packages.homebrew.taps -}}
+
+{{- /* Packages to install */ -}}
+{{- $formula := (concat .packages.common.tools .packages.homebrew.formula) | sortAlpha | uniq -}}
+{{- $casks := (concat .packages.common.apps .packages.homebrew.casks) | sortAlpha | uniq -}}
+{{- $mas :=  .packages.mas -}}
+
+
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
 # Install applications and tools
 # ---------------------------------------------------------------------------
 
-
 {{/* Include external functions */}}
-{{ template "install-brewfile.tmpl" . }}
 {{ template "install-rust.tmpl" . }}
-
 
 #################### Main Program ####################
 
@@ -17,8 +23,17 @@ set -eo pipefail
 # Setup environment
 eval "$($(brew --prefix)/bin/brew shellenv)"
 
-# Install dependencies
-install_brewfile
+# Install packages
+brew bundle --file=/dev/stdin <<EOF
+{{ range $taps -}} tap {{ . | quote }} {{ end -}}
+{{ range $formula -}} brew {{ . | quote }} {{ end -}}
+{{ range $casks -}} cask {{ . | quote }} {{ end -}}
+EOF
+
+# Install Mac App Store
+{{- range $name, $id := $mas }}
+mas "{{ $name }}", id: {{ $id }}
+{{- end }}
 
 # Install Rust
 install_rust
