@@ -60,7 +60,7 @@ fix_obs_virtual_cam_in_slack() {
 #######################################
 yay_update() {
   echo "Updating yay packages..."
-  yay -Syu
+  yay -Syu --noconfirm
   echo "Running cleaning up tasks..."
   yay -Yc
 }
