@@ -3,10 +3,10 @@
 # Initial machine setup
 # ---------------------------------------------------------------------------
 
-
+{{/* Include external functions */}}
+{{ template "install-opencode.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
-
 
 #######################################
 # Install 1Password CLI
@@ -75,6 +75,9 @@ setup_1password
 
 # Install Git Credential Manager
 install_gcm
+
+# Install opencode
+install_opencode
 
 # WezTerm TERM definition
 install_term_definition

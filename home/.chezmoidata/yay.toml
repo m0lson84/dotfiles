@@ -33,7 +33,6 @@ tools = [
   'man-pages',
   'minikube',
   'ookla-speedtest-bin',
-  'opencode-bin',
   'quarto-cli-bin',
   'swappy',
   'swaync',

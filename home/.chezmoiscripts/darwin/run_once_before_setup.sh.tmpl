@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 
 {{/* Include external functions */}}
+{{ template "install-opencode.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
 
@@ -65,6 +66,9 @@ setup_homebrew
 
 # Setup 1Password
 setup_1password
+
+# Install opencode
+install_opencode
 
 # WezTerm TERM definition
 install_term_definition
