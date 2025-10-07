@@ -67,4 +67,4 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 # Fix Ghostty tab rendering
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run       = ["layout floating"]
+run       = ["layout tiling"]

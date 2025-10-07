@@ -36,7 +36,7 @@ end
 #######################################
 function _yay_update --description "Update all installed yay packages"
     echo "Updating yay packages..."
-    yay -Syu
+    yay -Syu --noconfirm
     echo "Running cleaning up tasks..."
     yay -Yc
 end
