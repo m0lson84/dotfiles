@@ -15,7 +15,7 @@
 {{ if ne .env.distro "arch" }}
 .chezmoiscripts/arch/**
 {{ end }}
-{{ if ne .env.distro "debian" }}
+{{ if not ( has .env.distro ( list "debian" "ubuntu" ) ) }}
 .chezmoiscripts/debian/**
 {{ end }}
 
