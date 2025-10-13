@@ -42,9 +42,14 @@ function install_mise() {
 #######################################
 function install_rust() {
   echo "Installing rust..."
+
+  # Install rustup and stable toolchain
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   source "$HOME/.cargo/env"
   rustup install stable
+
+  # Install binary install
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 }
 
 #################### Main Program ####################
@@ -53,8 +58,8 @@ function install_rust() {
 set -euo pipefail
 
 # Install packages
-{{ $sudo }}apt-get update
-{{ $sudo }}apt-get install -y {{ $packages | join " " }}
+{{ $sudo }}apt update
+{{ $sudo }}apt install -y {{ $packages | join " " }}
 
 # Install fish
 install_fish

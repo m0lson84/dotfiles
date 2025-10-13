@@ -3,7 +3,7 @@
 {{- $personal := "michaelolson84@gmail.com" -}}
 {{- $work := "michael.olson@mutuallyhuman.com" -}}
 
-{{- /* Linux distrobution */ -}}
+{{- /* Linux distribution */ -}}
 {{- $distro := "" -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $distro = .chezmoi.osRelease.id -}}
@@ -13,7 +13,7 @@
 {{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 
 {{- /* Check using Homebrew as package manager */ -}}
-{{- $homebrew := or (eq .chezmoi.os "darwin") (has $distro (list "pop" "ubuntu")) -}}
+{{- $homebrew := eq .chezmoi.os "darwin" -}}
 
 {{- /* Detect GitHub codespaces, VSCode remote containers and Docker containers */ -}}
 {{- $codespaces := env "CODESPACES" | not | not -}}

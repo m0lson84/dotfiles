@@ -82,11 +82,19 @@ function install_runtimes() {
 }
 
 #######################################
+# Install treesitter CLI
+#######################################
+function install_treesitter() {
+  echo "Installing treesitter cli..."
+  cargo install --locked tree-sitter-cli
+}
+
+#######################################
 # Install zellij
 #######################################
 function install_zellij() {
   echo "Installing zellij..."
-  cargo install --locked zellij
+  cargo binstall --disable-telemetry zellij
 }
 
 #################### Main Program ####################
@@ -105,5 +113,6 @@ install_runtimes go node python
 # Install additional tools
 install_fzf
 install_github_cli
-install_lazygit "0.48.0"
-# install_zellij
+install_lazygit "0.55.1"
+install_treesitter
+install_zellij
