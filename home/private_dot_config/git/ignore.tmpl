@@ -8,20 +8,16 @@
 # See https://git-scm.com/docs/gitignore
 # =============================================================================
 
+# environments
+.mise.local.toml
+.venv
+
+# IDE specific
+.idea
+
 {{ if eq .env.os "darwin" -}}
-# Mac specific
+# system files
 .DS_Store
 Thumbs.db
 {{- end }}
 
-# Environments
-.venv
-
-# Byte-compiled / optimized / DLL files
-.pytest_cache/
-__pycache__/
-*.pyc
-*.pyo
-
-# IDE Configuration files
-/.idea/
