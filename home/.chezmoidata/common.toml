@@ -21,7 +21,6 @@ tools = [
   'jq',
   'lazydocker',
   'lazygit',
-  'mise',
   'ripgrep',
   'slides',
   'sqlc',

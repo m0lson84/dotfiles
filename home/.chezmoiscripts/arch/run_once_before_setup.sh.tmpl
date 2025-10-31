@@ -1,3 +1,11 @@
+{{- /* Default packages */ -}}
+{{- $packages := list "base-devel" "curl" "fzf" "git" "gnupg" "unzip" "wget" "zsh" -}}
+
+{{- $sudo := "sudo " -}}
+{{- if eq .chezmoi.username "root" -}}
+{{-   $sudo = "" -}}
+{{- end -}}
+
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
 # Initial machine setup
@@ -49,15 +57,11 @@ function install_gcm() {
 }
 
 #######################################
-# Update packages
-# Globals:
-#   None
-# Arguments:
-#   None
+# Install mise-en-place
 #######################################
-function update_packages() {
-  echo "Updating packages..."
-  sudo pacman -Syu
+function install_mise() {
+  echo "Installing mise-en-place..."
+  curl https://mise.run | sh
 }
 
 #################### Main Program ####################
@@ -65,8 +69,9 @@ function update_packages() {
 # Stop script on error
 set -euo pipefail
 
-# Update packages
-update_packages
+# Install packages
+{{ $sudo }}pacman -Syu
+{{ $sudo }}pacman -S --needed --noconfirm {{ $packages | join " " }}
 
 {{ if not .env.ephemeral -}}
 

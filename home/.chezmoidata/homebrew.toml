@@ -21,6 +21,7 @@ formula = [
   'kubernetes-cli',
   'libpq',
   'mas',
+  'mise',
   'openssl',
   'readline',
   'redis',

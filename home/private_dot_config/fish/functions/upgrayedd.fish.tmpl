@@ -1,5 +1,5 @@
 {{- /* Update applications */ -}}
-{{- $update := "_yay_update" -}}
+{{- $update := "_yay_update && _tool_update" -}}
 {{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade" -}} {{- end -}}
 {{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "_apt_update && _brew_update" -}} {{- end -}}
 
@@ -29,6 +29,16 @@ function _brew_update --description "Update all installed homebrew formula/casks
     brew upgrade
     echo "Running cleaning up tasks..."
     brew autoremove && brew cleanup
+end
+
+#######################################
+# Update developer tools
+#######################################
+function _tool_update --description "Update developer tools"
+    echo "Updating mise-en-place..."
+    mise self-update -y && mise up
+    echo "Updating neovim..."
+    bob update --all
 end
 
 #######################################
