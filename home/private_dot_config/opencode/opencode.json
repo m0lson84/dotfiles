@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "Claude Sonnet 4",
+  "model": "github-copilot/claude-sonnet-4.5",
   "theme": "tokyonight",
   "layout": "stretch",
   "permission": {
