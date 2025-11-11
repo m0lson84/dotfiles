@@ -14,15 +14,11 @@
 #
 
 
-{{ if not .env.ephemeral -}}
-
 # General
 alias cat=bat
 alias finder=yazi
 alias ls="eza -l -a --icons=always"
 alias upgrayedd={{ $update | quote }}
-
-{{- end }}
 
 # Devcontainers
 alias devc="devcontainer_cli"

@@ -1,10 +1,6 @@
-{{ if not .env.ephemeral -}}
-
 #######################################
 # Concatenate files and print on the standard output
 #######################################
 function cat --description "Concatenate files and print on the standard output"
     bat $argv
 end
-
-{{- end }}
