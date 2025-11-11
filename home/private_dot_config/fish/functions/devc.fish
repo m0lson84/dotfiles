@@ -59,7 +59,6 @@ function _devcontainer_up
         --remote-env "$remote_env" \
         --additional-features "$additional_features" \
         --dotfiles-repository "$dotfiles" \
-        --include-merged-configuration \
         $argv
 
 end

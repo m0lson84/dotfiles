@@ -4,6 +4,23 @@
 # ---------------------------------------------------------------------------
 
 #######################################
+# Install bat (cat with wings)
+#######################################
+function install_bat() {
+  echo "Installing bat..."
+  cargo install --locked bat
+  bat cache --build
+}
+
+#######################################
+# Install eza (improved ls)
+#######################################
+function install_eza() {
+  echo "Installing eza..."
+  cargo install --locked eza
+}
+
+#######################################
 # Install fzf
 #######################################
 function install_fzf() {
@@ -94,7 +111,15 @@ function install_treesitter() {
 #######################################
 function install_zellij() {
   echo "Installing zellij..."
-  cargo binstall --disable-telemetry zellij
+  cargo binstall --disable-telemetry --no-confirm zellij
+}
+
+#######################################
+# Install zoxide
+#######################################
+function install_zoxide() {
+  echo "Installing zoxide..."
+  cargo install --locked zoxide
 }
 
 #################### Main Program ####################
@@ -110,9 +135,14 @@ fi
 # Install language runtimes
 install_runtimes go node python
 
-# Install additional tools
+# Install dev tools
+install_bat
+install_eza
 install_fzf
+install_zoxide
+
+# Install additional tools
 install_github_cli
-install_lazygit "0.55.1"
+install_lazygit "0.56.0"
 install_treesitter
 install_zellij
