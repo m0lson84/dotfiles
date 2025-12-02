@@ -1,7 +1,7 @@
 {{- /* Update applications */ -}}
 {{- $update := "_yay_update && _tool_update" -}}
 {{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade" -}} {{- end -}}
-{{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "_apt_update && _brew_update" -}} {{- end -}}
+{{- if has .env.distro (list "ubuntu") -}} {{- $update = "_apt_update" -}} {{- end -}}
 
 #######################################
 # Update all installed packages
