@@ -49,8 +49,7 @@ function _devcontainer_up
     set remote_env "REMOTE_CONTAINERS=true"
     set additional_features (jq -n -c '
     {
-      "ghcr.io/devcontainers-extra/features/starship:1": {},
-      "ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "nightly" }
+      "ghcr.io/devcontainers-extra/features/starship:1": {}
     }'
   )
 

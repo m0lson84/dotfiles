@@ -38,18 +38,32 @@ function install_mise() {
 }
 
 #######################################
+# Install neovim
+#######################################
+function install_neovim() {
+  echo "Installing neovim..."
+  local version=$1
+
+  local arch=$(uname -m | sed 's/aarch64/arm64/')
+  curl -fsSL "https://github.com/neovim/neovim/releases/download/${version}/nvim-linux-${arch}.tar.gz" \
+    | {{ $sudo }}tar -xzf - -C /usr/local --strip-components=1
+}
+
+#######################################
 # Install rust
 #######################################
 function install_rust() {
   echo "Installing rust..."
 
   # Install rustup and stable toolchain
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  local rustup_url="https://sh.rustup.rs"
+  curl --proto '=https' --tlsv1.2 -sSf "${rustup_url}" | sh -s -- -y
   source "$HOME/.cargo/env"
   rustup install stable
 
   # Install binary install
-  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+  local binstall_url="https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh"
+  curl -L --proto '=https' --tlsv1.2 -sSf "${binstall_url}" | bash
 }
 
 #################### Main Program ####################
@@ -63,6 +77,9 @@ set -euo pipefail
 
 # Install fish
 install_fish
+
+# Install neovim
+install_neovim "nightly"
 
 # Install rust
 install_rust
