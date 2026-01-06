@@ -7,7 +7,7 @@
 #
 #
 
-[manager]
+[mgr]
 border_style    = { fg = "#27a1b9" }
 border_symbol   = '│'
 count_copied    = { fg = "#c0caf5", bg = "#41a6b5" }
