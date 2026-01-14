@@ -13,7 +13,7 @@
   "current_line_highlight": "line",
   "format_on_save": "on",
   "formatter": "language_server",
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "file_types": {},
   "inlay_hints": { "enabled": true },
   "preferred_line_length": 120,

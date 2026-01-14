@@ -8,5 +8,5 @@
 #               |___/
 
 gui:
-  border: 'single'
+  border: "single"
   showBottomLine: false

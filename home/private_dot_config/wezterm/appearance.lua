@@ -5,7 +5,7 @@ Configure the appearance of WezTerm.
 local wezterm = require('wezterm') --[[@as Wezterm]]
 
 -- Customize built-in color schemes.
-local color_schemes = wezterm.get_builtin_color_schemes()
+local color_schemes = wezterm.color.get_builtin_schemes()
 color_schemes['Tokyo Night'].background = '#16161E'
 
 local M = {}

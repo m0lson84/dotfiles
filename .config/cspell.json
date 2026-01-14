@@ -1,0 +1,7 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["apps", "config"],
+  "dictionaryDefinitions": [{ "name": "apps", "path": "./apps.txt" }, { "name": "config", "path": "./config.txt" }],
+  "words": ["datetime", "dotenv", "elif", "fullscreen", "keybinds", "keymap", "keymaps", "tokyonight"]
+}
