@@ -1,8 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/claude-sonnet-4.5",
   "theme": "tokyonight",
-  "layout": "stretch",
+  "enabled_providers": ["github-copilot", "opencode"],
+  "model": "github-copilot/claude-sonnet-4.5",
   "permission": {
     "bash": {
       "git *": "ask",
