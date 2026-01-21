@@ -1,13 +1,5 @@
 [packages.homebrew]
-taps = [
-  'hashicorp/tap',
-  'jannis-baum/tap',
-  'leoafarias/fvm',
-  'microsoft/git',
-  'nikitabobko/tap',
-  'sst/tap',
-  'teamookla/speedtest',
-]
+taps = ['hashicorp/tap', 'jannis-baum/tap', 'leoafarias/fvm', 'microsoft/git', 'nikitabobko/tap', 'teamookla/speedtest']
 formula = [
   'awscli',
   'azure-cli',
