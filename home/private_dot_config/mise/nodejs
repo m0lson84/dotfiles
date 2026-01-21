@@ -1,5 +1,7 @@
 @biomejs/biome
+@devcontainers/cli
 @nestjs/cli
+@tailwindcss/cli
 @typescript/native-preview
 aws-cdk
 fish-lsp

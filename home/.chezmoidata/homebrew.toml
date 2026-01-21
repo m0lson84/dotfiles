@@ -9,10 +9,8 @@ taps = [
   'teamookla/speedtest',
 ]
 formula = [
-  'aws-cdk',
   'awscli',
   'azure-cli',
-  'devcontainer',
   'dotenv-linter',
   'fvm',
   'git',
@@ -29,7 +27,6 @@ formula = [
   'shfmt',
   'speedtest',
   'sqlite3',
-  'tailwindcss',
   'tcl-tk',
   'terraform',
   'zlib',
