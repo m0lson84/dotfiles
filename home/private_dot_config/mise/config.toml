@@ -8,16 +8,6 @@
 #                                              |_|
 
 
-[tools]
-bun    = { version = "1.3" }
-deno   = { version = "2" }
-go     = { version = "1.25" }
-node   = { version = "lts" }
-python = { version = "3.14" }
-ruby   = { version = "3.4" }
-rust   = { version = "stable", profile = "default", components = "rust-analyzer" }
-zig    = { version = "0.15" }
-
 [settings]
 env_file                            = ".env"
 experimental                        = true
@@ -25,8 +15,33 @@ go_default_packages_file            = "~/.config/mise/golang"
 idiomatic_version_file_enable_tools = ["go", "node", "python", "ruby"]
 
 [settings.python]
-default_packages_file = "~/.config/mise/python"
 compile               = false
+default_packages_file = "~/.config/mise/python"
 
 [settings.ruby]
 default_packages_file = "~/.config/mise/ruby"
+
+[tools.bun]
+version = "1.3"
+
+[tools.deno]
+version = "2"
+
+[tools.go]
+version = "1.25"
+
+[tools.node]
+version = "lts"
+
+[tools.python]
+version = "3.14"
+
+[tools.ruby]
+version = "3.4"
+
+[tools.rust]
+version    = "stable"
+components = "rust-analyzer"
+
+[tools.zig]
+version = "0.15"

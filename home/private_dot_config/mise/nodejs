@@ -1,5 +1,6 @@
 @biomejs/biome
 @nestjs/cli
+@typescript/native-preview
 aws-cdk
 fish-lsp
 neovim
