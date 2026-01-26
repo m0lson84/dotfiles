@@ -4,29 +4,15 @@
 # ---------------------------------------------------------------------------
 
 #######################################
-# Install bat (cat with wings)
+# Install developer tools
+# Arguments:
+#   tools: List of tools to install
 #######################################
-function install_bat() {
-  echo "Installing bat..."
-  cargo install --locked bat
-  bat cache --build
-}
+function install_devtools() {
+  local tools=("$@")
 
-#######################################
-# Install eza (improved ls)
-#######################################
-function install_eza() {
-  echo "Installing eza..."
-  cargo install --locked eza
-}
-
-#######################################
-# Install fzf
-#######################################
-function install_fzf() {
-  echo "Installing fzf..."
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install --bin
+  echo "Installing developer tools..."
+  mise use -g "${tools[@]}"
 }
 
 #######################################
@@ -36,12 +22,12 @@ function install_github_cli() {
   echo "Installing GitHub CLI..."
 
   # Download GPG key
-  tmp_key=$(mktemp)
+  tmp_dir=$(mktemp)
   sudo install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o "$tmp_key"
-  sudo cp "$tmp_key" /etc/apt/keyrings/githubcli-archive-keyring.gpg
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o "$tmp_dir"
+  sudo cp "$tmp_dir" /etc/apt/keyrings/githubcli-archive-keyring.gpg
   sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
-  rm -rf "$tmp_key"
+  rm -rf "$tmp_dir"
 
   # Add the APT repository
   arch="$(dpkg --print-architecture)"
@@ -55,41 +41,9 @@ function install_github_cli() {
 }
 
 #######################################
-# Install lazygit
-# Arguments:
-#   version: The version to install
-#######################################
-function install_lazygit() {
-  echo "Installing lazygit..."
-  local version=$1
-
-  case "$(uname -m)" in
-    x86_64) asset_name="lazygit_${version}_Linux_x86_64" ;;
-    aarch64 | arm64) asset_name="lazygit_${version}_Linux_arm64" ;;
-    *) echo "Unsupported architecture: $(uname -m)" ;;
-  esac
-
-  asset_file="$asset_name.tar.gz"
-  download_url="https://github.com/jesseduffield/lazygit/releases/download/v$version/$asset_file"
-
-  echo "Downloading $asset_file..."
-  tmp_key=$(mktemp -d)
-  archive_path="$tmp_key/archive.tar.gz"
-  curl -L "$download_url" -o "$archive_path"
-
-  echo "Extracting $asset_file..."
-  tar -xzf "$archive_path" -C "$tmp_key"
-  rm -f "$archive_path"
-
-  echo "Installing lazygit..."
-  install_dir="$HOME/.local/bin"
-  mv "$tmp_key/lazygit" "$install_dir/lazygit"
-  chmod +x "$install_dir/lazygit"
-  rm -rf "$tmp_key"
-}
-
-#######################################
 # Install language runtimes
+# Arguments:
+#   langs: List of languages to install
 #######################################
 function install_runtimes() {
   local langs=("$@")
@@ -99,10 +53,11 @@ function install_runtimes() {
 }
 
 #######################################
-# Install treesitter CLI
+# Install the tree-sitter CLI
 #######################################
 function install_treesitter() {
-  echo "Installing treesitter cli..."
+  echo "Installing tree-sitter CLI..."
+  sudo apt install -y clang
   cargo install --locked tree-sitter-cli
 }
 
@@ -112,14 +67,6 @@ function install_treesitter() {
 function install_zellij() {
   echo "Installing zellij..."
   cargo binstall --disable-telemetry --no-confirm zellij
-}
-
-#######################################
-# Install zoxide
-#######################################
-function install_zoxide() {
-  echo "Installing zoxide..."
-  cargo install --locked zoxide
 }
 
 #################### Main Program ####################
@@ -136,13 +83,9 @@ fi
 install_runtimes go node python
 
 # Install dev tools
-install_bat
-install_eza
-install_fzf
-install_zoxide
+install_devtools bat eza fd fzf lazygit zoxide
 
 # Install additional tools
 install_github_cli
-install_lazygit "0.56.0"
 install_treesitter
 install_zellij
