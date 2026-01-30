@@ -24,9 +24,6 @@ default_packages_file = "~/.config/mise/ruby"
 [tools.bun]
 version = "1.3"
 
-[tools.deno]
-version = "2"
-
 [tools.go]
 version = "1.25"
 
