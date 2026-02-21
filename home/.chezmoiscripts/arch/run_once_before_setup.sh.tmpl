@@ -1,10 +1,5 @@
 {{- /* Default packages */ -}}
-{{- $packages := list "base-devel" "curl" "fzf" "git" "gnupg" "unzip" "wget" "zsh" -}}
-
-{{- $sudo := "sudo " -}}
-{{- if eq .chezmoi.username "root" -}}
-{{-   $sudo = "" -}}
-{{- end -}}
+{{- $packages := list "base-devel" "curl" "git" "gnupg" "mise" "unzip" "wget" "1password-cli" -}}
 
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
@@ -15,26 +10,6 @@
 {{ template "install-opencode.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
-
-#######################################
-# Install 1Password CLI
-# https://developer.1password.com/docs/cli/get-started/
-# Globals:
-#   None
-# Arguments:
-#   None
-#######################################
-function install_1password() {
-  echo "Installing 1Password CLI..."
-  ARCH="amd64" && \
-  wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.30.3/op_linux_${ARCH}_v2.30.3.zip" -O op.zip && \
-  unzip -d op op.zip && \
-  sudo mv op/op /usr/local/bin/ && \
-  rm -r op.zip op && \
-  sudo groupadd -f onepassword-cli && \
-  sudo chgrp onepassword-cli /usr/local/bin/op && \
-  sudo chmod g+s /usr/local/bin/op
-}
 
 #######################################
 # Install Git Credential Manager
@@ -56,13 +31,6 @@ function install_gcm() {
 
 }
 
-#######################################
-# Install mise-en-place
-#######################################
-function install_mise() {
-  echo "Installing mise-en-place..."
-  curl https://mise.run | sh
-}
 
 #################### Main Program ####################
 
@@ -70,13 +38,14 @@ function install_mise() {
 set -euo pipefail
 
 # Install packages
-{{ $sudo }}pacman -Syu
-{{ $sudo }}pacman -S --needed --noconfirm {{ $packages | join " " }}
+pm={{ template "arch-pm.tmpl" . }}
+$pm -Syu --noconfirm
+$pm -S --needed --noconfirm {{ $packages | join " " }}
 
 {{ if not .env.ephemeral -}}
 
-# Install 1Password CLI
-setup_1password
+# Install dev tools
+mise install
 
 # Install Git Credential Manager
 install_gcm
@@ -86,5 +55,8 @@ install_opencode
 
 # WezTerm TERM definition
 install_term_definition
+
+# Install 1Password CLI
+setup_1password
 
 {{ end }}

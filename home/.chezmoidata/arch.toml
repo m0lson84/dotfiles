@@ -1,5 +1,16 @@
 [packages.arch]
-apps = ['obs-studio', 'obsidian', 'spotify', 'thunderbird', 'vlc', 'zed', 'zen-browser-bin', 'zoom']
+apps = [
+  'chromium',
+  'ghostty',
+  'obs-studio',
+  'obsidian',
+  'spotify',
+  'thunderbird',
+  'vlc',
+  'zed',
+  'zen-browser-bin',
+  'zoom',
+]
 tools = [
   'amazon-ecr-credential-helper',
   'aws-cli-bin',
@@ -9,17 +20,12 @@ tools = [
   'docker',
   'docker-compose',
   'fastfetch',
-  'fvm',
-  'git',
   'github-cli',
-  'gnupg',
   'kubectl',
   'man-db',
   'man-pages',
   'minikube',
   'ookla-speedtest-bin',
-  'swappy',
-  'swaync',
   'terraform',
   'ttf-jetbrains-mono',
   'ttf-jetbrains-mono-nerd',
@@ -28,7 +34,4 @@ tools = [
   'vivify-bin',
   'wl-clip-persist',
   'wl-clipboard',
-  'yazi',
-  'zellij',
-  'zoxide',
 ]

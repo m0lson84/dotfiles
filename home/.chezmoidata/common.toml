@@ -1,5 +1,5 @@
 [packages.common]
-apps = ['1password']
+apps = ['1password', '1password-cli']
 tools = [
   'act',
   'atuin',
@@ -13,14 +13,18 @@ tools = [
   'eza',
   'fd',
   'fish',
+  'fvm',
   'fzf',
+  'git',
   'glow',
+  'gnupg',
   'golangci-lint',
   'helm',
   'hurl',
   'jq',
   'lazydocker',
   'lazygit',
+  'lsof',
   'ripgrep',
   'slides',
   'sqlc',
@@ -33,4 +37,5 @@ tools = [
   'yazi',
   'zellij',
   'zoxide',
+  'zsh',
 ]

@@ -5,8 +5,8 @@
 
 {{- /* Linux distribution */ -}}
 {{- $distro := "" -}}
-{{- if hasKey .chezmoi.osRelease "id" -}}
-{{-   $distro = .chezmoi.osRelease.id -}}
+{{- if hasKey .chezmoi.osRelease "idLike" -}}
+{{-   $distro = .chezmoi.osRelease.idLike -}}
 {{- end -}}
 
 {{- /* Check if running in WSL */ -}}

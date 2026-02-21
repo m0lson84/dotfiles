@@ -1,7 +1,8 @@
 {{- /* Update applications */ -}}
-{{- $update := "_yay_update && _tool_update" -}}
-{{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade" -}} {{- end -}}
+{{- $update := "_arch_update && _tool_update" -}}
+{{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade && _tool_update" -}} {{- end -}}
 {{- if has .env.distro (list "ubuntu") -}} {{- $update = "_apt_update" -}} {{- end -}}
+
 
 #######################################
 # Update all installed packages
@@ -9,6 +10,7 @@
 function upgrayedd --description "Update all installed packages"
    {{ $update }}
 end
+
 
 #######################################
 # Update all apt packages
@@ -19,6 +21,18 @@ function _apt_update --description "Update all installed apt packages"
     echo "Running cleaning up tasks..."
     sudo apt autoremove -y && sudo apt autoclean
 end
+
+
+#######################################
+# Update all Arch Linux packages
+#######################################
+function _arch_update --description "Update all Arch Linux packages"
+    echo "Updating packages..."
+    set -l pm {{ template "arch-pm.tmpl" . }}
+    $pm -Syu --noconfirm
+    $pm -Yc
+end
+
 
 #######################################
 # Update Homebrew formulas/casks
@@ -31,6 +45,7 @@ function _brew_update --description "Update all installed homebrew formula/casks
     brew autoremove && brew cleanup
 end
 
+
 #######################################
 # Update developer tools
 #######################################
@@ -39,14 +54,4 @@ function _tool_update --description "Update developer tools"
     mise self-update -y && mise up
     echo "Updating neovim..."
     bob update --all
-end
-
-#######################################
-# Update all yay packages
-#######################################
-function _yay_update --description "Update all installed yay packages"
-    echo "Updating yay packages..."
-    yay -Syu --noconfirm
-    echo "Running cleaning up tasks..."
-    yay -Yc
 end

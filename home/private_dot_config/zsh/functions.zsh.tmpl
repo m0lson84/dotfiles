@@ -7,6 +7,7 @@
 #
 #
 
+
 #######################################
 # Update all apt packages
 #######################################
@@ -16,6 +17,18 @@ function apt_update() {
   echo "Running cleaning up tasks..."
   sudo apt autoremove -y && sudo apt autoclean
 }
+
+
+#######################################
+# Update all Arch Linux packages
+#######################################
+function arch_update() {
+  echo "Updating packages..."
+  local pm={{ template "arch-pm.tmpl" . }}
+  $pm -Syu --noconfirm
+  $pm -Yc
+}
+
 
 #######################################
 # Update Homebrew formulas/casks
@@ -53,16 +66,6 @@ fix_obs_virtual_cam_in_slack() {
   sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app"
   sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app"
   sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Plugin).app"
-}
-
-#######################################
-# Update all yay packages
-#######################################
-yay_update() {
-  echo "Updating yay packages..."
-  yay -Syu --noconfirm
-  echo "Running cleaning up tasks..."
-  yay -Yc
 }
 
 #######################################

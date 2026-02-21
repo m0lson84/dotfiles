@@ -4,10 +4,7 @@ formula = [
   'awscli',
   'azure-cli',
   'dotenv-linter',
-  'fvm',
-  'git',
   'gnu-sed',
-  'gnupg',
   'kubernetes-cli',
   'libpq',
   'mas',
@@ -22,10 +19,8 @@ formula = [
   'tcl-tk',
   'terraform',
   'zlib',
-  'zsh',
 ]
 casks = [
-  '1password-cli',
   'aerospace',
   'bartender',
   'elgato-camera-hub',

@@ -1,0 +1,12 @@
+{{- /* Detect Arch Linux package manager */ -}}
+
+{{- $pm := "" -}}
+{{- if lookPath "paru" -}}
+  {{- $pm = "paru" -}}
+{{- else if lookPath "yay" -}}
+  {{- $pm = "yay" -}}
+{{- else if eq .env.distro "arch" -}}
+  {{- fail "No package manager found. Please install paru or yay." -}}
+{{- end -}}
+
+{{- $pm -}}
