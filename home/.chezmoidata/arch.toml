@@ -1,4 +1,4 @@
-[packages.yay]
+[packages.arch]
 apps = ['obs-studio', 'obsidian', 'spotify', 'thunderbird', 'vlc', 'zed', 'zen-browser-bin', 'zoom']
 tools = [
   'amazon-ecr-credential-helper',

@@ -1,6 +1,6 @@
 {{- /* Packages to install */ -}}
-{{- $apps := (concat .packages.common.apps .packages.yay.apps) | sortAlpha | uniq -}}
-{{- $tools := (concat .packages.common.tools .packages.yay.tools) | sortAlpha | uniq -}}
+{{- $apps := (concat .packages.common.apps .packages.arch.apps) | sortAlpha | uniq -}}
+{{- $tools := (concat .packages.common.tools .packages.arch.tools) | sortAlpha | uniq -}}
 
 
 #!/usr/bin/env bash

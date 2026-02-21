@@ -1,9 +1,9 @@
 {{- /* Taps to install */ -}}
-{{- $taps := .packages.homebrew.taps -}}
+{{- $taps := .packages.darwin.taps -}}
 
 {{- /* Packages to install */ -}}
-{{- $formula := (concat .packages.common.tools .packages.homebrew.formula) | sortAlpha | uniq -}}
-{{- $casks := (concat .packages.common.apps .packages.homebrew.casks) | sortAlpha | uniq -}}
+{{- $formula := (concat .packages.common.tools .packages.darwin.formula) | sortAlpha | uniq -}}
+{{- $casks := (concat .packages.common.apps .packages.darwin.casks) | sortAlpha | uniq -}}
 
 
 #!/usr/bin/env bash

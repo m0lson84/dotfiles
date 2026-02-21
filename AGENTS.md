@@ -48,7 +48,7 @@ There is no test suite. Validate changes by running `chezmoi diff` and `chezmoi 
 .chezmoiroot              # Points chezmoi source to home/
 home/                     # Chezmoi source root (maps to $HOME)
   .chezmoi.toml.tmpl      # Main chezmoi config (Go template)
-  .chezmoidata/           # Data files: common.toml, homebrew.toml, yay.toml
+  .chezmoidata/           # Data files: common.toml, arch.toml, darwin.toml
   .chezmoiexternals/      # External git repos/archives (neovim, oh-my-zsh, etc.)
   .chezmoiscripts/        # Platform-specific setup scripts (arch/, darwin/, debian/)
   .chezmoitemplates/      # Reusable Go templates
@@ -67,13 +67,13 @@ install.sh / install.ps1  # Bootstrap scripts
 - **Trailing whitespace:** Trim (except Markdown)
 - **Indentation:** Spaces only, never tabs
 
-| Language         | Indent Size | Max Line Length |
-|------------------|-------------|-----------------|
-| Lua              | 2           | 120             |
-| Bash / Zsh       | 2           | 100             |
-| Fish             | 4           | 100             |
-| JSON / TOML / YAML | 2        | 120             |
-| Markdown         | 2           | 120             |
+| Language           | Indent Size | Max Line Length |
+| ------------------ | ----------- | --------------- |
+| Lua                | 2           | 120             |
+| Bash / Zsh         | 2           | 100             |
+| Fish               | 4           | 100             |
+| JSON / TOML / YAML | 2           | 120             |
+| Markdown           | 2           | 120             |
 
 ### Lua (WezTerm configs)
 
@@ -146,7 +146,7 @@ Configs adapt dynamically based on OS, distro, and environment. When editing tem
 - Check `{{ .chezmoi.os }}` for OS (`darwin`, `linux`, `windows`)
 - Check `{{ .chezmoi.osRelease.id }}` for distro (`arch`, `debian`, `ubuntu`)
 - Check `{{ .env.ephemeral }}` for ephemeral environments (Codespaces, devcontainers)
-- Package data split by platform: `homebrew.toml` (macOS), `yay.toml` (Arch), `common.toml` (shared)
+- Package data split by platform: `common.toml` (shared), `arch.toml` (Arch), `darwin.toml` (macOS)
 
 ## Secrets Management
 
