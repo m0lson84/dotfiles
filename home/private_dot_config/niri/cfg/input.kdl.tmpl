@@ -1,0 +1,25 @@
+// ────────────── Input Configuration ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            {{- if eq .chezmoi.hostname "dont-panic" }}
+            options "caps:escape_shifted_capslock,altwin:swap_lalt_lwin"
+            {{- end }}
+        }
+        numlock
+    }
+
+    {{- if eq .chezmoi.hostname "dont-panic" }}
+
+    touchpad {
+        natural-scroll
+        click-method "clickfinger"
+    }
+    {{- end }}
+
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+}

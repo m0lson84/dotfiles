@@ -11,6 +11,16 @@
 {{/* Include external functions */}}
 {{ template "install-rust.tmpl" . }}
 
+
+#######################################
+# Install packages
+#######################################
+function install_packages() {
+  paru -Syu --noconfirm
+  paru -S --needed --noconfirm {{ (concat $apps $tools) | join " " }}
+}
+
+
 #################### Main Program ####################
 
 # Stop script on error
@@ -19,8 +29,7 @@ set -eo pipefail
 {{ if not .env.ephemeral -}}
 
 # Install packages
-yay -Syu
-yay -S --needed --noconfirm {{ (concat $apps $tools) | join " " }}
+install_packages
 
 # Install Rust
 install_rust

@@ -4,10 +4,7 @@
 {{- $work := "michael.olson@mutuallyhuman.com" -}}
 
 {{- /* Linux distribution */ -}}
-{{- $distro := "" -}}
-{{- if hasKey .chezmoi.osRelease "id" -}}
-{{-   $distro = .chezmoi.osRelease.id -}}
-{{- end -}}
+{{- $distro := dig "idLike" (dig "id" "" .chezmoi.osRelease) .chezmoi.osRelease -}}
 
 {{- /* Check if running in WSL */ -}}
 {{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}

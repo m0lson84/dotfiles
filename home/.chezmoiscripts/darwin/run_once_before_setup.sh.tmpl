@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 
 {{/* Include external functions */}}
+{{ template "install-mise.tmpl" . }}
 {{ template "install-opencode.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
@@ -64,8 +65,8 @@ set -euo pipefail
 install_homebrew
 setup_homebrew
 
-# Setup 1Password
-setup_1password
+# Install mise-en-place
+install_mise
 
 # Install opencode
 install_opencode
@@ -73,3 +74,5 @@ install_opencode
 # WezTerm TERM definition
 install_term_definition
 
+# Setup 1Password
+setup_1password

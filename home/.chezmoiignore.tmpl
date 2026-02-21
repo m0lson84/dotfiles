@@ -6,14 +6,16 @@
 
 {{- /* MacOS specific configuration */ -}}
 {{ if ne .env.os "darwin" }}
-.chezmoiscripts/darwin/**
 .1password
+.chezmoiscripts/darwin/**
 .config/aerospace
 {{ end }}
 
 {{- /* Linux specific configuration */ -}}
 {{ if ne .env.distro "arch" }}
 .chezmoiscripts/arch/**
+.config/niri
+.config/noctalia
 {{ end }}
 {{ if not ( has .env.distro ( list "debian" "ubuntu" ) ) }}
 .chezmoiscripts/debian/**

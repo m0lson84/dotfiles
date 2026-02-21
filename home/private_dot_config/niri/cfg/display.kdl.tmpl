@@ -1,0 +1,25 @@
+// ────────────── Output Configuration ──────────────
+// You can run `niri msg outputs` to get the correct name for your displays.
+// You will have to remove "/-" and edit it before it takes effect.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+
+{{ if eq .chezmoi.hostname "deep-thought" -}}
+output "LG Electronics LG ULTRAGEAR 508TOSY03822" {
+    mode "3440x1440@100"
+    position x=0 y=0
+    scale 1
+}
+
+output "LG Electronics LG ULTRAGEAR 508TOZU02477" {
+    mode "3440x1440@100"
+    position x=3440 y=0
+    scale 1
+}
+{{ end -}}
+
+{{ if eq .chezmoi.hostname "dont-panic" -}}
+output "eDP-1" {
+    mode "2880x1920@120.000"
+    scale 2
+}
+{{ end -}}
