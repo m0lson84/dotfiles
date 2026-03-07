@@ -1,0 +1,50 @@
+#    __                  _   _
+#   / _|                | | (_)
+#  | |_ _   _ _ __   ___| |_ _  ___  _ __  ___
+#  |  _| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+#  | | | |_| | | | | (__| |_| | (_) | | | \__ \
+#  |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+#
+#
+
+
+#######################################
+# Update all apt packages
+#######################################
+function apt_update() {
+  echo "Updating apt packages..."
+  sudo apt update && sudo apt upgrade -y
+  echo "Running cleaning up tasks..."
+  sudo apt autoremove -y && sudo apt autoclean
+}
+
+#######################################
+# Update all Arch Linux packages
+#######################################
+function arch_update() {
+  echo "Updating packages..."
+  paru -Syu --noconfirm
+  paru -c
+}
+
+#######################################
+# Update Homebrew formulas/casks
+#######################################
+function brew_update() {
+  echo "Updating homebrew formulas/casks..."
+  brew update && brew outdated
+  brew upgrade
+  echo "Running cleaning up tasks..."
+  brew autoremove && brew cleanup
+}
+
+#######################################
+# Update developer tools
+#######################################
+function tool_update() {
+  echo "Updating mise-en-place..."
+  mise self-update && mise up
+  echo "Updating neovim..."
+  bob update --all
+}
+
