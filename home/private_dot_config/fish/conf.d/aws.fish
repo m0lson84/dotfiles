@@ -27,9 +27,9 @@ function acp --description "Switch AWS profile with optional MFA and role assump
 
     set -l config_file (or $AWS_CONFIG_FILE "$HOME/.aws/config")
     if not contains $profile $profiles
-        echo "Profile '$profile' not found in '$config_file'"
-        echo "Available profiles: $profiles"
-        return 1
+        gum style --foreground 1 "Profile '$profile' not found in '$config_file'"
+        set profile (printf '%s\n' $profiles | gum filter --header "Select a profile:")
+        test -n "$profile"; or return 1
     end
 
     set aws_access_key_id (aws configure get aws_access_key_id --profile $profile)
@@ -41,16 +41,24 @@ function acp --description "Switch AWS profile with optional MFA and role assump
     set -l mfa_opt
     if test -n "$mfa_serial"
         if test -z "$mfa_token"
-            read -l -p "Please enter your MFA token for $mfa_serial: " mfa_token
+            set mfa_token (gum input \
+              --prompt "MFA token for $mfa_serial: " \
+              --placeholder "123456")
         end
         if test -z "$session_duration"
-            read -l -p "Enter session duration (900-43200, default 3600): " session_duration
+            set session_duration (gum input \
+              --prompt "Session duration (900-43200): " \
+              --placeholder "3600")
         end
-        set mfa_opt --serial-number "$mfa_serial" --token-code "$mfa_token" --duration-seconds (or $session_duration 3600)
+        set mfa_opt \
+            --serial-number "$mfa_serial" \
+            --token-code "$mfa_token" \
+            --duration-seconds (or $session_duration 3600)
     end
 
     set role_arn (aws configure get role_arn --profile $profile)
     set session_name (aws configure get role_session_name --profile $profile)
+    set query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]'
 
     if test -n "$role_arn"
         set source_profile (aws configure get source_profile --profile $profile)
@@ -61,14 +69,14 @@ function acp --description "Switch AWS profile with optional MFA and role assump
             $mfa_opt \
             --profile "$source_profile" \
             --role-session-name "$session_name" \
-            --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --query $query \
             --output text)
     else
         echo "Obtaining session token for profile $profile"
         set credentials (aws sts get-session-token \
             --profile "$profile" \
             $mfa_opt \
-            --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --query $query \
             --output text)
     end
 
@@ -139,9 +147,9 @@ function asp --description "Set AWS profile and optionally perform SSO login/log
 
     set -l config_file (or $AWS_CONFIG_FILE "$HOME/.aws/config")
     if not contains $profile $profiles
-        echo "Profile '$profile' not found in '$config_file'"
-        echo "Available profiles: $profiles"
-        return 1
+        gum style --foreground 1 "Profile '$profile' not found in '$config_file'"
+        set profile (printf '%s\n' $profiles | gum filter --header "Select a profile:")
+        test -n "$profile"; or return 1
     end
 
     set -gx AWS_DEFAULT_PROFILE $profile
@@ -177,9 +185,9 @@ function asr --description "Set AWS region and update state."
     set regions (aws_regions)
 
     if not contains $region $regions
-        echo "Available regions:"
-        echo $regions
-        return 1
+        gum style --foreground 1 "Region '$region' not found."
+        set region (printf '%s\n' $regions | gum filter --header "Select a region:")
+        test -n "$region"; or return 1
     end
 
     set -gx AWS_REGION $region
@@ -190,7 +198,7 @@ end
 #######################################
 # Clears the AWS state file if enabled.
 #######################################
-function _aws_clear_state --description "Clear AWS state file if profile tracking is enabled."
+function _aws_clear_state
     if test "$AWS_PROFILE_STATE_ENABLED" = true
         set -l dir (dirname $AWS_STATE_FILE)
         test -d $dir || return 1
@@ -201,7 +209,7 @@ end
 #######################################
 # Writes the current AWS profile/region to the state file.
 #######################################
-function _aws_update_state --description "Write AWS profile and region to state file if enabled."
+function _aws_update_state
     if test "$AWS_PROFILE_STATE_ENABLED" = true
         set -l dir (dirname $AWS_STATE_FILE)
         test -d $dir || return 1
