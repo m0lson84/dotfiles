@@ -1,0 +1,26 @@
+{{- $apps:= .packages.arch.pwa -}}
+
+{{- if not .env.ephemeral -}}
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install progressive web apps (PWAs) as desktop entries
+# ---------------------------------------------------------------------------
+
+
+{{ template "install-pwa.tmpl" . }}
+
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Install PWAs
+app_dir="$HOME/.local/share/applications"
+icon_dir="$app_dir/icons"
+{{ range $apps -}}
+install_pwa "$app_dir" "$icon_dir" "{{ .name }}" "{{ .url }}" "{{ .icon }}"
+{{ end -}}
+
+{{ end }}

@@ -19,6 +19,7 @@ tools = [
   'glow',
   'gnupg',
   'golangci-lint',
+  'gum',
   'helm',
   'hurl',
   'jq',

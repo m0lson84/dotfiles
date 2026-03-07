@@ -37,3 +37,23 @@ tools = [
   'wl-clip-persist',
   'wl-clipboard',
 ]
+
+[[packages.arch.pwa]]
+name = 'Discord'
+url  = 'https://discord.com/app'
+icon = 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/discord.png'
+
+[[packages.arch.pwa]]
+name = 'Pocket Casts'
+url  = 'https://pocketcasts.com/podcasts'
+icon = 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pocket-casts.png'
+
+[[packages.arch.pwa]]
+name = 'Twitch'
+url  = 'https://twitch.tv'
+icon = 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/twitch.png'
+
+[[packages.arch.pwa]]
+name = 'YouTube'
+url  = 'https://youtube.com'
+icon = 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/youtube.png'

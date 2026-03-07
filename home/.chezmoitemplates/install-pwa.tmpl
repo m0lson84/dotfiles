@@ -1,0 +1,69 @@
+#######################################
+# Install a single PWA desktop entry.
+# Skips if the desktop file already exists.
+# Downloads the icon and writes the entry.
+# Arguments:
+#   app_dir: applications directory.
+#   icon_dir: icons directory.
+#   name: display name.
+#   url: application URL.
+#   icon_url: icon download URL.
+#######################################
+function install_pwa() {
+  local app_dir="$1"
+  local icon_dir="$2"
+  local name="$3"
+  local url="$4"
+  local icon_url="$5"
+
+  local slug
+  slug=$(_slugify "$name")
+
+  local desktop_path="$app_dir/$slug.desktop"
+  if [[ -f "$desktop_path" ]]; then
+    echo "Skipping $name (already installed)"
+    return
+  fi
+
+  echo "Installing $name..."
+  local icon_path="$icon_dir/$slug.png"
+  mkdir -p "$icon_dir"
+  curl -fsSL -o "$icon_path" "$icon_url"
+  _write_desktop_entry "$desktop_path" "$name" "$url" "$icon_path"
+}
+
+#######################################
+# Convert a name to a kebab-case slug.
+# Arguments:
+#   name: name to convert.
+# Outputs:
+#   Slugified name to stdout.
+#######################################
+function _slugify() {
+  echo "$1" | tr '[:upper:] ' '[:lower:]-'
+}
+
+#######################################
+# Write a desktop entry file for a PWA.
+# Arguments:
+#   dest: destination file path.
+#   name: application name.
+#   url: application URL.
+#   icon: icon file path.
+#######################################
+function _write_desktop_entry() {
+  cat > "$1" <<EOF
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$2
+Comment=$2
+Exec=/usr/bin/chromium --app="$3"
+Icon=$4
+StartupNotify=true
+EOF
+  chmod +x "$1"
+}
+
