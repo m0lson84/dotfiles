@@ -50,7 +50,7 @@ end
 #######################################
 function _tool_update --description "Update developer tools"
     echo "Updating mise-en-place..."
-    mise self-update && mise up
+    mise self-update -y && mise up
     echo "Updating neovim..."
     bob update --all
 end

@@ -92,8 +92,6 @@ if test -f "$HOMEBREW_PREFIX/bin/brew"
 end
 
 # mise-en-place configuration
-set -gx MISE_ENV_FILE ".env"
-set -gx MISE_NODE_DEFAULT_PACKAGES_FILE "$XDG_CONFIG_HOME/mise/nodejs"
 if type -q mise
     mise activate fish | source
 end

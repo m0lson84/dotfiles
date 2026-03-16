@@ -1,6 +1,6 @@
 @biomejs/biome
 @devcontainers/cli
-@nestjs/cli
+@playwright/cli
 @tailwindcss/cli
 @typescript/native-preview
 aws-cdk

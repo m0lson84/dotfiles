@@ -70,7 +70,7 @@ fix_obs_virtual_cam_in_slack() {
 #######################################
 function tool_update() {
   echo "Updating mise-en-place..."
-  mise self-update && mise up
+  mise self-update -y && mise up
   echo "Updating neovim..."
   bob update --all
 }
