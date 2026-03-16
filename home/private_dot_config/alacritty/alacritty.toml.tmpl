@@ -1,0 +1,67 @@
+{{- /* Font settings */ -}}
+{{- $family := "JetBrains Mono" -}}
+{{- $size := 9 -}}
+{{- $style := "Regular" -}}
+{{- $styles := list
+  (list "normal" $style)
+  (list "bold" "Bold")
+  (list "italic" "Italic")
+  (list "bold_italic" "Bold Italic")
+-}}
+
+{{- if eq .env.os "darwin" -}}
+  {{- $size = 12 -}}
+{{- end -}}
+
+#    ___  _                 _ _   _
+#   / _ \| |               (_) | | |
+#  / /_\ \ | __ _  ___ _ __ _| |_| |_ _   _
+#  |  _  | |/ _` |/ __| '__| | __| __| | | |
+#  | | | | | (_| | (__| |  | | |_| |_| |_| |
+#  \_| |_/_|\__,_|\___|_|  |_|\__|\__|\__, |
+#                                      __/ |
+#                                     |___/
+
+
+[general]
+live_config_reload = true
+working_directory  = "None"
+import = [
+  '~/.config/alacritty/keybinds.toml',
+  '~/.config/alacritty/theme.toml'
+]
+
+[terminal]
+shell = { program = "fish" }
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+title                     = 'Terminal'
+class                     = { general = "Alacritty", instance = "Alacritty" }
+dimensions                = { columns = 120, lines = 40 }
+decorations_theme_variant = "Dark"
+option_as_alt             = "Both"
+dynamic_padding           = true
+dynamic_title             = false
+
+[scrolling]
+history    = 10000
+multiplier = 3
+
+[font]
+size = {{ $size }}
+{{- range $styles }}
+
+[font.{{ index . 0 }}]
+family = "{{ $family }}"
+style  = "{{ index . 1 }}"
+{{- end }}
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard     = true
