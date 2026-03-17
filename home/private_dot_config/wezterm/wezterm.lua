@@ -21,7 +21,6 @@ local platform = util.get_target().platform
 -- General
 config.check_for_updates = false
 config.enable_kitty_keyboard = true
-config.term = 'wezterm'
 
 -- Programs
 local programs = util.launch_programs()

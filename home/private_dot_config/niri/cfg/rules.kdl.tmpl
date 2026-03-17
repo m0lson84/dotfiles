@@ -1,6 +1,9 @@
     window-rule {
-        geometry-corner-radius 4 // Set every window radius to 20
+        geometry-corner-radius 4
         clip-to-geometry true
+        {{- if eq .chezmoi.hostname "dont-panic" }}
+        open-maximized true
+        {{- end }}
     }
 
     layer-rule {
