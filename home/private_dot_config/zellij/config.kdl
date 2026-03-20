@@ -23,7 +23,7 @@ session_serialization false
 theme "tokyo-night-dark"
 
 // Keybindings
-keybinds  {
+keybinds clear-defaults=true {
   tab {
     bind "t" { ToggleTab; }
   }
