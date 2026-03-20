@@ -4,6 +4,11 @@ layout {
     command "nvim"
   }
 
+  pane_template name="opencode" {
+    command "opencode"
+    args "--continue" "--port"
+  }
+
   pane_template name="statusline" {
     plugin location="zjstatus" {
 
@@ -17,10 +22,9 @@ layout {
       datetime_format   "  %H:%M "
       datetime_timezone "America/Detroit"
 
-      mode_normal   "#[fg=#1A1B26,bg=blue,bold] NORMAL #[fg=blue,bg=#383E5A]"
-      mode_pane     "#[fg=#1A1B26,bg=magenta,bold] PANE #[fg=magenta,bg=#383E5A]"
-      mode_session  "#[fg=#1A1B26,bg=yellow,bold] SESSION #[fg=yellow,bg=#383E5A]"
-      mode_tab      "#[fg=#1A1B26,bg=green,bold] TAB #[fg=green,bg=#383E5A]"
+      mode_normal     "#[fg=#1A1B26,bg=blue,bold] NORMAL #[fg=blue,bg=#383E5A]"
+      mode_tab        "#[fg=#1A1B26,bg=green,bold] TAB #[fg=green,bg=#383E5A]"
+      mode_rename_tab "#[fg=#1A1B26,bg=yellow,bold] RENAME #[fg=yellow,bg=#383E5A]"
 
       tab_normal  "#[fg=#A9B1D6,bg=fg] [{index}] {name}"
       tab_active  "#[fg=green,bg=fg,bold,italic] [{index}] {name}"
@@ -33,13 +37,7 @@ layout {
   tab_template name="editor" { children; }
 
   editor name="editor" focus=true { neovim; }
+  tab name="agent" { opencode; }
   tab name="terminal" { pane; }
 
-}
-
-keybinds  {
-  normal {
-    bind "Ctrl e" { GoToTab 1; SwitchToMode "locked"; }
-    bind "Ctrl /" { GoToTab 1; SwitchToMode "locked"; }
-  }
 }

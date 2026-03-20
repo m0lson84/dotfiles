@@ -9,6 +9,7 @@
 
 
 // General
+default_mode "normal"
 default_shell "fish"
 pane_frames false
 styled_underlines true
@@ -23,13 +24,48 @@ session_serialization false
 theme "tokyo-night-dark"
 
 // Keybindings
-keybinds  {
-  tab {
-    bind "t" { ToggleTab; }
-  }
+keybinds clear-defaults=true {
+
   shared {
     bind "Ctrl q" { Quit; }
+
+    // Tab navigation (always available, single chord)
+    bind "Ctrl e" { GoToTab 1; SwitchToMode "normal"; }
+    bind "Ctrl ;" { GoToTab 2; SwitchToMode "normal"; }
+    bind "Ctrl /" { GoToTab 3; SwitchToMode "normal"; }
   }
+
+  normal {
+    bind "Alt t" { SwitchToMode "tab"; }
+    bind "Alt e" { EditScrollback; SwitchToMode "normal"; }
+  }
+
+  // Tab mode: tab operations
+  tab {
+    bind "n" { NewTab; SwitchToMode "normal"; }
+    bind "x" { CloseTab; SwitchToMode "normal"; }
+    bind "h" { GoToPreviousTab; }
+    bind "l" { GoToNextTab; }
+    bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
+    bind "1" { GoToTab 1; SwitchToMode "normal"; }
+    bind "2" { GoToTab 2; SwitchToMode "normal"; }
+    bind "3" { GoToTab 3; SwitchToMode "normal"; }
+    bind "4" { GoToTab 4; SwitchToMode "normal"; }
+    bind "5" { GoToTab 5; SwitchToMode "normal"; }
+    bind "6" { GoToTab 6; SwitchToMode "normal"; }
+    bind "7" { GoToTab 7; SwitchToMode "normal"; }
+    bind "8" { GoToTab 8; SwitchToMode "normal"; }
+    bind "9" { GoToTab 9; SwitchToMode "normal"; }
+
+    // Cancel
+    bind "Esc" { SwitchToMode "normal"; }
+  }
+
+  // Rename tab mode
+  renametab {
+    bind "Esc" { UndoRenameTab; SwitchToMode "normal"; }
+  }
+
 }
 
 // Plugins
