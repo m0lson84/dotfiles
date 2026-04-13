@@ -64,7 +64,8 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 7 = ['built-in', 'main']
 8 = ['secondary']
 
-# Fix Ghostty tab rendering
+# Fix Ghostty tab rendering - float to prevent tabs appearing as separate
+# windows, then fullscreen so the first window fills the workspace automatically
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run       = ["layout tiling"]
+run       = ["fullscreen on", "layout floating"]
