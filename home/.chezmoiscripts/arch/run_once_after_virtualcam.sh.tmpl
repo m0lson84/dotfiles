@@ -1,0 +1,30 @@
+{{- if not .env.ephemeral -}}
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Configure v4l2loopback kernel module (OBS virtual camera)
+# ---------------------------------------------------------------------------
+
+# Stop script on error
+set -euo pipefail
+
+MODULES_CONF="/etc/modules-load.d/v4l2loopback.conf"
+MODPROBE_CONF="/etc/modprobe.d/v4l2loopback.conf"
+
+# Load module on boot
+if [[ ! -f "${MODULES_CONF}" ]]; then
+  echo "v4l2loopback" | sudo tee "${MODULES_CONF}" > /dev/null
+fi
+
+# Set module options
+if [[ ! -f "${MODPROBE_CONF}" ]]; then
+  echo 'options v4l2loopback video_nr=10 card_label="OBS Virtual Camera" exclusive_caps=1' \
+    | sudo tee "${MODPROBE_CONF}" > /dev/null
+fi
+
+# Load module immediately if not already loaded
+if ! lsmod | grep -q v4l2loopback; then
+  sudo modprobe v4l2loopback video_nr=10 card_label="OBS Virtual Camera" exclusive_caps=1
+fi
+
+{{- end }}
