@@ -1,16 +1,15 @@
 {{- /* Additional paths */ -}}
-{{- $paths := list "$HOME/.local/bin" "/usr/local/bin" -}}
-{{- if not .env.ephemeral -}}
-  {{- $paths = concat $paths ( list
-    "$HOME/.dotnet"
-    "$HOME/.dotnet/tools"
-    "$HOME/.local/share/bob/nvim-bin"
-    "$HOME/.local/share/mise/shims"
-    "$HOME/.opencode/bin"
-    "$HOME/.pub-cache/bin"
-    "$HOME/flutter/bin" )
-  -}}
-{{- end -}}
+{{- $paths := list
+  "$HOME/.dotnet"
+  "$HOME/.dotnet/tools"
+  "$HOME/.local/bin"
+  "$HOME/.local/share/bob/nvim-bin"
+  "$HOME/.local/share/mise/shims"
+  "$HOME/.opencode/bin"
+  "$HOME/.pub-cache/bin"
+  "$HOME/flutter/bin"
+  "/usr/local/bin"
+-}}
 {{- if eq .env.os "darwin" -}}
   {{- $paths = concat $paths ( list
     "/opt/homebrew/opt/libpq/bin"

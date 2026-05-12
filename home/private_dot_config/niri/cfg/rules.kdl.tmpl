@@ -1,7 +1,7 @@
     window-rule {
         geometry-corner-radius 4
         clip-to-geometry true
-        {{- if eq .chezmoi.hostname "dont-panic" }}
+        {{- if ne .chezmoi.hostname "deep-thought" }}
         open-maximized true
         {{- end }}
     }

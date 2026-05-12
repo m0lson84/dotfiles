@@ -12,6 +12,10 @@
 # Install package dependencies
 # ---------------------------------------------------------------------------
 
+{{/* Include external functions */}}
+{{ template "install-mise.tmpl" . }}
+{{ template "install-opencode.tmpl" . }}
+
 #######################################
 # Install fish shell
 #######################################
@@ -27,14 +31,6 @@ function install_fish() {
 
   sudo apt update
   sudo apt install -y fish
-}
-
-#######################################
-# Install mise-en-place
-#######################################
-function install_mise() {
-  echo "Installing mise-en-place..."
-  curl https://mise.run | sh
 }
 
 #######################################
@@ -81,8 +77,11 @@ install_fish
 # Install neovim
 install_neovim "nightly"
 
-# Install rust
-install_rust
-
 # Install tool manager
 install_mise
+
+# Install opencode
+install_opencode
+
+# Install rust
+install_rust
