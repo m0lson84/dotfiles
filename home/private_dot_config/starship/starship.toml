@@ -175,12 +175,6 @@ profile_aliases   = { mhs-dev = "dev" }
 region_aliases    = { us-east-1 = "VA", us-east-2 = "OH" }
 symbol            = " "
 
-[azure]
-disabled             = false
-format               = "[$symbol($subscription)]($style) "
-symbol               = " "
-subscription_aliases = { "Microsoft Azure Sponsorship 2" = "mhs" }
-
 [gcloud]
 disabled = false
 symbol   = "󱇶 "

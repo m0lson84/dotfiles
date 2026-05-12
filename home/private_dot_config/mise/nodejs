@@ -3,6 +3,7 @@
 @playwright/cli
 @tailwindcss/cli
 @typescript/native-preview
+@usebruno/cli
 aws-cdk
 fish-lsp
 neovim

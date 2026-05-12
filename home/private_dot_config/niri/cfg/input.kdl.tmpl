@@ -12,7 +12,7 @@ input {
         numlock
     }
 
-    {{- if eq .chezmoi.hostname "dont-panic" }}
+    {{- if ne .chezmoi.hostname "deep-thought" }}
 
     touchpad {
         natural-scroll

@@ -23,3 +23,23 @@ output "eDP-1" {
     scale 2
 }
 {{ end -}}
+
+{{ if eq .chezmoi.hostname "PF4CXK6S" -}}
+output "eDP-1" {
+    mode "1920x1080@60.026"
+    position x=0 y=0
+    scale 1.25
+}
+
+output "Lenovo Group Limited E27q-20 V5MBZ804" {
+    mode "2560x1440@59.951"
+    position x=1536 y=0
+    scale 1
+}
+
+output "Lenovo Group Limited E27q-20 V5MBZ801" {
+    mode "2560x1440@59.951"
+    position x=4096 y=0
+    scale 1
+}
+{{ end -}}
