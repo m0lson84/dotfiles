@@ -5,9 +5,7 @@
 {{- /* Additional tools */ -}}
 {{- $plugins = concat $plugins ( list "aliases" "git" ) -}}
 
-{{- /* Environment specific */ -}}
-{{- if eq .env.os "darwin" -}} {{- $plugins = concat $plugins ( list "macos" ) -}} {{- end -}}
-{{- if .env.homebrew -}} {{- $plugins = concat $plugins ( list "brew" ) -}} {{- end -}}
+
 
 
 #  ______ _             _

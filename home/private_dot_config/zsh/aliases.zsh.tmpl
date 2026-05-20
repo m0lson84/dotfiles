@@ -1,8 +1,7 @@
 
 {{- /* Update applications */ -}}
 {{- $update := "arch_update" -}}
-{{- if eq .env.os "darwin" -}} {{- $update = "brew_update && mas upgrade" -}} {{- end -}}
-{{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "apt_update && brew_update" -}} {{- end -}}
+{{- if has .env.distro (list "pop" "ubuntu") -}} {{- $update = "apt_update" -}} {{- end -}}
 
 #         _ _
 #        | (_)
@@ -22,14 +21,4 @@ alias upgrayedd={{ $update | quote }}
 
 # Devcontainers
 alias devc="devcontainer_cli"
-
-{{ if eq .env.os "darwin" -}}
-
-# Python
-alias python2=/usr/local/bin/python2.7
-
-# Slack
-alias slackfix="fix_obs_virtual_cam_in_slack"
-
-{{- end }}
 

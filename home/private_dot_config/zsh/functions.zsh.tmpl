@@ -28,17 +28,6 @@ function arch_update() {
 }
 
 #######################################
-# Update Homebrew formulas/casks
-#######################################
-function brew_update() {
-  echo "Updating homebrew formulas/casks..."
-  brew update && brew outdated
-  brew upgrade
-  echo "Running cleaning up tasks..."
-  brew autoremove && brew cleanup
-}
-
-#######################################
 # Execute a function using the devcontainer CLI
 # Arguments:
 #   The operation to execute.
@@ -52,17 +41,6 @@ function devcontainer_cli() {
     "exec") _devcontainer_exec $args ;;
     *) echo "Invalid operation: $op" ;;
   esac
-}
-
-#######################################
-# Fix for OBS virtual camera in Slack
-#######################################
-fix_obs_virtual_cam_in_slack() {
-  echo "Applying virtual camera fix for Slack..."
-  sudo codesign --remove-signature "/Applications/Slack.app/"
-  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app"
-  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app"
-  sudo codesign --remove-signature "/Applications/Slack.app/Contents/Frameworks/Slack Helper (Plugin).app"
 }
 
 #######################################

@@ -9,9 +9,6 @@
 {{- /* Check if running in WSL */ -}}
 {{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 
-{{- /* Check using Homebrew as package manager */ -}}
-{{- $homebrew := eq .chezmoi.os "darwin" -}}
-
 {{- /* Detect GitHub codespaces, VSCode remote containers and Docker containers */ -}}
 {{- $codespaces := env "CODESPACES" | not | not -}}
 {{- $devcontainer := env "REMOTE_CONTAINERS" | not | not -}}
@@ -63,7 +60,6 @@ distro = {{ $distro | quote }}
 codespaces = {{ $codespaces }}
 devcontainer = {{ $devcontainer }}
 ephemeral = {{ or $codespaces $devcontainer }}
-homebrew = {{ $homebrew }}
 wsl = {{ $wsl }}
 
 [data.gntx]

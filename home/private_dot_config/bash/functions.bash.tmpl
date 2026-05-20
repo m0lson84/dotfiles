@@ -28,17 +28,6 @@ function arch_update() {
 }
 
 #######################################
-# Update Homebrew formulas/casks
-#######################################
-function brew_update() {
-  echo "Updating homebrew formulas/casks..."
-  brew update && brew outdated
-  brew upgrade
-  echo "Running cleaning up tasks..."
-  brew autoremove && brew cleanup
-}
-
-#######################################
 # Update developer tools
 #######################################
 function tool_update() {

@@ -10,14 +10,6 @@
   "$HOME/flutter/bin"
   "/usr/local/bin"
 -}}
-{{- if eq .env.os "darwin" -}}
-  {{- $paths = concat $paths ( list
-    "/opt/homebrew/opt/libpq/bin"
-    "/usr/local/opt/python@3.10/bin"
-    "/usr/local/sbin" )
-  -}}
-{{- end -}}
-
 {{- /* Additional configurations */ -}}
 {{- $configs := list "aliases.zsh" "completions.zsh" "functions.zsh" -}}
 
@@ -94,12 +86,6 @@ fi
 # fzf configuration
 command -v fzf >/dev/null && eval "$(fzf --zsh)"
 
-# Homebrew configuration
-HOMEBREW_PREFIX="$(command -v brew >/dev/null && brew --prefix || echo /opt/homebrew)"
-if [ -f "${HOMEBREW_PREFIX}/bin/brew" ]; then
-  eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
-fi
-
 # mise-en-place configuration
 command -v mise >/dev/null && eval "$(mise activate zsh)"
 command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
@@ -108,13 +94,6 @@ command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 
 # OpenSSL configuration
 export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
-
-{{- end }}
-
-{{- if eq .env.os "darwin" }}
-
-# OrbStack: command-line tools and integration
-source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
 
 {{- end }}
 

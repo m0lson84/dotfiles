@@ -1,6 +1,5 @@
 {{- /* Update applications */ -}}
 {{- $update := "_arch_update && _tool_update" -}}
-{{- if eq .env.os "darwin" -}} {{- $update = "_brew_update && mas upgrade && _tool_update" -}} {{- end -}}
 {{- if has .env.distro (list "ubuntu") -}} {{- $update = "_apt_update" -}} {{- end -}}
 
 
@@ -30,18 +29,6 @@ function _arch_update --description "Update all Arch Linux packages"
     echo "Updating packages..."
     paru -Syu --noconfirm
     paru -c
-end
-
-
-#######################################
-# Update Homebrew formulas/casks
-#######################################
-function _brew_update --description "Update all installed homebrew formula/casks"
-    echo "Updating homebrew formulas/casks..."
-    brew update && brew outdated
-    brew upgrade
-    echo "Running cleaning up tasks..."
-    brew autoremove && brew cleanup
 end
 
 

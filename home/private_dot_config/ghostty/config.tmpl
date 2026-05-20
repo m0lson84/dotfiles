@@ -4,18 +4,11 @@
 
 {{- /* Source directory */ -}}
 {{- $source := "/usr/bin" -}}
-{{- if eq .env.os "darwin" -}}
-{{-   $source = "/opt/homebrew/bin" -}}
-{{- end -}}
 
 {{- /* Font settings */ -}}
 {{- $font_family := "JetBrains Mono" -}}
 {{- $font_style := "Regular" -}}
 {{- $font_size := 9 -}}
-{{- if eq .env.os "darwin" -}}
-{{-   $font_style = "Medium" -}}
-{{-   $font_size = 12 -}}
-{{- end -}}
 
 
 #   _____ _               _   _
@@ -68,19 +61,6 @@ window-padding-y = 4
 # Linux
 gtk-custom-css = "./style/linux.css"
 gtk-tabs-location = bottom
-
-{{- end }}
-
-{{- /* MacOS specific */ -}}
-{{- if eq .env.os "darwin" }}
-
-# MacOS
-macos-option-as-alt = true
-macos-titlebar-proxy-icon = hidden
-macos-titlebar-style = tabs
-maximize = true
-quit-after-last-window-closed = true
-window-colorspace = display-p3
 
 {{- end }}
 

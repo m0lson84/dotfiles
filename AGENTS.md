@@ -7,7 +7,7 @@ Personal dotfiles repository for cross-platform system configuration managed by
 configuration management project. The `home/` directory is the chezmoi source root
 (declared in `.chezmoiroot`). Minimum chezmoi version: **2.69.0**.
 
-**Target platforms:** macOS (darwin), Arch Linux, Debian/Ubuntu, WSL, GitHub Codespaces, Dev Containers.
+**Target platforms:** Arch Linux, Debian/Ubuntu, WSL, GitHub Codespaces, Dev Containers.
 
 ## Commands
 
@@ -32,10 +32,10 @@ There are no build, lint, or test commands -- this is a dotfiles repo with no CI
 .chezmoiroot          -> declares home/ as the source root
 home/
   .chezmoi.toml.tmpl  -> chezmoi config (user data, encryption, OS detection)
-  .chezmoidata/       -> TOML data files: common.toml, arch.toml, darwin.toml
+  .chezmoidata/       -> TOML data files: common.toml, arch.toml
   .chezmoiexternals/  -> external git repos and archives (neovim, oh-my-zsh, tmux, zellij)
   .chezmoiignore.tmpl -> OS-conditional ignore rules
-  .chezmoiscripts/    -> lifecycle scripts per platform (arch/, darwin/, debian/)
+  .chezmoiscripts/    -> lifecycle scripts per platform (arch/, debian/)
   .chezmoitemplates/  -> reusable shell function snippets (included via {{ template }})
   private_dot_config/ -> 23 application configurations
   private_dot_aws/    -> AWS credential templates (GPG-encrypted)
@@ -49,11 +49,10 @@ Key template variables:
 
 | Variable                           | Values / Purpose                                         |
 | ---------------------------------- | -------------------------------------------------------- |
-| `.env.os`                          | `darwin`, `linux` -- operating system                    |
+| `.env.os`                          | `linux` -- operating system                              |
 | `.env.distro`                      | `arch`, `debian`, `ubuntu`, `pop` -- Linux distribution  |
 | `.env.wsl`                         | bool -- Windows Subsystem for Linux                      |
 | `.env.ephemeral`                   | bool -- Codespaces or dev container                      |
-| `.env.homebrew`                    | bool -- Homebrew available                               |
 | `.chezmoi.hostname`                | `deep-thought`, `dont-panic` -- machine-specific configs |
 | `.name`, `.email`                  | Git user identity                                        |
 | `.default.browser/editor/terminal` | Default applications                                     |
@@ -61,7 +60,6 @@ Key template variables:
 
 ### Template patterns
 
-- **OS branching:** `{{ if eq .env.os "darwin" }}...{{ end }}`
 - **Distro branching:** `{{ if eq .env.distro "arch" }}...{{ end }}`
 - **Ephemeral guard:** `{{ if not .env.ephemeral }}...{{ end }}`
 - **List construction:** `{{- $items := list "a" "b" -}}` then conditional `concat`
@@ -138,7 +136,7 @@ Chezmoi uses filename prefixes to control behavior:
 ### Data files (`.chezmoidata/*.toml`)
 
 - `common.toml`: packages shared across all platforms
-- `arch.toml` / `darwin.toml`: platform-specific packages
+- `arch.toml`: platform-specific packages
 - Package lists use `apps` (GUI) and `tools` (CLI) keys; lists are sorted alphabetically
 
 ### Secrets and encryption

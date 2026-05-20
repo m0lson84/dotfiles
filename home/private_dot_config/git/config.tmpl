@@ -7,14 +7,8 @@
 
 {{- /* Credential store */ -}}
 {{- $store := "gpg" -}}
-{{- if eq .env.os "darwin" -}}
-{{- $store = "keychain" -}}
-{{- end -}}
 {{- if and ( eq .env.os "linux" ) ( not .env.wsl ) -}}
 {{- $store = "secretservice" -}}
-{{- end -}}
-{{- if eq .env.os "windows" -}}
-{{- $store = "wincredman" -}}
 {{- end -}}
 
 
