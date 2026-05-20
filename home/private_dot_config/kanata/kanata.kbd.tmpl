@@ -1,0 +1,28 @@
+{{- /* System specific */ -}}
+{{- $keyboard := dict
+  "dont-panic" "Framework Laptop 16 Keyboard Module - ANSI Keyboard"
+  "PF4CXK6S"   "AT Translated Set 2 keyboard"
+-}}
+
+;;  _                     _
+;; | |                   | |
+;; | | ____ _ _ __   __ _| |_ __ _
+;; | |/ / _` | '_ \ / _` | __/ _` |
+;; |   < (_| | | | | (_| | || (_| |
+;; |_|\_\__,_|_| |_|\__,_|\__\__,_|
+
+
+(defcfg
+  process-unmapped-keys yes
+  linux-dev-names-include (
+    "{{ get $keyboard .chezmoi.hostname }}"
+  )
+)
+
+(defsrc
+  caps lalt lmet
+)
+
+(deflayer default
+  esc  lmet lalt
+)
