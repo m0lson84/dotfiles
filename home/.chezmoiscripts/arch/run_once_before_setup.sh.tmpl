@@ -10,6 +10,7 @@
 {{ template "install-mise.tmpl" . }}
 {{ template "install-opencode.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
+{{ template "setup-kanata.tmpl" . }}
 {{ template "wezterm-definition.tmpl" . }}
 
 #######################################
@@ -79,5 +80,12 @@ install_term_definition
 
 # Install 1Password CLI
 setup_1password
+
+{{ end }}
+
+{{ if .system.laptop }}
+
+# Setup kanata
+setup_kanata
 
 {{ end }}

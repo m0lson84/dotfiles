@@ -3,6 +3,9 @@
 {{- $personal := "michaelolson84@gmail.com" -}}
 {{- $work := "michael.olson@mutuallyhuman.com" -}}
 
+{{- /* System information */ -}}
+{{- $laptop := has .chezmoi.hostname (list "dont-panic" "PF4CXK6S") -}}
+
 {{- /* Linux distribution */ -}}
 {{- $distro := dig "idLike" (dig "id" "" .chezmoi.osRelease) .chezmoi.osRelease -}}
 
@@ -72,6 +75,9 @@ email = {{ $work | quote }}
 [data.personal]
 email = {{ $personal | quote }}
 onepassword = { account = "QBDDA7S63NEQHDH4VKB6E3SC6I", url = "my.1password.com" }
+
+[data.system]
+laptop = {{ $laptop }}
 
 [edit]
 command = {{ $editor | quote }}

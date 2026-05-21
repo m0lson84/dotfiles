@@ -1,0 +1,98 @@
+#######################################
+# Create input group and udev rules for kanata
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function create_input_group() {
+
+  # Create uinput group if it doesn't exist
+  if ! getent group uinput >/dev/null 2>&1; then
+    echo "Creating uinput group..."
+    sudo groupadd --system uinput
+  fi
+
+  # Add user to input and uinput groups
+  sudo usermod -aG input "${USER}"
+  sudo usermod -aG uinput "${USER}"
+
+}
+
+#######################################
+# Create udev rules and load uinput module
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function create_udev_rules() {
+  # Ensure uinput module loads at boot
+  if [ ! -f /etc/modules-load.d/uinput.conf ]; then
+    echo "Configuring uinput module to load at boot..."
+    echo "uinput" | sudo tee /etc/modules-load.d/uinput.conf >/dev/null
+  fi
+
+  # Load uinput module now
+  sudo modprobe uinput
+
+  # Create udev rule
+  local udev_rule='KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"'
+  local udev_file="/etc/udev/rules.d/99-input.rules"
+  if [ ! -f "${udev_file}" ] || ! grep -q "uinput" "${udev_file}"; then
+    echo "Creating udev rule..."
+    echo "${udev_rule}" | sudo tee "${udev_file}" >/dev/null
+    sudo udevadm control --reload-rules && sudo udevadm trigger
+  fi
+}
+
+#######################################
+# Configure kanata systemd user service
+# Globals:
+#   HOME
+# Arguments:
+#   None
+#######################################
+function configure_kanata_service() {
+  local service_dir="${HOME}/.config/systemd/user"
+  local service_file="${service_dir}/kanata.service"
+
+  mkdir -p "${service_dir}"
+
+  if [ ! -f "${service_file}" ]; then
+    echo "Creating kanata systemd user service..."
+    cat > "${service_file}" <<EOF
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:%h/.cargo/bin
+Type=simple
+ExecStart=/usr/bin/sh -c 'exec \$(which kanata) --cfg \${HOME}/.config/kanata/config.kbd --no-wait'
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+EOF
+  fi
+
+  systemctl --user daemon-reload
+  systemctl --user enable kanata.service
+
+}
+
+#######################################
+# Setup Kanata keyboard remapper
+# Globals:
+#   None
+# Arguments:
+#   None
+#######################################
+function setup_kanata() {
+  echo "Setting up kanata..."
+  create_input_group
+  create_udev_rules
+  configure_kanata_service
+}

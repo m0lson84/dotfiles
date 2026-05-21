@@ -1,12 +1,15 @@
-    window-rule {
-        geometry-corner-radius 4
-        clip-to-geometry true
-        {{- if ne .chezmoi.hostname "deep-thought" }}
-        open-maximized true
-        {{- end }}
-    }
+window-rule {
+    geometry-corner-radius 4
+    clip-to-geometry true
+}
 
-    layer-rule {
-        match namespace="^noctalia-wallpaper*"
-        place-within-backdrop true
-    }
+{{ if .system.laptop -}}
+window-rule {
+    open-maximized true
+}
+{{- end }}
+
+layer-rule {
+   match namespace="^noctalia-wallpaper*"
+   place-within-backdrop true
+}

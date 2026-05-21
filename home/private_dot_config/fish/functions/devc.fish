@@ -22,9 +22,12 @@ end
 #######################################
 function _devcontainer_build
     echo "Building development container image..."
+
     devcontainer build \
         --workspace-folder . \
+        --remote-env "$remote_env" \
         $argv
+
 end
 
 #######################################
@@ -34,9 +37,14 @@ end
 #######################################
 function _devcontainer_exec
     echo "Executing command in development container..."
+
+    set remote_env "REMOTE_CONTAINERS=true"
+
     devcontainer exec \
         --workspace-folder . \
+        --remote-env "$remote_env" \
         $argv
+
 end
 
 #######################################
