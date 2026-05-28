@@ -30,14 +30,14 @@ keybinds clear-defaults=true {
     bind "Ctrl q" { Quit; }
 
     // Tab navigation (always available, single chord)
-    bind "Ctrl e" { GoToTab 1; SwitchToMode "normal"; }
-    bind "Ctrl ;" { GoToTab 2; SwitchToMode "normal"; }
-    bind "Ctrl /" { GoToTab 3; SwitchToMode "normal"; }
+    bind "Alt e" { GoToTab 1; SwitchToMode "normal"; }
+    bind "Alt g" { GoToTab 2; SwitchToMode "normal"; }
+    bind "Alt a" { GoToTab 3; SwitchToMode "normal"; }
+    bind "Alt s" { GoToTab 4; SwitchToMode "normal"; }
   }
 
   normal {
     bind "Alt t" { SwitchToMode "tab"; }
-    bind "Alt e" { EditScrollback; SwitchToMode "normal"; }
   }
 
   // Tab mode: tab operations

@@ -161,9 +161,9 @@ function asp --description "Set AWS profile and optionally perform SSO login/log
     switch "$argv[2]"
         case login
             if test (count $argv) -ge 3
-                aws sso login --sso-session $argv[3]
+                _aws_sso_login $argv[3]
             else
-                aws sso login
+                _aws_sso_login
             end
         case logout
             aws sso logout
@@ -193,6 +193,23 @@ function asr --description "Set AWS region and update state."
     set -gx AWS_REGION $region
     set -gx AWS_DEFAULT_REGION $region
     _aws_update_state
+end
+
+#######################################
+# Run through the AWS SSO login flow.
+#######################################
+function _aws_sso_login
+    set -l cmd aws sso login
+
+    if set -q REMOTE_CONTAINERS
+        set -a cmd --use-device-code
+    end
+
+    if test (count $argv) -ge 1
+        set -a cmd --sso-session $argv[1]
+    end
+
+    $cmd
 end
 
 #######################################

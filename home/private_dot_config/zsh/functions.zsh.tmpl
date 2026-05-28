@@ -50,6 +50,7 @@ function devcontainer_cli() {
     "build") _devcontainer_build $args ;;
     "up") _devcontainer_up $args ;;
     "exec") _devcontainer_exec $args ;;
+    "session") _devcontainer_session $args ;;
     *) echo "Invalid operation: $op" ;;
   esac
 }
@@ -76,17 +77,30 @@ function tool_update() {
 }
 
 #######################################
-# Create and run a devcontainer
+# Build a devcontainer image
 # Arguments:
 #   Additional arguments for building the container.
 #######################################
-function _devcontainer_exec() {
+function _devcontainer_build() {
   local args=$@
 
   echo "Building development container image..."
   devcontainer build \
     --workspace-folder . \
     $args
+}
+
+#######################################
+# Open a Zellij session using the devcontainer layout
+# Arguments:
+#   Optional session name.
+#######################################
+function _devcontainer_session() {
+  local args=()
+  if [[ -n "$1" ]]; then
+    args=(--session-name "$1")
+  fi
+  zellij options --default-layout devcontainer "${args[@]}"
 }
 
 #######################################

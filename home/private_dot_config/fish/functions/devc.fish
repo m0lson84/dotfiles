@@ -12,9 +12,24 @@ function devc
             _devcontainer_up $argv[2..-1]
         case exec
             _devcontainer_exec $argv[2..-1]
+        case session
+            _devcontainer_session $argv[2..-1]
         case '*'
             echo "Invalid operation: $op"
     end
+end
+
+#######################################
+# Open a Zellij session using the devcontainer layout
+# Arguments:
+#   Optional session name.
+#######################################
+function _devcontainer_session
+    set options
+    if test (count $argv) -gt 0
+        set options --session-name $argv[1]
+    end
+    zellij options --default-layout devcontainer $options
 end
 
 #######################################
