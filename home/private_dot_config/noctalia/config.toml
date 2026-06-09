@@ -1,0 +1,42 @@
+[bar.default]
+background_opacity = 0.9
+end                = ["network", "bluetooth", "volume", "battery", "control-center", "session"]
+margin_edge        = 0
+margin_ends        = 0
+padding            = 10
+radius             = 0
+start              = ["workspaces"]
+thickness          = 24
+
+[shell.panel]
+launcher_categories = false
+launcher_show_icons = false
+session_placement   = "centered"
+
+[theme]
+mode    = "dark"
+builtin = "Tokyo-Night"
+
+[theme.templates]
+enable_builtin_templates   = false
+enable_community_templates = false
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+[widget.battery]
+display_mode      = "graphic"
+hide_when_full    = true
+hide_when_plugged = true
+
+[widget.control-center]
+glyph = "settings"
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+capsule_radius = 4
