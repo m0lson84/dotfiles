@@ -1,18 +1,26 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["github-copilot", "opencode"],
-  "model": "github-copilot/claude-sonnet-4.6",
-  "lsp": {},
-  "permission": {
-    "bash": {
-      "git *": "ask",
-      "*": "allow"
+  "enabled_providers": ["amazon-bedrock", "github-copilot"],
+  "model": "github-copilot/claude-opus-4.7",
+  "provider": {
+    "amazon-bedrock": {
+      "options": {
+        "profile": "bedrock",
+        "region": "us-east-1"
+      }
     }
   },
   "mcp": {
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
+    }
+  },
+  "lsp": {},
+  "permission": {
+    "bash": {
+      "git *": "ask",
+      "*": "allow"
     }
   }
 }
