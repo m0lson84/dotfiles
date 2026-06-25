@@ -1,7 +1,7 @@
 #######################################
 # Manage progressive web apps (PWAs).
 # Arguments:
-#   subcommand: add, remove.
+#   subcommand: add, list, remove, start.
 #######################################
 function pwa --description "Manage progressive web apps"
     set -l app_dir "$HOME/.local/share/applications"
@@ -11,10 +11,21 @@ function pwa --description "Manage progressive web apps"
     switch $op
         case add
             _pwa_add $app_dir $icon_dir
+        case list
+            _pwa_list_names $app_dir
         case remove
             _pwa_remove $app_dir $argv[2..-1]
+        case start
+            _pwa_start $app_dir $argv[2..-1]
         case '*'
-            echo "Usage: pwa <add|remove>"
+            echo "Usage: pwa <command> [args]" | gum format
+            echo
+            gum style --foreground 4 "Commands:"
+            printf "  %-10s %s\n" \
+                add "Create a new PWA desktop entry" \
+                list "List installed PWAs" \
+                remove "Remove a PWA desktop entry" \
+                start "Launch a PWA"
     end
 end
 
@@ -32,13 +43,13 @@ function _pwa_add
     # Prompt for app details
     set -l name (gum input --prompt "App name: " --placeholder "My App")
     if test -z "$name"
-        echo "App name is required." >&2
+        gum log --level error "App name is required."
         return 1
     end
 
     set -l url (gum input --prompt "URL: " --placeholder "https://example.com")
     if test -z "$url"
-        echo "App URL is required." >&2
+        gum log --level error "App URL is required."
         return 1
     end
 
@@ -50,7 +61,7 @@ function _pwa_add
         --prompt "Icon: " \
         --header "Tip: find icons at https://dashboardicons.com")
     if test -z "$icon_url"; or not _pwa_download $icon_url $icon_path
-        echo "Failed to fetch icon." >&2
+        gum log --level error "Failed to fetch icon."
         return 1
     end
 
@@ -79,7 +90,7 @@ function _pwa_remove
     # Discover installed PWAs
     set -l pwa_files (_pwa_list $app_dir)
     if test (count $pwa_files) -eq 0
-        echo "No PWAs found."
+        gum log --level warn "No PWAs found."
         return 0
     end
 
@@ -109,6 +120,38 @@ function _pwa_remove
 end
 
 #######################################
+# Start a PWA using gtk-launch.
+# Arguments:
+#   app_dir: applications directory.
+#   name: (optional) app name to start.
+#######################################
+function _pwa_start
+    set -l app_dir $argv[1]
+
+    # Discover installed PWAs
+    set -l pwa_files (_pwa_list $app_dir)
+    if test (count $pwa_files) -eq 0
+        gum log --level warn "No PWAs found."
+        return 0
+    end
+
+    # Resolve target desktop file
+    set -l target (_pwa_select --header "Select PWA to start:" $pwa_files $argv[2..-1])
+    test -n "$target"; or return $status
+
+    # Launch via gtk-launch
+    set -l app_name (_pwa_read_field $target Name)
+    set -l basename (path basename $target | string replace '.desktop' '')
+    gtk-launch $basename
+    gum style \
+        --border rounded --border-foreground 2 \
+        --padding "0 1" --margin "1 0" \
+        "Started PWA" "" \
+        "Name  $app_name" \
+        "File  $target"
+end
+
+#######################################
 # Download a file, returning success only if
 # the download succeeded and the result is
 # non-empty.
@@ -132,6 +175,30 @@ function _pwa_list
     for f in $app_dir/*.desktop
         grep -q 'chromium --app=' $f 2>/dev/null; or continue
         echo $f
+    end
+end
+
+#######################################
+# List installed PWAs by name.
+# Arguments:
+#   app_dir: applications directory.
+# Outputs:
+#   One PWA name per line to stdout.
+#######################################
+function _pwa_list_names
+    set -l app_dir $argv[1]
+    set -l pwa_files (_pwa_list $app_dir)
+    if test (count $pwa_files) -eq 0
+        gum log --level warn "No PWAs found."
+        return 0
+    end
+    printf "%-20s %s\n" Name URL | gum style --foreground 4
+    for f in $pwa_files
+        set -l name (_pwa_read_field $f Name)
+        set -l url (_pwa_read_field $f Exec)
+        set url (string replace 'chromium --app=' '' -- $url \
+            | string trim --chars='"/')
+        printf "%-20s %s\n" "$name" "$url"
     end
 end
 
@@ -169,7 +236,7 @@ function _pwa_select
             echo $f
             return 0
         end
-        echo "PWA not found: $argv[-1]" >&2
+        gum log --level error "PWA not found: $argv[-1]"
         return 1
     end
 
