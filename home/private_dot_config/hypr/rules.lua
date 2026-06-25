@@ -23,7 +23,7 @@ local machines = {
 
 local monitors = machines[utils.hostname()]
 if monitors then
-  for i = 1, 6 do
+  for i = 1, #monitors do
     hl.workspace_rule({
       workspace = tostring(i),
       monitor = monitors[(i - 1) % #monitors + 1],
