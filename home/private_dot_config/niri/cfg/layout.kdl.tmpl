@@ -1,0 +1,24 @@
+{{- $defaultWidth := "1.0" -}}
+{{- if eq .chezmoi.hostname "deep-thought" -}}
+{{-   $defaultWidth = "0.5" -}}
+{{- end -}}
+
+layout {
+    gaps 6 // Gap between windows
+    focus-ring {
+        width 2
+    }
+
+    center-focused-column "never" // Don't auto-center focused column
+
+    background-color "transparent" // <- needed for noctalia to set wallpaper
+
+    default-column-width { proportion {{ $defaultWidth }}; } // Default application width
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    struts {}
+}

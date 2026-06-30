@@ -3,12 +3,6 @@ window-rule {
     clip-to-geometry true
 }
 
-{{ if .system.laptop -}}
-window-rule {
-    open-maximized true
-}
-{{- end }}
-
 layer-rule {
    match namespace="^noctalia-wallpaper*"
    place-within-backdrop true
