@@ -38,4 +38,4 @@ version    = "stable"
 components = "rust-analyzer"
 
 [tools.zig]
-version = "0.15"
+version = "0.16"
