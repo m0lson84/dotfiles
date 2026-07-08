@@ -11,15 +11,27 @@
 [settings]
 env_file                            = ".env"
 experimental                        = true
-go_default_packages_file            = "~/.config/mise/golang"
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
 
-[settings.node]
-default_packages_file = "~/.config/mise/nodejs"
-
 [settings.python]
-compile               = false
-default_packages_file = "~/.config/mise/python"
+compile = false
+
+[tools]
+"go:github.com/air-verse/air"            = "latest"
+"go:github.com/go-task/task/v3/cmd/task" = "latest"
+"go:github.com/rest-sh/restish"          = "latest"
+"go:gotest.tools/gotestsum"              = "latest"
+"npm:@biomejs/biome"                     = "latest"
+"npm:@devcontainers/cli"                 = "latest"
+"npm:@playwright/cli"                    = "latest"
+"npm:@tailwindcss/cli"                   = "latest"
+"npm:@typescript/native-preview"         = "beta"
+"npm:@usebruno/cli"                      = "latest"
+"npm:aws-cdk"                            = "latest"
+"npm:fish-lsp"                           = "latest"
+"npm:yarn"                               = "latest"
+"pipx:commitizen"                        = "latest"
+"pipx:ruff"                              = "latest"
 
 [tools.bun]
 version = "1.3"
