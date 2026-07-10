@@ -28,8 +28,8 @@ end
 #######################################
 function _arch_update --description "Update all Arch Linux packages"
     echo "Updating packages..."
-    paru -Syu --noconfirm
-    paru -c
+    shelly upgrade-all --no-confirm
+    shelly purify --orphans --no-confirm
 end
 
 

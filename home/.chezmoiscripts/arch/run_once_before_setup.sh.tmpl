@@ -1,5 +1,6 @@
 {{- /* Default packages */ -}}
-{{- $packages := list "base-devel" "curl" "git" "gnupg" "unzip" "wget" "1password-cli" -}}
+{{- $std := list "base-devel" "curl" "git" "gnupg" "unzip" "wget" -}}
+{{- $aur := list "1password-cli" -}}
 
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
@@ -34,23 +35,24 @@ function install_gcm() {
 }
 
 #######################################
-# Install Paru package manager
-# https://github.com/git-ecosystem/git-credential-manager
+# Install Shelly package manager
+# https://github.com/Seafoam-Labs/Shelly-ALPM
 # Globals:
 #   None
 # Arguments:
 #   None
 #######################################
-function install_paru() {
-  if command -v paru>/dev/null 2>&1; then
+function install_shelly() {
+  if command -v shelly>/dev/null 2>&1; then
     return
   fi
 
   sudo pacman -S --needed base-devel
-  git clone https://aur.archlinux.org/paru.git
-  makepkg -D paru -si
-  rm -rf paru
+  git clone https://github.com/Seafoam-Labs/Shelly-ALPM.git ./shelly
+  makepkg -D shelly -si
+  rm -rf shelly
 }
+
 
 
 #################### Main Program ####################
@@ -59,10 +61,20 @@ function install_paru() {
 set -euo pipefail
 
 # Install package manager
+install_shelly
+
+# Update all packages
+shelly upgrade-all -n
 
 # Install packages
-paru -Syu --noconfirm
-paru -S --needed --noconfirm {{ $packages | join " " }}
+{{ range $std -}}
+pacman -Qq {{ . }} >/dev/null 2>&1 || shelly install -n {{ . }}
+{{ end }}
+
+# Install AUR packages
+{{ range $aur -}}
+pacman -Qq {{ . }} >/dev/null 2>&1 || shelly aur install -n {{ . }}
+{{ end }}
 
 {{ if not .env.ephemeral -}}
 

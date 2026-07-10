@@ -16,8 +16,8 @@
 # Install packages
 #######################################
 function install_packages() {
-  paru -Syu --noconfirm
-  paru -S --needed --noconfirm {{ (concat $apps $tools) | join " " }}
+  shelly upgrade-all --no-confirm
+  shelly install --no-confirm {{ (concat $apps $tools) | join " " }}
 }
 
 

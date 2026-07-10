@@ -132,7 +132,7 @@ Chezmoi uses filename prefixes to control behavior:
 ### Commit messages
 
 - Imperative mood, lowercase, no conventional commit prefix
-- Examples: `Install and manage progressive web apps`, `Use paru on arch systems`
+- Examples: `Install and manage progressive web apps`, `Use shelly on arch systems`
 - Keep messages concise (one line, ~50-72 chars)
 
 ### Data files (`.chezmoidata/*.toml`)

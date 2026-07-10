@@ -33,8 +33,10 @@ function create_udev_rules() {
     echo "uinput" | sudo tee /etc/modules-load.d/uinput.conf >/dev/null
   fi
 
-  # Load uinput module now
-  sudo modprobe uinput
+  # Load uinput module now (skip if already loaded or built into the kernel)
+  if [ ! -e /dev/uinput ] && ! lsmod | grep -q '^uinput'; then
+    sudo modprobe uinput || echo "Warning: failed to load uinput module; it may be built into the kernel or modules are out of date (try rebooting after a kernel update)."
+  fi
 
   # Create udev rule
   local udev_rule='KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"'

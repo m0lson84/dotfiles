@@ -23,8 +23,8 @@ function apt_update() {
 #######################################
 function arch_update() {
   echo "Updating packages..."
-  paru -Syu --noconfirm
-  paru -c
+  shelly upgrade-all --no-confirm
+  shelly purify --orphans --no-confirm
 }
 
 #######################################
