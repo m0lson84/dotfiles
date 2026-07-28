@@ -17,32 +17,32 @@ zstyle ':autocomplete:*' widget-style menu-complete
 
 # 1Password CLI
 if command -v op >/dev/null; then
-  eval "$(op completion zsh)"
-  compdef _op op
+    eval "$(op completion zsh)"
+    compdef _op op
 fi
 
 # Bob (Neovim version manager)
 if command -v bob >/dev/null; then
-  source <(bob complete zsh)
+    source <(bob complete zsh)
 fi
 
 # DevPod
 if command -v devpod >/dev/null; then
-  eval "$(devpod completion zsh)"
-  compdef _devpod devpod
+    eval "$(devpod completion zsh)"
+    compdef _devpod devpod
 fi
 
 # Fast Node Manager (fnm)
 if command -v fnm >/dev/null; then
-  eval $(fnm completions --shell zsh)
+    eval $(fnm completions --shell zsh)
 fi
 
 # Kubernetes
 if command -v kubectl >/dev/null; then
-  source <(kubectl completion zsh)
+    source <(kubectl completion zsh)
 fi
 
 # Starship initialization
 if command -v starship >/dev/null; then
-  eval "$(starship completions zsh)"
+    eval "$(starship completions zsh)"
 fi

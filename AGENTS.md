@@ -79,7 +79,7 @@ Key template variables:
 | File type                        | Indent size                        |
 | -------------------------------- | ---------------------------------- |
 | Lua (`*.lua`)                    | 2 spaces                           |
-| Shell (`*.bash, *.sh, *.zsh`)    | 2 spaces                           |
+| Shell (`*.bash, *.sh, *.zsh`)    | 4 spaces                           |
 | Fish (`*.fish`)                  | 4 spaces                           |
 | Config (`*.json, *.toml, *.yml`) | 2 spaces                           |
 | Docs (`*.md`)                    | 2 spaces, keep trailing whitespace |

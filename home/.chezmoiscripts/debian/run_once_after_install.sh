@@ -9,35 +9,36 @@
 #   tools: List of tools to install
 #######################################
 function install_devtools() {
-  local tools=("$@")
 
-  echo "Installing developer tools..."
-  mise use -g "${tools[@]}"
+    local tools=("$@")
+
+    echo "Installing developer tools..."
+    mise use -g "${tools[@]}"
 }
 
 #######################################
 # Install GitHub CLI
 #######################################
 function install_github_cli() {
-  echo "Installing GitHub CLI..."
+    echo "Installing GitHub CLI..."
 
-  # Download GPG key
-  tmp_dir=$(mktemp)
-  sudo install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o "$tmp_dir"
-  sudo cp "$tmp_dir" /etc/apt/keyrings/githubcli-archive-keyring.gpg
-  sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
-  rm -rf "$tmp_dir"
+    # Download GPG key
+    tmp_dir=$(mktemp)
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o "$tmp_dir"
+    sudo cp "$tmp_dir" /etc/apt/keyrings/githubcli-archive-keyring.gpg
+    sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+    rm -rf "$tmp_dir"
 
-  # Add the APT repository
-  arch="$(dpkg --print-architecture)"
-  echo "deb [arch=$arch signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] \
+    # Add the APT repository
+    arch="$(dpkg --print-architecture)"
+    echo "deb [arch=$arch signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] \
     https://cli.github.com/packages stable main" |
-    sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+        sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
 
-  # Install GitHub CLI
-  sudo apt update
-  sudo apt install gh -y
+    # Install GitHub CLI
+    sudo apt update
+    sudo apt install gh -y
 }
 
 #######################################
@@ -46,27 +47,27 @@ function install_github_cli() {
 #   langs: List of languages to install
 #######################################
 function install_runtimes() {
-  local langs=("$@")
+    local langs=("$@")
 
-  echo "Installing language runtimes..."
-  mise i "${langs[@]}"
+    echo "Installing language runtimes..."
+    mise i "${langs[@]}"
 }
 
 #######################################
 # Install the tree-sitter CLI
 #######################################
 function install_treesitter() {
-  echo "Installing tree-sitter CLI..."
-  sudo apt install -y clang
-  cargo install --locked tree-sitter-cli
+    echo "Installing tree-sitter CLI..."
+    sudo apt install -y clang
+    cargo install --locked tree-sitter-cli
 }
 
 #######################################
 # Install zellij
 #######################################
 function install_zellij() {
-  echo "Installing zellij..."
-  cargo binstall --disable-telemetry --no-confirm zellij
+    echo "Installing zellij..."
+    cargo binstall --disable-telemetry --no-confirm zellij
 }
 
 #################### Main Program ####################
@@ -76,7 +77,7 @@ set -euo pipefail
 
 # Rust configuration
 if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
+    source "$HOME/.cargo/env"
 fi
 
 # Install language runtimes

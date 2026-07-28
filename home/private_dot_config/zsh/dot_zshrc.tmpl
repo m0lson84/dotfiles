@@ -88,7 +88,7 @@ export CHROME_EXECUTABLE="$( which chromium )"
 
 # dotnet configuration
 if [ -d "$HOME/.dotnet" ]; then
-  export DOTNET_ROOT="$HOME/.dotnet"
+    export DOTNET_ROOT="$HOME/.dotnet"
 fi
 
 # fzf configuration
@@ -97,7 +97,7 @@ command -v fzf >/dev/null && eval "$(fzf --zsh)"
 # Homebrew configuration
 HOMEBREW_PREFIX="$(command -v brew >/dev/null && brew --prefix || echo /opt/homebrew)"
 if [ -f "${HOMEBREW_PREFIX}/bin/brew" ]; then
-  eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+    eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 fi
 
 # mise-en-place configuration
@@ -123,7 +123,7 @@ export POETRY_HOME="$HOME/.local/share/pypoetry"
 
 # Rust configuration
 if [ -f "${HOME}/.cargo/env" ]; then
-  source "${HOME}/.cargo/env"
+    source "${HOME}/.cargo/env"
 fi
 
 # Starship initialization

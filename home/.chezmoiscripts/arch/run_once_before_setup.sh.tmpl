@@ -1,6 +1,5 @@
 {{- /* Default packages */ -}}
-{{- $std := list "base-devel" "curl" "git" "gnupg" "unzip" "wget" -}}
-{{- $aur := list "1password-cli" -}}
+{{- $packages := list "base-devel" "curl" "git" "gnupg" "unzip" "wget" "1password-cli" -}}
 
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
@@ -23,36 +22,36 @@
 #   None
 #######################################
 function install_gcm() {
-  arch="linux_amd64"
-  version="2.6.0"
-  zip_file="gcm-$arch.$version.tar.gz"
+    arch="linux_amd64"
+    version="2.6.0"
+    zip_file="gcm-$arch.$version.tar.gz"
 
-  echo "Installing Git Credential Manager..."
-  curl -L -O "https://github.com/git-ecosystem/git-credential-manager/releases/download/v$version/$zip_file"
-  sudo tar -xvf "$zip_file" -C /usr/local/bin
-  rm "$zip_file"
+    echo "Installing Git Credential Manager..."
+    curl -L -O "https://github.com/git-ecosystem/git-credential-manager/releases/download/v$version/$zip_file"
+    sudo tar -xvf "$zip_file" -C /usr/local/bin
+    rm "$zip_file"
 
 }
 
+
 #######################################
-# Install Shelly package manager
-# https://github.com/Seafoam-Labs/Shelly-ALPM
+# Install yay package manager
+# https://github.com/jguer/yay
 # Globals:
 #   None
 # Arguments:
 #   None
 #######################################
-function install_shelly() {
-  if command -v shelly>/dev/null 2>&1; then
-    return
-  fi
+function install_yay() {
+    if command -v yay >/dev/null 2>&1; then
+        return
+    fi
 
-  sudo pacman -S --needed base-devel
-  git clone https://github.com/Seafoam-Labs/Shelly-ALPM.git ./shelly
-  makepkg -D shelly -si
-  rm -rf shelly
+    sudo pacman -S --needed --noconfirm base-devel git
+    git clone https://aur.archlinux.org/yay.git
+    makepkg -D yay -si --noconfirm
+    rm -rf yay
 }
-
 
 
 #################### Main Program ####################
@@ -61,20 +60,11 @@ function install_shelly() {
 set -euo pipefail
 
 # Install package manager
-install_shelly
-
-# Update all packages
-shelly upgrade-all -n
+install_yay
 
 # Install packages
-{{ range $std -}}
-pacman -Qq {{ . }} >/dev/null 2>&1 || shelly install -n {{ . }}
-{{ end }}
-
-# Install AUR packages
-{{ range $aur -}}
-pacman -Qq {{ . }} >/dev/null 2>&1 || shelly aur install -n {{ . }}
-{{ end }}
+yay -Syu --noconfirm
+yay -S --needed --noconfirm {{ $packages | join " " }}
 
 {{ if not .env.ephemeral -}}
 

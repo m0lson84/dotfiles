@@ -16,15 +16,24 @@
 # Install packages
 #######################################
 function install_packages() {
-  shelly upgrade-all --no-confirm
-  shelly install --no-confirm {{ (concat $apps $tools) | join " " }}
+    yay -Syu --noconfirm
+    yay -S --needed --noconfirm {{ (concat $apps $tools) | join " " }}
+}
+
+
+#######################################
+# Install developer tools
+#######################################
+function install_tools() {
+    echo "Installing developer tools..."
+    mise -C "${HOME}" install --yes
 }
 
 
 #################### Main Program ####################
 
 # Stop script on error
-set -eo pipefail
+set -euo pipefail
 
 {{ if not .env.ephemeral -}}
 
@@ -33,6 +42,9 @@ install_packages
 
 # Install Rust
 install_rust
+
+# Install developer tools
+install_tools
 
 {{- end }}
 

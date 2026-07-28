@@ -12,39 +12,40 @@
 # Update all apt packages
 #######################################
 function apt_update() {
-  echo "Updating apt packages..."
-  sudo apt update && sudo apt upgrade -y
-  echo "Running cleaning up tasks..."
-  sudo apt autoremove -y && sudo apt autoclean
+    echo "Updating packages..."
+    sudo apt update && sudo apt upgrade -y
+    echo "Running cleaning up tasks..."
+    sudo apt autoremove -y && sudo apt autoclean
 }
 
 #######################################
 # Update all Arch Linux packages
 #######################################
 function arch_update() {
-  echo "Updating packages..."
-  shelly upgrade-all --no-confirm
-  shelly purify --orphans --no-confirm
+    echo "Updating packages..."
+    yay -Syu --noconfirm
+    echo "Running cleaning up tasks..."
+    yay -Yc --noconfirm
 }
 
 #######################################
 # Update Homebrew formulas/casks
 #######################################
 function brew_update() {
-  echo "Updating homebrew formulas/casks..."
-  brew update && brew outdated
-  brew upgrade
-  echo "Running cleaning up tasks..."
-  brew autoremove && brew cleanup
+    echo "Updating homebrew formulas/casks..."
+    brew update && brew outdated
+    brew upgrade
+    echo "Running cleaning up tasks..."
+    brew autoremove && brew cleanup
 }
 
 #######################################
 # Update developer tools
 #######################################
 function tool_update() {
-  echo "Updating mise-en-place..."
-  mise self-update -y && mise up
-  echo "Updating neovim..."
-  bob update --all
+    echo "Updating mise-en-place..."
+    mise self-update -y && mise up
+    echo "Updating neovim..."
+    bob update --all
 }
 

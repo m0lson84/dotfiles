@@ -6,16 +6,16 @@
 #   None
 #######################################
 function install_rust() {
-  echo "Checking Rust installation..."
+    echo "Checking Rust installation..."
 
-  # Check if rustup is installed
-  if command -v rustc --version > /dev/null; then
-    echo "Rust toolchain already installed"
-    rustup show
-    return 0
-  fi
+    # Check if rustup is installed
+    if command -v rustc --version > /dev/null; then
+        echo "Rust toolchain already installed"
+        rustup show
+        return 0
+    fi
 
-  echo "Installing Rust toolchain..."
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    echo "Installing Rust toolchain..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 }

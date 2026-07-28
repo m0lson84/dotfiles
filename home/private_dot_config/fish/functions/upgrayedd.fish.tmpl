@@ -16,7 +16,7 @@ end
 # Update all apt packages
 #######################################
 function _apt_update --description "Update all installed apt packages"
-    echo "Updating apt packages..."
+    echo "Updating packages..."
     sudo apt update && sudo apt upgrade -y
     echo "Running cleaning up tasks..."
     sudo apt autoremove -y && sudo apt autoclean
@@ -28,8 +28,9 @@ end
 #######################################
 function _arch_update --description "Update all Arch Linux packages"
     echo "Updating packages..."
-    shelly upgrade-all --no-confirm
-    shelly purify --orphans --no-confirm
+    yay -Syu --noconfirm
+    echo "Running cleaning up tasks..."
+    yay -Yc --noconfirm
 end
 
 

@@ -9,25 +9,25 @@
 
 # 1Password CLI
 if command -v op >/dev/null; then
-  source <(op completion bash)
+    source <(op completion bash)
 fi
 
 # Bob (Neovim version manager)
 if command -v bob >/dev/null; then
-  source <(bob complete bash)
+    source <(bob complete bash)
 fi
 
 # DevPod
 if command -v devpod >/dev/null; then
-  source <(devpod complete bash)
+    source <(devpod complete bash)
 fi
 
 # Kubernetes
 if command -v kubectl >/dev/null; then
-  source <(kubectl completion bash)
+    source <(kubectl completion bash)
 fi
 
 # Starship initialization
 if command -v starship >/dev/null; then
-  source <(starship completions bash)
+    source <(starship completions bash)
 fi

@@ -10,26 +10,26 @@
 #   icon_url: icon download URL.
 #######################################
 function install_pwa() {
-  local app_dir="$1"
-  local icon_dir="$2"
-  local name="$3"
-  local url="$4"
-  local icon_url="$5"
+    local app_dir="$1"
+    local icon_dir="$2"
+    local name="$3"
+    local url="$4"
+    local icon_url="$5"
 
-  local slug
-  slug=$(_slugify "$name")
+    local slug
+    slug=$(_slugify "$name")
 
-  local desktop_path="$app_dir/$slug.desktop"
-  if [[ -f "$desktop_path" ]]; then
-    echo "Skipping $name (already installed)"
-    return
-  fi
+    local desktop_path="$app_dir/$slug.desktop"
+    if [[ -f "$desktop_path" ]]; then
+        echo "Skipping $name (already installed)"
+        return
+    fi
 
-  echo "Installing $name..."
-  local icon_path="$icon_dir/$slug.png"
-  mkdir -p "$icon_dir"
-  curl -fsSL -o "$icon_path" "$icon_url"
-  _write_desktop_entry "$desktop_path" "$name" "$url" "$icon_path"
+    echo "Installing $name..."
+    local icon_path="$icon_dir/$slug.png"
+    mkdir -p "$icon_dir"
+    curl -fsSL -o "$icon_path" "$icon_url"
+    _write_desktop_entry "$desktop_path" "$name" "$url" "$icon_path"
 }
 
 #######################################
@@ -40,7 +40,7 @@ function install_pwa() {
 #   Slugified name to stdout.
 #######################################
 function _slugify() {
-  echo "$1" | tr '[:upper:] ' '[:lower:]-'
+    echo "$1" | tr '[:upper:] ' '[:lower:]-'
 }
 
 #######################################
@@ -52,7 +52,7 @@ function _slugify() {
 #   icon: icon file path.
 #######################################
 function _write_desktop_entry() {
-  cat > "$1" <<EOF
+    cat > "$1" <<EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -64,6 +64,6 @@ Exec=/usr/bin/chromium --app="$3"
 Icon=$4
 StartupNotify=true
 EOF
-  chmod +x "$1"
+    chmod +x "$1"
 }
 

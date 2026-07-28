@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["amazon-bedrock", "github-copilot"],
+  "enabled_providers": ["amazon-bedrock", "github-copilot", "opencode"],
   "provider": {
     "amazon-bedrock": {
       "options": {
