@@ -59,7 +59,7 @@ function install_runtimes() {
 function install_treesitter() {
     echo "Installing tree-sitter CLI..."
     sudo apt install -y clang
-    cargo install --locked tree-sitter-cli
+    cargo binstall --no-confirm tree-sitter-cli
 }
 
 #######################################
@@ -67,7 +67,7 @@ function install_treesitter() {
 #######################################
 function install_zellij() {
     echo "Installing zellij..."
-    cargo binstall --disable-telemetry --no-confirm zellij
+    cargo binstall --no-confirm zellij
 }
 
 #################### Main Program ####################

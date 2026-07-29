@@ -19,3 +19,31 @@ function install_rust() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 }
+
+
+
+#######################################
+# Install rust
+#######################################
+function install_rust() {
+    echo "Checking Rust installation..."
+
+    # Check if rustup is installed
+    if command -v rustc --version > /dev/null; then
+        echo "Rust toolchain already installed"
+        rustup show
+        return 0
+    fi
+
+    # Install rustup and stable toolchain
+    echo "Installing Rust toolchain..."
+    local rustup_url="https://sh.rustup.rs"
+    curl --proto '=https' --tlsv1.2 -sSf "${rustup_url}" | sh -s -- -y
+    source "$HOME/.cargo/env"
+    rustup install stable
+
+    # Install binary install
+    echo "Installing cargo binstall..."
+    local binstall_url="https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh"
+    curl -L --proto '=https' --tlsv1.2 -sSf "${binstall_url}" | bash
+}
