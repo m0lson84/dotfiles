@@ -1,5 +1,7 @@
 {{- /* Default packages */ -}}
 {{- $packages := list "base-devel" "curl" "git" "gnupg" "unzip" "wget" "1password-cli" -}}
+{{- if .system.laptop -}} {{- $packages := concat $packages ( list "kanata" ) | sortAlpha  -}} {{- end -}}
+
 
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
