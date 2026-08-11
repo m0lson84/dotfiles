@@ -21,6 +21,9 @@ output "LG Electronics LG ULTRAGEAR 508TOZU02477" {
 output "eDP-1" {
     mode "2880x1920@120.000"
     scale 2
+    layout {
+        default-column-width { proportion 1.0; }
+    }
 }
 {{ end -}}
 
@@ -29,17 +32,26 @@ output "eDP-1" {
     mode "1920x1200@60.026"
     position x=0 y=0
     scale 1.25
+    layout {
+        default-column-width { proportion 1.0; }
+    }
 }
 
 output "Lenovo Group Limited E27q-20 V5MBZ804" {
     mode "2560x1440@59.951"
     position x=1536 y=0
     scale 1
+    layout {
+        always-center-single-column
+    }
 }
 
 output "Lenovo Group Limited E27q-20 V5MBZ801" {
     mode "2560x1440@59.951"
     position x=4096 y=0
     scale 1
+    layout {
+        always-center-single-column
+    }
 }
 {{ end -}}
