@@ -1,0 +1,46 @@
+{{- /* Language runtimes */ -}}
+{{ $runtimes := list "go" "node" "python" "rust" -}}
+
+{{- /* Developer tools */ -}}
+{{ $tools := list "bat" "cargo:tree-sitter-cli" "cargo:zellij" "eza" "fd" "fzf" "github-cli" "lazygit" "zoxide" -}}
+
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# Install additional tools
+# ---------------------------------------------------------------------------
+
+#######################################
+# Install developer tools
+# Arguments:
+#   tools: List of tools to install
+#######################################
+function install_devtools() {
+    echo "Installing developer tools..."
+    mise use -g {{ $tools | join " " }}
+}
+
+#######################################
+# Install language runtimes
+# Arguments:
+#   langs: List of languages to install
+#######################################
+function install_runtimes() {
+    echo "Installing language runtimes..."
+    mise i {{ $tools | join " " }}
+}
+
+#################### Main Program ####################
+
+# Stop script on error
+set -euo pipefail
+
+# Rust configuration
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
+
+# Install language runtimes
+install_runtimes
+
+# Install dev tools
+install_devtools

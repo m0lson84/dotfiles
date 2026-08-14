@@ -12,11 +12,13 @@
 env_file                            = ".env"
 experimental                        = true
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
+minimum_release_age                 = "0"
 
 [settings.python]
 compile = false
 
 [tools]
+"cargo:usage-cli"                        = "latest"
 "go:github.com/air-verse/air"            = "latest"
 "go:github.com/go-task/task/v3/cmd/task" = "latest"
 "go:github.com/rest-sh/restish"          = "latest"
@@ -25,10 +27,10 @@ compile = false
 "npm:@devcontainers/cli"                 = "latest"
 "npm:@playwright/cli"                    = "latest"
 "npm:@tailwindcss/cli"                   = "latest"
-"npm:@typescript/native-preview"         = "beta"
 "npm:@usebruno/cli"                      = "latest"
 "npm:aws-cdk"                            = "2"
 "npm:fish-lsp"                           = "latest"
+"npm:typescript"                         = "latest"
 "npm:yarn"                               = "latest"
 "pipx:commitizen"                        = "latest"
 "pipx:ruff"                              = "latest"

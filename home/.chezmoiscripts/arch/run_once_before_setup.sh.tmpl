@@ -11,9 +11,9 @@
 {{/* Include external functions */}}
 {{ template "install-mise.tmpl" . }}
 {{ template "install-opencode.tmpl" . }}
+{{ template "install-rust.tmpl" . }}
 {{ template "setup-1password.tmpl" . }}
 {{ template "setup-kanata.tmpl" . }}
-{{ template "wezterm-definition.tmpl" . }}
 
 #######################################
 # Install Git Credential Manager
@@ -79,8 +79,8 @@ install_mise
 # Install opencode
 install_opencode
 
-# WezTerm TERM definition
-install_term_definition
+# Install Rust
+install_rust
 
 # Install 1Password CLI
 setup_1password

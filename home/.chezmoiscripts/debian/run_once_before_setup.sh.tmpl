@@ -13,7 +13,6 @@
 
 {{/* Include external functions */}}
 {{ template "install-mise.tmpl" . }}
-{{ template "install-opencode.tmpl" . }}
 {{ template "install-rust.tmpl" . }}
 
 #######################################
@@ -62,9 +61,6 @@ install_neovim "nightly"
 
 # Install tool manager
 install_mise
-
-# Install opencode
-install_opencode
 
 # Install rust
 install_rust

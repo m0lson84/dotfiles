@@ -8,9 +8,6 @@
 # Install applications and tools
 # ---------------------------------------------------------------------------
 
-{{/* Include external functions */}}
-{{ template "install-rust.tmpl" . }}
-
 
 #######################################
 # Install packages
@@ -39,9 +36,6 @@ set -euo pipefail
 
 # Install packages
 install_packages
-
-# Install Rust
-install_rust
 
 # Install developer tools
 install_tools
