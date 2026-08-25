@@ -109,9 +109,9 @@ binds {
     Mod+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    CTRL+Shift+1                        { screenshot; }
-    CTRL+Shift+2                        { screenshot-screen; }
-    CTRL+Shift+3                        { screenshot-window; }
+    CTRL+ALT+Shift+1                    repeat=false { spawn-sh "geometry=$(slurp) || exit; grim -g \"$geometry\" -t png - | satty --filename -"; }
+    CTRL+ALT+Shift+2                    repeat=false { screenshot-window; }
+    CTRL+ALT+Shift+3                    repeat=false { screenshot-screen; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
