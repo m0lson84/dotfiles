@@ -2,7 +2,7 @@
 {{ $runtimes := list "go" "node" "python" "rust" -}}
 
 {{- /* Developer tools */ -}}
-{{ $tools := list "bat" "cargo:tree-sitter-cli" "cargo:zellij" "eza" "fd" "fzf" "github-cli" "lazygit" "zoxide" -}}
+{{ $tools := list "bat" "eza" "fd" "fzf" "zoxide" -}}
 
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
@@ -29,6 +29,15 @@ function install_runtimes() {
     mise i {{ $runtimes | join " " }}
 }
 
+#######################################
+# Install the tree-sitter CLI
+#######################################
+function install_treesitter() {
+    echo "Installing tree-sitter CLI..."
+    sudo apt install -y clang
+    cargo install --locked tree-sitter-cli
+}
+
 #################### Main Program ####################
 
 # Stop script on error
@@ -44,3 +53,6 @@ install_runtimes
 
 # Install dev tools
 install_devtools
+
+# Install additional tools
+install_treesitter
