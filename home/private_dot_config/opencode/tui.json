@@ -1,4 +1,6 @@
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "tokyonight"
+  "theme": "tokyo-night",
+  "cursor": { "style": "default" },
+  "attention": { "enabled": true }
 }
