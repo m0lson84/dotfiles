@@ -91,7 +91,7 @@ rules = [
   { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#7dcfff" },
   { mime = "image/*", fg = "#e0af68" },
   { mime = "{audio,video}/*", fg = "#bb9af7" },
-  { name = "*", is = "exec", fg = "#9ece6a" },
-  { name = "*", is = "orphan", bg = "#f7768e" },
-  { name = "*/", fg = "#7aa2f7" },
+  { url = "*", is = "exec", fg = "#9ece6a" },
+  { url = "*", is = "orphan", bg = "#f7768e" },
+  { url = "*/", fg = "#7aa2f7" },
 ]
