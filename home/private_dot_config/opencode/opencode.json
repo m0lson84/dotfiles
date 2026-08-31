@@ -23,9 +23,12 @@
   "permission": {
     "bash": {
       "*": "allow",
+      "git *": "ask",
       "git commit *": "deny",
       "git push *": "deny",
-      "git *": "ask"
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git status *": "allow"
     }
   },
   "tool_output": {
