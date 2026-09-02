@@ -14,27 +14,7 @@ layout {
   }
 
   pane_template name="statusline" {
-    plugin location="zjstatus" {
-
-      hide_frame_for_single_pane "true"
-
-      format_left  "{mode}#[fg=blue,bg=#383E5A,bold]  {session} #[fg=#383E5A,bg=bg] #[fg=white,bg=fg]󰓩  {tabs}"
-      format_right "#[fg=blue,bg=bg]{datetime}"
-      format_space "#[bg=fg]"
-
-      datetime          "#[fg=#1A1B26,bg=blue]{format}"
-      datetime_format   "  %H:%M "
-      datetime_timezone "America/Detroit"
-
-      mode_normal     "#[fg=#1A1B26,bg=blue,bold] NORMAL #[fg=blue,bg=#383E5A]"
-      mode_tab        "#[fg=#1A1B26,bg=green,bold] TAB #[fg=green,bg=#383E5A]"
-      mode_rename_tab "#[fg=#1A1B26,bg=yellow,bold] RENAME #[fg=yellow,bg=#383E5A]"
-
-      tab_normal  "#[fg=#A9B1D6,bg=fg] [{index}] {name}"
-      tab_active  "#[fg=green,bg=fg,bold,italic] [{index}] {name}"
-
-    }
-
+    plugin location="zjstatus"
   }
 
   default_tab_template { children; statusline size=1; }
