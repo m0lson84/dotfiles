@@ -27,6 +27,7 @@ compile = false
 "npm:@tailwindcss/cli"                   = "latest"
 "npm:@usebruno/cli"                      = "latest"
 "npm:aws-cdk"                            = "2"
+"npm:ctx7"                               = "latest"
 "npm:fish-lsp"                           = "latest"
 "npm:typescript"                         = "latest"
 "npm:yarn"                               = "latest"
