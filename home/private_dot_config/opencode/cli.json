@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "tokyonight",
+    "mode": "dark"
+  },
+  "tabs": {
+    "enabled": false
+  },
+  "cursor": {
+    "style": "default"
+  }
+}

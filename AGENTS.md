@@ -37,9 +37,9 @@
 
 ## Configuration Gotchas
 
-- `.opencode/opencode.json` is repository-local OpenCode config.
-  `home/private_dot_config/opencode/opencode.json` deploys to global
-  `~/.config/opencode/opencode.json`; do not confuse their scopes.
+- `.opencode/opencode.jsonc` is repository-local OpenCode config.
+  `home/private_dot_config/opencode/opencode.jsonc` deploys to global
+  `~/.config/opencode/opencode.jsonc`; do not confuse their scopes.
 - AWS templates call 1Password at render time and are skipped in ephemeral environments. Avoid
   broad rendering when credentials are unnecessary.
 - `install.sh` and `install.ps1` bootstrap chezmoi and immediately run
