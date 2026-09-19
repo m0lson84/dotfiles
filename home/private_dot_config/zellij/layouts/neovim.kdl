@@ -10,7 +10,7 @@ layout {
 
   pane_template name="opencode" {
     command "opencode"
-    args "--continue" "--port"
+    args "--continue"
   }
 
   pane_template name="statusline" {
