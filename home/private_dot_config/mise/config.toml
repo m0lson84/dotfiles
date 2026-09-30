@@ -12,7 +12,7 @@
 env_file                            = ".env"
 experimental                        = true
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
-minimum_release_age                 = "0"
+minimum_release_age                 = "0d"
 
 [settings.python]
 compile = false

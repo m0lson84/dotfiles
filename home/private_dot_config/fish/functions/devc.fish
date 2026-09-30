@@ -15,28 +15,17 @@ function devc
         case session
             _devcontainer_session $argv[2..-1]
         case '*'
-            echo "Invalid operation: $op"
+            gum log --level error "Invalid operation: $op"
     end
-end
-
-#######################################
-# Open a Zellij session using the devcontainer layout
-# Arguments:
-#   Optional session name.
-#######################################
-function _devcontainer_session
-    set options
-    if test (count $argv) -gt 0
-        set options --session-name $argv[1]
-    end
-    zellij options --default-layout devcontainer $options
 end
 
 #######################################
 # Build a devcontainer image
 #######################################
 function _devcontainer_build
-    echo "Building development container image..."
+    gum log --level info "Building development container image..."
+
+    set remote_env "REMOTE_CONTAINERS=true"
 
     devcontainer build \
         --workspace-folder . \
@@ -51,7 +40,7 @@ end
 #   The command to execute in the container.
 #######################################
 function _devcontainer_exec
-    echo "Executing command in development container..."
+    gum log --level info "Executing command in development container..."
 
     set remote_env "REMOTE_CONTAINERS=true"
 
@@ -63,10 +52,34 @@ function _devcontainer_exec
 end
 
 #######################################
+# Open a Zellij session using the devcontainer layout
+# Arguments:
+#   Optional session name.
+#######################################
+function _devcontainer_session
+    if not devcontainer exec --workspace-folder . true >/dev/null 2>&1
+        _devcontainer_up
+    end
+
+    gum log --level info "Starting development container session..."
+
+    if not devcontainer exec --workspace-folder . true >/dev/null 2>&1
+        gum log --level error "Failed to start session. Please ensure container is running."
+    end
+
+    set options
+    if test (count $argv) -gt 0
+        set options --session-name $argv[1]
+    end
+
+    zellij options --default-layout devcontainer $options
+end
+
+#######################################
 # Create and run a devcontainer
 #######################################
 function _devcontainer_up
-    echo "Building and running development container..."
+    gum log --level info "Building and running development container..."
 
     set dotfiles "https://github.com/m0lson84/dotfiles.git"
     set remote_env "REMOTE_CONTAINERS=true"
