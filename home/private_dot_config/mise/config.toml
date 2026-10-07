@@ -19,12 +19,12 @@ compile = false
 
 [tools]
 "cargo:just"                             = "latest"
-"cargo:usage-cli"                        = "latest"
 "go:github.com/air-verse/air"            = "latest"
 "go:github.com/go-task/task/v3/cmd/task" = "latest"
 "go:gotest.tools/gotestsum"              = "latest"
 "npm:@biomejs/biome"                     = "latest"
 "npm:@devcontainers/cli"                 = "latest"
+"npm:@playwright/cli"                    = "latest"
 "npm:@tailwindcss/cli"                   = "latest"
 "npm:@usebruno/cli"                      = "latest"
 "npm:aws-cdk"                            = "2"
@@ -52,4 +52,4 @@ version    = "stable"
 components = "rust-analyzer"
 
 [tools.zig]
-version = "0.16"
+version = "0.17"
