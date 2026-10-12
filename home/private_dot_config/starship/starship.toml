@@ -64,7 +64,7 @@ symbol   = "󰍛 "
 
 [os]
 disabled = false
-format   = "[$symbol]($style)"
+format   = "[$symbol]($style) "
 
 [os.symbols]
 Alpaquita        = " "
@@ -73,6 +73,7 @@ Amazon           = " "
 Android          = " "
 Arch             = " "
 Artix            = " "
+CachyOS          = " "
 CentOS           = " "
 Debian           = " "
 DragonFly        = " "

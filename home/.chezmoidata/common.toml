@@ -33,7 +33,6 @@ tools = [
   'tree',
   'tree-sitter',
   'tree-sitter-cli',
-  'uv',
   'wget',
   'yazi',
   'zellij',

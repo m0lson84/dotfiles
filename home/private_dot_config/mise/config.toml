@@ -10,7 +10,6 @@
 
 [settings]
 env_file                            = ".env"
-experimental                        = true
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
 minimum_release_age                 = "0d"
 
@@ -18,22 +17,17 @@ minimum_release_age                 = "0d"
 compile = false
 
 [tools]
-"cargo:just"                             = "latest"
-"go:github.com/air-verse/air"            = "latest"
-"go:github.com/go-task/task/v3/cmd/task" = "latest"
-"go:gotest.tools/gotestsum"              = "latest"
-"npm:@biomejs/biome"                     = "latest"
-"npm:@devcontainers/cli"                 = "latest"
-"npm:@playwright/cli"                    = "latest"
-"npm:@tailwindcss/cli"                   = "latest"
-"npm:@usebruno/cli"                      = "latest"
-"npm:aws-cdk"                            = "2"
-"npm:ctx7"                               = "latest"
-"npm:fish-lsp"                           = "latest"
-"npm:typescript"                         = "latest"
-"npm:yarn"                               = "latest"
-"pipx:commitizen"                        = "latest"
-"pipx:ruff"                              = "latest"
+aws-cdk          = "2"
+biome            = "latest"
+bruno-cli        = "latest"
+commitizen       = "latest"
+devcontainer-cli = "latest"
+ruff             = "latest"
+uv               = "latest"
+
+[tool_alias]
+bruno-cli  = "npm:@usebruno/cli"
+commitizen = "pypi:commitizen"
 
 [tools.bun]
 version = "1.4"
@@ -45,7 +39,7 @@ version = "1.27"
 version = "lts"
 
 [tools.python]
-version = "3.14"
+version = "3.15"
 
 [tools.rust]
 version    = "stable"

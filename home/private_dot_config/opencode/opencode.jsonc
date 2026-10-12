@@ -25,5 +25,6 @@
   "compaction": {
     "auto": true,
     "buffer": 12000
-  }
+  },
+  "plugins": ["@upstash/context7-opencode"]
 }
