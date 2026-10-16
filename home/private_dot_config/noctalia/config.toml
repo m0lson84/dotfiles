@@ -8,6 +8,10 @@ radius             = 0
 start              = ["workspaces"]
 thickness          = 24
 
+[shell.launcher]
+layout     = "simple"
+categories = false
+
 [shell.panel]
 launcher_categories = false
 launcher_show_icons = false
