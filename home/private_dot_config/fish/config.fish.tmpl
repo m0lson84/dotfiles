@@ -19,9 +19,10 @@
 
 
 # XDG Base Directory Specification
-set -gx XDG_CACHE_HOME "$HOME/.cache"
-set -gx XDG_CONFIG_HOME "$HOME/.config"
-set -gx XDG_DATA_HOME "$HOME/.local/share"
+test -n "$XDG_CACHE_HOME" || set -gx XDG_CACHE_HOME "$HOME/.cache"
+test -n "$XDG_CONFIG_HOME" || set -gx XDG_CONFIG_HOME "$HOME/.config"
+test -n "$XDG_DATA_HOME" || set -gx XDG_DATA_HOME "$HOME/.local/share"
+test -n "$XDG_STATE_HOME" || set -gx XDG_STATE_HOME "$HOME/.local/state"
 
 # Enable VI key bindings
 set -g fish_key_bindings fish_vi_key_bindings
@@ -78,6 +79,11 @@ end
 export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
 
 {{- end }}
+
+# Pi configuration
+set -gx PI_CODING_AGENT_DIR "$XDG_CONFIG_HOME/pi"
+set -gx PI_CODING_AGENT_SESSION_DIR "$XDG_STATE_HOME/pi/sessions"
+
 
 # Rust configuration
 if test -f "$HOME/.cargo/env"

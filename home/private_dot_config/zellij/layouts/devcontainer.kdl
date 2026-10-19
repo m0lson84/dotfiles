@@ -9,8 +9,8 @@ layout {
     args "-c" "devc exec fish -c nvim"
   }
 
-  pane_template name="opencode" {
-    command "opencode"
+  pane_template name="pi" {
+    command "pi"
     args "--continue"
   }
 
@@ -28,7 +28,7 @@ layout {
 
   editor name="editor" focus=true { neovim; }
   tab name="git" { lazygit; }
-  tab name="agent" { opencode; }
+  tab name="agent" { pi; }
   tab name="terminal" { shell; }
 
 }

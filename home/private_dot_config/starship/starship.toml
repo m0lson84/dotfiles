@@ -171,9 +171,8 @@ symbol         = " "
 [aws]
 disabled          = false
 expiration_symbol = " "
-format            = "[$symbol$profile]($style) "
-profile_aliases   = { mhs-dev = "dev" }
-region_aliases    = { us-east-1 = "VA", us-east-2 = "OH" }
+format            = "[$symbol $profile]($style) "
+profile_aliases   = { gntx-dev = "dev" }
 symbol            = " "
 
 [gcloud]
@@ -182,30 +181,13 @@ symbol   = "󱇶 "
 
 [terraform]
 disabled = false
-format   = "[$symbol$workspace]($style) "
+format   = "[$symbol $workspace]($style) "
 symbol   = " "
 
 
 # ========================================
 # Source control
 # ========================================
-
-[custom.git_icon]
-command = """
-  symbol="󰊢 "
-  remote=$(command git ls-remote --get-url 2> /dev/null)
-  if [[ "$remote" =~ "azure" ]]; then symbol=" "; fi
-  if [[ "$remote" =~ "bitbucket" ]]; then symbol="󰂨 "; fi
-  if [[ "$remote" =~ "github" ]]; then symbol=" "; fi
-  if [[ "$remote" =~ "gitlab" ]]; then symbol=" "; fi
-  echo "$symbol"
-"""
-description = "Display symbol for git repository."
-disabled = true
-format = "[$output]($style)  "
-shell = ["--noprofile", "--norc", "bash"]
-style = "bold white"
-when = "git rev-parse --is-inside-work-tree 2> /dev/null"
 
 [fossil_branch]
 symbol = " "

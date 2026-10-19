@@ -25,6 +25,7 @@
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
 
 # ZSH configuration
 ZSH=$HOME/.oh-my-zsh
@@ -88,6 +89,10 @@ command -v mise >/dev/null && eval "$(mise hook-env -s zsh)"
 export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
 
 {{- end }}
+
+# Pi configuration
+export PI_CODING_AGENT_DIR="${XDG_CONFIG_HOME}/pi"
+export PI_CODING_AGENT_SESSION_DIR="${XDG_STATE_HOME}/pi/sessions"
 
 # Rust configuration
 if [ -f "${HOME}/.cargo/env" ]; then
