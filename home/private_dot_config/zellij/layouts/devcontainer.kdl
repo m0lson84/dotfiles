@@ -11,7 +11,6 @@ layout {
 
   pane_template name="opencode" {
     command "opencode"
-    args "--continue"
   }
 
   pane_template name="shell" {

@@ -1,13 +1,19 @@
 {
   "$schema": "https://opencode.ai/v2/cli.json",
   "theme": {
-    "name": "tokyonight",
+    "name": "tokyo-night",
     "mode": "dark"
-  },
-  "tabs": {
-    "enabled": false
   },
   "cursor": {
     "style": "default"
+  },
+  "session": {
+    "sidebar": "hide",
+    "scrollbar": true,
+    "thinking": "show",
+    "image_preview": true
+  },
+  "tabs": {
+    "enabled": false
   }
 }

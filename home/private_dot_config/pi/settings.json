@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/earendil-works/pi/refs/heads/main/packages/coding-agent/schemas/settings.schema.json",
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "github-copilot",
+  "defaultModel": "gpt-6.1-sol",
+  "defaultTools": ["+codemode"],
+  "theme": "tokyonight",
+  "tuiMode": "fullscreen",
+  "editorPaddingX": 1,
+  "enableInstallTelemetry": false,
+  "packages": ["npm:@upstash/context7-pi"]
+}
