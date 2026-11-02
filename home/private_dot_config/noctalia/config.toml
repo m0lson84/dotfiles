@@ -1,12 +1,15 @@
-[bar.default]
-background_opacity = 0.9
-end                = ["network", "bluetooth", "volume", "battery", "control-center", "session"]
-margin_edge        = 0
-margin_ends        = 0
-padding            = 10
-radius             = 0
-start              = ["workspaces"]
-thickness          = 24
+#     _   _            _        _ _
+#    | \ | |          | |      | (_)
+#    |  \| | ___   ___| |_ __ _| |_  __ _
+#    | . ` |/ _ \ / __| __/ _` | | |/ _` |
+#    | |\  | (_) | (__| || (_| | | | (_| |
+#    \_| \_/\___/ \___|\__\__,_|_|_|\__,_|
+#
+#
+
+
+[shell]
+polkit_agent = true
 
 [shell.launcher]
 layout     = "simple"
@@ -17,16 +20,15 @@ launcher_categories = false
 launcher_show_icons = false
 session_placement   = "centered"
 
-[theme]
-mode    = "dark"
-builtin = "Tokyo-Night"
-
-[theme.templates]
-enable_builtin_templates   = false
-enable_community_templates = false
-
-[wallpaper]
-directory = "~/Pictures/Wallpapers"
+[bar.default]
+background_opacity = 0.9
+end                = ["network", "bluetooth", "volume", "battery", "control-center", "session"]
+margin_edge        = 0
+margin_ends        = 0
+padding            = 10
+radius             = 0
+start              = ["workspaces"]
+thickness          = 24
 
 [widget.battery]
 display_mode      = "graphic"
@@ -44,3 +46,14 @@ show_label = false
 
 [widget.workspaces]
 capsule_radius = 4
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+[theme]
+mode    = "dark"
+builtin = "Tokyo-Night"
+
+[theme.templates]
+enable_builtin_templates   = false
+enable_community_templates = false
