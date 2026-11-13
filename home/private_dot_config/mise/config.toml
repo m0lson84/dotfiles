@@ -8,10 +8,10 @@
 #                                              |_|
 
 
+#:schema https://mise.jdx.dev/schema/mise.json
+
 [settings]
-env_file                            = ".env"
-idiomatic_version_file_enable_tools = ["go", "node", "python"]
-minimum_release_age                 = "0d"
+trusted_config_paths = ["~/source"]
 
 [settings.python]
 compile = false

@@ -9,21 +9,21 @@
 
 
 // General
-default_mode "normal"
+show_startup_tips false
+on_quit "quit"
 default_shell "fish"
+default_layout "neovim"
+
+// Appearance
+theme "tokyo-night-dark"
 pane_frames false
 styled_underlines true
-
-// Layouts
-default_layout "neovim"
 
 // Sessions
 session_serialization false
 
-// Themes
-theme "tokyo-night-dark"
-
-// Keybindings
+// Keyboard
+default_mode "normal"
 keybinds clear-defaults=true {
 
   shared {
