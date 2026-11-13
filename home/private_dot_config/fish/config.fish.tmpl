@@ -80,11 +80,6 @@ export CONFIGURE_OPTS="-with-openssl=$(which openssl)"
 
 {{- end }}
 
-# Pi configuration
-set -gx PI_CODING_AGENT_DIR "$XDG_CONFIG_HOME/pi"
-set -gx PI_CODING_AGENT_SESSION_DIR "$XDG_STATE_HOME/pi/sessions"
-
-
 # Rust configuration
 if test -f "$HOME/.cargo/env"
     set fish_user_paths "$HOME/.cargo/bin"
