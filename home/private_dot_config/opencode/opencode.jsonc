@@ -2,8 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "plan",
   "agents": {
-    "plan": { "model": "github-copilot/gpt-6.1-sol#high" },
-    "build": { "model": "github-copilot/gpt-6.1-sol#low" },
+    "plan": { "model": "github-copilot/gpt-6.2-sol" },
+    "build": { "model": "github-copilot/gpt-6.2-sol" },
     "general": { "model": "github-copilot/gpt-6.1-terra" },
     "explore": { "model": "github-copilot/gpt-6-luna" },
     "title": { "model": "github-copilot/gpt-6-luna" }
@@ -22,9 +22,6 @@
     "max_lines": 600,
     "max_bytes": 24000
   },
-  "compaction": {
-    "auto": true,
-    "buffer": 12000
-  },
+  "instructions": ["AGENTS.local.md"],
   "plugins": ["@upstash/context7-opencode"]
 }
